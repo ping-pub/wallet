@@ -8,7 +8,9 @@
         <div v-if="mode === 'sidemenu'" class="header">
           <a-icon v-if="device==='mobile'" class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'" @click="toggle"/>
           <a-icon v-else class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
-          <user-menu></user-menu>
+          <user-menu v-if="device !=='mobile'"></user-menu>
+          <a-icon style="float: right;" class="trigger" v-if="device==='mobile'"  type="retweet"></a-icon>
+          <a-button v-else>cosmoshub · cosmosjadqwewqe123123 <a-icon type="retweet" /></a-button>
         </div>
         <div v-else :class="['top-nav-header-index', theme]">
           <div class="header-index-wide">
