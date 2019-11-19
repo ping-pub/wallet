@@ -14,7 +14,7 @@ export const asyncRouterMap = [
         path: '/',
         name: 'Dashboard',
         component: () => import('@/views/list/search/Applications'),
-        meta: { title: 'Dashboard', keepAlive: false, permission: ['dashboard'], icon: 'credit-card' }
+        meta: { title: 'Dashboard', keepAlive: false, permission: ['dashboard'], icon: 'dashboard' }
       },
       {
         path: '/wallet',

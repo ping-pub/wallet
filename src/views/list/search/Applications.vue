@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div style="text-align:center;padding: 40px 0 80px 0;">
-      <a-input-search
-            style="width: 80%; max-width: 522px;"
+    <a-card :bordered="false" class="ant-pro-components-tag-select">
+      <div style="display:flex;align-items:center;">
+        <a-input-search
+            style="width: 400px;"
             placeholder="address"
             size="large"
             enterButton="Add"
           />
-    </div>
 
-    <a-card :bordered="false" class="ant-pro-components-tag-select">
-      <div style="display:flex;align-items:center;">
+          <span style="flex: 1;"></span>
+
         <div style="margin-right: 20px;">Tags</div>
               <tag-select>
               <tag-select-option value="mine">Mine</tag-select-option>
@@ -18,7 +18,7 @@
               <tag-select-option value="others">Others</tag-select-option>
             </tag-select>
             <span>
-              <a-popover title="Add Tag" trigger="click">
+              <a-popover title="Add Tag" trigger="click" placement="bottomRight">
             <template slot="content">
               <div style="display:flex;align-items:center;">
                 <a-input size="small"></a-input>
