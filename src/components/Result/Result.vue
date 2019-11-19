@@ -1,11 +1,11 @@
 <template>
   <div class="result">
-    <div>
-      <a-icon :class="{ 'icon': true, [`${type}`]: true }" :type="localIsSuccess ? 'check-circle' : 'close-circle'"/>
-    </div>
     <div class="title">
       <slot name="title">
-        {{ title }}
+        <div style="display:flex;justify-content: center;align-items:center;">
+          <a-icon :class="{ 'icon': true, [`${type}`]: true }" :type="localIsSuccess ? 'check-circle' : 'close-circle'"/>
+        <span>{{ title }}</span>
+        </div>
       </slot>
     </div>
     <div class="description">
@@ -65,9 +65,9 @@ export default {
     padding: 24px 0 8px;
 
     .icon {
-      font-size: 72px;
-      line-height: 72px;
-      margin-bottom: 24px;
+      font-size: 24px;
+      line-height: 24px;
+      margin-right: 10px;
     }
     .success {
       color: #52c41a;

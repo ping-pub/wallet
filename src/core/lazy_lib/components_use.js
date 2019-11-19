@@ -30,6 +30,7 @@ import {
   Dropdown,
   List,
   Avatar,
+  Collapse,
   Breadcrumb,
   Steps,
   Spin,
@@ -46,10 +47,13 @@ import {
   Skeleton,
   Popconfirm,
   message,
-  notification
+  notification,
+  empty
 } from 'ant-design-vue'
 // import VueCropper from 'vue-cropper'
 
+Vue.use(empty)
+Vue.use(Collapse)
 Vue.use(LocaleProvider)
 Vue.use(Layout)
 Vue.use(Input)

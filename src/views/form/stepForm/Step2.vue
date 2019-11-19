@@ -2,57 +2,66 @@
   <div>
     <a-form :form="form" style="max-width: 500px; margin: 40px auto 0;">
       <a-alert
+      showIcon
         :closable="true"
-        message="确认转账后，资金将直接打入对方账户，无法退回。"
-        style="margin-bottom: 24px;"
+        :type="loading ? 'warning' : 'info'"
+        :message="loading ? 'Please verify and sign the transaction on your Ledger' : 'Please plug in your Ledger Nano and open the Cosmos app'"
+        style="margin-bottom: 10px;"
       />
+      <a-alert
+        :closable="true" style="margin-bottom: 10px;" type="error" message="Sending tokens failed: Unknown Status Code: undefined." showIcon />
+
       <a-form-item
-        label="付款账户"
+        label="Send By"
         :labelCol="labelCol"
         :wrapperCol="wrapperCol"
         class="stepFormText"
       >
-        ant-design@alipay.com
+      <div style="overflow-wrap: break-word;">
+cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw
+      </div>
+        
       </a-form-item>
       <a-form-item
-        label="收款账户"
+        label="Send To"
         :labelCol="labelCol"
         :wrapperCol="wrapperCol"
         class="stepFormText"
       >
-        test@example.com
-      </a-form-item>
-      <a-form-item
-        label="收款人姓名"
-        :labelCol="labelCol"
-        :wrapperCol="wrapperCol"
-        class="stepFormText"
-      >
-        Alex
-      </a-form-item>
-      <a-form-item
-        label="转账金额"
-        :labelCol="labelCol"
-        :wrapperCol="wrapperCol"
-        class="stepFormText"
-      >
-        ￥ 5,000.00
+      <div style="overflow-wrap: break-word;">
+cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw
+      </div>
+        
       </a-form-item>
       <a-divider />
       <a-form-item
-        label="支付密码"
+        label="Subtotal"
         :labelCol="labelCol"
         :wrapperCol="wrapperCol"
         class="stepFormText"
       >
-        <a-input
-          type="password"
-          style="width: 80%;"
-          v-decorator="['paymentPassword', { initialValue: '123456', rules: [{required: true, message: '请输入支付密码'}] }]" />
+        1.000000 ATOM
+      </a-form-item>
+      <a-form-item
+        label="Network Fee"
+        :labelCol="labelCol"
+        :wrapperCol="wrapperCol"
+        class="stepFormText"
+      >
+        0.000915 ATOM
+      </a-form-item>
+      <a-divider />
+      <a-form-item
+        label="Total"
+        :labelCol="labelCol"
+        :wrapperCol="wrapperCol"
+        class="stepFormText"
+      >
+        1.000915 ATOM
       </a-form-item>
       <a-form-item :wrapperCol="{span: 19, offset: 5}">
-        <a-button :loading="loading" type="primary" @click="nextStep">提交</a-button>
-        <a-button style="margin-left: 8px" @click="prevStep">上一步</a-button>
+        <a-button @click="prevStep">Back</a-button>
+        <a-button style="margin-left: 8px"  :loading="loading" type="primary" @click="nextStep">{{ loading ? 'Waiting for ledger' : 'Send' }}</a-button>
       </a-form-item>
     </a-form>
   </div>

@@ -1,9 +1,9 @@
 <template>
   <a-card :bordered="false">
     <a-steps class="steps" :current="currentTab">
-      <a-step title="填写转账信息" />
-      <a-step title="确认转账信息" />
-      <a-step title="完成" />
+      <a-step title="Details" />
+      <a-step title="Sign" />
+      <a-step title="Result" />
     </a-steps>
     <div class="content">
       <step1 v-if="currentTab === 0" @nextStep="nextStep"/>
@@ -57,6 +57,6 @@ export default {
 <style lang="less" scoped>
   .steps {
     max-width: 750px;
-    margin: 16px auto;
+    margin: 0 auto;
   }
 </style>

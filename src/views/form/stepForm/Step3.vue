@@ -1,28 +1,32 @@
 <template>
   <div>
-    <a-form style="margin: 40px auto 0;">
-      <result title="操作成功" :is-success="true" description="预计两小时内到账" style="max-width: 560px;">
+    <a-form style="margin: 20px auto 0;">
+      <result title="Success" :is-success="true" description="Expected to arrive within two minutes" style="max-width: 560px;">
         <div class="information">
           <a-row>
-            <a-col :sm="8" :xs="24">付款账户：</a-col>
-            <a-col :sm="16" :xs="24">ant-design@alipay.com</a-col>
+            <a-col :sm="6" :xs="24">Send By:</a-col>
+            <a-col :sm="18" :xs="24">cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw</a-col>
           </a-row>
           <a-row>
-            <a-col :sm="8" :xs="24">收款账户：</a-col>
-            <a-col :sm="16" :xs="24">test@example.com</a-col>
+            <a-col :sm="6" :xs="24">Send To:</a-col>
+            <a-col :sm="18" :xs="24">cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw</a-col>
           </a-row>
           <a-row>
-            <a-col :sm="8" :xs="24">收款人姓名：</a-col>
-            <a-col :sm="16" :xs="24">辉夜</a-col>
+            <a-col :sm="6" :xs="24">Subtotal:</a-col>
+            <a-col :sm="18" :xs="24">1.000000 ATOM</a-col>
           </a-row>
           <a-row>
-            <a-col :sm="8" :xs="24">转账金额：</a-col>
-            <a-col :sm="16" :xs="24"><span class="money">500</span> 元</a-col>
+            <a-col :sm="6" :xs="24">Network Fee:</a-col>
+            <a-col :sm="18" :xs="24">0.000915 ATOM</a-col>
+          </a-row>
+          <a-row>
+            <a-col :sm="6" :xs="24">Total:</a-col>
+            <a-col :sm="18" :xs="24"><span class="money">500</span> ATOM</a-col>
           </a-row>
         </div>
         <div slot="action">
-          <a-button type="primary" @click="finish">再转一笔</a-button>
-          <a-button style="margin-left: 8px" @click="toOrderList">查看账单</a-button>
+          <a-button type="primary" @click="finish">Again</a-button>
+          <a-button style="margin-left: 8px" @click="toOrderList">Details</a-button>
         </div>
       </result>
     </a-form>

@@ -1,27 +1,26 @@
 <template>
   <div class="card-list" ref="content">
+
+    <div style="font-size: 18px;margin-bottom: 10px;">November 17th 2019</div>
     <a-list
       rowKey="id"
       :grid="{gutter: 24, lg: 3, md: 2, sm: 1, xs: 1}"
       :dataSource="dataSource"
     >
       <a-list-item slot="renderItem" slot-scope="item">
-        <template v-if="!item || item.id === undefined">
-          <a-button class="new-btn" type="dashed">
-            <a-icon type="plus"/>
-            新增产品
-          </a-button>
-        </template>
-        <template v-else>
+        <template>
           <a-card :hoverable="true">
             <a-card-meta>
               <a slot="title">{{ item.title }}</a>
               <a-avatar class="card-avatar" slot="avatar" :src="item.avatar" size="large"/>
-              <div class="meta-content" slot="description">{{ item.content }}</div>
+              <div class="meta-content" slot="description">
+                <div>To {{ item.name }}</div>
+                <div>{{ item.fee }}</div>
+                <div>{{ item.time }}</div>
+              </div>
             </a-card-meta>
             <template class="ant-card-actions" slot="actions">
-              <a>操作一</a>
-              <a>操作二</a>
+              <a>Block #{{ item.block }}</a>
             </template>
           </a-card>
         </template>
@@ -37,9 +36,12 @@ dataSource.push({})
 for (let i = 0; i < 11; i++) {
   dataSource.push({
     id: i,
-    title: 'Alipay',
-    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png',
-    content: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
+    title: 'Delegated 400 ATOM',
+    time: '@ Nov 18th 2019 20:31:04',
+    fee: 'Network Fee:  0.0002 ATOM',
+    block: '2614448',
+    name: 'Ping',
+    avatar: 'https://app.lunie.io/img/cosmos-logo.07f10280.png',
   })
 }
 

@@ -20,9 +20,9 @@ export default {
   contentWidth: 'Fixed', // layout of content: Fluid or Fixed, only works when layout is topmenu
   fixedHeader: true, // sticky header
   fixSiderbar: true, // sticky siderbar
-  autoHideHeader: true, //  auto hide header
+  autoHideHeader: false, //  auto hide header
   colorWeak: false,
-  multiTab: true,
+  multiTab: false,
   production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
   // vue-ls options
   storageOptions: {

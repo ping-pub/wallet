@@ -23,10 +23,16 @@ export const asyncRouterMap = [
         meta: { title: 'Validators', keepAlive: true, permission: ['table'], icon: 'team' }
       },
       {
-        path: '/votes',
-        name: 'Votes',
+        path: '/proposals',
+        name: 'Proposals',
         component: () => import('@/views/list/StandardList'),
-        meta: { title: 'Votes', keepAlive: true, permission: ['table'], icon: 'fire' }
+        meta: { title: 'Proposals', keepAlive: true, permission: ['table'], icon: 'fire' }
+      },
+      {
+        path: '/activity',
+        name: 'Activity',
+        component: () => import('@/views/list/CardList'),
+        meta: { title: 'Activity', keepAlive: true, permission: ['table'], icon: 'schedule' }
       },
       {
         path: 'https://look.ping.pub/',
