@@ -51,16 +51,47 @@
 
       <a-drawer
         title="Local Wallets"
-        width="30%"
+        :width="device==='mobile' ? '100%' : '600px'"
         placement="right"
         @close="() => { this.drawerShow = false }"
         :visible="drawerShow"
       >
-        <div style="font-size: 18px;margin-bottom: 10px;">Your Address</div>
 
-        <div style="display:flex;margin-bottom: 20px;">
-          <a-input placeholder="address(cosmos、irishub、kava)"></a-input>
-          <a-button style="margin-left: 5px;">Explore</a-button>
+      <a-row :gutter="20">
+              <a-col :xs="24" :sm="12" :style="{ marginBottom: ' 24px'}">
+                <number-info :total="12321" :sub-total="17.1">
+                  <span slot="subtitle">
+                    <span>My Blance</span>
+                    <a-tooltip title="Validators" slot="action">
+                      <a-icon type="info-circle-o" :style="{ marginLeft: '8px' }" />
+                    </a-tooltip>
+                  </span>
+                </number-info>
+              </a-col>
+              <a-col :xs="24" :sm="12" :style="{ marginBottom: ' 24px'}">
+                <number-info :total="2.7" :sub-total="26.2" status="down">
+                  <span slot="subtitle">
+                    <span>Total Rewards</span>
+                    <a-tooltip title="指标说明" slot="action">
+                      <a-icon type="info-circle-o" :style="{ marginLeft: '8px' }" />
+                    </a-tooltip>
+                  </span>
+                </number-info>
+              </a-col>
+            </a-row>
+
+        <div style="font-size: 18px;margin-bottom: 10px;">Explore Address</div>
+
+        <div style="display:flex;align-items:center;margin-bottom: 20px;">
+          <a-input-group compact style="display:flex">
+      <a-select defaultValue="Option1">
+        <a-select-option value="Option1">Mine</a-select-option>
+        <a-select-option value="Option2">Others</a-select-option>
+      </a-select>
+      <a-input placeholder="address(cosmos、irishub、kava)"></a-input>
+    </a-input-group>
+          
+          <a-button style="margin-left: -1px;">Explore</a-button>
         </div>
 
         <div style="margin: 10px 0;font-size: 18px;">Cosmoshub</div>
@@ -74,7 +105,32 @@
             key="1"
             :style="customStyle"
           >
-            <p>{{text}}</p>
+            <a-row :gutter="20">
+              <a-col :xs="24" :sm="12" :style="{ marginBottom: ' 24px'}">
+                <number-info :total="12321" :sub-total="17.1">
+                  <span slot="subtitle">
+                    <span>Avaliable</span>
+                    <a-tooltip title="Validators" slot="action">
+                      <a-icon type="info-circle-o" :style="{ marginLeft: '8px' }" />
+                    </a-tooltip>
+                  </span>
+                </number-info>
+              </a-col>
+              <a-col :xs="24" :sm="12" :style="{ marginBottom: ' 24px'}">
+                <number-info :total="2.7" :sub-total="26.2" status="down">
+                  <span slot="subtitle">
+                    <span>Rewards</span>
+                    <a-tooltip title="指标说明" slot="action">
+                      <a-icon type="info-circle-o" :style="{ marginLeft: '8px' }" />
+                    </a-tooltip>
+                  </span>
+                </number-info>
+              </a-col>
+            </a-row>
+            <a-tag color="green">Mine</a-tag><a-tag>Ledger 接入</a-tag>
+            <a-tag> <a-icon type="plus"></a-icon> </a-tag>
+
+            <a-switch style="float: right;" defaultChecked checkedChildren="Default" unCheckedChildren="Default" />
           </a-collapse-panel>
         </a-collapse>
 
@@ -90,6 +146,7 @@
             :style="customStyle"
           >
             <p>{{text}}</p>
+            <a-tag color="blue">Others</a-tag><a-tag>Ping</a-tag>
           </a-collapse-panel>
         </a-collapse>
 
@@ -108,10 +165,12 @@ import UserMenu from '../tools/UserMenu'
 import SMenu from '../Menu/'
 import Logo from '../tools/Logo'
 import { mixin } from '@/utils/mixin'
+import { NumberInfo } from '@/components'
 
 export default {
   name: 'GlobalHeader',
   components: {
+    NumberInfo,
     UserMenu,
     SMenu,
     Logo
