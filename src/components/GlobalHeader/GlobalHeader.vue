@@ -56,103 +56,51 @@
         @close="() => { this.drawerShow = false }"
         :visible="drawerShow"
       >
-
-      <a-row :gutter="20">
-              <a-col :xs="24" :sm="12" :style="{ marginBottom: ' 24px'}">
-                <number-info :total="12321" :sub-total="17.1">
-                  <span slot="subtitle">
-                    <span>My Blance</span>
-                    <a-tooltip title="Validators" slot="action">
-                      <a-icon type="info-circle-o" :style="{ marginLeft: '8px' }" />
-                    </a-tooltip>
-                  </span>
-                </number-info>
-              </a-col>
-              <a-col :xs="24" :sm="12" :style="{ marginBottom: ' 24px'}">
-                <number-info :total="2.7" :sub-total="26.2" status="down">
-                  <span slot="subtitle">
-                    <span>Total Rewards</span>
-                    <a-tooltip title="指标说明" slot="action">
-                      <a-icon type="info-circle-o" :style="{ marginLeft: '8px' }" />
-                    </a-tooltip>
-                  </span>
-                </number-info>
-              </a-col>
-            </a-row>
-
-        <div style="font-size: 18px;margin-bottom: 10px;">Explore Address</div>
+        <div style="font-size: 18px;margin-bottom: 10px;">Add Address</div>
 
         <div style="display:flex;align-items:center;margin-bottom: 20px;">
-          <a-input-group compact style="display:flex">
-      <a-select defaultValue="Option1">
-        <a-select-option value="Option1">Mine</a-select-option>
-        <a-select-option value="Option2">Others</a-select-option>
-      </a-select>
-      <a-input placeholder="address(cosmos、irishub、kava)"></a-input>
-    </a-input-group>
-          
+          <a-input placeholder="address(cosmos、irishub、kava)"></a-input>
+
           <a-button style="margin-left: -1px;">Explore</a-button>
         </div>
 
-        <div style="margin: 10px 0;font-size: 18px;">Cosmoshub</div>
+        <div style="margin: 10px 0;font-size: 18px;">
+          Explore Address
+          <a-button style="float: right;" size="small" type="primary">Dashboard</a-button>
+        </div>
 
-        <a-collapse defaultActiveKey="1" :bordered="false">
-          <template v-slot:expandIcon="props">
-            <a-icon type="caret-right" :rotate="props.isActive ? 90 : 0" />
-          </template>
-          <a-collapse-panel
-            header="cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050"
-            key="1"
-            :style="customStyle"
-          >
-            <a-row :gutter="20">
-              <a-col :xs="24" :sm="12" :style="{ marginBottom: ' 24px'}">
-                <number-info :total="12321" :sub-total="17.1">
-                  <span slot="subtitle">
-                    <span>Avaliable</span>
-                    <a-tooltip title="Validators" slot="action">
-                      <a-icon type="info-circle-o" :style="{ marginLeft: '8px' }" />
-                    </a-tooltip>
-                  </span>
-                </number-info>
-              </a-col>
-              <a-col :xs="24" :sm="12" :style="{ marginBottom: ' 24px'}">
-                <number-info :total="2.7" :sub-total="26.2" status="down">
-                  <span slot="subtitle">
-                    <span>Rewards</span>
-                    <a-tooltip title="指标说明" slot="action">
-                      <a-icon type="info-circle-o" :style="{ marginLeft: '8px' }" />
-                    </a-tooltip>
-                  </span>
-                </number-info>
-              </a-col>
-            </a-row>
-            <a-tag color="green">Mine</a-tag><a-tag>Ledger 接入</a-tag>
-            <a-tag> <a-icon type="plus"></a-icon> </a-tag>
+        <div style="padding: 10px;background: #f5f5f5;margin-bottom: 10px;" class="addressitem" v-for="n in 5" :key="n">
+          <div style="margin-bottom: 10px;cursor:pointer;" @click="() => { this.drawerShow = false }">
+            <span>cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050</span>
+            <a-icon
+              
+              style="float:right;margin-right: 20px;"
+              type="login"
+            ></a-icon>
+          </div>
 
-            <a-switch style="float: right;" defaultChecked checkedChildren="Default" unCheckedChildren="Default" />
-          </a-collapse-panel>
-        </a-collapse>
+          <a-tag color="green">Mine</a-tag>
+          <a-tag>Ledger 接入</a-tag>
 
-        <div style="margin: 10px 0;font-size: 18px;">Irishub</div>
+          <a-popover title="Select Tag" trigger="click">
+            <template slot="content">
+              <div style="display:flex;align-items:center;">
+                <a-select size="small" mode="tags" style="width: 100%" placeholder="Tags Mode">
+                  <a-select-option
+                    v-for="i in 25"
+                    :key="(i + 9).toString(36) + i"
+                  >{{(i + 9).toString(36) + i}}</a-select-option>
+                </a-select>
+                <a-button size="small">Save</a-button>
+              </div>
+            </template>
+            <a-tag>
+              <a-icon type="plus"></a-icon>
+            </a-tag>
+          </a-popover>
 
-        <a-collapse defaultActiveKey="1" :bordered="false">
-          <template v-slot:expandIcon="props">
-            <a-icon type="caret-right" :rotate="props.isActive ? 90 : 0" />
-          </template>
-          <a-collapse-panel
-            header="cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050"
-            key="1"
-            :style="customStyle"
-          >
-            <p>{{text}}</p>
-            <a-tag color="blue">Others</a-tag><a-tag>Ping</a-tag>
-          </a-collapse-panel>
-        </a-collapse>
-
-        <div style="margin: 10px 0;font-size: 18px;">Kava</div>
-
-        <a-empty description="Please Add Address" style="margin-bottom: 20px;"/>
+          <span style="float: right;">28 ATOM + 0.12</span>
+        </div>
 
         <a-button style="width: 100%;margin-bottom: 20px;" icon="plus">Add New Chain</a-button>
       </a-drawer>
@@ -254,6 +202,12 @@ export default {
 </script>
 
 <style lang="less">
+.addressitem {
+  border: 1px solid #eee;
+}
+.addressitem:hover {
+  border: 1px solid #343a40;
+}
 @import '../index.less';
 
 .header-animat {

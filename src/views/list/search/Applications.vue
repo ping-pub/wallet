@@ -1,54 +1,36 @@
 <template>
   <div>
-    <a-card :bordered="false" class="ant-pro-components-tag-select">
-      <a-form :form="form" layout="inline">
-        <standard-form-row title="所属类目" block style="padding-bottom: 11px;">
-          <a-form-item>
-            <tag-select>
-              <tag-select-option value="Category1">类目一</tag-select-option>
-              <tag-select-option value="Category2">类目二</tag-select-option>
-              <tag-select-option value="Category3">类目三</tag-select-option>
-              <tag-select-option value="Category4">类目四</tag-select-option>
-              <tag-select-option value="Category5">类目五</tag-select-option>
-              <tag-select-option value="Category6">类目六</tag-select-option>
-              <tag-select-option value="Category7">类目七</tag-select-option>
-              <tag-select-option value="Category8">类目八</tag-select-option>
-              <tag-select-option value="Category9">类目九</tag-select-option>
-              <tag-select-option value="Category10">类目十</tag-select-option>
-            </tag-select>
-          </a-form-item>
-        </standard-form-row>
+    <div style="text-align:center;padding: 40px 0 80px 0;">
+      <a-input-search
+            style="width: 80%; max-width: 522px;"
+            placeholder="address"
+            size="large"
+            enterButton="Add"
+          />
+    </div>
 
-        <standard-form-row title="其它选项" grid last>
-          <a-row>
-            <a-col :lg="8" :md="10" :sm="10" :xs="24">
-              <a-form-item :wrapper-col="{ sm: { span: 16 }, xs: { span: 24 } }" label="作者">
-                <a-select
-                  style="max-width: 200px; width: 100%;"
-                  mode="multiple"
-                  placeholder="不限"
-                  v-decorator="['author']"
-                  @change="handleChange"
-                >
-                  <a-select-option value="lisa">王昭君</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-            <a-col :lg="8" :md="10" :sm="10" :xs="24">
-              <a-form-item :wrapper-col="{ sm: { span: 16 }, xs: { span: 24 } }" label="好评度">
-                <a-select
-                  style="max-width: 200px; width: 100%;"
-                  placeholder="不限"
-                  v-decorator="['rate']"
-                >
-                  <a-select-option value="good">优秀</a-select-option>
-                  <a-select-option value="normal">普通</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </standard-form-row>
-      </a-form>
+    <a-card :bordered="false" class="ant-pro-components-tag-select">
+      <div style="display:flex;align-items:center;">
+        <div style="margin-right: 20px;">Tags</div>
+              <tag-select>
+              <tag-select-option value="mine">Mine</tag-select-option>
+              <tag-select-option value="ping">Ping</tag-select-option>
+              <tag-select-option value="others">Others</tag-select-option>
+            </tag-select>
+            <span>
+              <a-popover title="Add Tag" trigger="click">
+            <template slot="content">
+              <div style="display:flex;align-items:center;">
+                <a-input size="small"></a-input>
+                <a-button size="small">Save</a-button>
+              </div>
+            </template>
+            <a-tag>
+              <a-icon type="plus"></a-icon>
+            </a-tag>
+          </a-popover>
+            </span>
+            </div>
     </a-card>
 
     <div class="ant-pro-pages-list-applications-filterCardList">

@@ -8,8 +8,14 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: 'Home' },
-    redirect: '/wallet',
+    redirect: '/',
     children: [
+      {
+        path: '/',
+        name: 'Dashboard',
+        component: () => import('@/views/list/search/Applications'),
+        meta: { title: 'Dashboard', keepAlive: false, permission: ['dashboard'], icon: 'credit-card' }
+      },
       {
         path: '/wallet',
         name: 'Wallet',

@@ -82,7 +82,7 @@ const vueConfig = {
           // less vars，customize ant design theme
 
           'primary-color': '#343a40',
-          'link-color': '#F5222D',
+          'link-color': '#343a40',
           'border-radius-base': '0'
         },
         // do not remove this line
