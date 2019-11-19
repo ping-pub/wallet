@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { UserLayout, BasicLayout, BlankLayout } from '@/layouts'
+import { UserLayout, BasicLayout, BlankLayout, PageView } from '@/layouts'
 
 export const asyncRouterMap = [
 
@@ -12,33 +12,33 @@ export const asyncRouterMap = [
     children: [
       {
         path: '/',
-        name: 'Dashboard',
-        component: () => import('@/views/list/search/Applications'),
-        meta: { title: 'Dashboard', keepAlive: false, permission: ['dashboard'], icon: 'dashboard' }
-      },
-      {
-        path: '/wallet',
         name: 'Wallet',
         component: () => import('@/views/dashboard/Analysis'),
-        meta: { title: 'Wallet', keepAlive: false, permission: ['dashboard'], icon: 'credit-card' }
+        meta: { title: 'Wallet', keepAlive: false, icon: 'credit-card' }
       },
       {
         path: '/validators',
         name: 'Validators',
         component: () => import('@/views/list/StandardList'),
-        meta: { title: 'Validators', keepAlive: true, permission: ['table'], icon: 'team' }
+        meta: { title: 'Validators', keepAlive: true, icon: 'team' }
       },
       {
         path: '/proposals',
         name: 'Proposals',
         component: () => import('@/views/list/StandardList'),
-        meta: { title: 'Proposals', keepAlive: true, permission: ['table'], icon: 'fire' }
+        meta: { title: 'Proposals', keepAlive: true, icon: 'fire' }
       },
       {
         path: '/activity',
         name: 'Activity',
         component: () => import('@/views/list/CardList'),
-        meta: { title: 'Activity', keepAlive: true, permission: ['table'], icon: 'schedule' }
+        meta: { title: 'Activity', keepAlive: true, icon: 'schedule' }
+      },
+      {
+        path: '/network',
+        name: 'Network',
+        meta: { title: 'Network', icon: 'form', keepAlive: true },
+        component: () => import('@/views/form/BasicForm'),
       },
       {
         path: 'https://look.ping.pub/',

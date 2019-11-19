@@ -66,7 +66,9 @@
 
         <div style="margin: 10px 0;font-size: 18px;">
           Explore Address
-          <a-button style="float: right;" size="small" type="primary">Dashboard</a-button>
+
+          <span>$22.8 / $12.3 </span>
+          <a-icon type="filter"></a-icon>
         </div>
 
         <div style="padding: 10px;background: #f5f5f5;margin-bottom: 10px;" class="addressitem" v-for="n in 5" :key="n">
