@@ -20,10 +20,12 @@ export default new Vuex.Store({
     permission
   },
   state: {
-
+    wallet: null
   },
   mutations: {
-
+    walletSet(state, item) {
+      state.wallet = item
+    }
   },
   actions: {
 

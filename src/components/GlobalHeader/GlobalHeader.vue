@@ -21,14 +21,14 @@
           />
           <user-menu v-if="device !=='mobile'"></user-menu>
           <a-icon
-            @click="() => { this.drawerShow = true }"
+            @click="showDrawer"
             style="float: right;"
             class="trigger"
             v-if="device==='mobile'"
             type="retweet"
           ></a-icon>
-          <a-button @click="() => { this.drawerShow = true }" v-else>
-            cosmoshub · cosmosjadqwewqe123123
+          <a-button @click="showDrawer" v-else>
+            {{ wallet && wallet.address || 'Click here to add an address'}}
             <a-icon type="retweet" />
           </a-button>
         </div>
@@ -59,21 +59,20 @@
         <div style="font-size: 18px;margin-bottom: 10px;">Add Address</div>
 
         <div style="display:flex;align-items:center;margin-bottom: 20px;">
-          <a-input placeholder="address(cosmos、irishub、kava)"></a-input>
+          <a-input v-model="newAddress" placeholder="address(cosmos、irishub、kava)"></a-input>
 
-          <a-button style="margin-left: -1px;">Explore</a-button>
+          <a-button @click="addNewAddress" style="margin-left: -1px;">Explore</a-button>
         </div>
 
         <div style="margin: 10px 0;font-size: 18px;">
           Explore Address
 
-          <span>$22.8 / $12.3 </span>
-          <a-icon type="filter"></a-icon>
+          <span style="float: right;">$22.8 / $12.3 </span>
         </div>
 
-        <div style="padding: 10px;background: #f5f5f5;margin-bottom: 10px;" class="addressitem" v-for="n in 5" :key="n">
-          <div style="margin-bottom: 10px;cursor:pointer;" @click="() => { this.drawerShow = false }">
-            <span>cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050</span>
+        <div style="padding: 10px;background: #f5f5f5;margin-bottom: 10px;" class="addressitem" v-for="(item, index) of wallets" :key="index">
+          <div style="margin-bottom: 10px;cursor:pointer;" @click="switchWallet(item)">
+            <span>{{ item.address }}</span>
             <a-icon
               
               style="float:right;margin-right: 20px;"
@@ -81,27 +80,30 @@
             ></a-icon>
           </div>
 
-          <a-tag color="green">Mine</a-tag>
-          <a-tag>Ledger 接入</a-tag>
+          <div style="display:flex;align-items:center;">
+            <a-tag v-for="(el, key) of item.tags" :key="key">{{ el.name }}</a-tag>
 
-          <a-popover title="Select Tag" trigger="click">
-            <template slot="content">
-              <div style="display:flex;align-items:center;">
-                <a-select size="small" mode="tags" style="width: 100%" placeholder="Tags Mode">
-                  <a-select-option
-                    v-for="i in 25"
-                    :key="(i + 9).toString(36) + i"
-                  >{{(i + 9).toString(36) + i}}</a-select-option>
-                </a-select>
-                <a-button size="small">Save</a-button>
-              </div>
-            </template>
-            <a-tag>
-              <a-icon type="plus"></a-icon>
-            </a-tag>
-          </a-popover>
+            <a-popover title="Select Tag" trigger="click">
+              <template slot="content">
+                <div style="display:flex;align-items:center;">
+                  <a-select size="small" mode="tags" style="width: 100%" placeholder="Tags Mode">
+                    <a-select-option
+                      v-for="i in 25"
+                      :key="(i + 9).toString(36) + i"
+                    >{{(i + 9).toString(36) + i}}</a-select-option>
+                  </a-select>
+                  <a-button size="small">Save</a-button>
+                </div>
+              </template>
+              <a-tag>
+                <a-icon type="plus"></a-icon>
+              </a-tag>
+            </a-popover>
 
-          <span style="float: right;">28 ATOM + 0.12</span>
+            <span style="flex: 1;"></span>
+            <span >28 ATOM + 0.12</span>
+            <a-icon class="address-delete-icon" type="delete" style="padding: 0 10px;"></a-icon>
+          </div>
         </div>
 
         <a-button style="width: 100%;margin-bottom: 20px;" icon="plus">Add New Chain</a-button>
@@ -152,6 +154,11 @@ export default {
       default: 'desktop'
     }
   },
+  computed: {
+    wallet() {
+      return this.$store.state.wallet
+    }
+  },
   data() {
     return {
       drawerShow: false,
@@ -159,19 +166,39 @@ export default {
       oldScrollTop: 0,
       text: `A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.`,
       customStyle: 'background: #f7f7f7;border-radius: 4px;margin-bottom: 24px;border: 0;overflow: hidden',
-      data: [
-        'cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050',
-        'cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050',
-        'cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050',
-        'cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050',
-        'cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050'
-      ]
+      newAddress: '',
+      wallets: []
     }
   },
   mounted() {
     document.addEventListener('scroll', this.handleScroll, { passive: true })
   },
   methods: {
+    showDrawer() {
+      this.newAddress = ''
+      const wallets = window.localStorage.getItem('wallets')
+      this.wallets = (wallets && JSON.parse(wallets)) || []
+      this.drawerShow = true
+    },
+    switchWallet(item) {
+      this.$store.commit('walletSet', item)
+      window.localStorage.setItem('wallet', JSON.stringify(item))
+      this.drawerShow = false
+    },
+    addNewAddress() {
+      if (!this.newAddress) {
+        return
+      }
+      const wallets = window.localStorage.getItem('wallets')
+      const arr = (wallets && JSON.parse(wallets)) || []
+      arr.push({
+        address: this.newAddress,
+        tags: []
+      })
+      window.localStorage.setItem('wallets', JSON.stringify(arr))
+      this.wallets = arr
+      this.newAddress = ''
+    },
     handleScroll() {
       if (!this.autoHideHeader) {
         return
@@ -225,5 +252,11 @@ export default {
 .showHeader-enter,
 .showHeader-leave-to {
   opacity: 0;
+}
+.address-delete-icon {
+  cursor: pointer;
+}
+.address-delete-icon:hover {
+  color: #e66;
 }
 </style>

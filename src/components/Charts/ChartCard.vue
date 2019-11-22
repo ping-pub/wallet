@@ -17,7 +17,7 @@
         </slot>
       </div>
     </div>
-    <div class="chart-card-content">
+    <div >
       <div class="content-fix">
         <slot></slot>
       </div>
