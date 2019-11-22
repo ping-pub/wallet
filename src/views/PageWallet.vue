@@ -97,7 +97,7 @@
 import moment from 'moment'
 import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea } from '@/components'
 import { mixinDevice } from '@/utils/mixin'
-import StepForm from './BaseStepForm/StepForm'
+import StepForm from './PageWalletForm'
 
 
 const rankList = []

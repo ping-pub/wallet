@@ -19,26 +19,26 @@ export const asyncRouterMap = [
       {
         path: '/validators',
         name: 'Validators',
-        component: () => import('@/views/list/StandardList'),
+        component: () => import('@/views/PageValidators'),
         meta: { title: 'Validators', keepAlive: true, icon: 'team' }
       },
       {
         path: '/proposals',
         name: 'Proposals',
-        component: () => import('@/views/list/StandardList'),
+        component: () => import('@/views/PageProposals'),
         meta: { title: 'Proposals', keepAlive: true, icon: 'fire' }
       },
       {
         path: '/activity',
         name: 'Activity',
-        component: () => import('@/views/list/CardList'),
+        component: () => import('@/views/PageActivity'),
         meta: { title: 'Activity', keepAlive: true, icon: 'schedule' }
       },
       {
         path: '/network',
         name: 'Network',
         meta: { title: 'Network', icon: 'form', keepAlive: true },
-        component: () => import('@/views/form/BasicForm'),
+        component: () => import('@/views/PageNetwork'),
       },
       {
         path: 'https://look.ping.pub/',
