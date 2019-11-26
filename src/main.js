@@ -6,21 +6,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store/'
-import { VueAxios } from './utils/request'
-
-// mock
-// WARNING: `mockjs` NOT SUPPORT `IE` PLEASE DO NOT USE IN `production` ENV.
-import './mock'
+import api from './api'
 
 import bootstrap from './core/bootstrap'
 import './core/lazy_use'
-import './utils/filter' // global filter
+import './utils/filter'
 import './components/global.less'
+import notification from 'ant-design-vue/es/notification'
 
 Vue.config.productionTip = false
-
-// mount axios Vue.$http and this.$http
-Vue.use(VueAxios)
+Vue.prototype.$api  = api
+Vue.prototype.$notification = notification
 
 new Vue({
   router,

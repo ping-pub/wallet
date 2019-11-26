@@ -31,6 +31,10 @@
             {{ wallet && wallet.address || 'Click here to add an address'}}
             <a-icon type="retweet" />
           </a-button>
+          <a-tooltip v-if="device !=='mobile' && wallet && wallet.id">
+            <template slot="title">{{ wallet.id + ' · ' + nodeInfo.version }}</template>
+            <a-icon type="info-circle" style="margin-left: 20px;"></a-icon>
+          </a-tooltip>
         </div>
         <div v-else :class="['top-nav-header-index', theme]">
           <div class="header-index-wide">
@@ -59,25 +63,25 @@
         <div style="font-size: 18px;margin-bottom: 10px;">Add Address</div>
 
         <div style="display:flex;align-items:center;margin-bottom: 20px;">
-          <a-input v-model="newAddress" placeholder="address(cosmos、irishub、kava)"></a-input>
+          <a-input allowClear v-model="newAddress" placeholder="address(cosmos、irishub、kava)"></a-input>
 
           <a-button @click="addNewAddress" style="margin-left: -1px;">Explore</a-button>
         </div>
 
         <div style="margin: 10px 0;font-size: 18px;">
           Explore Address
-
-          <span style="float: right;">$22.8 / $12.3 </span>
+          <span style="float: right;">$22.8 / $12.3</span>
         </div>
 
-        <div class="addressitem" :class="{ 'wallet-active': item.address === wallet.address }"  v-for="(item, index) of wallets" :key="index">
+        <div
+          class="addressitem"
+          :class="{ 'wallet-active': wallet && (item.address === wallet.address) }"
+          v-for="(item, index) of wallets"
+          :key="index"
+        >
           <div style="margin-bottom: 10px;cursor:pointer;" @click="switchWallet(item)">
             <span>{{ item.address }}</span>
-            <a-icon
-              
-              style="float:right;margin-right: 20px;"
-              type="login"
-            ></a-icon>
+            <a-icon style="float:right;margin-right: 20px;" type="login"></a-icon>
           </div>
 
           <div style="display:flex;align-items:center;">
@@ -101,7 +105,7 @@
             </a-popover>
 
             <span style="flex: 1;"></span>
-            <span >28 ATOM + 0.12</span>
+            <span>28 ATOM + 0.12</span>
             <a-icon class="address-delete-icon" type="delete" style="padding: 0 10px;"></a-icon>
           </div>
         </div>
@@ -118,6 +122,7 @@ import SMenu from '../Menu/'
 import Logo from '../tools/Logo'
 import { mixin } from '@/utils/mixin'
 import { NumberInfo } from '@/components'
+import { whichChain, isChainSupport } from '@/utils/helper'
 
 export default {
   name: 'GlobalHeader',
@@ -164,10 +169,11 @@ export default {
       drawerShow: false,
       visible: true,
       oldScrollTop: 0,
-      text: `A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.`,
-      customStyle: 'background: #f7f7f7;border-radius: 4px;margin-bottom: 24px;border: 0;overflow: hidden',
       newAddress: '',
-      wallets: []
+      wallets: [],
+      nodeInfo: {
+        version: '--'
+      }
     }
   },
   mounted() {
@@ -178,10 +184,21 @@ export default {
     initWallet() {
       const address = this.$route.query.address || ''
       if (address) {
+        const chain = whichChain(address)
         this.$store.commit('walletSet', {
-          address
+          address,
+          ...chain
         })
+        this.fetchNodeInfo()
       }
+    },
+    // 获取节点版本
+    async fetchNodeInfo() {
+      const res = await this.$api.lrc({
+        url: 'nodeInfo'
+      })
+      if (!res) return
+      this.nodeInfo = res
     },
     showDrawer() {
       this.newAddress = ''
@@ -190,17 +207,30 @@ export default {
       this.drawerShow = true
     },
     switchWallet(item) {
-      this.$store.commit('walletSet', item)
-      window.localStorage.setItem('wallet', JSON.stringify(item))
+      const chain = whichChain(item.address)
+      this.$store.commit('walletSet', {
+        ...item,
+        ...chain
+      })
       this.$router.push({
+        path: '/wallet',
         query: {
           address: item.address
         }
       })
+      this.fetchNodeInfo()
       this.drawerShow = false
     },
     addNewAddress() {
       if (!this.newAddress) {
+        return
+      }
+      if (!isChainSupport(this.newAddress)) {
+        this.$notification.error({
+          message: 'Sorry',
+          description:
+            'We do not support this address at this time.You can apply to us for the chain.For details visit our website at ping.pub.'
+        })
         return
       }
       const wallets = window.localStorage.getItem('wallets')
@@ -251,7 +281,9 @@ export default {
 }
 .addressitem {
   border: 1px solid #eee;
-  padding: 10px;background: #f5f5f5;margin-bottom: 10px;
+  padding: 10px;
+  background: #f5f5f5;
+  margin-bottom: 10px;
 }
 .addressitem:hover {
   border: 1px solid #343a40;

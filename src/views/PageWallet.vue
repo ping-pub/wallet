@@ -137,6 +137,18 @@ export default {
       return this.$store.state.wallet
     }
   },
+  watch: {
+    wallet(val, old) {
+      if (val) {
+        this.init()
+      }
+    }
+  },
+  created() {
+    if (this.wallet) {
+      this.init()
+    }
+  },
   components: {
     ChartCard,
     StepForm,
@@ -150,6 +162,16 @@ export default {
       searchData:[],
     }
   },
+  methods: {
+    init() {
+      this.fetchBankBalances()
+    },
+    async fetchBankBalances() {
+      const res = await this.$api.lrc({
+        url: 'bankBalances'
+      })
+    },
+  }
 }
 </script>
 
