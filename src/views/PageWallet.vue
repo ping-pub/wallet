@@ -95,37 +95,9 @@
 
 <script>
 import moment from 'moment'
-import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea } from '@/components'
+import { ChartCard, Trend, NumberInfo } from '@/components'
 import { mixinDevice } from '@/utils/mixin'
 import StepForm from './PageWalletForm'
-
-
-const rankList = []
-for (let i = 0; i < 7; i++) {
-  rankList.push({
-    name: '白鹭岛 ' + (i + 1) + ' 号店',
-    total: 1234.56 - i * 100
-  })
-}
-
-const searchUserData = []
-for (let i = 0; i < 7; i++) {
-  searchUserData.push({
-    x: moment().add(i, 'days').format('YYYY-MM-DD'),
-    y: Math.ceil(Math.random() * 10)
-  })
-}
-const searchUserScale = [
-  {
-    dataKey: 'x',
-    alias: '时间'
-  },
-  {
-    dataKey: 'y',
-    alias: '用户数',
-    min: 0,
-    max: 10
-  }]
 
 const searchTableColumns = [
   {
@@ -156,18 +128,6 @@ const searchTableColumns = [
     scopedSlots: { customRender: 'voting' }
   }
 ]
-const searchData = []
-for (let i = 0; i < 50; i += 1) {
-  searchData.push({
-    index: i + 1,
-    keyword: `搜索关键词-${i}`,
-    count: Math.floor(Math.random() * 1000),
-    range: Math.floor(Math.random() * 100),
-    voting: Math.floor(Math.random() * 100),
-    status: Math.floor((Math.random() * 10) % 2)
-  })
-}
-
 
 export default {
   name: 'Wallet',
@@ -178,26 +138,16 @@ export default {
     }
   },
   components: {
-    StepForm,
     ChartCard,
-    MiniArea,
-    MiniBar,
-    MiniProgress,
-    RankList,
-    Bar,
+    StepForm,
     Trend,
     NumberInfo,
-    MiniSmoothArea
   },
   data () {
     return {
       loading: false,
-      rankList,
-      // 搜索用户数
-      searchUserData,
-      searchUserScale,
       searchTableColumns,
-      searchData,
+      searchData:[],
     }
   },
 }

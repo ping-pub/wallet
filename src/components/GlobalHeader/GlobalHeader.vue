@@ -70,7 +70,7 @@
           <span style="float: right;">$22.8 / $12.3 </span>
         </div>
 
-        <div style="padding: 10px;background: #f5f5f5;margin-bottom: 10px;" class="addressitem" v-for="(item, index) of wallets" :key="index">
+        <div class="addressitem" :class="{ 'wallet-active': item.address === wallet.address }"  v-for="(item, index) of wallets" :key="index">
           <div style="margin-bottom: 10px;cursor:pointer;" @click="switchWallet(item)">
             <span>{{ item.address }}</span>
             <a-icon
@@ -172,8 +172,17 @@ export default {
   },
   mounted() {
     document.addEventListener('scroll', this.handleScroll, { passive: true })
+    this.initWallet()
   },
   methods: {
+    initWallet() {
+      const address = this.$route.query.address || ''
+      if (address) {
+        this.$store.commit('walletSet', {
+          address
+        })
+      }
+    },
     showDrawer() {
       this.newAddress = ''
       const wallets = window.localStorage.getItem('wallets')
@@ -183,6 +192,11 @@ export default {
     switchWallet(item) {
       this.$store.commit('walletSet', item)
       window.localStorage.setItem('wallet', JSON.stringify(item))
+      this.$router.push({
+        query: {
+          address: item.address
+        }
+      })
       this.drawerShow = false
     },
     addNewAddress() {
@@ -231,8 +245,13 @@ export default {
 </script>
 
 <style lang="less">
+.wallet-active {
+  border: 1px solid #343a40 !important;
+  background-color: #f6ffed !important;
+}
 .addressitem {
   border: 1px solid #eee;
+  padding: 10px;background: #f5f5f5;margin-bottom: 10px;
 }
 .addressitem:hover {
   border: 1px solid #343a40;
