@@ -70,7 +70,14 @@
 
         <div style="margin: 10px 0;font-size: 18px;">
           Explore Address
-          <span style="float: right;">$22.8 / $12.3</span>
+          <span style="float: right;">
+             <a-radio-group size="small" defaultValue="all" buttonStyle="solid">
+        <a-radio-button value="all">All</a-radio-button>
+        <a-radio-button value="cosmos">Cosmos</a-radio-button>
+        <a-radio-button value="kava">Kava</a-radio-button>
+        <a-radio-button value="iris">Iris</a-radio-button>
+      </a-radio-group>
+          </span>
         </div>
 
         <div
@@ -198,7 +205,7 @@ export default {
         url: 'nodeInfo'
       })
       if (!res) return
-      this.nodeInfo = res
+      this.nodeInfo = res.node_info || res
     },
     showDrawer() {
       this.newAddress = ''
