@@ -14,8 +14,8 @@
   <template v-else>
   <a-row :gutter="24">
       <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
-        <chart-card :loading="loading" title="Total ATOM" total="126,560">
-          <template slot="footer">日均销售额<span>￥ 234.56</span></template>
+        <chart-card :loading="loading" title="Total" :total="balance.amount || 0">
+          <template slot="footer">{{ balance.denom }}</template>
         </chart-card>
       </a-col>
       <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
@@ -43,26 +43,20 @@
     <div class="antd-pro-pages-dashboard-analysis-twoColLayout" :class="isDesktop() ? 'desktop' : ''">
       <a-row :gutter="24" type="flex">
         <a-col :xl="12" :lg="24" :md="24" :sm="24" :xs="24" style="margin-bottom: 20px;">
-          <a-card :loading="loading" :bordered="false" title="Delegations" :style="{ height: '100%' }">
+          <a-card :loading="loadingDelegations" :bordered="false" title="Delegations" :style="{ height: '100%' }">
             <div class="ant-table-wrapper">
-              <a-table
-                row-key="index"
-                size="small"
-                :columns="searchTableColumns"
-                :dataSource="searchData"
-                :pagination="{ pageSize: 10 }"
-              >
-                <span slot="range" slot-scope="text, record">
-                  <trend :flag="record.status === 0 ? 'up' : 'down'">
-                    {{ text }}%
-                  </trend>
-                </span>
-              </a-table>
+
+              <a-card size="small" v-for="(item, index) of delegations" :key="index" :title="item.description && item.description.moniker" style="width: 100%;margin-bottom: 10px;">
+                <a :href="`https://look.ping.pub/validator/${item.operator_address}?chain=${$store.state.wallet.id}`" target="_blank" slot="extra">details</a>
+                <p>{{ item.shares }}</p>
+                <p>{{ item.tokens }}</p>
+                <p>{{ item.commission.rate }}</p>
+              </a-card>
             </div>
           </a-card>
         </a-col>
         <a-col :xl="12" :lg="24" :md="24" :sm="24" :xs="24" style="margin-bottom: 20px;">
-          <a-card class="antd-pro-pages-dashboard-analysis-salesCard" :loading="loading" :bordered="false" title="Transfer" :style="{ height: '100%' }">
+          <a-card class="antd-pro-pages-dashboard-analysis-salesCard" :bordered="false" title="Transfer" :style="{ height: '100%' }">
             <div slot="extra" style="height: inherit;">
               <!-- style="bottom: 12px;display: inline-block;" -->
               <span class="dashboard-analysis-iconGroup">
@@ -101,31 +95,23 @@ import StepForm from './PageWalletForm'
 
 const searchTableColumns = [
   {
-    dataIndex: 'index',
-    title: '#',
-    width: 90
+    dataIndex: 'description.moniker',
+    title: 'Validator'
   },
   {
-    dataIndex: 'keyword',
-    title: 'Status'
+    dataIndex: 'shares',
+    title: 'Shares',
+    align: 'right',
   },
   {
-    dataIndex: 'count',
-    title: 'Name'
-  },
-  {
-    dataIndex: 'range',
+    dataIndex: 'commission.rate',
     title: 'Rewards',
     align: 'right',
-    sorter: (a, b) => a.range - b.range,
-    scopedSlots: { customRender: 'range' }
   },
   {
-    dataIndex: 'voting',
+    dataIndex: 'tokens',
     title: 'Voting Power',
     align: 'right',
-    sorter: (a, b) => a.voting - b.voting,
-    scopedSlots: { customRender: 'voting' }
   }
 ]
 
@@ -153,27 +139,65 @@ export default {
     ChartCard,
     StepForm,
     Trend,
-    NumberInfo,
+    NumberInfo
   },
   data () {
     return {
       loading: false,
+      loadingDelegations: false,
       searchTableColumns,
-      searchData:[],
+      balance: {},
+      delegations: []
     }
   },
   methods: {
     init() {
       this.fetchBankBalances()
+      this.fetchDelegations()
     },
     async fetchBankBalances() {
+      this.loading = true
       const res = await this.$api.lrc({
         url: 'bankBalances'
       })
+      this.loading = false
+      if (!res) return
+      this.balance = res[0]
     },
+    async fetchDelegations() {
+      this.loadingDelegations = true
+      const [validators, shares] = await Promise.all(
+        [
+          this.$api.lrc({
+            url: 'stakingDelegatorsValidators'
+          }).catch(),
+          this.$api.lrc({
+            url: 'stakingDelegatorsDelegations'
+          }).catch(),
+        ]
+      )
+      this.loadingDelegations = false
+      if (validators && shares) {
+        const obj = {}
+        for (const item of shares) {
+          obj[item.validator_address] = item
+        }
+        for(const item of validators) {
+          const one = obj[item.operator_address]
+          item.shares = one.shares
+        }
+        this.delegations = validators
+      }
+    }
   }
 }
 </script>
+
+<style>
+.ant-table-scroll-position-left {
+  overflow: auto
+}
+</style>
 
 <style lang="less" scoped>
   .extra-wrapper {

@@ -19,8 +19,8 @@ const api = {
   distributionDelegators({ address }) {
     return `/distribution/delegators/${address || store.state.wallet.address }`
   },
-  stakingDelegators({ address }) {
-    return `/staking/delegators/${address || store.state.wallet.address }`
+  stakingDelegatorsTxs({ address }) {
+    return `/staking/delegators/${address || store.state.wallet.address }/txs`
   },
   stakingDelegatorsValidators({ address }) {
     return `/staking/delegators/${address || store.state.wallet.address }/validators`
@@ -82,7 +82,7 @@ export default {
     return res.data
   },
   async lrc(config, chain, server) {
-    // config.baseURL = '/api'
+    config.baseURL = '/api'
     config.url = api[config.url](config.params || {})
     config.headers = {}
     config.headers.server = server || window.chainLcd

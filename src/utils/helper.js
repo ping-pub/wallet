@@ -1,14 +1,14 @@
 const chainConfig = {
-  cosmos: {
-    id: 'cosmos',
+  cosmoshub: {
+    id: 'cosmoshub',
     lcd: 'https://lcd.nylira.net'
   },
   kava: {
     id: 'kava',
     lcd: 'https://kava-relay.01node.com'
   },
-  iris: {
-    id: 'iris',
+  irishub: {
+    id: 'irishub',
     lcd: 'https://rpc.irisnet.org'
   }
 }
@@ -17,10 +17,10 @@ const chainConfig = {
 const isChainSupport = (address) => {
   let type = null
   if (address.indexOf('cosmos') === 0) {
-    type = 'cosmos'
+    type = 'cosmoshub'
   }
   if (address.indexOf('iaa') === 0) {
-    type = 'iris'
+    type = 'irishub'
   }
   if (address.indexOf('kava') === 0) {
     type = 'kava'

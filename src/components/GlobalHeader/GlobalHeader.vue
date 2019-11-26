@@ -32,7 +32,7 @@
             <a-icon type="retweet" />
           </a-button>
           <a-tooltip v-if="device !=='mobile' && wallet && wallet.id">
-            <template slot="title">{{ wallet.id + ' · ' + nodeInfo.version }}</template>
+            <template slot="title">{{ (nodeInfo.network || wallet.id) + ' · ' + nodeInfo.version }}</template>
             <a-icon type="info-circle" style="margin-left: 20px;"></a-icon>
           </a-tooltip>
         </div>
