@@ -60,7 +60,10 @@
         @close="() => { this.drawerShow = false }"
         :visible="drawerShow"
       >
-        <div style="font-size: 18px;margin-bottom: 10px;">Add Address</div>
+        <div style="margin-bottom: 10px;">
+          <span style="font-size: 18px;">Add Address</span>
+          <a-button href="https://ping.pub" target="_blank"  type="link" size="small" style="float:right;" icon="plus">Add New Chain</a-button>
+          </div>
 
         <div style="display:flex;align-items:center;margin-bottom: 20px;">
           <a-input allowClear v-model="newAddress" placeholder="address(cosmos、irishub、kava)"></a-input>
@@ -71,53 +74,71 @@
         <div style="margin: 10px 0;font-size: 18px;">
           Explore Address
           <span style="float: right;">
-             <a-radio-group size="small" defaultValue="all" buttonStyle="solid">
-        <a-radio-button value="all">All</a-radio-button>
-        <a-radio-button value="cosmos">Cosmos</a-radio-button>
-        <a-radio-button value="kava">Kava</a-radio-button>
-        <a-radio-button value="iris">Iris</a-radio-button>
-      </a-radio-group>
+            <a-radio-group @change="changeChain" size="small" defaultValue="all" buttonStyle="solid">
+              <a-radio-button value="all">All</a-radio-button>
+              <a-radio-button value="cosmos">Cosmos</a-radio-button>
+              <a-radio-button value="kava">Kava</a-radio-button>
+              <a-radio-button value="iaa">Iris</a-radio-button>
+            </a-radio-group>
           </span>
         </div>
 
+        <div>
         <div
           class="addressitem"
           :class="{ 'wallet-active': wallet && (item.address === wallet.address) }"
-          v-for="(item, index) of wallets"
-          :key="index"
+          v-for="(item, key) of wallets"
+          :key="key"
         >
-          <div style="margin-bottom: 10px;cursor:pointer;" @click="switchWallet(item)">
-            <span>{{ item.address }}</span>
-            <a-icon style="float:right;margin-right: 20px;" type="login"></a-icon>
+          <div class="wallet-address-title" @click="switchWallet(item)">
+            <div style="flex: 1;overflow-wrap:break-word;overflow: hidden;">{{ item.address }}</div>
+            <a-icon v-if="device !== 'mobile'" style="padding: 0 10px;" type="login"></a-icon>
           </div>
 
-          <div style="display:flex;align-items:center;">
-            <a-tag v-for="(el, key) of item.tags" :key="key">{{ el.name }}</a-tag>
+          <div style="display:flex;align-items:flex-end;">
+            <span style="flex: 1;">
+              <template v-for="(tag, index) in item.tags">
+              <a-tooltip v-if="tag.length > 20" :key="index" :title="tag">
+                <a-tag
+                  style="margin-bottom: 5px;"
+                  :key="tag"
+                  :afterClose="() => handleClose(tag, item)"
+                >{{`${tag.slice(0, 20)}...`}}</a-tag>
+              </a-tooltip>
+              <a-tag
+                v-else
+                  style="margin-bottom: 5px;"
+                :key="index"
+                closable
+                :afterClose="() => handleClose(tag, item)"
+              >{{tag}}</a-tag>
+            </template>
+            <a-input
+              v-if="inputVisible && inputVisibleKey === key"
+              ref="inputTag"
+              type="text"
+              size="small"
+              :style="{ width: '78px' }"
+              :value="inputValue"
+              @change="handleInputChange"
+              @blur="() => handleInputConfirm(item)"
+              @keyup.enter="() => handleInputConfirm(item)"
+            />
+            <a-tag v-else @click="() => { showInput(key) }" style="background: #fff; borderStyle: dashed;">
+              <a-icon type="plus" style="margin-right: 5px;"/>New Tag
+            </a-tag>
 
-            <a-popover title="Select Tag" trigger="click">
-              <template slot="content">
-                <div style="display:flex;align-items:center;">
-                  <a-select size="small" mode="tags" style="width: 100%" placeholder="Tags Mode">
-                    <a-select-option
-                      v-for="i in 25"
-                      :key="(i + 9).toString(36) + i"
-                    >{{(i + 9).toString(36) + i}}</a-select-option>
-                  </a-select>
-                  <a-button size="small">Save</a-button>
-                </div>
-              </template>
-              <a-tag>
-                <a-icon type="plus"></a-icon>
-              </a-tag>
-            </a-popover>
-
-            <span style="flex: 1;"></span>
-            <span>28 ATOM + 0.12</span>
-            <a-icon class="address-delete-icon" type="delete" style="padding: 0 10px;"></a-icon>
+            </span>
+            <a-icon
+              @click="removeWallet(item)"
+              class="address-delete-icon"
+              type="delete"
+              style="padding: 0 10px;"
+            ></a-icon>
+          </div>
           </div>
         </div>
 
-        <a-button style="width: 100%;margin-bottom: 20px;" icon="plus">Add New Chain</a-button>
       </a-drawer>
     </div>
   </transition>
@@ -173,11 +194,15 @@ export default {
   },
   data() {
     return {
+      inputVisible: false,
+      inputVisibleKey: null,
+      inputValue: '',
       drawerShow: false,
       visible: true,
       oldScrollTop: 0,
       newAddress: '',
       wallets: [],
+      walletsAll: null,
       nodeInfo: {
         version: '--'
       }
@@ -188,14 +213,105 @@ export default {
     this.initWallet()
   },
   methods: {
-    initWallet() {
-      const address = this.$route.query.address || ''
+    changeChain(e) {
+      if (!this.walletsAll) {
+        this.walletsAll = JSON.parse(JSON.stringify(this.wallets))
+      }
+      const prefix = e.target.value
+      // 筛选地址
+      if (prefix === 'all') {
+        this.wallets = JSON.parse(JSON.stringify(this.walletsAll))
+        return
+      }
+      const wallets = JSON.parse(JSON.stringify(this.walletsAll))
+
+      this.wallets = wallets.filter((item) => {
+        if (item.address.indexOf(prefix) === 0) {
+          return item
+        }
+      })
+    },
+    async handleClose(removedTag, item) {
+      const tags = item.tags.filter(tag => tag !== removedTag)
+      item.tags = tags
+      await this.$localStorage.setItem('wallets', this.wallets)
+    },
+
+    showInput(key) {
+      this.inputVisibleKey = key
+      this.inputVisible = true
+      this.$nextTick(() => {
+        this.$refs.inputTag[0].focus()
+      })
+    },
+
+    handleInputChange(e) {
+      this.inputValue = e.target.value
+    },
+
+    async handleInputConfirm(item) {
+      const inputValue = this.inputValue
+      let tags = item.tags
+      if (inputValue && tags.indexOf(inputValue) === -1) {
+        item.tags = [...tags, inputValue]
+      }
+      await this.$localStorage.setItem('wallets', this.wallets)
+      Object.assign(this, {
+        inputVisible: false,
+        inputValue: ''
+      })
+    },
+    async removeWallet(one) {
+      this.wallets = this.wallets.filter(item => {
+        return item.address !== one.address
+      })
+      await this.$localStorage.setItem('wallets', this.wallets)
+      if (one.address === this.wallet.address) {
+        this.$store.commit('walletSet', {})
+      }
+    },
+    async initWallet() {
+      let address = this.$route.query.address || ''
+      let wallets = await this.$localStorage.getItem('wallets')
+      if (!address && wallets) {
+        address = wallets[0].address
+        if (address) {
+          this.$router.push({
+            query: {
+              address
+            }
+          })
+        }
+      }
       if (address) {
         const chain = whichChain(address)
         this.$store.commit('walletSet', {
           address,
           ...chain
         })
+        if (wallets) {
+          let num = 0
+          for (const item of wallets) {
+            if (item.address === address) {
+              num += 1
+            }
+          }
+          if (num === 0) {
+            wallets.push({
+              address,
+              tags: ['From URL']
+            })
+            await this.$localStorage.setItem('wallets', wallets)
+          }
+        } else {
+          wallets = [
+            {
+              address,
+              tags: ['From URL']
+            }
+          ]
+          await this.$localStorage.setItem('wallets', wallets)
+        }
         this.fetchNodeInfo()
       }
     },
@@ -207,10 +323,10 @@ export default {
       if (!res) return
       this.nodeInfo = res.node_info || res
     },
-    showDrawer() {
+    async showDrawer() {
       this.newAddress = ''
-      const wallets = window.localStorage.getItem('wallets')
-      this.wallets = (wallets && JSON.parse(wallets)) || []
+      const wallets = await this.$localStorage.getItem('wallets')
+      this.wallets = wallets || []
       this.drawerShow = true
     },
     switchWallet(item) {
@@ -228,7 +344,7 @@ export default {
       this.fetchNodeInfo()
       this.drawerShow = false
     },
-    addNewAddress() {
+    async addNewAddress() {
       if (!this.newAddress) {
         return
       }
@@ -240,13 +356,26 @@ export default {
         })
         return
       }
-      const wallets = window.localStorage.getItem('wallets')
-      const arr = (wallets && JSON.parse(wallets)) || []
+      const wallets = await this.$localStorage.getItem('wallets')
+      const arr = wallets || []
+      let num = 0
+      for (const item of arr) {
+        if (item.address === this.newAddress) {
+          num += 1
+        }
+      }
+      if (num !== 0) {
+        this.$notification.error({
+          message: 'Sorry',
+          description: 'Address already exists.'
+        })
+        return
+      }
       arr.push({
         address: this.newAddress,
         tags: []
       })
-      window.localStorage.setItem('wallets', JSON.stringify(arr))
+      await this.$localStorage.setItem('wallets', arr)
       this.wallets = arr
       this.newAddress = ''
     },
@@ -282,6 +411,12 @@ export default {
 </script>
 
 <style lang="less">
+.wallet-address-title {
+margin-bottom: 10px;cursor:pointer;display:flex;align-items:center;
+}
+.wallet-address-title:hover {
+  color: #343a40
+}
 .wallet-active {
   border: 1px solid #343a40 !important;
   background-color: #f6ffed !important;

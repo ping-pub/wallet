@@ -11,7 +11,7 @@ export default new Vuex.Store({
     app,
   },
   state: {
-    wallet: null
+    wallet: {}
   },
   mutations: {
     walletSet(state, item) {

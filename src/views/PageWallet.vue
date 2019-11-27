@@ -1,6 +1,6 @@
 <template>
   <div class="page-header-index-wide">
-    <template v-if="!wallet">
+    <template v-if="!wallet.address">
     <a-alert
       message="Please add address locally."
       description="We store the address you added in the current browser."

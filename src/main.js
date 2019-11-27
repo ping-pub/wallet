@@ -13,10 +13,12 @@ import './core/lazy_use'
 import './utils/filter'
 import './components/global.less'
 import notification from 'ant-design-vue/es/notification'
+import localforage from 'localforage'
 
 Vue.config.productionTip = false
 Vue.prototype.$api  = api
 Vue.prototype.$notification = notification
+Vue.prototype.$localStorage = localforage
 
 new Vue({
   router,
