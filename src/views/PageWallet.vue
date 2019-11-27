@@ -90,7 +90,7 @@
 <script>
 import moment from 'moment'
 import { ChartCard, Trend, NumberInfo } from '@/components'
-import { mixinDevice } from '@/utils/mixin'
+import { mixinDevice, mixinChain } from '@/utils/mixin'
 import StepForm from './PageWalletForm'
 
 const searchTableColumns = [
@@ -117,24 +117,7 @@ const searchTableColumns = [
 
 export default {
   name: 'Wallet',
-  mixins: [mixinDevice],
-  computed: {
-    wallet() {
-      return this.$store.state.wallet
-    }
-  },
-  watch: {
-    wallet(val, old) {
-      if (val) {
-        this.init()
-      }
-    }
-  },
-  created() {
-    if (this.wallet) {
-      this.init()
-    }
-  },
+  mixins: [mixinDevice, mixinChain],
   components: {
     ChartCard,
     StepForm,

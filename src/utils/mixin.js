@@ -73,4 +73,24 @@ const AppDeviceEnquire = {
   }
 }
 
-export { mixin, AppDeviceEnquire, mixinDevice }
+const mixinChain = {
+  computed: {
+    wallet() {
+      return this.$store.state.wallet
+    }
+  },
+  watch: {
+    wallet(val, old) {
+      if (val) {
+        this.init()
+      }
+    }
+  },
+  created() {
+    if (this.wallet) {
+      this.init()
+    }
+  }
+}
+
+export { mixin, AppDeviceEnquire, mixinDevice, mixinChain }

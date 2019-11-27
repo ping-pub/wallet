@@ -19,6 +19,9 @@ const api = {
   distributionDelegators({ address }) {
     return `/distribution/delegators/${address || store.state.wallet.address }`
   },
+  stakingValidators() {
+    return '/staking/validators'
+  },
   stakingDelegatorsTxs({ address }) {
     return `/staking/delegators/${address || store.state.wallet.address }/txs`
   },
