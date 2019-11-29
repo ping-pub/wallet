@@ -1,137 +1,144 @@
 <template>
-  <div class="card-list" ref="content">
+  <div>
+    <a-card :bordered="false" :loading="loading">
+      <a-row>
+        <a-col :sm="6" :xs="24">
+          <head-info title="Proposals" :content="(list.length || 0) + ''" :bordered="true"/>
+        </a-col>
+        <a-col :sm="6" :xs="24">
+          <head-info title="Passed" :content="numData['Passed'] + ''" :bordered="true"/>
+        </a-col>
+        <a-col :sm="6" :xs="24">
+          <head-info title="Rejected" :content="numData['Rejected'] + ''" :bordered="true"/>
+        </a-col>
+        <a-col :sm="6" :xs="24">
+          <head-info title="Voting Period" :content="numData['VotingPeriod'] + ''"/>
+        </a-col>
+      </a-row>
+    </a-card>
 
-    <div style="font-size: 18px;margin-bottom: 10px;">November 17th 2019</div>
-    <a-list
-      rowKey="id"
-      :grid="{gutter: 24, lg: 3, md: 2, sm: 1, xs: 1}"
-      :dataSource="dataSource"
-    >
-      <a-list-item slot="renderItem" slot-scope="item">
-        <template>
-          <a-card :hoverable="true">
-            <a-card-meta>
-              <a slot="title">{{ item.title }}</a>
-              <a-avatar class="card-avatar" slot="avatar" :src="item.avatar" size="large"/>
-              <div class="meta-content" slot="description">
-                <div>To {{ item.name }}</div>
-                <div>{{ item.fee }}</div>
-                <div>{{ item.time }}</div>
-              </div>
-            </a-card-meta>
-            <template class="ant-card-actions" slot="actions">
-              <a>Block #{{ item.block }}</a>
-            </template>
-          </a-card>
-        </template>
-      </a-list-item>
-    </a-list>
+    <a-card
+      style="margin-top: 24px"
+      :bordered="false"
+      title="Proposals">
+
+      <div slot="extra">
+        <a-radio-group v-model="status" @change="changeStatus">
+          <a-radio-button value="All">All</a-radio-button>
+          <a-radio-button value="Passed">Passed</a-radio-button>
+          <a-radio-button value="Rejected">Rejected</a-radio-button>
+          <a-radio-button value="VotingPeriod">VotingPeriod</a-radio-button>
+        </a-radio-group>
+      </div>
+
+      <a-list :loading="loading" >
+        <a-list-item :key="index" v-for="(item, index) in list">
+          <a-list-item-meta>
+            <a-button style="padding-left: 0;font-size: 15px;" slot="title" type="link" target="_blank" :href="`https://look.ping.pub/proposal/${item.proposal_id}?chain=${chainId}`">{{ item.title }}</a-button>
+            <div slot="description">
+              <ellipsis style="font-size: 13px;"   :length="200">{{item.description}}</ellipsis>
+              <div style="font-size: 13px;" >{{ item.submit_time }}</div>
+            </div>
+          </a-list-item-meta>
+          <div slot="actions">
+            <a-button type="primary">Vote</a-button>
+          </div>
+          <div>
+            <div class="list-content-item" style="width: 100px;">
+              <a-tag :color="item.proposal_status === 'Passed' ? 'green' : item.proposal_status === 'Rejected' ? 'red' : 'orange' ">{{ item.proposal_status || '--' }}</a-tag>
+            </div>
+          </div>
+        </a-list-item>
+      </a-list>
+
+    </a-card>
   </div>
 </template>
 
 <script>
+import HeadInfo from '@/components/tools/HeadInfo'
+import Ellipsis from '@/components/Ellipsis'
 
-const dataSource = []
-dataSource.push({})
-for (let i = 0; i < 11; i++) {
-  dataSource.push({
-    id: i,
-    title: 'Delegated 400 ATOM',
-    time: '@ Nov 18th 2019 20:31:04',
-    fee: 'Network Fee:  0.0002 ATOM',
-    block: '2614448',
-    name: 'Ping',
-    avatar: 'https://app.lunie.io/img/cosmos-logo.07f10280.png',
-  })
-}
+import { mixinChain } from '@/utils/mixin'
 
 export default {
-  name: 'CardList',
+  mixins: [ mixinChain],
+  components: {
+    HeadInfo,
+    Ellipsis
+  },
   data () {
     return {
-      description: '段落示意：蚂蚁金服务设计平台 ant.design，用最小的工作量，无缝接入蚂蚁金服生态， 提供跨越设计与开发的体验解决方案。',
-      linkList: [
-        { icon: 'rocket', href: '#', title: '快速开始' },
-        { icon: 'info-circle-o', href: '#', title: '产品简介' },
-        { icon: 'file-text', href: '#', title: '产品文档' }
-      ],
-      extraImage: 'https://gw.alipayobjects.com/zos/rmsportal/RzwpdLnhmvDJToTdfDPe.png',
-      dataSource
+      list: [],
+      status: 'All',
+      loading: true,
+      numData: {
+        Passed: 0,
+        Rejected: 0,
+        VotingPeriod: 0
+      }
+    }
+  },
+  methods: {
+    init() {
+      this.fetchValidators()
+    },
+    async fetchValidators() {
+      this.loading = true
+      const res = await this.$api.lrc({
+        url: 'govProposals'
+      })
+      this.loading = false
+      if (!res) return
+      const numData = {
+        Passed: 0,
+        Rejected: 0,
+        VotingPeriod: 0
+      }
+      for (const item of res) {
+        const { title, description } = item.proposal_content.value
+        item.title = title
+        item.description = description
+        numData[item.proposal_status] += 1
+      }
+      this.numData = numData
+      this.list = res
+      this.listOld = JSON.parse(JSON.stringify(res))
+    },
+    changeStatus(e) {
+      const status = e.target.value
+      if (status === 'All') {
+        this.list = JSON.parse(JSON.stringify(this.listOld))
+        return
+      }
+      this.list = this.listOld.filter((item) => {
+        return item.proposal_status === status
+      })
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-  @import "~@/components/index.less";
-
-  .card-list {
-    /deep/ .ant-card-body:hover {
-      .ant-card-meta-title>a {
-        color: @primary-color;
-      }
+    .ant-avatar-lg {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
     }
 
-    /deep/ .ant-card-meta-title {
-      margin-bottom: 12px;
-
-      &>a {
-        display: inline-block;
-        max-width: 100%;
-        color: rgba(0,0,0,.85);
-      }
-    }
-
-    /deep/ .meta-content {
-      position: relative;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      height: 64px;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-
-      margin-bottom: 1em;
-    }
-  }
-
-  .card-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 48px;
-  }
-
-  .ant-card-actions {
-    background: #f7f9fa;
-
-    li {
-      float: left;
-      text-align: center;
-      margin: 12px 0;
-      color: rgba(0, 0, 0, 0.45);
-      width: 50%;
-
-      &:not(:last-child) {
-        border-right: 1px solid #e8e8e8;
-      }
-
-      a {
+    .list-content-item {
         color: rgba(0, 0, 0, .45);
-        line-height: 22px;
         display: inline-block;
-        width: 100%;
-        &:hover {
-          color: @primary-color;
+        vertical-align: middle;
+        font-size: 14px;
+        margin-left: 40px;
+        span {
+            line-height: 20px;
         }
-      }
+        p {
+            margin-top: 4px;
+            margin-bottom: 0;
+            line-height: 22px;
+        }
     }
-  }
-
-  .new-btn {
-    background-color: #fff;
-    border-radius: 2px;
-    width: 100%;
-    height: 188px;
-  }
-
 </style>

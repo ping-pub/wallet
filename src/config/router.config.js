@@ -17,6 +17,12 @@ export const asyncRouterMap = [
         meta: { title: 'Wallet', keepAlive: false, icon: 'credit-card' }
       },
       {
+        path: '/activity',
+        name: 'Activity',
+        component: () => import('@/views/PageActivity'),
+        meta: { title: 'Activity', keepAlive: true, icon: 'schedule' }
+      },
+      {
         path: '/validators',
         name: 'Validators',
         component: () => import('@/views/PageValidators'),
@@ -27,12 +33,6 @@ export const asyncRouterMap = [
         name: 'Proposals',
         component: () => import('@/views/PageProposals'),
         meta: { title: 'Proposals', keepAlive: true, icon: 'fire' }
-      },
-      {
-        path: '/activity',
-        name: 'Activity',
-        component: () => import('@/views/PageActivity'),
-        meta: { title: 'Activity', keepAlive: true, icon: 'schedule' }
       },
       {
         path: '/network',

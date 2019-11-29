@@ -3,13 +3,13 @@
     <a-card :bordered="false">
       <a-row>
         <a-col :sm="8" :xs="24">
-          <head-info title="我的待办" content="8个任务" :bordered="true"/>
+          <head-info title="Total" content="8" :bordered="true"/>
         </a-col>
         <a-col :sm="8" :xs="24">
-          <head-info title="本周任务平均处理时间" content="32分钟" :bordered="true"/>
+          <head-info title="Success" content="3" :bordered="true"/>
         </a-col>
         <a-col :sm="8" :xs="24">
-          <head-info title="本周完成任务数" content="24个"/>
+          <head-info title="Fail" content="5"/>
         </a-col>
       </a-row>
     </a-card>
@@ -17,18 +17,18 @@
     <a-card
       style="margin-top: 24px"
       :bordered="false"
-      title="标准列表">
+      title="Acitvity">
 
       <div slot="extra">
         <a-radio-group v-model="status">
-          <a-radio-button value="all">全部</a-radio-button>
-          <a-radio-button value="processing">进行中</a-radio-button>
-          <a-radio-button value="waiting">等待中</a-radio-button>
+          <a-radio-button value="All">All</a-radio-button>
+          <a-radio-button value="Success">Success</a-radio-button>
+          <a-radio-button value="Fail">Fail</a-radio-button>
         </a-radio-group>
         <a-input-search style="margin-left: 16px; width: 272px;" />
       </div>
 
-      <a-list size="large" :pagination="{showSizeChanger: true, showQuickJumper: true, pageSize: 5, total: 50}">
+      <a-list >
         <a-list-item :key="index" v-for="(item, index) in data">
           <a-list-item-meta :description="item.description">
             <a-avatar slot="avatar" size="large" shape="square" :src="item.avatar"/>
@@ -130,7 +130,7 @@ export default {
   data () {
     return {
       data,
-      status: 'all'
+      status: 'All'
     }
   }
 }

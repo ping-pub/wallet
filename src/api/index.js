@@ -33,6 +33,9 @@ const api = {
   },
   bankBalances({ address }) {
     return `/bank/balances/${address || store.state.wallet.address }`
+  },
+  govProposals() {
+    return `/gov/proposals`
   }
 }
 
@@ -89,6 +92,7 @@ export default {
     config.url = api[config.url](config.params || {})
     config.headers = {}
     config.headers.server = server || window.chainLcd
+    if (!config.headers.server) return
     // irishub 路径处理
     if ((!chain && window.chainId === 'irishub') || (chain && chain === 'irishub')) {
       handlerIrisHub(config)
@@ -112,6 +116,7 @@ export default {
     config.baseURL = '/api'
     config.headers = {}
     config.headers.server = server || window.chainRpc
+    if (!config.headers.server) return
     // irishub 路径处理
     if ((!chain && window.chainId === 'irishub') || (chain && chain === 'irishub')) {
       handlerIrisHub(config)

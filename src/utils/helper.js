@@ -1,4 +1,6 @@
-const chainConfig = {
+import localforage from 'localforage'
+
+let chainConfig = {
   cosmoshub: {
     id: 'cosmoshub',
     lcd: 'https://lcd.nylira.net'
@@ -28,9 +30,15 @@ const isChainSupport = (address) => {
   return type
 }
 
-const whichChain = (address) => {
+const whichChain = async (address) => {
   const type = isChainSupport(address)
   if (type) {
+    const config = await localforage.getItem('chainConfig')
+    if (config) {
+      chainConfig = config
+    } else {
+      await localforage.setItem('chainConfig', chainConfig)
+    }
     window.chainId = chainConfig[type].id
     window.chainLcd = chainConfig[type].lcd
     console.log(window.chainId, window.chainLcd)

@@ -26,4 +26,7 @@ export default {
   #app {
     height: 100%;
   }
+  .ant-list-item-content{
+    flex: none !important;
+  }
 </style>

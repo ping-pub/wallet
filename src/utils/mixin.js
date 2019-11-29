@@ -77,6 +77,9 @@ const mixinChain = {
   computed: {
     wallet() {
       return this.$store.state.wallet
+    },
+    chainId() {
+      return window.chainId
     }
   },
   watch: {
