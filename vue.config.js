@@ -35,6 +35,7 @@ const prodExternals = {
 
 // vue.config.js
 const vueConfig = {
+  outputDir: './server/dist',
   configureWebpack: {
     // webpack plugins
     plugins: [
