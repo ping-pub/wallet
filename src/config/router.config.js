@@ -25,7 +25,7 @@ export const asyncRouterMap = [
       {
         path: '/calculator',
         name: 'Calculator',
-        component: () => import('@/views/PageValidators'),
+        component: () => import('@/views/PageCalculator'),
         meta: { title: '收益', keepAlive: true, icon: 'dollar' }
       },
       {

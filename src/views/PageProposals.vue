@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="max-width: 1200px;margin: 0 auto;">
     <a-card :bordered="false" :loading="loading">
       <a-row>
         <a-col :sm="6" :xs="24">
