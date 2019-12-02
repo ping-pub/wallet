@@ -1,9 +1,15 @@
 <template>
   <div class="user-wrapper">
     <div class="content-box">
-      <a href="https://ping.pub" target="_blank">
+      <span class="action" @click="go('/setting')">
+         <a-icon type="setting" />
+         设置
+        </span>
+      
+      <a href="https://look.ping.pub" target="_blank">
         <span class="action">
-          <a-icon type="question-circle-o"></a-icon>
+          <a-icon type="database"></a-icon>
+          浏览器
         </span>
       </a>
     </div>
@@ -24,6 +30,9 @@ export default {
 
   },
   methods: {
+    go(path) {
+      this.$router.push(path)
+    },
     ...mapActions(['Logout']),
     handleLogout () {
       this.$confirm({

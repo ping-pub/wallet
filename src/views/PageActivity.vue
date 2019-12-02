@@ -1,23 +1,14 @@
 <template>
   <div style="max-width: 1200px;margin: 0 auto;">
-    <a-card :bordered="false">
-      <a-row>
-        <a-col :sm="8" :xs="24">
-          <head-info title="Total" content="8" :bordered="true"/>
-        </a-col>
-        <a-col :sm="8" :xs="24">
-          <head-info title="Success" content="3" :bordered="true"/>
-        </a-col>
-        <a-col :sm="8" :xs="24">
-          <head-info title="Fail" content="5"/>
-        </a-col>
-      </a-row>
-    </a-card>
+
+    <a-tabs defaultActiveKey="1" type="card">
+      <a-tab-pane tab="Tab 1" key="1"></a-tab-pane>
+      <a-tab-pane tab="Tab 2" key="2" forceRender></a-tab-pane>
+      <a-tab-pane tab="Tab 3" key="3"></a-tab-pane>
+    </a-tabs>
 
     <a-card
-      style="margin-top: 24px"
-      :bordered="false"
-      title="Acitvity">
+      :bordered="false">
 
       <div slot="extra">
         <a-radio-group v-model="status">

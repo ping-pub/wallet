@@ -29,6 +29,13 @@ export const asyncRouterMap = [
         meta: { title: '收益', keepAlive: true, icon: 'dollar' }
       },
       {
+        path: '/setting',
+        name: 'Setting',
+        hidden: true,
+        component: () => import('@/views/PageSetting'),
+        meta: { title: '设置', keepAlive: true, icon: 'setting' }
+      },
+      {
         path: '/validators',
         name: 'Validators',
         component: () => import('@/views/PageValidators'),
@@ -39,11 +46,6 @@ export const asyncRouterMap = [
         name: 'Proposals',
         component: () => import('@/views/PageProposals'),
         meta: { title: '治理', keepAlive: true, icon: 'fire' }
-      },
-      {
-        path: 'https://look.ping.pub/',
-        name: 'Explorer',
-        meta: { title: '浏览器', target: '_blank', icon: 'database' }
       }
     ]
   },

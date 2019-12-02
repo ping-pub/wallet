@@ -9,8 +9,8 @@
         <a-button type="link" class="chain-button">Cell</a-button>
         <a-button type="link" icon="plus" class="chain-button"></a-button>
         <span style="flex: 1;"></span>
-        <a-button type="link" icon="key" class="chain-button">Ledger</a-button>
-        <a-button type="link" icon="mobile" class="chain-button">APP下载</a-button>
+        <a-button type="link" icon="mobile" class="chain-button">APP</a-button>
+        <a-button type="link" href="https://ping.pub" target="_blank" icon="question-circle-o" class="chain-button">帮助</a-button>
       </div>
       </div>
       <a-layout-header
