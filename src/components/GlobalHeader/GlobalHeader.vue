@@ -1,6 +1,18 @@
 <template>
   <transition name="showHeader">
     <div v-if="visible" class="header-animat">
+      <div style="background: #343a40;">
+        <div style="display:flex;max-width: 1200px;margin-left: auto;margin-right: auto;align-items:center;height: 32px;">
+        <a-button type="link" class="chain-button chain-button-active">Cosmos</a-button>
+        <a-button type="link" class="chain-button">Kava</a-button>
+        <a-button type="link" class="chain-button">Iris</a-button>
+        <a-button type="link" class="chain-button">Cell</a-button>
+        <a-button type="link" icon="plus" class="chain-button"></a-button>
+        <span style="flex: 1;"></span>
+        <a-button type="link" icon="key" class="chain-button">Ledger</a-button>
+        <a-button type="link" icon="mobile" class="chain-button">APP下载</a-button>
+      </div>
+      </div>
       <a-layout-header
         v-if="visible"
         :class="[fixedHeader && 'ant-header-fixedHeader', sidebarOpened ? 'ant-header-side-opened' : 'ant-header-side-closed', ]"
@@ -411,6 +423,15 @@ export default {
 </script>
 
 <style lang="less">
+.chain-button {
+  color: #999;
+}
+.chain-button:hover {
+  color: #fff;
+}
+.chain-button-active {
+  color: #fff;
+}
 .wallet-address-title {
 margin-bottom: 10px;cursor:pointer;display:flex;align-items:center;
 }

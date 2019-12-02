@@ -1,17 +1,7 @@
 <template>
   <div class="page-header-index-wide">
-    <template v-if="!wallet.address">
-    <a-alert
-      message="Please add address locally."
-      description="We store the address you added in the current browser."
-      type="info"
-      showIcon
-    />
-    
-    <a-empty style="margin: 200px 0;" description="You haven't added an address yet."/>
-</template>
-
-  <template v-else>
+  
+  <div style="font-size: 16px;font-weight: bold;margin-bottom: 20px;">CosmosHub-2 <a-tag style="margin-left: 5px;">0.32.1</a-tag></div>
   <a-row :gutter="24">
       <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
         <chart-card :loading="loading" title="Total" :total="balance.amount || 0">
@@ -40,50 +30,27 @@
       </a-col>
     </a-row>
 
-    <div class="antd-pro-pages-dashboard-analysis-twoColLayout" :class="isDesktop() ? 'desktop' : ''">
-      <a-row :gutter="24" type="flex">
-        <a-col :xl="12" :lg="24" :md="24" :sm="24" :xs="24" style="margin-bottom: 20px;">
-          <a-card :loading="loadingDelegations" :bordered="false" title="Delegations" :style="{ height: '100%' }">
-            <div class="ant-table-wrapper">
+  <div style="font-size: 16px;font-weight: bold;margin-bottom: 20px;">Wallets </div>
+   <a-row :gutter="24" type="flex">
+             <a-col :xl="12" :lg="24" :md="24" :sm="24" :xs="24" style="margin-bottom: 20px;" v-for="(item, index) of delegations" :key="index" >
+<a-card size="small" title="cosmos1sjllsnramtg3ewxqwwrwjxfgc4n4ef9u0tvx7u" style="width: 100%;margin-bottom: 10px;">
 
-              <a-card size="small" v-for="(item, index) of delegations" :key="index" :title="item.description && item.description.moniker" style="width: 100%;margin-bottom: 10px;">
-                <a :href="`https://look.ping.pub/validator/${item.operator_address}?chain=${$store.state.wallet.id}`" target="_blank" slot="extra">details</a>
-                <p>{{ item.shares }}</p>
-                <p>{{ item.tokens }}</p>
-                <p>{{ item.commission.rate }}</p>
-              </a-card>
+            <div style="display:flex;align-items:center;" v-for="n in 3" :key="n">
+
+              <div style="margin-right: 10px;">ATOM</div>
+<trend style="margin-right: 10px;">
+    <span slot="term">可用</span>
+    $1233
+</trend>
+<trend>
+    <span slot="term">总额</span>
+    $1233
+</trend>
             </div>
           </a-card>
-        </a-col>
-        <a-col :xl="12" :lg="24" :md="24" :sm="24" :xs="24" style="margin-bottom: 20px;">
-          <a-card class="antd-pro-pages-dashboard-analysis-salesCard" :bordered="false" title="Transfer" :style="{ height: '100%' }">
-            <div slot="extra" style="height: inherit;">
-              <!-- style="bottom: 12px;display: inline-block;" -->
-              <span class="dashboard-analysis-iconGroup">
-                <a-dropdown :trigger="['click']" placement="bottomLeft">
-                  <a-icon type="ellipsis" class="ant-dropdown-link" />
-                  <a-menu slot="overlay">
-                    <a-menu-item>
-                      <a href="javascript:;">Reset</a>
-                    </a-menu-item>
-                  </a-menu>
-                </a-dropdown>
-              </span>
-              <div class="analysis-salesTypeRadio">
-                <a-radio-group defaultValue="a">
-                  <a-radio-button value="a">Send</a-radio-button>
-                  <a-radio-button value="b">Claim Rewards</a-radio-button>
-                </a-radio-group>
-              </div>
-
-            </div>
-            <StepForm/>
-          </a-card>
-        </a-col>
-      </a-row>
-    </div>
-  </template>
-  
+     </a-col>
+   </a-row>
+    
   </div>
 </template>
 
@@ -130,7 +97,7 @@ export default {
       loadingDelegations: false,
       searchTableColumns,
       balance: {},
-      delegations: []
+      delegations: [{}, {}, {}, {}, {}, {}]
     }
   },
   methods: {

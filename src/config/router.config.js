@@ -14,36 +14,36 @@ export const asyncRouterMap = [
         path: '/wallet',
         name: 'Wallet',
         component: () => import('@/views/PageWallet'),
-        meta: { title: 'Wallet', keepAlive: false, icon: 'credit-card' }
+        meta: { title: '资产', keepAlive: false, icon: 'credit-card' }
       },
       {
         path: '/activity',
         name: 'Activity',
         component: () => import('@/views/PageActivity'),
-        meta: { title: 'Activity', keepAlive: true, icon: 'schedule' }
+        meta: { title: '账单', keepAlive: true, icon: 'schedule' }
+      },
+      {
+        path: '/calculator',
+        name: 'Calculator',
+        component: () => import('@/views/PageValidators'),
+        meta: { title: '收益', keepAlive: true, icon: 'dollar' }
       },
       {
         path: '/validators',
         name: 'Validators',
         component: () => import('@/views/PageValidators'),
-        meta: { title: 'Validators', keepAlive: true, icon: 'team' }
+        meta: { title: '质押', keepAlive: true, icon: 'team' }
       },
       {
         path: '/proposals',
         name: 'Proposals',
         component: () => import('@/views/PageProposals'),
-        meta: { title: 'Proposals', keepAlive: true, icon: 'fire' }
-      },
-      {
-        path: '/network',
-        name: 'Network',
-        meta: { title: 'Network', icon: 'form', keepAlive: true },
-        component: () => import('@/views/PageNetwork'),
+        meta: { title: '治理', keepAlive: true, icon: 'fire' }
       },
       {
         path: 'https://look.ping.pub/',
         name: 'Explorer',
-        meta: { title: 'Explorer', target: '_blank', icon: 'database' }
+        meta: { title: '浏览器', target: '_blank', icon: 'database' }
       }
     ]
   },
