@@ -4,18 +4,14 @@
       <div style="background: #343a40;">
         <div style="display:flex;max-width: 1200px;margin-left: auto;margin-right: auto;align-items:center;height: 32px;">
         <a-button type="link" class="chain-button chain-button-active">Cosmos</a-button>
-        <a-divider type="vertical" />
         <a-button type="link" class="chain-button">Kava</a-button>
-        <a-divider type="vertical" />
         <a-button type="link" class="chain-button">Iris</a-button>
-        <a-divider type="vertical" />
         <a-button type="link" class="chain-button">Cell</a-button>
-        <a-divider type="vertical" />
         <a-button type="link" icon="plus" class="chain-button"></a-button>
         <span style="flex: 1;"></span>
-        <a-button type="link" icon="mobile" class="chain-button">APP</a-button>
-        <a-divider type="vertical" />
         <a-button type="link" href="https://ping.pub" target="_blank" icon="question-circle-o" class="chain-button">帮助</a-button>
+        <a-button type="link" icon="mobile" class="chain-button">APP</a-button>
+        <a-button type="link" href="https://look.ping.pub" target="_blank" icon="database" class="chain-button">浏览器</a-button>
       </div>
       </div>
       <a-layout-header
@@ -70,93 +66,6 @@
         </div>
       </a-layout-header>
 
-      <a-drawer
-        title="Local Wallets"
-        :width="device==='mobile' ? '100%' : '600px'"
-        placement="right"
-        @close="() => { this.drawerShow = false }"
-        :visible="drawerShow"
-      >
-        <div style="margin-bottom: 10px;">
-          <span style="font-size: 18px;">Add Address</span>
-          <a-button href="https://ping.pub" target="_blank"  type="link" size="small" style="float:right;" icon="plus">Add New Chain</a-button>
-          </div>
-
-        <div style="display:flex;align-items:center;margin-bottom: 20px;">
-          <a-input allowClear v-model="newAddress" placeholder="address(cosmos、irishub、kava)"></a-input>
-
-          <a-button @click="addNewAddress" style="margin-left: -1px;">Explore</a-button>
-        </div>
-
-        <div style="margin: 10px 0;font-size: 18px;">
-          Explore Address
-          <span style="float: right;">
-            <a-radio-group @change="changeChain" size="small" defaultValue="all" buttonStyle="solid">
-              <a-radio-button value="all">All</a-radio-button>
-              <a-radio-button value="cosmos">Cosmos</a-radio-button>
-              <a-radio-button value="kava">Kava</a-radio-button>
-              <a-radio-button value="iaa">Iris</a-radio-button>
-            </a-radio-group>
-          </span>
-        </div>
-
-        <div>
-        <div
-          class="addressitem"
-          :class="{ 'wallet-active': wallet && (item.address === wallet.address) }"
-          v-for="(item, key) of wallets"
-          :key="key"
-        >
-          <div class="wallet-address-title" @click="switchWallet(item)">
-            <div style="flex: 1;overflow-wrap:break-word;overflow: hidden;">{{ item.address }}</div>
-            <a-icon v-if="device !== 'mobile'" style="padding: 0 10px;" type="login"></a-icon>
-          </div>
-
-          <div style="display:flex;align-items:flex-end;">
-            <span style="flex: 1;">
-              <template v-for="(tag, index) in item.tags">
-              <a-tooltip v-if="tag.length > 20" :key="index" :title="tag">
-                <a-tag
-                  style="margin-bottom: 5px;"
-                  :key="tag"
-                  :afterClose="() => handleClose(tag, item)"
-                >{{`${tag.slice(0, 20)}...`}}</a-tag>
-              </a-tooltip>
-              <a-tag
-                v-else
-                  style="margin-bottom: 5px;"
-                :key="index"
-                closable
-                :afterClose="() => handleClose(tag, item)"
-              >{{tag}}</a-tag>
-            </template>
-            <a-input
-              v-if="inputVisible && inputVisibleKey === key"
-              ref="inputTag"
-              type="text"
-              size="small"
-              :style="{ width: '78px' }"
-              :value="inputValue"
-              @change="handleInputChange"
-              @blur="() => handleInputConfirm(item)"
-              @keyup.enter="() => handleInputConfirm(item)"
-            />
-            <a-tag v-else @click="() => { showInput(key) }" style="background: #fff; borderStyle: dashed;">
-              <a-icon type="plus" style="margin-right: 5px;"/>New Tag
-            </a-tag>
-
-            </span>
-            <a-icon
-              @click="removeWallet(item)"
-              class="address-delete-icon"
-              type="delete"
-              style="padding: 0 10px;"
-            ></a-icon>
-          </div>
-          </div>
-        </div>
-
-      </a-drawer>
     </div>
   </transition>
 </template>

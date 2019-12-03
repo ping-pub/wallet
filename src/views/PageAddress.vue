@@ -28,11 +28,14 @@
     color: rgba(0, 0, 0, 0.65);
     font-weight: bold;"
             >基本信息</div>
-            <a-button v-if="editInfo" >保存</a-button>
-            <a-button
-              v-else
+            <a-button type="link" v-if="editInfo" icon="save" size="small">保存</a-button>
+            <div v-else>
+              <a-button type="link" icon="edit" size="small"
               @click="() => { this.editInfo = true; }"
             >编辑</a-button>
+            <a-button type="link" icon="delete" size="small"
+            >删除</a-button>
+            </div>
           </div>
           <description-list  :col="2">
             <description-list-item term="姓名">
@@ -75,7 +78,7 @@
               </div>
               <a-button slot="actions" icon="delete" type="link"></a-button>
               <a-list-item-meta>
-                <a slot="title" href="https://vue.ant.design/">{{item.title}}</a>
+                <a slot="title" >{{item.title}}</a>
                 <a-avatar
                   slot="avatar"
                   src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"

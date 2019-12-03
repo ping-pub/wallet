@@ -23,19 +23,6 @@ export const asyncRouterMap = [
         meta: { title: '账单', keepAlive: true, icon: 'schedule' }
       },
       {
-        path: '/calculator',
-        name: 'Calculator',
-        component: () => import('@/views/PageCalculator'),
-        meta: { title: '收益', keepAlive: true, icon: 'dollar' }
-      },
-      {
-        path: '/setting',
-        name: 'Setting',
-        hidden: true,
-        component: () => import('@/views/PageSetting'),
-        meta: { title: '设置', keepAlive: true, icon: 'setting' }
-      },
-      {
         path: '/validators',
         name: 'Validators',
         component: () => import('@/views/PageValidators'),
@@ -48,12 +35,24 @@ export const asyncRouterMap = [
         meta: { title: '治理', keepAlive: true, icon: 'fire' }
       },
       {
+        path: '/calculator',
+        name: 'Calculator',
+        component: () => import('@/views/PageCalculator'),
+        meta: { title: '收益', keepAlive: true, icon: 'dollar' }
+      },
+      {
         path: '/address',
         name: 'Address',
-        hidden: true,
         component: () => import('@/views/PageAddress'),
         meta: { title: '地址', keepAlive: true, icon: 'fire' }
-      }
+      },
+      {
+        path: '/setting',
+        name: 'Setting',
+        hidden: true,
+        component: () => import('@/views/PageSetting'),
+        meta: { title: '设置', keepAlive: true, icon: 'setting' }
+      },
     ]
   },
   {
