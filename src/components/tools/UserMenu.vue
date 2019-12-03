@@ -2,13 +2,13 @@
   <div class="user-wrapper">
     <div class="content-box">
       <span class="action" @click="go('/address')">
-        <a-icon type="folder-open" />转账
+        转账
       </span>
       <span class="action" @click="go('/address')">
-        <a-icon type="folder-open" />赎回
+        赎回
       </span>
       <span class="action" @click="go('/setting')">
-        <a-icon type="folder-open" />设置
+        设置
       </span>
     </div>
   </div>
