@@ -46,6 +46,13 @@ export const asyncRouterMap = [
         name: 'Proposals',
         component: () => import('@/views/PageProposals'),
         meta: { title: '治理', keepAlive: true, icon: 'fire' }
+      },
+      {
+        path: '/address',
+        name: 'Address',
+        hidden: true,
+        component: () => import('@/views/PageAddress'),
+        meta: { title: '地址', keepAlive: true, icon: 'fire' }
       }
     ]
   },

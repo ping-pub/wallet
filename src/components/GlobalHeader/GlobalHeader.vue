@@ -4,12 +4,17 @@
       <div style="background: #343a40;">
         <div style="display:flex;max-width: 1200px;margin-left: auto;margin-right: auto;align-items:center;height: 32px;">
         <a-button type="link" class="chain-button chain-button-active">Cosmos</a-button>
+        <a-divider type="vertical" />
         <a-button type="link" class="chain-button">Kava</a-button>
+        <a-divider type="vertical" />
         <a-button type="link" class="chain-button">Iris</a-button>
+        <a-divider type="vertical" />
         <a-button type="link" class="chain-button">Cell</a-button>
+        <a-divider type="vertical" />
         <a-button type="link" icon="plus" class="chain-button"></a-button>
         <span style="flex: 1;"></span>
         <a-button type="link" icon="mobile" class="chain-button">APP</a-button>
+        <a-divider type="vertical" />
         <a-button type="link" href="https://ping.pub" target="_blank" icon="question-circle-o" class="chain-button">帮助</a-button>
       </div>
       </div>

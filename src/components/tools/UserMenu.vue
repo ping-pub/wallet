@@ -1,6 +1,10 @@
 <template>
   <div class="user-wrapper">
     <div class="content-box">
+      <span class="action" @click="go('/address')">
+         <a-icon type="folder-open" />
+         地址
+        </span>
       <span class="action" @click="go('/setting')">
          <a-icon type="setting" />
          设置
