@@ -115,11 +115,12 @@ export default {};
   color: #999;
 }
 .address-remark {
-  font-size: 12px;
+  font-size: 14px;
   color: #999;
 }
 .address-user-item {
   padding: 16px;
+  border-left: 4px solid #f5f6f8;
 }
 .address-user-item:hover {
   background: #fff;
