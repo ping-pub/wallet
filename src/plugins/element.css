@@ -1,0 +1,67 @@
+html,body {
+  margin: 0;
+  font-size: 14px;
+  background-color: #f5f6f8;
+}
+a {
+  text-decoration: none;
+  color: #666;
+  font-size: 14px;
+}
+p {
+  margin: 0;
+}
+
+/* element reset */
+.el-menu--horizontal > .el-menu-item {
+  height: 48px;
+  line-height: 48px;
+}
+.el-popover {
+  border-radius: 0;
+}
+.el-main {
+  padding: 0;
+}
+.el-tag {
+  border-radius: 0;
+}
+.el-card__header {
+  padding: 8px 16px;
+}
+.el-card__body {
+  padding: 16px;
+}
+
+/* css tools */
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+.flex-1 {
+  flex: 1;
+}
+.mr-16 {
+  margin-right: 16px;
+}
+.mr-8 {
+  margin-right: 8px;
+}
+.mb-16 {
+  margin-bottom: 16px;
+}
+.mb-8 {
+  margin-bottom: 8px;
+}
+.ml-16 {
+  margin-left: 16px;
+}
+.p-0-16 {
+  padding: 0 16px;
+}
+.pl-16 {
+  padding-left: 16px;
+}
+.cp {
+  cursor: pointer;
+}
