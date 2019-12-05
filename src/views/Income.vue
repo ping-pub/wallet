@@ -40,14 +40,62 @@
       <el-main class="ml-16" style="overflow:hidden;">
         <div>
           <div class="address-header mb-16">
-            <p class="address-title mb-8">{{ menu + ' 收益计算器'}}</p>
-            <p class="address-remark">
-              这个 {{ menu }} 收益计算器可以计算出委托给 ping.pub 的 ATOM 代币所带来的潜在回报。计算中考虑了当前的奖励率、价格和其他假设等条件。不可作为客观依据，实际收益因市场情况而定。
-            </p>
+            <p class="address-title mb-8">{{ menu + ' 收益计算器' }}</p>
+            <p
+              class="address-remark"
+            >这个 {{ menu }} 收益计算器可以计算出委托代币所带来的潜在回报。计算中考虑了当前的奖励率、价格和其他假设等条件。不可作为客观依据，实际收益因市场情况而定。</p>
           </div>
 
           <el-card shadow="never">
-           <img src="/img/cosmos.png" style="width: 100%;" alt="">
+            <div>
+              <span class="mr-8" style="font-size: 16px;font-weight: bold;">委托给 ping.pub</span>
+              <el-button icon="el-icon-refresh" type="text" @click="go('/stake')">切换验证人</el-button>
+            </div>
+
+            <div>
+              <el-form label-position="left" label-width="120px">
+                <el-row>
+                  <el-col :xs="24" :md="12" :lg="10" :xl="8">
+                    <div style="font-size: 16px;padding: 16px 0;">委托信息</div>
+                    <el-form-item label="验证人">
+                      <div>Ping.pub</div>
+                    </el-form-item>
+                    <el-form-item label="介绍">
+                      <div>Ping.pub</div>
+                    </el-form-item>
+                    <el-form-item label="年度收益率">
+                      <div>9.8%</div>
+                    </el-form-item>
+                    <el-form-item label="委托数量">
+                      <el-input-number v-model="sliderVal" style="width: 200px;"></el-input-number>
+                    </el-form-item>
+                    <el-form-item label="委托市价">
+                      <div>$12300（1 ATOM = $123）</div>
+                    </el-form-item>
+                  </el-col>
+
+                  <el-col :xs="24" :md="12" :lg="14" :xl="16">
+                    <div style="font-size: 16px;padding: 16px 0;">预估收益</div>
+                    <el-form-item label="日收益">
+                      <div>123</div>
+                    </el-form-item>
+                    <el-form-item label="周收益">
+                      <div>123</div>
+                    </el-form-item>
+                    <el-form-item label="月收益">
+                      <div>123</div>
+                    </el-form-item>
+                    <el-form-item label="年收益">
+                      <div>123</div>
+                    </el-form-item>
+                    <div>
+                      <el-button style="width: 80px;" type="primary">委托</el-button>
+                      <el-button style="width: 80px;">重置</el-button>
+                    </div>
+                  </el-col>
+                </el-row>
+              </el-form>
+            </div>
           </el-card>
         </div>
       </el-main>
@@ -59,8 +107,14 @@
 export default {
   data() {
     return {
-      menu: "Cosmos"
+      menu: "Cosmos",
+      sliderVal: 100
     };
+  },
+  methods: {
+    go(path) {
+      this.$router.push(path)
+    }
   }
 };
 </script>
