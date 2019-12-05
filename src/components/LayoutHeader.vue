@@ -1,5 +1,6 @@
 <template>
-  <div class="flex-center layoutheader-wrap" >
+<div class="layoutheader-wrap">
+  <div class="flex-center layout-max layoutheader-content">
     <h1 class="layoutheader-logo">Look Wallet</h1>
     <el-menu mode="horizontal" active-text-color="#6658dd" :router="true">
       <el-menu-item index="/">资产</el-menu-item>
@@ -52,15 +53,18 @@
       <i class="el-icon-link"></i>
     </a>
   </div>
+</div>
 </template>
 
 <style scoped>
 .layoutheader-wrap {
   background: #fff;
   height: 48px;
-  overflow: hidden;
-  padding: 0 32px;
   box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
+  overflow: hidden;
+}
+.layoutheader-content {
+  padding: 0 32px;
 }
 .layoutheader-logo {
   color: #6658dd;

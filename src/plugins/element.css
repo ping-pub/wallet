@@ -8,7 +8,7 @@ a {
   color: #666;
   font-size: 14px;
 }
-p {
+p, h1 {
   margin: 0;
 }
 
@@ -23,7 +23,7 @@ p {
 .el-main {
   padding: 0;
 }
-.el-tag {
+.el-tag, .el-card {
   border-radius: 0;
 }
 .el-card__header {
@@ -32,6 +32,7 @@ p {
 .el-card__body {
   padding: 16px;
 }
+
 
 /* css tools */
 .flex-center {
@@ -67,4 +68,9 @@ p {
 }
 .tr {
   text-align: right;
+}
+
+.layout-max {
+  max-width: 1440px;
+  margin: 0 auto;
 }
