@@ -1,0 +1,49 @@
+<!-- uni-app 事件 BUG 暂时不能使用  -->
+<template>
+	<text class="grace-totop grace-icons" v-if="show" :style="{color:color}" @tap="totop">&#xe637;</text>
+</template>
+<script>
+export default{
+	props:{
+		top : {
+			type : Number,
+			default : 0
+		},
+		color : {
+			type : String,
+			default : "#3688FF"
+		}
+	},
+	data() {
+		return {
+			show : false,
+			timer : null
+		}
+	},
+	watch:{
+		top : function(topVal, oldVal){
+			topVal = Math.abs(topVal);
+			if(this.timer != null){clearTimeout(this.timer);}
+			this.timer = setTimeout(function(){
+				if(topVal > 100){
+					this.show = true;
+				}else{
+					this.show = false;
+				}
+			}.bind(this), 80);
+		}
+	},
+	methods:{
+		totop : function(){
+			console.log(1);
+			uni.pageScrollTo({
+			    scrollTop: 0,
+			    duration: 300
+			});
+		}
+	}
+}
+</script>
+<style>
+.grace-totop{width:40px; height:40px; line-height:40px; font-size:40rpx; background-color:#FFFFFF; color:#3688FF; position:fixed; bottom:80px; right:15px; border-radius:5px; text-align:center;}
+</style>

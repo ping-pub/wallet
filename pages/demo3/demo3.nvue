@@ -1,0 +1,50 @@
+<template>
+	<gracePage :customHeader="false">
+		<!-- 页面主体 -->
+		<view slot="gBody" class="demo_body">
+			<view class="demo">
+				<image src="https://graceui.oss-cn-beijing.aliyuncs.com/demo2.1/logo2.png" class="index_logo" mode="widthFix"></image>
+			</view>
+			<view class="demo">
+				<text class="grace-text-small grace-black9">兼容uni-app及微信小程序的优秀前端框架</text>
+				<text class="grace-text-small grace-blue">[nuve] 本页演示 : 使用底部导航</text>
+				<text class="grace-text-small grace-blue">:customHeader="false" 代表关闭自定义导航使用系统原生导航</text>
+			</view>
+		</view>
+		<!-- 底部导航 -->
+		<view slot="gFooter">
+			<view class="grace-footer">
+				<view class="grace-footer-item grace-border-r" @tap="gohome">
+					<text class="grace-footer-icon grace-icons">&#xe608;</text>
+					<text class="grace-footer-text">首页</text>
+				</view>
+				<view class="grace-footer-item">
+					<text class="grace-footer-icon grace-icons grace-footer-active">&#xe645;</text>
+					<text class="grace-footer-text grace-footer-active">喜欢</text>
+				</view>
+				<view style="width:60rpx;"></view>
+				<button type="warn" class="grace-footer-button" style="background-color:#E55D52;">立即购买</button>
+				<button type="warn" class="grace-footer-button" style="background-color:#F37B1D;">加入购物车</button>
+			</view>
+		</view>
+	</gracePage>
+</template>
+<script>
+import gracePage from "../../graceUI/weexComponents/gracePage.nvue";
+export default {
+	data() {
+		return {
+			
+		}
+	},
+	onLoad:function(){
+	},
+	methods:{
+	},
+	components:{
+		gracePage
+	}
+}
+</script>
+<style>
+</style>

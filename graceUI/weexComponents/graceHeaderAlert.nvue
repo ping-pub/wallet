@@ -1,0 +1,44 @@
+<template>
+	<view class="grace-alert" ref="gracealert" :style="{'background-color':background}" v-if="showIn">
+		<slot></slot>
+	</view>
+</template>
+<script>
+var animation = weex.requireModule('animation');
+export default {
+	name: "graceHeaderAlert",
+	props: {
+		show    : {
+			type : Boolean,
+			default : false
+		},
+		background : {
+			type : String,
+			default : '#F1F2F3'
+		}
+	},
+	data() {
+		return {
+			showIn : false
+		}
+	},
+	watch: {
+		show : function(n , o){
+			this.showIn = true;
+			/* setTimeout(() => {
+				animation.transition(this.$refs.gracealert, {
+					styles         : {opacity:1},
+					duration       : 100, 
+					timingFunction : 'linear',
+					needLayout     : false,
+					delay          : 0 
+				});
+			}, 200); */
+			setTimeout(function(){this.showIn = false;}.bind(this), 3000);
+		}
+	}
+}
+</script>
+<style>
+.grace-alert{width:600rpx; padding:20rpx 25rpx; border-radius:10rpx; flex-direction:row; flex-wrap:nowrap; justify-content:center; align-items:center; background-color:#FFFFFF; position:fixed; left:75rpx; top:20rpx;}
+</style>

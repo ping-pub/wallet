@@ -1,0 +1,36 @@
+<template name="graceSpeaker">
+	<view class="grace-swiper-msg">
+		<view class="grace-swiper-msg-icon" :style="{color:iconColor}"><slot></slot></view>
+		<swiper :vertical="vertical" autoplay="true" circular="true" :interval="interval" class="grace-swiper-msg-swiper">
+			<swiper-item v-for="(item, index) in msgs" :key="index" class="grace-swiper-msg-swiper-item">
+				<navigator :url="item.url" :open-type="item.opentype"><text class="grace-swiper-msg-text">{{item.title}}</text></navigator>
+			</swiper-item>
+	  </swiper>
+	</view>
+</template>
+<script>
+export default {
+	name: "graceSpeaker",
+	props: {
+		msgs : {
+			type  : Array,
+			default : function(){return [];}
+		},
+		interval : {
+			type : Number,
+			default: 3000
+		},
+		vertical : {
+			type : Boolean,
+			default : true
+		}
+	}
+}
+</script>
+<style>
+.grace-swiper-msg{flex-wrap:nowrap; flex-direction:row; align-items:center;}
+.grace-swiper-msg-icon{height:60rpx; line-height:60rpx; margin-right:16rpx;}
+.grace-swiper-msg-swiper{width:750rpx; flex:1; height:60rpx; overflow:hidden;}
+.grace-swiper-msg-swiper-item{line-height:60rpx; height:60rpx; overflow:hidden;}
+.grace-swiper-msg-text{line-height:60rpx; height:60rpx; overflow:hidden; font-size:28rpx;}
+</style>

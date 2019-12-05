@@ -1,0 +1,55 @@
+<template>
+	<view>
+		<text class="grace-check-btn grace-icons" :style="{fontSize:size+'rpx', lineHeight:size+'rpx', color : color}" v-if="!status"  @tap="changeStatus">&#xe762;</text>
+		<text class="grace-check-btn grace-icons" :style="{fontSize:size+'rpx', lineHeight:size+'rpx', color : checkedColor}" v-if="status" @tap="changeStatus">&#xe7f8;</text>
+	</view>
+</template>
+<script>
+export default {
+	props: {
+		size : {
+			type : Number,
+			default : 38
+		},
+		color : {
+			type : String,
+			default : '#EEEEEE'
+		},
+		checked : {
+			type : Boolean,
+			default : false
+		},
+		checkedColor : {
+			type : String,
+			default : '#FF0036'
+		},
+		parameter : {
+			type : Array,
+			default : function () {
+				return []
+			}
+		}
+	},
+	data() {
+		return {
+			status : false
+		}
+	},
+	created:function(){
+		this.status = this.checked;
+	},
+	watch: {
+		checked : function (val, old) {
+			this.status = val;
+		}
+	},	
+	methods:{
+		changeStatus : function(){
+			this.status = !this.status;
+			this.$emit('change', [this.status, this.parameter]);
+		}
+	}
+}
+</script>
+<style>
+</style>

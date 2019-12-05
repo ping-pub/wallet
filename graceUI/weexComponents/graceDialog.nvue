@@ -1,0 +1,65 @@
+<template>
+	<view>
+		<view class="grace-dialog-shade" v-if="show" @tap.stop="closeDialog" @touchmove.stop="stopFun">
+			<view class="grace-dialog-shade-dialog" @tap.stop="stopFun" :style="{width:width}">
+				<text class="grace-dialog-shade-title" v-if="isTitle">{{title}}</text>
+				<view class="grace-dialog-shade-content" @tap.stop="stopFun"><slot name="content"></slot></view>
+				<text class="grace-dialog-shade-close-btn grace-icons" :style="{color:closeBtnColor}" v-if="isCloseBtn" @tap.stop="closeDialog">&#xe610;</text>
+				<view class="grace-dialog-shade-btns" v-if="isBtns"><slot name="btns"></slot></view>
+			</view>
+		</view>
+	</view>
+</template>
+<script>
+export default {
+	props: {
+		show : {
+			type : Boolean,
+			default : false
+		},
+		width : {
+			type : String,
+			default : '600rpx'
+		},
+		isCloseBtn: {
+			type : Boolean,
+			default : true
+		},
+		closeBtnColor : {
+			type : String,
+			default : '#F90000'
+		},
+		isTitle : {
+			type : Boolean,
+			default : true
+		},
+		title : {
+			type : String,
+			default : ''
+		},
+		isBtns : {
+			type : Boolean,
+			default : true
+		}
+	},
+	data() {
+		return {
+			
+		}
+	},
+	methods:{
+		closeDialog : function(){
+			this.$emit('closeDialog');
+		},
+		stopFun : function(){}
+	}
+}
+</script>
+<style>
+.grace-dialog-shade{position:fixed; left:0; top:0; bottom:0; background-color:rgba(0, 0, 0, 0.5); width:750rpx; align-items:center; justify-content:center;}
+.grace-dialog-shade-dialog{width:600rpx; background-color:#FFFFFF; border-radius:10rpx;}
+.grace-dialog-shade-title{line-height:88rpx; height:88rpx; font-size:28rpx; text-align:center;}
+.grace-dialog-shade-content{}
+.grace-dialog-shade-close-btn{right:0px; top:0px; font-size:26rpx; width:88rpx; height:88rpx; line-height:88rpx; text-align:center; position:absolute;}
+.grace-dialog-shade-btns{}
+</style>

@@ -1,0 +1,72 @@
+<template name="graceNumberBox">
+	<view class="grace-number-box">
+		<text class="doBtn" @tap="reduce">-</text>
+		<input type="number" class="grace-number-input" :value="inputNumber" :disabled="disabled" @blur="blur"></input>
+		<text class="doBtn" @tap="add">+</text>
+	</view>
+</template>
+<script>
+export default {
+	name: "graceNumberBox",
+	props: {
+		disabled :{
+			type : Boolean,
+			default : false
+		},
+		value : {
+			type : Number,
+			default : 0 
+		},
+		index : {
+			type : Number,
+			default : 0
+		},
+		maxNum:{
+			type: Number,
+			default: 20
+		},
+		minNum: {
+			type: Number,
+			default: 1
+		},
+		datas:{
+			type: String,
+			default: ''
+		}
+	},
+	data() {
+		return {
+			inputNumber: this.value
+		}
+	},
+	watch:{
+		value (val){
+			this.inputNumber = val;
+		},
+		inputNumber (val){
+			val = Number(val);
+			if(val > this.maxNum){val = this.maxNum; this.inputNumber = val;}
+			if(val < this.minNum){val = this.minNum; this.inputNumber = val;}
+			this.$emit('change', [val, this.index, this.datas]);
+		}
+	},
+	methods: {
+		add : function(){
+			var newVal = this.inputNumber + 1;
+			this.inputNumber = Number(newVal);
+		},
+		reduce: function () {
+			var newVal = this.inputNumber - 1;
+			this.inputNumber = newVal;
+		},
+		blur : function(e){
+			this.inputNumber = Number(e.detail.value);
+		}
+  }
+}
+</script>
+<style>
+.grace-number-box{width:180rpx; height:55rpx; overflow:hidden; flex-direction:row; flex-wrap:nowrap; align-items:center;}
+.doBtn{width:55rpx; line-height:55rpx; height:55rpx;  text-align:center; font-size:36rpx; color:#666666;}
+.grace-number-input{height:50rpx; width:200rpx; flex:1; line-height:30rpx; padding:10rpx 0; color:#555555; font-size:26rpx; background-color:#F1F2F3; text-align:center; border-radius:6rpx;}
+</style>

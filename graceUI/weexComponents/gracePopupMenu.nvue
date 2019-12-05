@@ -1,0 +1,50 @@
+<template>
+	<view>
+		<view class="grace-popup-mask" v-if="show" @click.stop="hideMenu"></view>
+		<view class="grace-popup-menu" 
+		v-if="show" 
+		:style="{top:top+'px', left:left+'px', 'background-color':bgColor, width:menuWidth+'rpx', height:menuHeight+'rpx'}">
+			<slot></slot>
+		</view>
+	</view>
+</template>
+<script>
+	export default {
+		name: "gracePopupMenu",
+		props: {
+			show:{
+				type : Boolean,
+				default : false
+			},
+			top:{
+				type : Number,
+				default : 0
+			},
+			left:{
+				type : Number,
+				default : 0
+			},
+			bgColor:{
+				type : String,
+				default :'#F6F6F6'
+			},
+			menuWidth :{
+				type : Number,
+				default : 300
+			},
+			menuHeight :{
+				type : Number,
+				default : 388
+			}
+		},
+		methods: {
+			hideMenu : function() {
+				this.$emit('hideMenu');
+			}
+		},
+	}
+</script>
+<style scoped>
+.grace-popup-menu{background-color:#FFFFFF; width:300rpx; height:400rpx; position:fixed; padding:6px; border-radius:5px;}
+.grace-popup-mask{background-color:rgba(255,255,255, 0); width:750rpx; position:fixed; left:0; top:0; right:0; bottom:0;}
+</style>
