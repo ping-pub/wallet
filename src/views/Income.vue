@@ -64,29 +64,44 @@
                       <div>Ping.pub</div>
                     </el-form-item>
                     <el-form-item label="年度收益率">
-                      <div>9.8%</div>
+                      <div style="font-size: 18px;">9.8%</div>
                     </el-form-item>
                     <el-form-item label="委托数量">
                       <el-input-number v-model="sliderVal" style="width: 200px;"></el-input-number>
                     </el-form-item>
                     <el-form-item label="委托市价">
-                      <div>$12300（1 ATOM = $123）</div>
+                      <div>
+                        <span class="mr-16" style="font-size: 18px;">$12300</span>
+                        <span style="color: #666;">(1 ATOM = $123）</span>
+                      </div>
                     </el-form-item>
                   </el-col>
 
                   <el-col :xs="24" :md="12" :lg="14" :xl="16">
                     <div style="font-size: 16px;padding: 16px 0;">预估收益</div>
                     <el-form-item label="日收益">
-                      <div>123</div>
+                      <div>
+                        <span class="mr-16" style="font-size: 18px;">$123</span>
+                        <span style="color: #666;">10 ATOM</span>
+                      </div>
                     </el-form-item>
                     <el-form-item label="周收益">
-                      <div>123</div>
+                      <div>
+                        <span class="mr-16" style="font-size: 18px;">$123</span>
+                        <span style="color: #666;">10 ATOM</span>
+                      </div>
                     </el-form-item>
                     <el-form-item label="月收益">
-                      <div>123</div>
+                      <div>
+                        <span class="mr-16" style="font-size: 18px;">$123</span>
+                        <span style="color: #666;">10 ATOM</span>
+                      </div>
                     </el-form-item>
                     <el-form-item label="年收益">
-                      <div>123</div>
+                      <div>
+                        <span class="mr-16" style="font-size: 18px;">$123</span>
+                        <span style="color: #666;">10 ATOM</span>
+                      </div>
                     </el-form-item>
                     <div>
                       <el-button style="width: 80px;" type="primary">委托</el-button>
