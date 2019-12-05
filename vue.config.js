@@ -123,4 +123,6 @@
 //   vueConfig.configureWebpack.plugins.push(createThemeColorReplacerPlugin())
 // }
 
-// module.exports = vueConfig
+module.exports = {
+  outputDir: './server/dist',
+}
