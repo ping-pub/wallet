@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-center layoutheader-wrap">
+  <div class="flex-center layoutheader-wrap" >
     <h1 class="layoutheader-logo">Look Wallet</h1>
     <el-menu mode="horizontal" active-text-color="#6658dd" :router="true">
       <el-menu-item index="/">资产</el-menu-item>

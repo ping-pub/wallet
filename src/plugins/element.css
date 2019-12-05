@@ -65,3 +65,6 @@ p {
 .cp {
   cursor: pointer;
 }
+.tr {
+  text-align: right;
+}

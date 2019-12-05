@@ -4,7 +4,7 @@
     <LayoutHeader/>
   </el-header>
   <el-main style="padding: 16px 32px;">
-    <router-view/>
+    <router-view style="max-width: 1200px;margin: 0 auto;"/>
   </el-main>
   <el-footer>
     <LayoutFooter/>
