@@ -3,7 +3,10 @@
     <el-container>
       <el-aside width="200px" class="address-aside">
         <div>
-          <div class="mb-16 mr-8">Cosmoshub-2 <el-tag size="mini">0.31.1</el-tag></div> 
+          <div class="mb-16 mr-8">
+            Cosmoshub-2
+            <el-tag size="mini">0.31.1</el-tag>
+          </div>
           <div
             @click="() => { this.menu = 'Cosmos' }"
             class="flex-center address-user-item cp"
@@ -42,35 +45,24 @@
         <div>
           <div class="address-header mb-16">
             <p class="address-title mb-8">钱包地址</p>
-            <div class="address-remark mb-8">李三  18018018018  备注: xxxxxxxxxxxxx</div>
+            <div class="address-remark mb-8">李三 18018018018 备注: xxxxxxxxxxxxx</div>
             <div>
               <el-tag size="mini" v-for="n in 10" :key="n" class="mr-8 mb-8">备注</el-tag>
             </div>
           </div>
 
           <el-card shadow="never">
-            <div>
-              <div
-                v-for="n in 10"
-                :key="n"
-                class="flex-center"
-                style="padding: 8px 16px;background: #fff;margin-bottom: 8px;"
-              >
-                <div class="mr-16" style="color: #999;">{{ n + '54646' }}</div>
-                <div class="flex-1 mr-16">
-                  <p>title</p>
-                  <p style="font-size: 12px;color: #999;">description</p>
-                </div>
-                <div class="mr-16">
-                  <p>Voting Power</p>
-                  <p class="tr">884654</p>
-                </div>
-                <div class="mr-16">
-                  <p>Rewards</p>
-                  <p class="tr">9.8%</p>
-                </div>
-              </div>
-            </div>
+            <el-table size="large" :show-header="false" class="mb-16" :data="tableData">
+              <el-table-column type="index" width="50"></el-table-column>
+              <el-table-column prop="name">
+                <template slot-scope="scope">
+                  <p style="font-size: 16px;">{{scope.row.name}}</p>
+                  <p style="font-size: 12px;color: #999;">{{ scope.row.description }}</p>
+                </template>
+              </el-table-column>
+              <el-table-column align="center" prop="votingPower" width="200"></el-table-column>
+              <el-table-column align="center" prop="rewards" width="200"></el-table-column>
+            </el-table>
           </el-card>
         </div>
       </el-main>
@@ -82,6 +74,110 @@
 export default {
   data() {
     return {
+      tableData: [
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        },
+        {
+          name: "cosmosvaloper",
+          description: "cosmosvaloper17mggn4znyeyg25wd7498qxl7r2jhgue8u4qjcq",
+          votingPower: "884654",
+          rewards: "9.8%"
+        }
+      ],
       menu: "Cosmos",
       sliderVal: 100
     };
