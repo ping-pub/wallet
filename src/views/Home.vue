@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="mb-16">
-      <span style="font-size: 16px;">Cosmoshub-2</span>
-      <el-tag>0.31.1</el-tag>
+      <span style="font-size: 16px;" class="mr-8">Cosmoshub-2</span>
+      <el-tag size="mini">0.31.1</el-tag>
     </div>
 
     <el-row :gutter="16" class="mb-16">

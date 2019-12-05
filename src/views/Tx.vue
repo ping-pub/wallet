@@ -3,7 +3,7 @@
     <el-container>
       <el-aside width="200px" class="address-aside">
         <div>
-          <div class="mb-16">Cosmoshub-2 <el-tag>0.31.1</el-tag></div> 
+          <div class="mb-16 mr-8">Cosmoshub-2 <el-tag size="mini">0.31.1</el-tag></div> 
           <div
             @click="() => { this.menu = 'Cosmos' }"
             class="flex-center address-user-item cp"

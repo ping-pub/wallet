@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex-center mb-16">
-      <p class="flex-1" style="font-size: 16px;">治理 <span style="font-size: 14px;">· Cosmoshub-2 </span><el-tag>0.31.1</el-tag></p>
+      <p class="flex-1" style="font-size: 16px;">治理 <span style="font-size: 14px;" class="mr-8">· Cosmoshub-2 </span><el-tag size="mini">0.31.1</el-tag></p>
       <el-input style="width: 200px;" class="mr-8"></el-input>
       <el-button icon="el-icon-search">搜索</el-button>
     </div>
