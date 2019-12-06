@@ -12,7 +12,7 @@
             class="flex-center address-user-item cp"
             :class="{ 'address-user-item-active': menu === 'Cosmos' }"
           >
-            <p class="flex-1">钱包地址</p>
+            <p class="flex-1">cosmos1zu8...jtzw</p>
             <i class="el-icon-arrow-right"></i>
           </div>
           <div
@@ -20,7 +20,7 @@
             class="flex-center address-user-item cp"
             :class="{ 'address-user-item-active': menu === 'Kava' }"
           >
-            <p class="flex-1">Kava</p>
+            <p class="flex-1">cosmos1zu8...jtzw</p>
             <i class="el-icon-arrow-right"></i>
           </div>
           <div
@@ -28,7 +28,7 @@
             class="flex-center address-user-item cp"
             :class="{ 'address-user-item-active': menu === 'Iris' }"
           >
-            <p class="flex-1">Iris</p>
+            <p class="flex-1">cosmos1zu8...jtzw</p>
             <i class="el-icon-arrow-right"></i>
           </div>
           <div
@@ -36,7 +36,7 @@
             class="flex-center address-user-item cp"
             :class="{ 'address-user-item-active': menu === 'Cell' }"
           >
-            <p class="flex-1">Cell</p>
+            <p class="flex-1">cosmos1zu8...jtzw</p>
             <i class="el-icon-arrow-right"></i>
           </div>
         </div>
@@ -44,7 +44,7 @@
       <el-main class="ml-16" style="overflow:hidden;">
         <div>
           <div class="address-header mb-16">
-            <p class="address-title mb-8">钱包地址</p>
+            <p class="address-title mb-8">cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw</p>
             <div class="address-remark mb-8">李三 18018018018 备注: xxxxxxxxxxxxx</div>
             <div>
               <el-tag size="mini" v-for="n in 10" :key="n" class="mr-8 mb-8">备注</el-tag>
