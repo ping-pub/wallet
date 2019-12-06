@@ -125,4 +125,5 @@
 
 module.exports = {
   outputDir: './server/dist',
+  indexPath: 'look.html'
 }

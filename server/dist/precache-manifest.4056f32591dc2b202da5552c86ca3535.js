@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/cosmos.png"
   },
   {
-    "revision": "85dcce8419327dde2532478a793a1b4c",
+    "revision": "3154668243c18781280b35995ac082b7",
     "url": "/index.html"
   },
   {
