@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.4056f32591dc2b202da5552c86ca3535.js"
+  "/precache-manifest.6049efafa3f26226e76b9e98571cd650.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "look-wallet-pc"});
+workbox.core.setCacheNameDetails({prefix: "look-wallet"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {

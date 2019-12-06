@@ -21,7 +21,7 @@ nunjucks.configure('dist', {
 });
 
 router.get('/', function (req, res, next) {
-  res.render('look.html');
+  res.render('index.html');
 });
 
 app.use('/', router);
