@@ -1,43 +1,7 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="200px" class="address-aside">
-        <div>
-          <div
-            @click="() => { this.menu = 'Cosmos' }"
-            class="flex-center address-user-item cp"
-            :class="{ 'address-user-item-active': menu === 'Cosmos' }"
-          >
-            <p class="flex-1">Cosmos</p>
-            <i class="el-icon-arrow-right"></i>
-          </div>
-          <div
-            @click="() => { this.menu = 'Kava' }"
-            class="flex-center address-user-item cp"
-            :class="{ 'address-user-item-active': menu === 'Kava' }"
-          >
-            <p class="flex-1">Kava</p>
-            <i class="el-icon-arrow-right"></i>
-          </div>
-          <div
-            @click="() => { this.menu = 'Iris' }"
-            class="flex-center address-user-item cp"
-            :class="{ 'address-user-item-active': menu === 'Iris' }"
-          >
-            <p class="flex-1">Iris</p>
-            <i class="el-icon-arrow-right"></i>
-          </div>
-          <div
-            @click="() => { this.menu = 'Cell' }"
-            class="flex-center address-user-item cp"
-            :class="{ 'address-user-item-active': menu === 'Cell' }"
-          >
-            <p class="flex-1">Cell</p>
-            <i class="el-icon-arrow-right"></i>
-          </div>
-        </div>
-      </el-aside>
-      <el-main class="ml-16" style="overflow:hidden;">
+      <el-main style="overflow:hidden;">
         <div>
           <div class="address-header mb-16">
             <p class="address-title mb-8">{{ menu + ' 收益计算器' }}</p>
@@ -55,7 +19,7 @@
             <div>
               <el-form label-position="left" label-width="120px">
                 <el-row>
-                  <el-col :xs="24" :md="12" :lg="10" :xl="8">
+                  <el-col :xs="24" :md="12" :lg="10" >
                     <div style="font-size: 16px;padding: 16px 0;">委托信息</div>
                     <el-form-item label="验证人">
                       <div>Ping.pub</div>
@@ -77,7 +41,7 @@
                     </el-form-item>
                   </el-col>
 
-                  <el-col :xs="24" :md="12" :lg="14" :xl="16">
+                  <el-col :xs="24" :md="12" :lg="14"  >
                     <div style="font-size: 16px;padding: 16px 0;">预估收益</div>
                     <el-form-item label="日收益">
                       <div>

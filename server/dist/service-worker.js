@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.48a8eb905db8cc402a6cdaa1e6d5ac2c.js"
+  "/precache-manifest.8e7fc6419223154d746be4bedbb07b6f.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "look-wallet"});

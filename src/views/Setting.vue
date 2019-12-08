@@ -19,14 +19,6 @@
             <p class="flex-1">接口设置</p>
             <i class="el-icon-arrow-right"></i>
           </div>
-          <div
-            @click="() => { this.menu = 'about' }"
-            class="flex-center address-user-item cp"
-            :class="{ 'address-user-item-active': menu === 'about' }"
-          >
-            <p class="flex-1">关于本站</p>
-            <i class="el-icon-arrow-right"></i>
-          </div>
         </div>
       </el-aside>
       <el-main class="ml-16" style="overflow:hidden;">
