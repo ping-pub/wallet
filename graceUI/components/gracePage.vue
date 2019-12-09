@@ -18,12 +18,15 @@
 		</view>
 		<!-- 页面主体 -->
 		<view class="grace-page-body"><slot name="gBody"></slot></view>
+		<!-- #ifndef APP-PLUS -->
+		<view v-if="!isSwitchPage" :style="{width:'100%', height:iphoneXButtomHeight+'px'}"></view>
+		<!-- #endif -->
 		<!-- 页面底部 -->
-		<view class="grace-page-footer" :style="{'z-index':footerIndex}">
+		<view class="grace-page-footer" :style="{'z-index':footerIndex, background:footerBg}">
 			<slot name="gFooter"></slot>
 			<!-- iphoneX 占位 view -->
 			<!-- #ifndef APP-PLUS -->
-			<view :style="{width:'100%', height:iphoneXButtomHeight+'px'}"></view>
+			<view v-if="!isSwitchPage" :style="{width:'100%', height:iphoneXButtomHeight+'px'}"></view>
 			<!-- #endif -->
 		</view>
 		<!-- 右下角悬浮按钮 -->
@@ -39,6 +42,8 @@ export default{
 		headerBG     : { type : String,  default : 'none' },
 		statusBarBG  : { type : String,  default : 'none' },
 		footerIndex  : { type : Number,  default : 999 },
+		footerBg     : { type : String,  default : ''},
+		isSwitchPage :  { type : Boolean, default : false },
 		rbWidth      : { type : Number, default : 100},
 		rbBottom     : { type : Number, default : 100 },
 		rbRight      : { type : Number, default : 20 }

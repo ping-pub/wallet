@@ -19,7 +19,7 @@
 		<!-- 页面主体 -->
 		<view class="gui-page-body"><slot name="gBody"></slot></view>
 		<!-- 页面底部 -->
-		<view class="gui-page-footer" :style="{'z-index':footerIndex}">
+		<view class="gui-page-footer" :style="{'z-index':footerIndex, backgroundColor:footerBg}">
 			<slot name="gFooter"></slot>
 			<!-- iphoneX 占位 view -->
 			<!-- #ifndef APP-PLUS -->
@@ -41,7 +41,8 @@ export default{
 		footerIndex  : { type : Number, default : 999},
 		rbWidth      : { type : Number, default : 100},
 		rbBottom     : { type : Number, default : 100 },
-		rbRight      : { type : Number, default : 20 }
+		rbRight      : { type : Number, default : 20 },
+		footerBg     : { type : String, default : '' }
 	},
 	data() {
 		return {

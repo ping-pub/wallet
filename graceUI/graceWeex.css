@@ -2,7 +2,7 @@
 link   : grace.hcoder.net
 author : 刘海君 5213606@qq.com 
 verson : 2.2
-last update date : 2019-12-05
+last update date : 2019-12-09
 GraceUI 的版权约束是不能转售或者将 GraceUI 直接发布到公开渠道！侵权必究，请遵守版权约定！
 GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请遵守极其简单的版权规定
 */
@@ -118,6 +118,10 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .grace-footer{position:fixed; z-index:2; left:0; bottom:0; background-color:#FFFFFF; width:750rpx; overflow:hidden;}
 .grace-footer-button{width:230rpx; font-size:30rpx; border-radius:0; height:100rpx; line-height:100rpx;}
 .grace-footer-button:after{width:0; height:0;}
+.grace-footer-input-body{width:700rpx; flex:1; padding:0 20rpx; height:66rpx; flex-direction:row; flex-wrap:nowrap; background-color:#F5F6F8; border-radius:66rpx; margin:15rpx 20rpx; margin-right:0rpx; align-items:center;}
+.grace-footer-input-icon{width:66rpx; text-align:center; line-height:66rpx; font-size:32rpx; color:#888888;}
+.grace-footer-input{width:700rpx; flex:1; font-size:26rpx; height:32rpx; line-height:32rpx; padding:0; overflow:hidden;}
+.grace-footer-subtext{padding:0 25rpx; font-size:26rpx;}
 
 /* 列表 */
 .grace-list{}
@@ -152,7 +156,7 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .grace-news-img{width:220rpx; height:220rpx; border-radius:5rpx;}
 .grace-news-img-l{margin-right:20rpx;}
 .grace-news-img-r{margin-left:20rpx;}
-.grace-news-body{width:750rpx; flex:1; flex-direction:column; align-item: flex-start;}
+.grace-news-body{width:750rpx; flex:1; flex-direction:column;}
 .grace-news-title{line-height:40rpx; font-size:26rpx; max-height:80rpx;}
 .grace-news-desc{line-height:36rpx; color:#A5A7B2; font-size:22rpx; margin-top:8rpx; max-height:72rpx;}
 .grace-news-info{flex-direction:row; justify-content:space-between; margin-top:10rpx;}
@@ -162,19 +166,20 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .grace-news-imgs-img{width:225rpx; height:158rpx;}
 
 /* 评论列表 */
-.grace-comments{padding:5rpx 0;}
-.grace-comments-items{flex-direction:row; flex-wrap:nowrap; padding:12rpx 0; margin:16rpx 0;}
-.grace-comments-face{width:80rpx; height:80rpx; border-radius:80rpx; margin-right:20rpx;}
+.grace-comments{}
+.grace-comments-items{flex-direction:row; flex-wrap:nowrap; padding:10rpx 0; margin:15rpx 0;}
+.grace-comments-face{width:80rpx; height:80rpx; border-radius:80rpx; margin-right:25rpx;}
 .grace-comments-body{width:700rpx; flex:1;}
-.grace-comments-header{flex-direction:row; flex-wrap:nowrap; justify-content:space-between; margin-top:-4rpx;}
-.grace-comments-header-text{color:#333333; font-size:26rpx;}
-.grace-comments-info{flex-direction:row; flex-wrap:nowrap; justify-content:space-between;}
-.grace-comments-info-text{color:#999999; font-size:22rpx; line-height:36rpx; margin-top:10rpx;}
-.grace-comments-content{line-height:36rpx; font-size:24rpx; color:#666666; padding:12rpx 0;}
+.grace-comments-header{flex-direction:row; flex-wrap:nowrap; justify-content:space-between; margin-top:-4rpx; align-items:center;}
+.grace-comments-header-text{color:#333333; font-size:26rpx; line-height:40rpx;}
+.grace-comments-info{flex-direction:row; flex-wrap:nowrap; justify-content:space-between; align-items:center;}
+.grace-comments-info-text{color:#999999; font-size:22rpx; line-height:40rpx; margin-top:10rpx;}
+.grace-comments-content{line-height:36rpx; font-size:24rpx; color:#666666; padding:8rpx 0;}
 .grace-comments-replay{background-color:#F5F6F8; font-size:24rpx; color:#666666; border-radius:3px; margin:3px 0; padding:20rpx; line-height:36rpx;}
 .grace-comments-replay-btn{background-color:#F4F5F6; font-size:20rpx; line-height:44rpx; padding:0rpx 20rpx; border-radius:44rpx; margin:5px 0; color:#333 !important;}
-.grace-comments-imgs{flex-direction:row; justify-content:space-between; flex-wrap:wrap;}
-.grace-comments-image{width:196rpx; height:138rpx; margin:5rpx 0;}
+.grace-comments-imgs{flex-direction:row; flex-wrap:wrap; margin:8rpx 0;}
+.grace-comments-image{width:190rpx; height:138rpx; margin:5rpx; font-size:0; overflow:hidden;}
+.grace-comments-img{width:190rpx; height:138rpx; border-radius:3rpx;}
 
 /* 图文卡片 */
 .grace-img-card{flex-direction:row; flex-wrap:wrap; justify-content:space-between;}
@@ -184,7 +189,7 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .grace-img-card-title{font-size:26rpx; margin-top:3px; height:50rpx; line-height:50rpx;}
 .grace-img-card-more{flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:center; padding:6rpx 0;}
 .grace-img-card-price{font-size:30rpx; color:#FF0036;}
-.grace-img-card-btn{width:80rpx; border-width:1px; border-style: solid; border-color:#FF0036; line-height:30rpx; padding:6rpx 16rpx; border-radius:3px; font-size:20rpx; color:#FF0036;}
+.grace-img-card-btn{width:80rpx; border-width:1px; border-style:solid; border-color:#FF0036; line-height:30rpx; padding:6rpx 16rpx; border-radius:3px; font-size:20rpx; text-align:center; color:#FF0036;}
 
 /* 普通标签 */
 .grace-tags{padding:0 12rpx; line-height:36rpx; font-size:18rpx; background-color:#A5A7B2; color:#FFFFFF;}
@@ -202,7 +207,7 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .grace-card-body{flex-direction:row; flex-wrap:nowrap; padding-bottom:30rpx;}
 .grace-card-img{width:100rpx; height:100rpx; border-radius:80rpx;}
 .grace-card-desc{width:700rpx; margin-left:30rpx; flex:1;}
-.grace-card-title{flex-direction:row;}
+.grace-card-title{flex-direction:row; align-items:center; flex-wrap:nowrap;}
 .grace-card-name{font-size:28rpx; color:#333333; line-height:50rpx; margin-right:20rpx;}
 .grace-card-text{line-height:50rpx; font-size:24rpx; color:#888888;}
 .grace-card-footer{flex-direction:row; flex-wrap:nowrap; margin-top:20rpx; justify-content:space-between;}

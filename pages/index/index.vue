@@ -1,54 +1,70 @@
 <template>
+
 	<gracePage :customHeader="false">
-		<view slot="gBody" class="grace-body" style="padding-bottom:150rpx;">
-			<view class="grace-h4 grace-bold" style="margin-top:80rpx;">关注更多大牛，更快进步~</view>
-			<view class="grace-text-small grace-black6" style="margin-top:8px;">赶快看看下面的牛人，学习更多使用技巧吧</view>
-			<!-- 关注列表 -->
-			<view class="grace-img-card">
-				<view class="item grace-box-shadow" v-for="(item, index) in concerns" :key="index">
-					<view class="img">
-						<image :src="item[0]" mode="widthFix"></image>
-					</view>
-					<view class="title">{{item[1]}}</view>
-					<view class="grace-text-small grace-ellipsis grace-black9">{{item[2]}}</view>
-					<view class="">
-						<button type="primary" class="grace-button grace-concerns-button grace-icons icon-shoucang">Stake</button>
-					</view>
-				</view>
+		<view slot="gBody" class="grace-body">
+			<view class="grace-margin-top">
+				<graceNavBar :size="null" activeLineWidth="100%" padding="16rpx" :items="tabs" :currentIndex="currentIndex" @change="navChange"></graceNavBar>
 			</view>
+			<swiper class="swiper" :style="{height:tabHeight+'px'}" :current="currentIndex" @change="swiperChange">
+				<swiper-item v-for="(item, index) in tabs" :key="index">
+					<view class="grace-card-view">
+						<view class="grace-card-body grace-border-b">
+							<view class="grace-card-desc">
+								<view class="grace-card-title">
+									<text class="grace-card-name">姓名</text>
+									<text class="grace-card-name grace-text-small grace-blue">补充信息</text>
+								</view>
+								<text class="grace-card-text">地址</text>
+								<text class="grace-card-text">手机号</text>
+							</view>
+						</view>
+						<view class="grace-card-footer">
+							stake vote
+						</view>
+					</view>
+				</swiper-item>
+			</swiper>
 		</view>
-<!-- 		<view slot="gFooter" class="concerns-footer">
-			<button type="primary" class="grace-button grace-icons icon-shoucang">一键关注</button>
-		</view> -->
 	</gracePage>
 </template>
+
 <script>
-import gracePage from "../../graceUI/components/gracePage.vue";
-export default{
-	data() {
-		return {
-			concerns:[
-				['http://img5.imgtn.bdimg.com/it/u=2819669926,1214596723&fm=26&gp=0.jpg', '设计秀儿', '实力派设计大佬'],
-				['http://img0.imgtn.bdimg.com/it/u=3582194852,1481557220&fm=26&gp=0.jpg', '十年久不遇', '20年架构经验'],
-				['http://img3.imgtn.bdimg.com/it/u=2815906454,2337019799&fm=26&gp=0.jpg', '盗心贼', '阿里全栈大牛带你飞'],
-				['http://img2.imgtn.bdimg.com/it/u=3056902114,653741992&fm=26&gp=0.jpg', '女程序员', '美女也写一手好代码'],
-				['http://img1.imgtn.bdimg.com/it/u=4293603120,2455313591&fm=26&gp=0.jpg', '他乡联盟', '主攻摄影十几年'],
-				['http://img4.imgtn.bdimg.com/it/u=1429010655,902968447&fm=26&gp=0.jpg', '李某某', '不会PHP的程序员不是好设计'],
-			]
+	import gracePage from "../../graceUI/components/gracePage.vue";
+	import graceNavBar from "../../graceUI/components/graceNavBar.vue";
+	const systemInfo = require('../../graceUI/jsTools/systemInfo.js');
+
+	export default {
+		data() {
+			return {
+				tabHeight: 300,
+				currentIndex: 0,
+				tabs: ['All', 'Cosmos', 'Kava', 'Iris', 'Cell']
+			}
+		},
+		onLoad: function() {
+			//获取屏幕高度及比例
+			const system = systemInfo.info();
+			this.tabHeight = system.windowHeight - system.iPhoneXBottomHeightPx - uni.upx2px(110);
+		},
+		methods: {
+			navChange: function(e) {
+				this.currentIndex = e;
+			},
+			swiperChange: function(e) {
+				var index = e.detail.current;
+				this.currentIndex = index;
+			}
+		},
+		components: {
+			gracePage,
+			graceNavBar
 		}
-	},
-	components:{
-		gracePage
 	}
-}
 </script>
 <style>
-page{background:#F1F2F3;}
-.grace-img-card{margin-top:30px; justify-content:center;}
-.grace-img-card > .item{width:250rpx; margin:25rpx 20rpx; border-radius:8rpx; padding:30rpx; background-color:#FFFFFF; overflow:hidden; font-size:0; position:relative;}
-.grace-img-card > .item > .img image{width:150rpx; height:150rpx; border-radius:100rpx;}
-.grace-img-card > .item > .title{margin-top:8px; font-weight:bold;}
-.grace-concerns-button{line-height:60rpx; height:60rpx; font-size:22rpx; margin-top:10px;}
-.concerns-footer{padding:20rpx; background-color:#FFFFFF;}
-.grace-icons::before{margin-right:5px;}
+	/* 局部选项卡应该固定高度 可以避免选项切换引起的页面抖动 */
+	.swiper {
+		width: 100%;
+		height: 388rpx;
+	}
 </style>

@@ -2,7 +2,7 @@
 	"pages": [{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "GraceUI",
+				"navigationBarTitleText": "Look Wallet · Assets",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom"
@@ -128,7 +128,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "GraceUI",
+		"navigationBarTitleText": "Look Wallet",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
@@ -137,23 +137,24 @@
 		"selectedColor": "#3688FF",
 		"borderStyle": "white",
 		"backgroundColor": "#F6F7F8",
-		"list": [{
+		"list": [
+			{
 				"pagePath": "pages/index/index",
 				"iconPath": "static/menu_imgs/menu_1.png",
 				"selectedIconPath": "static/menu_imgs/menu_1a.png",
-				"text": "Validators"
+				"text": "Wallet"
 			},
 			{
 				"pagePath": "pages/tmp/tmp",
 				"iconPath": "static/menu_imgs/menu_2.png",
 				"selectedIconPath": "static/menu_imgs/menu_2a.png",
-				"text": "Address"
+				"text": "History"
 			},
 			{
 				"pagePath": "pages/tmp4/index",
 				"iconPath": "static/menu_imgs/menu_2.png",
 				"selectedIconPath": "static/menu_imgs/menu_2a.png",
-				"text": "消息"
+				"text": "Profile"
 			}
 		]
 	}
