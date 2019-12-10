@@ -40,4 +40,21 @@ export default {
 navigator{opacity:1; background:none;}
 .navigator-hover{background-color:none; opacity:0.8;}
 /* #endif */
+
+.uni-body {
+	background: #f4f5f7;
+}
+/* #37434b */
+.bg-primary {
+	background: #37434b;
+}
+.mb-12 {
+	margin-bottom: 24upx;
+}
+.mb-6 {
+	margin-bottom: 12upx;
+}
+.flex-1 {
+	flex: 1;
+}
 </style>

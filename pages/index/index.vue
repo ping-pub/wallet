@@ -1,41 +1,61 @@
 <template>
+	<gracePage headerBG="#fff">
+		<view slot="gHeader" class="grace-flex-center">
+			<text style="padding: 0 24upx;width: 200upx;align-self: flex-end;" class="grace-black6">All</text>
+			<text style="flex: 1;text-align: center;font-size: 18px;" class="grace-black">Look</text>
+			<text style="padding: 0 24upx;width: 200upx;text-align: right;align-self: flex-end;" class="grace-black6">Add</text>
+		</view>
 
-	<gracePage :customHeader="false">
 		<view slot="gBody" class="grace-body">
-			<view class="grace-margin-top">
-				<graceNavBar :size="null" activeLineWidth="100%" padding="16rpx" :items="tabs" :currentIndex="currentIndex" @change="navChange"></graceNavBar>
-			</view>
-			<swiper class="swiper" :style="{height:tabHeight+'px'}" :current="currentIndex" @change="swiperChange">
-				<swiper-item v-for="(item, index) in tabs" :key="index">
-					<view class="grace-card-view">
-						<view class="grace-card-body grace-border-b">
-							<view class="grace-card-desc">
-								<view class="grace-card-title">
-									<text class="grace-card-name">姓名</text>
-									<text class="grace-card-name grace-text-small grace-blue">补充信息</text>
-								</view>
-								<text class="grace-card-text">地址</text>
-								<text class="grace-card-text">手机号</text>
-							</view>
+			<view class="bg-primary   grace-border mb-12" style="padding: 24upx 24upx;margin-top: 24upx;">
+				<view class="grace-space-between" style="align-items: center;">
+					<view class="">
+						<view class="">
+							<text class="grace-gray">Assets Total</text>
 						</view>
-						<view class="grace-card-footer">
-							stake vote
+						<view class="">
+							<text class="grace-white" style="font-size: 24px;font-weight: bold;">$12,992,134,199</text>
 						</view>
 					</view>
-				</swiper-item>
-			</swiper>
+					<view class="">
+						<image style="width: 140upx;height: 140upx;" src="../../static/wallet/asset1.png" mode=""></image>
+					</view>
+				</view>
+			</view>
+			
+			<view class="grace-flex-center">
+				<text class="grace-black6">Address</text>
+				<text class="flex-1"></text>
+				<text class="grace-black6">Add</text>
+			</view>
+			
+			<view class="grace-bg-white   grace-border" style="padding: 24upx 24upx;margin-top: 24upx;" v-for="n in 10" :key="n">
+				<view class="">
+					<text class="grace-black6">NAME</text>
+					
+				</view>
+				<view class="mb-6">
+					<text class="grace-black9" style="font-size: 12px;">cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw</text>
+				</view>
+				<view class="">
+					<text class="grace-black6" style="font-size: 16px;">$12,992,134.00</text>
+				</view>
+			</view>
 		</view>
+
 	</gracePage>
 </template>
 
 <script>
 	import gracePage from "../../graceUI/components/gracePage.vue";
+	import gracePopupMenu from '../../graceUI/components/gracePopupMenu.vue';
 	import graceNavBar from "../../graceUI/components/graceNavBar.vue";
 	const systemInfo = require('../../graceUI/jsTools/systemInfo.js');
 
 	export default {
 		data() {
 			return {
+				show1: false,
 				tabHeight: 300,
 				currentIndex: 0,
 				tabs: ['All', 'Cosmos', 'Kava', 'Iris', 'Cell']
@@ -47,6 +67,9 @@
 			this.tabHeight = system.windowHeight - system.iPhoneXBottomHeightPx - uni.upx2px(110);
 		},
 		methods: {
+			showDrawer1: function() {
+				this.show1 = !this.show1;
+			},
 			navChange: function(e) {
 				this.currentIndex = e;
 			},
@@ -57,14 +80,8 @@
 		},
 		components: {
 			gracePage,
-			graceNavBar
+			graceNavBar,
+			gracePopupMenu
 		}
 	}
 </script>
-<style>
-	/* 局部选项卡应该固定高度 可以避免选项切换引起的页面抖动 */
-	.swiper {
-		width: 100%;
-		height: 388rpx;
-	}
-</style>
