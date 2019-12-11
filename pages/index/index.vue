@@ -48,7 +48,7 @@
 							<text class="grace-gray">Total</text>
 						</view>
 						<view class="">
-							<text class="grace-white" style="font-size: 16px;font-weight: bold;">$12,992,134,199</text>
+							<text class="grace-white" style="font-size: 16px;">$12,992,134,199</text>
 						</view>
 					</view>
 					<view>
