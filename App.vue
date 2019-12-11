@@ -42,19 +42,42 @@ navigator{opacity:1; background:none;}
 /* #endif */
 
 .uni-body {
-	background: #f4f5f7;
+	/* background: #f4f5f7; */
 }
 /* #37434b */
 .bg-primary {
 	background: #37434b;
 }
 .mb-12 {
-	margin-bottom: 24upx;
+	margin-bottom: 24rpx;
 }
 .mb-6 {
-	margin-bottom: 12upx;
+	margin-bottom: 12rpx;
+}
+.tr {
+	text-align: right;
+}
+.tc {
+	text-align: center;
 }
 .flex-1 {
 	flex: 1;
 }
+
+@font-face {
+  font-family: 'gFont';  /* project id 1556480 */
+  src: url('//at.alicdn.com/t/font_1556480_st11wqt2pk.eot');
+  src: url('//at.alicdn.com/t/font_1556480_st11wqt2pk.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1556480_st11wqt2pk.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1556480_st11wqt2pk.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1556480_st11wqt2pk.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1556480_st11wqt2pk.svg#iconfont') format('svg');
+}
+.grace-icons {
+	font-size: 40rpx;
+}
+.look-app-icon{font-family:"gFont" !important; font-size:40rpx; font-style:normal;}
+.look-app-icon-qrcode:before{content:"\e6de";}
+/* &#xe61d; */
+.look-app-icon-update:before{content:"\e61d";}
 </style>
