@@ -35,22 +35,23 @@
 				</view>
 			</view>
 			
-			<view class="grace-flex-center mb-12">
-				<text class="grace-black6" style="font-weight: bold;font-size: 16px;">Coins</text>
+			<view class="grace-flex-center">
+				<view class="grace-gtbg-blue-sky" style="width: 10rpx;height: 50rpx;"></view>
+				<text class="grace-black6" style="padding: 4rpx 12rpx;font-weight: bold;font-size: 16px;">Coins</text>
 				<text class="flex-1"></text>
 			</view>
 			
-			<view class="mb-12" v-for="n in 10" :key="n" style="padding: 24upx 24upx;">
-				<view class="grace-space-between grace-flex-vtop">
-					<view>
-						<text class="grace-black6" style="font-weight: bold;font-size: 16px;">ATOM</text>
+			<view class="  grace-border mb-12" v-for="n in 10" :key="n" style="padding: 24upx 24upx;">
+				<view class="grace-space-between grace-flex-vcenter">
+					<view class="" style="width: 200rpx;">
+						<text class="grace-black6">ATOM</text>
 					</view>
 					<view class="tr">
 						<view>
 							<text class="grace-black6" style="font-size: 16px;">$12,992,134.00</text>
 						</view>
 						<view >
-							<text class="grace-black9">123324 ATOM</text>
+							<text class="grace-black9" style="font-size: 12px;">123324 ATOM</text>
 						</view>
 					</view>
 				</view>

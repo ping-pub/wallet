@@ -9,7 +9,7 @@
 		</view>
 
 		<view slot="gBody" class="grace-body">
-			<view style="padding: 12rpx 0;">
+			<view style="padding: 24upx 24upx;">
 				<view class="grace-space-between" style="align-items: center;">
 					<view class="">
 						<view class="">
