@@ -3,6 +3,9 @@ export default {
 		settingLanguage: {
 			title: 'Language'
 		},
+		settingCurrency: {
+			title: 'Currency'
+		},
 		index: {
 
 			manageWallet: 'Manage Wallet',
@@ -14,7 +17,7 @@ export default {
 			manageWallet: 'Manage Wallet',
 			addressBook: 'Address Book',
 			language: 'Language Change',
-			serverHost: 'Server Host',
+			serverHost: 'Sever Selection',
 		}
 	},
 	zh: {
@@ -32,6 +35,9 @@ export default {
 		},
 		settingLanguage: {
 			title: '语言切换'
+		},
+		settingCurrency: {
+			title: '货币单位'
 		},
 	}
 }

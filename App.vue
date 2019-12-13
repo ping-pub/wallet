@@ -52,9 +52,16 @@ navigator{opacity:1; background:none;}
 .mb-12 {
 	margin-bottom: 24rpx;
 }
+.mt-12 {
+	margin-top: 24rpx;
+}
 .mb-6 {
 	margin-bottom: 12rpx;
 }
+.mr-6 {
+	margin-right: 12rpx;
+}
+
 .tr {
 	text-align: right;
 }
@@ -65,20 +72,45 @@ navigator{opacity:1; background:none;}
 	flex: 1;
 }
 
+/*  #353a8a,#212452 */
+/* #273043, #32405F */
+/* #212452, #37434b */
+.look-gtbg-dark{background:linear-gradient(to right, #212452, #37434b) !important; color:#FFFFFF !important;}
+.look-title {
+	font-size: 22px;
+	font-weight: bold;
+}
+.look-title-sm {
+	font-size: 16px;
+	font-weight: bold;
+}
+.f-16 {
+	font-size: 16px;
+}
+
 @font-face {
   font-family: 'gFont';  /* project id 1556480 */
-  src: url('//at.alicdn.com/t/font_1556480_sx5ix2b8knq.eot');
-  src: url('//at.alicdn.com/t/font_1556480_sx5ix2b8knq.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1556480_sx5ix2b8knq.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1556480_sx5ix2b8knq.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1556480_sx5ix2b8knq.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1556480_sx5ix2b8knq.svg#gFont') format('svg');
+  src: url('//at.alicdn.com/t/font_1556480_zquhfotewvi.eot');
+  src: url('//at.alicdn.com/t/font_1556480_zquhfotewvi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1556480_zquhfotewvi.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1556480_zquhfotewvi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1556480_zquhfotewvi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1556480_zquhfotewvi.svg#gFont') format('svg');
 }
 
 .grace-icons {
 	font-size: 40rpx;
 }
 .look-app-icon{font-family:"gFont" !important; font-size:40rpx; font-style:normal;}
+/* &#xe605; */
+.look-app-icon-transfer:before{content:"\e605";}
+
+/* &#xe69b; */
+.look-app-icon-switch:before{content:"\e69b";}
+
+/* &#xe602; */
+.look-app-icon-manage:before{content:"\e602";}
+
 .look-app-icon-qrcode:before{content:"\e6de";}
 /* &#xe61d; */
 .look-app-icon-update:before{content:"\e61d";}

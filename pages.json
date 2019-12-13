@@ -2,7 +2,7 @@
 	"pages": [{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "Wallet | Look Wallet",
+				"navigationBarTitleText": "Assets | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom"
@@ -12,6 +12,42 @@
 			"path": "pages/setting/index",
 			"style": {
 				"navigationBarTitleText": "Setting | Look Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/settingCurrency/index",
+			"style": {
+				"navigationBarTitleText": "Currency | Look Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/walletQrcode/index",
+			"style": {
+				"navigationBarTitleText": "Receive | Look Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/walletTransfer/index",
+			"style": {
+				"navigationBarTitleText": "Transfer | Look Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/walletManage/index",
+			"style": {
+				"navigationBarTitleText": "Manage Wallet | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom"
@@ -76,15 +112,14 @@
 		"backgroundColor": "#FFFFFF",
 		"list": [{
 				"pagePath": "pages/index/index",
-				"iconPath": "static/tabbars/wallet0.png",
-				"selectedIconPath": "static/tabbars/wallet1.png",
-				"text": "Wallet"
-			},
-			{
+				"iconPath": "static/tabbars/asset0.png",
+				"selectedIconPath": "static/tabbars/asset1.png",
+				"text": "Assets"
+			},{
 				"pagePath": "pages/walletItem/index",
 				"iconPath": "static/tabbars/wallet0.png",
 				"selectedIconPath": "static/tabbars/wallet1.png",
-				"text": "Tokens"
+				"text": "Wallet"
 			},
 			{
 				"pagePath": "pages/setting/index",
