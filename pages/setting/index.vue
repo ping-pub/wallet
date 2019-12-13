@@ -2,11 +2,11 @@
 	<gracePage :customHeader="false">
 		<view class="status_bar"></view>
 		<view slot="gBody" class="grace-body">
-			<view  style="margin-top: 24rpx;margin-bottom: 24rpx;">
+			<view  style="margin-top: 48rpx;margin-bottom: 24rpx;">
 				<text class="look-title">Setting</text>
 			</view>
 			<view class="grace-ucenter-funs grace-list">
-				<view class="look-title-sm list-title grace-border-radius-small look-gtbg-dark">
+				<view style="font-weight: 500;" class=" list-title grace-border-radius-small look-gtbg-dark">
 					Block Chain
 				</view>
 				<navigator url="/pages/settingWallet/index" class="items">
@@ -26,7 +26,7 @@
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
-				<view class="look-title-sm list-title grace-border-radius-small look-gtbg-dark">
+				<view  style="font-weight: 500;" class="  list-title grace-border-radius-small look-gtbg-dark">
 					Contact
 				</view>
 				<navigator url="/pages/settingWallet/index" class="items">
@@ -44,7 +44,7 @@
 					<view class="arrow-right"></view>
 				</navigator>
 				
-				<view class="look-title-sm list-title grace-border-radius-small look-gtbg-dark">
+				<view  style="font-weight: 500;" class="  list-title grace-border-radius-small look-gtbg-dark">
 					Local Options
 				</view>
 				<navigator class="items" url="/pages/settingLanguage/index">
