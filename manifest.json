@@ -1,7 +1,7 @@
 {
-    "name" : "GraceUIForUniApp",
-    "appid" : "__UNI__78193DA",
-    "description" : "",
+    "name" : "Look",
+    "appid" : "__UNI__66C01DA",
+    "description" : "LOOK explorer Powered by ping.pub. A light explorer for Cosmos based blockchains.",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -53,7 +53,9 @@
                 ]
             },
             /* ios打包配置 */
-            "ios" : {},
+            "ios" : {
+                "idfa" : true
+            },
             /* SDK配置 */
             "sdkConfigs" : {}
         }

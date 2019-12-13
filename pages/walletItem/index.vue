@@ -1,6 +1,7 @@
 <template>
 	<gracePage :customHeader="false">
 		<view slot="gBody" class="grace-body">
+		<view class="status_bar"></view>
 			<view class="grace-flex-center" style="padding: 24rpx 0;">
 				<text class="look-title">Wallet</text>
 				<text style="flex: 1;text-align: center;font-size: 18px;"></text>

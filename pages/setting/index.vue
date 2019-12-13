@@ -1,5 +1,6 @@
 <template>
 	<gracePage :customHeader="false">
+		<view class="status_bar"></view>
 		<view slot="gBody" class="grace-body">
 			<view  style="margin-top: 24rpx;margin-bottom: 24rpx;">
 				<text class="look-title">Setting</text>

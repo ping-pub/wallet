@@ -1,5 +1,6 @@
 <template>
 	<gracePage headerBG="#fff">
+		<view class="status_bar"></view>
 		<view slot="gHeader" class="grace-flex-vcenter grace-space-between">
 			<text @tap="goBack" style="padding: 0 24upx;width: 200upx;" class="grace-black6 grace-icons icon-arrow-left"></text>
 			<text style="flex: 1;text-align: center;font-size: 18px;" class="grace-black">Transfer</text>

@@ -1,6 +1,7 @@
 <template>
 	<gracePage :customHeader="false">
 		<view slot="gBody">
+			<view class="status_bar"></view>
 			<view class="look-gtbg-dark">
 				<view class="grace-flex-center" style="padding: 24rpx;">
 					<text class="grace-white look-title">Look</text>
