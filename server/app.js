@@ -15,7 +15,7 @@ app.use('/api*', proxy({
   }
 }))
 
-nunjucks.configure('dist', {
+nunjucks.configure('h5', {
   autoescape: true,
   express: app
 });
@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
 
 app.use('/', router);
 
-app.use(express.static(path.join(__dirname, 'dist'), {
+app.use(express.static(path.join(__dirname, 'h5'), {
   maxAge: '1y',
   expires: '1y',
   Etag: false,
