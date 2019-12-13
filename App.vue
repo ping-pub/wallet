@@ -25,6 +25,9 @@ export default {
 .grace-icons{font-family:graceIconfont;}
 /* #endif */
 
+html,body {
+ font-family: -apple-system,sans-serif;
+}
 
 /*
 如下修改和补充能够保证不修改 GraceUI 框架的核心源码，当 GraceUI 升级时可以直接使用框架核心文件包覆盖旧文件

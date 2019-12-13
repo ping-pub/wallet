@@ -2,7 +2,7 @@
 	<gracePage :customHeader="false">
 		<view slot="gBody" class="grace-body">
 			<view class="grace-flex-center" style="padding: 24rpx 0;">
-				<text class="look-title">Wallet Detail</text>
+				<text class="look-title">Wallet</text>
 				<text style="flex: 1;text-align: center;font-size: 18px;"></text>
 				<view class="grace-flex-vcenter grace-flex" style="padding: 4rpx 0;font-weight: 500;">
 					<text style="margin-right: 12rpx;">Address1</text>
@@ -58,7 +58,7 @@
 					</view>
 					<view class="tr">
 						<view>
-							<text class="grace-black6" style="font-size: 18px;">≈ $12,992,134,992,134.32</text>
+							<text class="grace-black6" style="font-size: 18px;">≈ $2,134,992,134.32</text>
 						</view>
 					</view>
 				</view>

@@ -3,7 +3,7 @@
 		<view slot="gBody">
 			<view class="look-gtbg-dark">
 				<view class="grace-flex-center" style="padding: 24rpx;">
-					<text class="grace-white look-title">Look Wallet</text>
+					<text class="grace-white look-title">Look</text>
 					<text style="flex: 1;text-align: center;font-size: 18px;" class="grace-white"></text>
 					<view class="grace-white grace-flex-vcenter grace-flex" style="padding: 4rpx 0;font-weight: 500;">
 						<text style="margin-right: 12rpx;">CosmosHub-3</text>
