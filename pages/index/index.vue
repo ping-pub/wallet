@@ -50,34 +50,25 @@
 				</view>
 			</view>
 
-			<SwitchWallet ref="SwitchWallet" />
+			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet"/>
 		</view>
 	</gracePage>
 </template>
 
 <script>
-import gracePage from '../../graceUI/components/gracePage.vue';
-import gracePopupMenu from '../../graceUI/components/gracePopupMenu.vue';
-import graceNavBar from '../../graceUI/components/graceNavBar.vue';
-const systemInfo = require('../../graceUI/jsTools/systemInfo.js');
 
 export default {
 	data() {
 		return {
-			show1: false,
-			tabHeight: 300,
-			currentIndex: 0,
-			tabs: ['All', 'Cosmos', 'Kava', 'Iris', 'Cell']
+			showSwitchWallet: false
 		};
 	},
-	onLoad: function() {
-		//获取屏幕高度及比例
-		const system = systemInfo.info();
-		this.tabHeight = system.windowHeight - system.iPhoneXBottomHeightPx - uni.upx2px(110);
-	},
 	methods: {
+		closeSwitchWallet() {
+			this.showSwitchWallet = false;
+		},
 		switchWallet() {
-			this.$refs.SwitchWallet.show();
+			this.showSwitchWallet = true
 		},
 		go(path) {
 			uni.navigateTo({
@@ -89,21 +80,6 @@ export default {
 				url: path
 			});
 		},
-		showDrawer1: function() {
-			this.show1 = !this.show1;
-		},
-		navChange: function(e) {
-			this.currentIndex = e;
-		},
-		swiperChange: function(e) {
-			var index = e.detail.current;
-			this.currentIndex = index;
-		}
-	},
-	components: {
-		gracePage,
-		graceNavBar,
-		gracePopupMenu
 	}
 };
 </script>

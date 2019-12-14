@@ -5,7 +5,7 @@
 			<view class="grace-flex-center" style="padding: 24rpx 0;padding-top: 48rpx;">
 				<text class="look-title">Stake</text>
 				<text style="flex: 1;text-align: center;font-size: 18px;"></text>
-				<view @tap="showDrawer1" class="grace-flex-vcenter grace-flex" style="padding: 4rpx 0;font-weight: 500;">
+				<view @tap="switchWallet" class="grace-flex-vcenter grace-flex" style="padding: 4rpx 0;font-weight: 500;">
 					<text style="margin-right: 12rpx;">Address1</text>
 					<text class="look-app-icon look-app-icon-switch"></text>
 				</view>
@@ -48,7 +48,8 @@
 			</view>
 	
 
-			<SwitchWallet ref="SwitchWallet" />
+	
+	<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet"/>
 		</view>
 	</gracePage>
 </template>
@@ -64,15 +65,18 @@ export default {
 		return {
 			show1: false,
 			currentIndex: 0,
-			tabs: ['All', 'Cosmos', 'Kava', 'Iris', 'Cell']
+			tabs: ['All', 'Cosmos', 'Kava', 'Iris', 'Cell'],
+			
+				showSwitchWallet: false
 		};
 	},
-	onShow() {
-		this.$nextTick(() => {
-			this.$refs.SwitchWallet.close();
-		});
-	},
 	methods: {
+		closeSwitchWallet() {
+			this.showSwitchWallet = false;
+		},
+		switchWallet() {
+			this.showSwitchWallet = true
+		},
 		go(path) {
 			uni.navigateTo({
 				url: path

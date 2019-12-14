@@ -94,11 +94,6 @@ export default {
 			tabs: ['All', 'Cosmos', 'Kava', 'Iris', 'Cell']
 		};
 	},
-	onShow() {
-		this.$nextTick(() => {
-			this.$refs.SwitchWallet.close();
-		})
-	},
 	methods: {
 		goSwitch(path) {
 			uni.switchTab({
