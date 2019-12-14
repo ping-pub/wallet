@@ -86,7 +86,7 @@
         "router" : {
             "mode" : "hash"
         },
-        "title" : "LOOK explorer Powered by ping.pub.A light explorer for Cosmos based blockchains.",
+        "title" : "LOOK Wallet",
         "template" : "h5.html"
     }
 }
