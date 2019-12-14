@@ -7,11 +7,13 @@ export default {
 			title: 'Currency'
 		},
 		index: {
-
 			manageWallet: 'Manage Wallet',
 			addressBook: 'Address Book',
 			language: 'Language Change',
 			serverHost: 'Server Host',
+		},
+		vote: {
+			title: 'Goverance'
 		},
 		setting: {
 			manageWallet: 'Manage Wallet',
@@ -26,6 +28,9 @@ export default {
 			addressBook: '地址簿',
 			language: '语言切换',
 			serverHost: '服务地址',
+		},
+		vote: {
+			title: '提案'
 		},
 		setting: {
 			manageWallet: '钱包管理',

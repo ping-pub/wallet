@@ -20,7 +20,16 @@
 		{
 			"path": "pages/delegate/index",
 			"style": {
-				"navigationBarTitleText": "Setting | Look Wallet",
+				"navigationBarTitleText": "Delegate | Look Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/vote/index",
+			"style": {
+				"navigationBarTitleText": "Goverance | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom"
@@ -129,6 +138,11 @@
 				"iconPath": "static/tabbars/wallet0.png",
 				"selectedIconPath": "static/tabbars/wallet1.png",
 				"text": "Wallet"
+			},{
+				"pagePath": "pages/delegate/index",
+				"iconPath": "static/tabbars/history0.png",
+				"selectedIconPath": "static/tabbars/history1.png",
+				"text": "Stake"
 			},
 			{
 				"pagePath": "pages/setting/index",

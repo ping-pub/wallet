@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-import './components'
+import './components/index.js'
 import VueI18n from 'vue-i18n'
 import i18nConfig from './i18n.js'
 
