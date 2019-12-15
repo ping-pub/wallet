@@ -24,7 +24,7 @@
 				</view>
 			</view>
 			<view class="grace-flex tc" style="padding-top: 24rpx;">
-				<view class="flex-1 grace-black6">
+				<view class="flex-1 grace-black6" @click="scan">
 					<view class="mb-6">
 						<text class="grace-icons icon-scan grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text>
 					</view>
@@ -86,6 +86,9 @@ import SwitchWalletMixin from '../../components/SwitchWalletMixin.js'
 export default {
 	mixins: [SwitchWalletMixin],
 	methods: {
+		scan() {
+			uni.scanCode()
+		},
 		goSwitch(path) {
 			uni.switchTab({
 				url: path
