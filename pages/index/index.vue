@@ -50,26 +50,17 @@
 				</view>
 			</view>
 
-			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet"/>
+			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 		</view>
 	</gracePage>
 </template>
 
 <script>
+import SwitchWalletMixin from '../../components/SwitchWalletMixin.js'
 
 export default {
-	data() {
-		return {
-			showSwitchWallet: false
-		};
-	},
+	mixins: [SwitchWalletMixin],
 	methods: {
-		closeSwitchWallet() {
-			this.showSwitchWallet = false;
-		},
-		switchWallet() {
-			this.showSwitchWallet = true
-		},
 		go(path) {
 			uni.navigateTo({
 				url: path

@@ -10,31 +10,22 @@
 					<text class="look-app-icon look-app-icon-switch"></text>
 				</view>
 			</view>
-			
+
 			<view class="grace-flex tc">
 				<view class="flex-1 grace-black6" style="padding: 24rpx;">
-					<view class="mb-6">
-						<text class="grace-icons icon-scan grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text>
-					</view>
+					<view class="mb-6"><text class="grace-icons icon-scan grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text></view>
 					<view class="grace-grids-text">Delegations</view>
 				</view>
 				<view class="flex-1 grace-black6" style="padding: 24rpx;" @tap="go('/pages/walletQrcode/index')">
-
-					<view class="mb-6">
-						<text class="grace-icons icon-scan grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text>
-					</view>
+					<view class="mb-6"><text class="grace-icons icon-scan grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text></view>
 					<view class="grace-grids-text">Validators</view>
 				</view>
 				<view class="flex-1 grace-black6" style="padding: 24rpx;" @tap="go('/pages/walletTransfer/index')">
-					<view class="mb-6">
-						<text class="grace-icons icon-scan grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text>
-					</view>
+					<view class="mb-6"><text class="grace-icons icon-scan grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text></view>
 					<view class="grace-grids-text">Inactive</view>
 				</view>
 				<view class="flex-1 grace-black6" style="padding: 24rpx;" @tap="go('/pages/walletTransfer/index')">
-					<view class="mb-6">
-						<text class="grace-icons icon-scan grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text>
-					</view>
+					<view class="mb-6"><text class="grace-icons icon-scan grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text></view>
 					<view class="grace-grids-text">Jailed</view>
 				</view>
 			</view>
@@ -46,37 +37,18 @@
 					<view class="grace-black9">CosmosHub-3 · 0.32.7</view>
 				</view>
 			</view>
-	
 
-	
-	<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet"/>
+			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 		</view>
 	</gracePage>
 </template>
 
 <script>
-import gracePage from '../../graceUI/components/gracePage.vue';
-import gracePopupMenu from '../../graceUI/components/gracePopupMenu.vue';
-import graceNavBar from '../../graceUI/components/graceNavBar.vue';
-const systemInfo = require('../../graceUI/jsTools/systemInfo.js');
+import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
 
 export default {
-	data() {
-		return {
-			show1: false,
-			currentIndex: 0,
-			tabs: ['All', 'Cosmos', 'Kava', 'Iris', 'Cell'],
-			
-				showSwitchWallet: false
-		};
-	},
+	mixins: [SwitchWalletMixin],
 	methods: {
-		closeSwitchWallet() {
-			this.showSwitchWallet = false;
-		},
-		switchWallet() {
-			this.showSwitchWallet = true
-		},
 		go(path) {
 			uni.navigateTo({
 				url: path
@@ -84,22 +56,7 @@ export default {
 		},
 		goBack() {
 			uni.navigateBack();
-		},
-		showDrawer1: function() {
-			this.$refs.SwitchWallet.show();
-		},
-		navChange: function(e) {
-			this.currentIndex = e;
-		},
-		swiperChange: function(e) {
-			var index = e.detail.current;
-			this.currentIndex = index;
 		}
-	},
-	components: {
-		gracePage,
-		graceNavBar,
-		gracePopupMenu
 	}
 };
 </script>

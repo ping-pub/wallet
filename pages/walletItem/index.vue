@@ -5,7 +5,7 @@
 			<view class="grace-flex-center" style="padding: 24rpx 0;padding-top: 48rpx;">
 				<text class="look-title">Wallet</text>
 				<text style="flex: 1;text-align: center;font-size: 18px;"></text>
-				<view @tap="showDrawer1" class="grace-flex-vcenter grace-flex" style="padding: 4rpx 0;font-weight: 500;">
+				<view @tap="switchWallet" class="grace-flex-vcenter grace-flex" style="padding: 4rpx 0;font-weight: 500;">
 					<text style="margin-right: 12rpx;">Address1</text>
 					<text class="look-app-icon look-app-icon-switch"></text>
 				</view>
@@ -75,25 +75,16 @@
 					<text @tap="go('/pages/vote/index')" class="flex-1" style="padding: 12rpx 0;">Vote</text>
 				</view>
 			</view>
-			<SwitchWallet ref="SwitchWallet" />
+			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 		</view>
 	</gracePage>
 </template>
 
 <script>
-import gracePage from '../../graceUI/components/gracePage.vue';
-import gracePopupMenu from '../../graceUI/components/gracePopupMenu.vue';
-import graceNavBar from '../../graceUI/components/graceNavBar.vue';
-const systemInfo = require('../../graceUI/jsTools/systemInfo.js');
+import SwitchWalletMixin from '../../components/SwitchWalletMixin.js'
 
 export default {
-	data() {
-		return {
-			show1: false,
-			currentIndex: 0,
-			tabs: ['All', 'Cosmos', 'Kava', 'Iris', 'Cell']
-		};
-	},
+	mixins: [SwitchWalletMixin],
 	methods: {
 		goSwitch(path) {
 			uni.switchTab({
@@ -108,21 +99,6 @@ export default {
 		goBack() {
 			uni.navigateBack();
 		},
-		showDrawer1: function() {
-			this.$refs.SwitchWallet.show();
-		},
-		navChange: function(e) {
-			this.currentIndex = e;
-		},
-		swiperChange: function(e) {
-			var index = e.detail.current;
-			this.currentIndex = index;
-		}
 	},
-	components: {
-		gracePage,
-		graceNavBar,
-		gracePopupMenu
-	}
 };
 </script>
