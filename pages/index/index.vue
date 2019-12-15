@@ -4,7 +4,7 @@
 			<view class="look-gtbg-dark">
 				<view class="status_bar"></view>
 				<view class="grace-flex-center" style="padding: 24rpx;padding-top: 48rpx;">
-					<text class="grace-white look-title">Look</text>
+					<text class="grace-white look-title">Ping</text>
 					<text style="flex: 1;text-align: center;font-size: 18px;" class="grace-white"></text>
 					<view @tap="switchWallet" class="grace-white grace-flex-vcenter grace-flex" style="padding: 4rpx 0;font-weight: 500;">
 						<text style="margin-right: 12rpx;">CosmosHub-3</text>
