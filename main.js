@@ -4,13 +4,13 @@ import VueI18n from 'vue-i18n'
 import i18nConfig from './i18n.js'
 import gracePage from "./graceUI/components/gracePage.vue";
 import SwitchWallet from './components/SwitchWallet.vue'
+import PageTitle from './components/PageTitle.vue'
 
 Vue.use(VueI18n)
 
 Vue.component('gracePage', gracePage)
 Vue.component('SwitchWallet', SwitchWallet)
-
-
+Vue.component('PageTitle', PageTitle)
 
 Vue.config.productuinTip = false
 

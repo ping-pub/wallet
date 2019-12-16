@@ -1,69 +1,69 @@
 <template>
 	<gracePage :customHeader="false">
-		<view class="status_bar"></view>
-		<view slot="gBody" class="grace-body">
-			<view  style="margin-top: 48rpx;margin-bottom: 24rpx;">
+		<view slot="gBody">
+			<view class="status_bar"></view>
+			<view class="grace-body" style="margin-top: 32rpx;margin-bottom: 24rpx;">
 				<text class="look-title">Setting</text>
 			</view>
 			<view class="grace-ucenter-funs grace-list">
-				<view style="font-weight: 500;" class=" list-title grace-border-radius-small look-gtbg-dark">
-					Block Chain
-				</view>
-				<navigator url="/pages/settingWallet/index" class="items">
+				<navigator url="/pages/settingWallet/index" class="grace-body items">
 					<view class="look-app-icon look-app-icon-wallet grace-black9 " style="font-size: 18px;"></view>
 					<view class="body">
 						<view class="title">Switch Chain</view>
 					</view>
 					<view class="grace-black9">
-					  Cosmos	
+						Cosmos
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
-				<navigator class="items" url="/pages/settingServer/index">
+				<navigator class="grace-body items" url="/pages/settingServer/index">
 					<view class="look-app-icon look-app-icon-ip grace-black9" style="font-size: 20px;padding-left:8rpx;"></view>
 					<view class="body">
 						<view class="title">{{ lang.serverHost }}</view>
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
-				<view  style="font-weight: 500;" class="  list-title grace-border-radius-small look-gtbg-dark">
-					Contact
-				</view>
-				<navigator url="/pages/settingWallet/index" class="items">
+			</view>
+			
+			<view style="background: #f6f6f6;height: 24rpx;"></view>
+			
+			<view class="grace-ucenter-funs grace-list">
+				<navigator url="/pages/settingWallet/index" class="grace-body items">
 					<view class="look-app-icon look-app-icon-wallet grace-black9 " style="font-size: 18px;"></view>
 					<view class="body">
 						<view class="title">{{ lang.manageWallet }}</view>
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
-				<navigator url="/pages/settingAddress/index" class="items">
+				<navigator url="/pages/settingAddress/index" class="grace-body items">
 					<view class="look-app-icon look-app-icon-book grace-black9" style="font-size: 24px;padding-left: 2rpx;"></view>
 					<view class="body">
 						<view class="title">{{ lang.addressBook }}</view>
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
-				
-				<view  style="font-weight: 500;" class="  list-title grace-border-radius-small look-gtbg-dark">
-					Local Options
-				</view>
-				<navigator class="items" url="/pages/settingLanguage/index">
+			</view>
+			<view style="background: #f6f6f6;height: 24rpx;"></view>
+			
+			<view class="grace-ucenter-funs grace-list">
+	
+				<navigator class="grace-body items" url="/pages/settingLanguage/index">
 					<view class="look-app-icon look-app-icon-language grace-black9 " style="font-size: 26px;padding-left: 2rpx;"></view>
 					<view class="body">
 						<view class="title">{{ lang.language }}</view>
 					</view>
 					<view class="grace-black9">
-					  English	
+						English
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
-				<navigator class="items" url="/pages/settingCurrency/index">
+				<navigator class="grace-body items" url="/pages/settingCurrency/index">
 					<view class="look-app-icon look-app-icon-language grace-black9 " style="font-size: 26px;padding-left: 2rpx;"></view>
 					<view class="body">
 						<view class="title">Currency</view>
 					</view>
 					<view class="grace-black9">
-					  USD	
+						USD
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>

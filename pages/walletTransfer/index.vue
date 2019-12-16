@@ -1,11 +1,8 @@
 <template>
-	<gracePage headerBG="#fff">
-		<view class="status_bar"></view>
-		<view slot="gHeader" class="grace-flex-vcenter grace-space-between">
-			<text @tap="goBack" style="padding: 0 24upx;width: 200upx;" class="grace-black6 grace-icons icon-arrow-left"></text>
-			<text style="flex: 1;text-align: center;font-size: 18px;" class="grace-black">Transfer</text>
-			<text @tap="go('/pages/walletTransfer/index')" style="padding: 0 24upx;width: 200upx;text-align: right;"></text>
-		</view>
+	<gracePage  headerBG="#fff">
+		<PageTitle slot="gHeader" title="Transfer">
+			<text style="padding: 12rpx 24rpx;" class="grace-black6 look-app-icon look-app-icon-save"></text>
+		</PageTitle>
 
 		<view slot="gBody" class="grace-body">
 			<form class="grace-form">

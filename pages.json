@@ -5,7 +5,7 @@
 				"navigationBarTitleText": "Assets | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom","scrollIndicator": "none"
 			}
 		},
 		{
@@ -14,7 +14,7 @@
 				"navigationBarTitleText": "Setting | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom","scrollIndicator": "none"
 			}
 		},
 		{
@@ -23,7 +23,7 @@
 				"navigationBarTitleText": "Delegate | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom","scrollIndicator": "none"
 			}
 		},
 		{
@@ -32,7 +32,7 @@
 				"navigationBarTitleText": "Goverance | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom","scrollIndicator": "none"
 			}
 		},
 		{
@@ -41,7 +41,7 @@
 				"navigationBarTitleText": "Currency | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom","scrollIndicator": "none"
 			}
 		},
 		{
@@ -50,7 +50,8 @@
 				"navigationBarTitleText": "Receive | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
 			}
 		},
 		{
@@ -59,7 +60,8 @@
 				"navigationBarTitleText": "Transfer | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
 			}
 		},
 		{
@@ -68,7 +70,8 @@
 				"navigationBarTitleText": "Manage Wallet | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
 			}
 		},
 		{
@@ -77,7 +80,8 @@
 				"navigationBarTitleText": "Address Book | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
 			}
 		},
 		{
@@ -86,7 +90,8 @@
 				"navigationBarTitleText": "Language | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
 			}
 		},
 		{
@@ -95,7 +100,8 @@
 				"navigationBarTitleText": "Server Host | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
 			}
 		},
 		{
@@ -104,7 +110,8 @@
 				"navigationBarTitleText": "Manage Wallet | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
 			}
 		},
 		{
@@ -113,7 +120,8 @@
 				"navigationBarTitleText": "Wallet Detail | Look Wallet",
 				"bounce": "none",
 				"titleNView": false,
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
 			}
 		}
 	],
@@ -130,24 +138,26 @@
 		"backgroundColor": "#FFFFFF",
 		"list": [{
 				"pagePath": "pages/index/index",
-				"iconPath": "static/tabbars/asset0.png",
-				"selectedIconPath": "static/tabbars/asset1.png",
-				"text": "Assets"
-			},{
-				"pagePath": "pages/walletItem/index",
-				"iconPath": "static/tabbars/wallet0.png",
-				"selectedIconPath": "static/tabbars/wallet1.png",
-				"text": "Wallet"
-			},{
+				"iconPath": "static/tabbars/color_wallet0.png",
+				"selectedIconPath": "static/tabbars/color_wallet1.png",
+				"text": "Portfolio"
+			},
+			{
 				"pagePath": "pages/delegate/index",
-				"iconPath": "static/tabbars/history0.png",
-				"selectedIconPath": "static/tabbars/history1.png",
-				"text": "Stake"
+				"iconPath": "static/tabbars/color_staking0.png",
+				"selectedIconPath": "static/tabbars/color_staking1.png",
+				"text": "Staking"
+			},
+			{
+				"pagePath": "pages/vote/index",
+				"iconPath": "static/tabbars/color_goverance0.png",
+				"selectedIconPath": "static/tabbars/color_goverance1.png",
+				"text": "Goverance"
 			},
 			{
 				"pagePath": "pages/setting/index",
-				"iconPath": "static/tabbars/setting0.png",
-				"selectedIconPath": "static/tabbars/setting1.png",
+				"iconPath": "static/tabbars/color_user0.png",
+				"selectedIconPath": "static/tabbars/color_user1.png",
 				"text": "Setting"
 			}
 		]

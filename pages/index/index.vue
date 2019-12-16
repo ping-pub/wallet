@@ -3,7 +3,7 @@
 		<view slot="gBody">
 			<view class="look-gtbg-dark">
 				<view class="status_bar"></view>
-				<view class="grace-flex-center" style="padding: 24rpx;padding-top: 48rpx;">
+				<view class="grace-flex-center" style="padding: 24rpx;padding-top: 32rpx;">
 					<text class="grace-white look-title">Ping</text>
 					<text style="flex: 1;text-align: center;font-size: 18px;" class="grace-white"></text>
 					<view @tap="switchWallet" class="grace-white grace-flex-vcenter grace-flex" style="padding: 4rpx 0;font-weight: 500;">
@@ -13,7 +13,7 @@
 				</view>
 				<view class="grace-space-between" style="align-items: center;padding: 60rpx 24rpx 48rpx 24rpx">
 					<view class="">
-						<view class=""><text class="grace-gray">Assets ≈</text></view>
+						<view class=""><text class="grace-gray">Assets</text></view>
 						<view class=""><text class="grace-white" style="font-size: 24px;font-weight: bold;">$12,992,134,199</text></view>
 					</view>
 					<view class=""><image style="width: 140upx;height: 140upx;" src="../../static/wallet/asset1.png" mode=""></image></view>
@@ -28,24 +28,21 @@
 			</view>
 
 			<view class="grace-body">
-				<view v-for="n in 10" :key="n" class="grace-box-shadow mb-12 grace-border grace-border-radius-small" style="padding: 24upx 24upx;margin-top: 24upx;">
+				<view  @tap="go('/pages/walletItem/index')" v-for="n in 10" :key="n" class="grace-box-shadow mb-12 grace-border grace-border-radius-small" style="padding: 24upx 24upx;margin-top: 24upx;">
 					<view class="mb-6">
 						<view class="grace-space-between mb-6">
-							<text @tap="goSwitch('/pages/walletItem/index')" class="flex-1 grace-flex-vcenter">
+							<text class="flex-1 grace-flex-vcenter">
 								<text class="f-16">Address{{ n }}</text>
-								<text class="grace-icons icon-arrow-right grace-black9 f-16" style="font-size: 16px;"></text>
 							</text>
-							<text class="look-app-icon look-app-icon-qrcode grace-black9" @tap="go('/pages/walletQrcode/index')"></text>
+							<text class="grace-icons icon-arrow-right grace-black9 f-16" style="font-size: 16px;"></text>
 						</view>
-						<view class=""><text class="grace-black9">Address</text></view>
 						<view class="grace-black6"><view class="grace-ellipsis">cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw</view></view>
 					</view>
-					<view class="grace-space-between grace-flex-vbottom">
+					<view class="grace-space-between grace-flex-vcenter">
 						<view>
-							<view class=""><text class="grace-black9">Total</text></view>
-							<view class=""><text class="grace-black6" style="font-size: 16px;font-weight: 500;">≈ $12,992,134,199</text></view>
+							<view class=""><text class="grace-black6" style="font-size: 16px;font-weight: 500;">$12,992,134,199</text></view>
 						</view>
-						<view><image style="width: 60rpx;height: 60rpx;" src="../../static/wallet/asset3.png" mode=""></image></view>
+						<view><image style="width: 60rpx;height: 60rpx;" :src="n === 1 ? '../../static/wallet/cosmoshub.svg' : n === 2 ? '../../static/wallet/irishub.svg' : '../../static/wallet/kava.svg'" mode=""></image></view>
 					</view>
 				</view>
 			</view>
