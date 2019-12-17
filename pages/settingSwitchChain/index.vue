@@ -1,6 +1,6 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" title="Server">
+		<PageTitle slot="gHeader" title="Switch Chain">
 			<text style="padding: 12rpx 24rpx;" class="grace-black6 look-app-icon look-app-icon-save"></text>
 		</PageTitle>
 		<view slot="gBody" class="grace-body">

@@ -7,28 +7,21 @@
 			</view>
 		</PageTitle>
 		<view slot="gBody" class="grace-body">
-			<view class="look-gtbg-dark grace-box-shadow grace-border mt-12 mb-12  grace-border-radius-small" style="padding: 24upx 24upx;">
+			<view class="look-gtbg-dark grace-box-shadow grace-border mb-12  grace-border-radius-small" style="padding: 24upx 24upx;">
 				<view class="mb-12">
 					<view class="grace-white">
 						<view class="grace-ellipsis">cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw</view>
 					</view>
 				</view>
-				<view class="grace-space-between">
+				<view class="grace-space-between grace-flex-vcenter">
+					<text class="grace-white" style="font-size: 22px;font-weight: bold;">$12,992,134,199</text>
 					<view>
-						<view class=""><text class="grace-white" style="font-size: 20px;font-weight: bold;">$12,992,134,199</text></view>
-					</view>
-					<view>
-						<image style="width: 100rpx;height: 100rpx;" src="../../static/wallet/asset2.png" mode=""></image>
+						<image style="width: 80rpx;height: 80rpx;" src="../../static/wallet/cosmoshub.svg" mode=""></image>
 					</view>
 				</view>
 			</view>
 			<view class="grace-flex tc" style="padding-top: 24rpx;">
-				<view class="flex-1 grace-black6" @click="scan">
-					<view class="mb-6">
-						<text class="grace-icons icon-scan grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text>
-					</view>
-					<view class="grace-grids-text">Scan</view>
-				</view>
+				
 				<view class="flex-1 grace-black6" @tap="go('/pages/walletQrcode/index')">
 
 					<view class="mb-6">
@@ -40,7 +33,13 @@
 					<view class="mb-6">
 						<text class="look-app-icon look-app-icon-transfer grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text>
 					</view>
-					<view class="grace-grids-text">Transfer</view>
+					<view class="grace-grids-text">Send</view>
+				</view>
+				<view class="flex-1 grace-black6" @click="scan">
+					<view class="mb-6">
+						<text class="grace-icons icon-set grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text>
+					</view>
+					<view class="grace-grids-text">Rename</view>
 				</view>
 			</view>
 

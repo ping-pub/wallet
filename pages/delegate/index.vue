@@ -45,16 +45,27 @@
 			</view>
 			
 			<view class="grace-flex-center tc look-gtbg-dark grace-border-radius-small grace-box-shadow  mb-12">
-				<text class="flex-1" style="padding: 12rpx 0;">Delegations</text>
+				<text class="flex-1" style="padding: 12rpx 0;font-weight: bold;">Delegations</text>
 				<view class="" style="width: 2rpx;background: #fff;"></view>
-				<text @click="" class="flex-1" style="padding: 12rpx 0;">Validators</text>
+				<text @click="" class="flex-1 grace-gray" style="padding: 12rpx 0;">Validators</text>
 			</view>
 			
-			<view class="grace-flex grace-flex-vcenter">
-				<view class="mr-12"><image style="width: 60rpx;height: 60rpx;" src="/static/delegate/validator.png" mode=""></image></view>
-				<view class="">
-					<view class="look-title-sm">{{ tab }}</view>
-					<view class="grace-black9">CosmosHub-3 · 0.32.7</view>
+			<view class="grace-flex grace-flex-vcenter mb-12">
+<!-- 				<view class="mr-12"><image style="width: 60rpx;height: 60rpx;" src="/static/delegate/validator.png" mode=""></image></view>
+ -->				<view class="">
+					<view class="grace-black6">已委托总数  500</view>
+					<view class="grace-black6">待领取奖励  500</view>
+				</view>
+			</view>
+			
+			<view class="mb-12" style="padding-bottom: 24rpx;" v-for="n in 3" :key="n">
+				<view class="grace-flex grace-flex-vbottom">
+					<text class="flex-1">Huobi Wallet</text>
+					<text class="f-16">5998989989898</text>
+				</view> 
+				<view class="grace-flex">
+					<text class="flex-1">Rewards  25%</text>
+					<text class="f-16">0.0012</text>
 				</view>
 			</view>
 
