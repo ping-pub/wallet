@@ -25,7 +25,7 @@
 					Kava
 				</view>
 			</view>
-			<view v-for="n in 6" :key="n" class="grace-comments-replay mb-12 grace-flex grace-flex-vcenter" style="display:flex;border-radius: 0;">
+			<view  class="grace-comments-replay mb-12 grace-flex grace-flex-vcenter" style="display:flex;border-radius: 0;">
 				<view class="flex-1">
 					<view class=""> Address </view>
 					<view class="grace-ellipsis">cosmos1zu83m37u7...sq4q453ktq2l6lqjtzw</view>

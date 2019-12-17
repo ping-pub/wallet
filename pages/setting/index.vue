@@ -7,7 +7,7 @@
 			</view>
 			<view class="grace-ucenter-funs grace-list">
 				<navigator url="/pages/settingSwitchChain/index" class="grace-body items">
-					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color: #00d3a3;"></view>
+					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color: #586d8b;"></view>
 					<view class="body">
 						<view class="title">Switch Chain</view>
 					</view>
@@ -17,38 +17,37 @@
 					<view class="arrow-right"></view>
 				</navigator>
 				<navigator class="grace-body items" url="/pages/settingServer/index">
-					<view class="look-app-icon look-app-icon-ip " style="font-size: 20px;padding-left:8rpx;color: #2886ef"></view>
+					<view class="look-app-icon look-app-icon-ip " style="font-size: 20px;padding-left:8rpx;color: #586d8b"></view>
 					<view class="body">
 						<view class="title">{{ lang.serverHost }}</view>
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
 			</view>
-			
-			<view style="background: #f6f6f6;height: 24rpx;"></view>
+			<view class="page-space"></view>
 			
 			<view class="grace-ucenter-funs grace-list">
 				<navigator url="/pages/settingWallet/index" class="grace-body items">
-					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color:#ff2437"></view>
+					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color:#586d8b"></view>
 					<view class="body">
 						<view class="title">{{ lang.manageWallet }}</view>
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
 				<navigator url="/pages/settingAddress/index" class="grace-body items">
-					<view class="look-app-icon look-app-icon-book " style="font-size: 24px;padding-left: 2rpx;color: #ffb748"></view>
+					<view class="look-app-icon look-app-icon-book " style="font-size: 24px;padding-left: 2rpx;color: #586d8b"></view>
 					<view class="body">
 						<view class="title">{{ lang.addressBook }}</view>
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
 			</view>
-			<view style="background: #f6f6f6;height: 24rpx;"></view>
+			<view class="page-space"></view>
 			
 			<view class="grace-ucenter-funs grace-list">
 	
 				<navigator class="grace-body items" url="/pages/settingLanguage/index">
-					<view class="look-app-icon look-app-icon-language" style="font-size: 26px;padding-left: 2rpx;color: #b8cbd8"></view>
+					<view class="look-app-icon look-app-icon-language" style="font-size: 26px;padding-left: 2rpx;color: #586d8b"></view>
 					<view class="body">
 						<view class="title">{{ lang.language }}</view>
 					</view>
@@ -58,7 +57,7 @@
 					<view class="arrow-right"></view>
 				</navigator>
 				<navigator class="grace-body items" url="/pages/settingCurrency/index">
-					<view class="look-app-icon look-app-icon-language" style="font-size: 26px;padding-left: 2rpx;color: #00e4ea"></view>
+					<view class="look-app-icon look-app-icon-language" style="font-size: 26px;padding-left: 2rpx;color: #586d8b"></view>
 					<view class="body">
 						<view class="title">Currency</view>
 					</view>

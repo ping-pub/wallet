@@ -6,24 +6,27 @@
 				<text class="look-app-icon look-app-icon-switch"></text>
 			</view>
 		</PageTitle>
-		<view slot="gBody" class="grace-body">
-			<view class="look-gtbg-dark grace-box-shadow grace-border mb-12  grace-border-radius-small" style="padding: 24upx 24upx;">
-				<view class="mb-12">
-					<view class="grace-white">
-						<view class="grace-ellipsis">cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw</view>
+		<view slot="gBody">
+			<view class="grace-body">
+				<view class="look-gtbg-dark grace-box-shadow grace-border mb-12 mt-12  grace-border-radius-small" style="padding: 24upx 24upx;">
+					<view class="mb-12">
+						<view class="grace-white">
+							<view class="grace-ellipsis">cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw</view>
+						</view>
 					</view>
-				</view>
-				<view class="grace-space-between grace-flex-vcenter">
-					<text class="grace-white" style="font-size: 22px;font-weight: bold;">$12,992,134,199</text>
-					<view>
-						<image style="width: 80rpx;height: 80rpx;" src="../../static/wallet/cosmoshub.svg" mode=""></image>
+					<view class="grace-space-between grace-flex-vcenter">
+						<text class="grace-white" style="font-size: 22px;font-weight: bold;">$12,992,134,199</text>
+						<view>
+							<image style="width: 80rpx;height: 80rpx;" src="../../static/wallet/cosmoshub.svg" mode=""></image>
+						</view>
 					</view>
 				</view>
 			</view>
-			<view class="grace-flex tc" style="padding-top: 24rpx;">
-				
+			
+			<view class="grace-flex tc" style="padding: 32rpx 0 24rpx 0;">
+			
 				<view class="flex-1 grace-black6" @tap="go('/pages/walletQrcode/index')">
-
+			
 					<view class="mb-6">
 						<text class="look-app-icon look-app-icon-qrcode grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text>
 					</view>
@@ -42,30 +45,32 @@
 					<view class="grace-grids-text">Rename</view>
 				</view>
 			</view>
+			
+			<view class="page-space"></view>
 
-			<view class="mb-12" style="padding: 24upx 0;">
+			<view class="mb-12" style="padding: 24rpx;">
 				<view class="grace-space-between grace-flex-vcenter">
-					<view><text class="look-title" style="color: #212452;">ATOM</text></view>
+					<view ><text class="look-title" style="color: #212452;">ATOM</text></view>
 					<view class="tr">
-						<view><text class="grace-black" style="font-size: 16px;">$2,134,992,134.32</text></view>
+						<text class="grace-black f-18">$2,134,992,134.32</text>
 					</view>
 				</view>
-				<view class="tr grace-border-b mb-6" style="padding-bottom: 12rpx;"><text class="grace-black6 ">123324 ATOM</text></view>
-				<view class="grace-black6 grace-space-between">
+				<view class="tr grace-border-b mb-6" style="padding-bottom: 12rpx;"><text class="grace-black6 f-16">123324 ATOM</text></view>
+				<view class="grace-black6 grace-space-between mb-6">
 					<text>Avaliable</text>
 					<text>9,012,390,123,901,234.91</text>
 				</view>
-				<view class="grace-black6 grace-space-between">
+				<view class="grace-black6 grace-space-between mb-6">
 					<text>Delegated</text>
 					<text>4.90123</text>
 				</view>
-				<view class="grace-black6 grace-space-between">
+				<view class="grace-black6 grace-space-between mb-6">
 					<text>Unbonding</text>
 					<text>4.90123</text>
 				</view>
-				<view class="grace-black6 grace-space-between">
+				<view class="grace-black6 grace-space-between mb-6">
 					<text>Reward</text>
-					<text>4.90123</text>
+					<text class="grace-green">+ 4.90123</text>
 				</view>
 				<view class="grace-flex-center tc look-gtbg-dark grace-border-radius-small mt-12 grace-box-shadow">
 					<text @tap="goSwitch('/pages/delegate/index')" class="flex-1" style="padding: 12rpx 0;">Delegate</text>
@@ -74,13 +79,18 @@
 				</view>
 			</view>
 
-			<view class="grace-flex grace-flex-vcenter mb-12 grace-border-b" style="padding-bottom: 24rpx;" v-for="n in 5" :key="n">
-				<view class="flex-1"><text class="look-title" style="color: #212452;">IRIS</text></view>
-				<view class="tr">
-					<view><text class="grace-black f-16">$2,134,992,134.32</text></view>
-					<view><text class="grace-black6">12323 iaa</text></view>
+			<view class="page-space"></view>
+			<view class="" v-for="n in 5" :key="n">
+				<view class="grace-flex grace-flex-vcenter" style="padding: 24rpx;">
+					<view class="flex-1"><text class="look-title" style="color: #212452;">IRIS</text></view>
+					<view class="tr">
+						<view><text class="grace-black f-16">$2,134,992,134.32</text></view>
+						<view><text class="grace-black6">12323 iaa</text></view>
+					</view>
 				</view>
+				<view class="page-space"></view>
 			</view>
+
 
 			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 		</view>
