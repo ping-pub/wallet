@@ -11,23 +11,26 @@
 				</view>
 			</view>
 			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
-			
+
 			<view class="grace-flex grace-flex-vcenter mb-12">
-				<view class="mr-12"><image style="width: 80rpx;height: 80rpx;" src="/static/vote/vote_pic.png" mode=""></image></view>
+				<view class="mr-12">
+					<image style="width: 80rpx;height: 80rpx;" src="/static/vote/vote_pic.png" mode=""></image>
+				</view>
 				<view class="flex-1">
-					<view  class="grace-space-between grace-flex-vbottom">
+					<view class="grace-space-between grace-flex-vbottom">
 						<text class="look-title-sm">Proposals</text>
 					</view>
 					<view>
-					  <text class="grace-black9">CosmosHub-3 · 0.32.7</text>
+						<text class="grace-black9">CosmosHub-3 · 0.32.7</text>
 					</view>
 				</view>
 			</view>
-			
-			<view class="mb-12 grace-box-shadow look-gtbg-dark grace-border-radius-small" style="padding: 24rpx 0;" v-for="n in 10" :key="n">
+
+			<view class="mb-12 grace-box-shadow look-gtbg-dark grace-border-radius-small" style="padding: 24rpx 0;" v-for="n in 10"
+			 :key="n" @tap="go('/pages/voteItem/index')">
 				<view class="mb-6 " style="font-size: 12px;">
 					<text class="grace-bg-green" style="padding: 0 24rpx;">投票中</text>
-					
+
 				</view>
 				<view class="" style="padding: 0 24rpx;">
 					<view class="look-title-sm mt-12">
@@ -77,35 +80,35 @@
 	</gracePage>
 </template>
 <script>
-import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+	import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+	import BaseMixin from '../../components/BaseMixin.js'
 
-export default {
-	mixins: [SwitchWalletMixin],
-	computed: {
-		lang() {
-			return this.$t('vote');
-		}
-	},
-	data() {
-		return {
-			items: [
-				{
-					checked: false,
-					lang: 'en',
-					text: 'USD'
-				},
-				{
-					checked: false,
-					lang: 'zh',
-					text: 'CNY'
-				}
-			]
-		};
-	},
-	methods: {
-		goBack() {
-			uni.navigateBack();
-		}
-	},
-};
+	export default {
+		mixins: [BaseMixin, SwitchWalletMixin],
+		computed: {
+			lang() {
+				return this.$t('vote');
+			}
+		},
+		data() {
+			return {
+				items: [{
+						checked: false,
+						lang: 'en',
+						text: 'USD'
+					},
+					{
+						checked: false,
+						lang: 'zh',
+						text: 'CNY'
+					}
+				]
+			};
+		},
+		methods: {
+			goBack() {
+				uni.navigateBack();
+			}
+		},
+	};
 </script>

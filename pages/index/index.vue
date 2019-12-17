@@ -23,8 +23,7 @@
 				<view class="grace-bg-white grace-space-between grace-flex-vbottom mb-12" style="border-radius: 32rpx 32rpx 0 0;padding: 24rpx 24rpx 0 24rpx;">
 					<text class="look-title-sm">Wallets</text>
 					<text class="grace-black6" @click="go('/pages/walletManage/index')">
-						<text class="look-app-icon look-app-icon-manage mr-6 f-16"></text>
-						<text>Manage</text>
+						<text class="grace-icons icon-add2 mr-6 f-16"></text>
 					</text>
 				</view>
 			</view>

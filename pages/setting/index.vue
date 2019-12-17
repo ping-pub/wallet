@@ -25,7 +25,7 @@
 				</navigator>
 			</view>
 			<view class="page-space"></view>
-			
+
 			<view class="grace-ucenter-funs grace-list">
 				<navigator url="/pages/settingWallet/index" class="grace-body items">
 					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color:#586d8b"></view>
@@ -34,18 +34,21 @@
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
-				<navigator url="/pages/settingAddress/index" class="grace-body items">
-					<view class="look-app-icon look-app-icon-book " style="font-size: 24px;padding-left: 2rpx;color: #586d8b"></view>
+				<view @tap="openBrowser('https://look.ping.pub')" class="grace-body items">
+					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color:#586d8b"></view>
 					<view class="body">
-						<view class="title">{{ lang.addressBook }}</view>
+						<view class="title">浏览器</view>
+					</view>
+					<view class="grace-black9">
+						https://look.ping.pub
 					</view>
 					<view class="arrow-right"></view>
-				</navigator>
+				</view>
 			</view>
 			<view class="page-space"></view>
-			
+
 			<view class="grace-ucenter-funs grace-list">
-	
+
 				<navigator class="grace-body items" url="/pages/settingLanguage/index">
 					<view class="look-app-icon look-app-icon-language" style="font-size: 26px;padding-left: 2rpx;color: #586d8b"></view>
 					<view class="body">
@@ -76,6 +79,17 @@
 			lang() {
 				return this.$t('setting')
 			}
+		},
+		methods: {
+			openBrowser(url) {
+				// #ifdef APP-PLUS
+				plus.runtime.openURL(url) 
+				// #endif 
+				// #ifdef H5
+				window.open(url, '_self')
+				// #endif
+				
+			},
 		}
 	}
 </script>

@@ -20,6 +20,46 @@
 			}
 		},
 		{
+			"path": "pages/delegateValidatorItem/index",
+			"style": {
+				"navigationBarTitleText": "Validator Detail | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/explorer/index",
+			"style": {
+				"navigationBarTitleText": "Look Exploer | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/voteItem/index",
+			"style": {
+				"navigationBarTitleText": "Look Exploer | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/delegateItem/index",
+			"style": {
+				"navigationBarTitleText": "Look Exploer | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
 			"path": "pages/settingSwitchChain/index",
 			"style": {
 				"navigationBarTitleText": "Switch Chain | Ping Wallet",

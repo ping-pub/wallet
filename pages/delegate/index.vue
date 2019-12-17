@@ -9,11 +9,11 @@
 					<text style="margin-right: 12rpx;">Address1</text>
 					<text class="look-app-icon look-app-icon-switch"></text>
 				</view>
-			</view>	
-			
+			</view>
+
 			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
-			
-			
+
+
 			<view class="grace-flex grace-flex-vcenter tc mt-12 grace-body" style="margin-bottom: 48rpx;">
 				<view style="padding: 0 24rpx;">
 					<image style="width: 40rpx;height: 40rpx;" src="../../static/wallet/kava.svg" mode=""></image>
@@ -48,10 +48,12 @@
 					<text class="flex-1" style="padding: 12rpx 0;font-weight: bold;">Delegations</text>
 					<view class="" style="width: 2rpx;background: #fff;"></view>
 					<text @click="" class="flex-1 grace-gray" style="padding: 12rpx 0;">Validators</text>
+					<view class="" style="width: 2rpx;background: #fff;"></view>
+					<text @click="" class="flex-1 grace-gray" style="padding: 12rpx 0;">Calculation</text>
 				</view>
 			</view>
-			
-			
+
+
 			<view class="grace-flex grace-flex-vcenter mb-12 tc" style="padding: 32rpx 0 24rpx 0;">
 				<view class="flex-1">
 					<view class="grace-black f-18">1231232500</view>
@@ -62,46 +64,37 @@
 					<view class="grace-black6">待领取奖励</view>
 				</view>
 			</view>
-			
+
 			<view class="page-space"></view>
-			<view class="" v-for="n in 30" :key="n">
-				<view style="padding:24rpx 36rpx;" >
+			<view class="" v-for="n in 30" :key="n" @tap="go('/pages/delegateItem/index')">
+				<view style="padding:24rpx 36rpx;">
 					<view class="grace-flex grace-flex-vbottom">
 						<text class="flex-1 f-16" style="font-size: 18px;">Huobi Wallet</text>
 						<text class="f-16 grace-black6">5998989989898</text>
-					</view> 
+					</view>
 					<view class="grace-flex grace-flex-vbottom">
-						<text class="flex-1 grace-black6">Rewards  25%</text>
+						<text class="flex-1 grace-black6">Rewards 25%</text>
 						<text class="f-16 grace-green">+ 0.0012</text>
 					</view>
 				</view>
 				<view class="page-space"></view>
 			</view>
-			
+
 
 		</view>
 	</gracePage>
 </template>
 
 <script>
-import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+	import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+	import BaseMixin from '../../components/BaseMixin.js'
 
-export default {
-	mixins: [SwitchWalletMixin],
-	data() {
-		return {
-			tab: 'Delegations'
-		}
-	},
-	methods: {
-		go(path) {
-			uni.navigateTo({
-				url: path
-			});
+	export default {
+		mixins: [BaseMixin, SwitchWalletMixin],
+		data() {
+			return {
+				tab: 'Delegations'
+			}
 		},
-		goBack() {
-			uni.navigateBack();
-		}
-	}
-};
+	};
 </script>
