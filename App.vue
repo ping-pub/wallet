@@ -126,7 +126,7 @@
 	}
 
 	.page-space {
-		height: 20rpx;
+		height: 12rpx;
 		background: #F5F5F5;
 	}
 

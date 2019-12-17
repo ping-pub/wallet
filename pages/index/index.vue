@@ -20,7 +20,7 @@
 						<image style="width: 140upx;height: 140upx;" src="../../static/wallet/asset1.png" mode=""></image>
 					</view>
 				</view>
-				<view class="grace-bg-white grace-space-between grace-flex-vbottom " style="border-radius: 32rpx 32rpx 0 0;padding: 24rpx 24rpx 0 24rpx;">
+				<view class="grace-bg-white grace-space-between grace-flex-vbottom mb-12" style="border-radius: 32rpx 32rpx 0 0;padding: 24rpx 24rpx 0 24rpx;">
 					<text class="look-title-sm">Wallets</text>
 					<text class="grace-black6" @click="go('/pages/walletManage/index')">
 						<text class="look-app-icon look-app-icon-manage mr-6 f-16"></text>
@@ -28,26 +28,23 @@
 					</text>
 				</view>
 			</view>
-
-			<view class="page-space mt-12"></view>
+			
 			<view class="" v-for="n in 10" :key="n">
-				<view @tap="go('/pages/walletItem/index')" style="padding: 24rpx 28rpx 0 28rpx;">
-					<view class="mb-6">
-						<view class="grace-space-between mb-6">
-							<text class="flex-1 grace-flex-vcenter f-16">Address</text>
-							<text class="grace-icons icon-arrow-right grace-black9 f-16" style="font-size: 16px;"></text>
+				<view class="page-space"></view>
+				<view @tap="go('/pages/walletItem/index')"  class="grace-flex grace-flex-vcenter" style="padding: 32rpx 32rpx">
+					<image class="mr-12" style="width: 60rpx;height: 60rpx;" src="../../static/wallet/cosmoshub.svg"></image>
+					<text class="flex-1 f-16">NAME</text>
+					<view class="tr">
+						<view class="f-18">
+							$12,992,134,199
 						</view>
-						<view class="grace-ellipsis grace-black6">cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw</view>
-					</view>
-					<view class="grace-space-between grace-flex-vcenter">
-						<text class="grace-black6 f-18">$12,992,134,199</text>
-						<image style="width: 60rpx;height: 60rpx;" :src="n === 1 ? '../../static/wallet/cosmoshub.svg' : n === 2 ? '../../static/wallet/irishub.svg' : '../../static/wallet/kava.svg'"
-						 mode=""></image>
+						<view class="grace-black9">
+							cosmos1zu83m37u...ktq2l6lqjtzw
+						</view>
 					</view>
 				</view>
-				<view class="page-space mt-12"></view>
 			</view>
-
+<view class="page-space"></view>
 			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 		</view>
 	</gracePage>

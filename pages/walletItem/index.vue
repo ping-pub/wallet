@@ -8,7 +8,7 @@
 		</PageTitle>
 		<view slot="gBody">
 			<view class="grace-body">
-				<view class="look-gtbg-dark grace-box-shadow grace-border mb-12 mt-12  grace-border-radius-small" style="padding: 24upx 24upx;">
+				<view class="look-gtbg-dark grace-box-shadow grace-border mb-12 mt-12  grace-border-radius-small" style="padding: 24rpx">
 					<view class="mb-12">
 						<view class="grace-white">
 							<view class="grace-ellipsis">cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw</view>
@@ -48,7 +48,7 @@
 			
 			<view class="page-space"></view>
 
-			<view class="mb-12" style="padding: 24rpx;">
+			<view class="mb-12" style="padding: 24rpx 32rpx;">
 				<view class="grace-space-between grace-flex-vcenter">
 					<view ><text class="look-title" style="color: #212452;">ATOM</text></view>
 					<view class="tr">
@@ -70,7 +70,7 @@
 				</view>
 				<view class="grace-black6 grace-space-between mb-6">
 					<text>Reward</text>
-					<text class="grace-green">+ 4.90123</text>
+					<text class="grace-green f-16">+ 4.90123</text>
 				</view>
 				<view class="grace-flex-center tc look-gtbg-dark grace-border-radius-small mt-12 grace-box-shadow">
 					<text @tap="goSwitch('/pages/delegate/index')" class="flex-1" style="padding: 12rpx 0;">Delegate</text>
