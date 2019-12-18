@@ -27,7 +27,7 @@
 			<view class="page-space"></view>
 
 			<view class="grace-ucenter-funs grace-list">
-				<navigator url="/pages/settingWallet/index" class="grace-body items">
+				<navigator url="/pages/walletManage/index" class="grace-body items">
 					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color:#586d8b"></view>
 					<view class="body">
 						<view class="title">{{ lang.manageWallet }}</view>

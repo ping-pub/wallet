@@ -160,9 +160,9 @@
 			}
 		},
 		{
-			"path": "pages/settingWallet/index",
+			"path": "pages/walletItem/index",
 			"style": {
-				"navigationBarTitleText": "Manage Wallet | Ping Wallet",
+				"navigationBarTitleText": "Wallet Detail | Ping Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom",
@@ -170,9 +170,9 @@
 			}
 		},
 		{
-			"path": "pages/walletItem/index",
+			"path": "pages/walletAdd/walletAdd",
 			"style": {
-				"navigationBarTitleText": "Wallet Detail | Ping Wallet",
+				"navigationBarTitleText": "Wallet Add | Ping Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom",

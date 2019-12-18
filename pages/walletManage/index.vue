@@ -1,7 +1,7 @@
 <template>
 	<gracePage headerBG="#fff">
 		<PageTitle slot="gHeader" title="Wallet Manage">
-			<text style="padding: 12rpx 24rpx;" class="grace-black6 grace-icons icon-add2"></text>
+			<text @tap="go('/pages/walletAdd/walletAdd')" style="padding: 12rpx 24rpx;" class="grace-black6 grace-icons icon-add2"></text>
 		</PageTitle>
 
 		<view slot="gBody" class="grace-body">
@@ -36,7 +36,9 @@
 	</gracePage>
 </template>
 <script>
+	import BaseMixin from '../../components/BaseMixin.js'
 	export default {
+		mixins: [ BaseMixin],
 		methods: {
 			goBack() {
 				uni.navigateBack()
