@@ -133,6 +133,10 @@
 	/*  #353a8a,#212452 */
 	/* #273043, #32405F */
 	/* #212452, #37434b */
+	.look-gtbg-blue {
+		background: linear-gradient(to right, #53aeff, #3f67d9) !important;
+		color: #ffffff !important;
+	}
 	.look-gtbg-dark {
 		background: linear-gradient(to right, #212452, #37434b) !important;
 		color: #ffffff !important;
