@@ -137,6 +137,9 @@
 		background: linear-gradient(to right, #212452, #37434b) !important;
 		color: #ffffff !important;
 	}
+	.look-gtbg-light {
+		background: linear-gradient(to right, #e5ebed, #96a8b3) !important;
+	}
 
 	.look-title {
 		font-size: 22px;

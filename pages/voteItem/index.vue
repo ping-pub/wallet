@@ -26,13 +26,13 @@
 				</view>
 			</view>
 			
-			<view class="mb-12 grace-box-shadow look-gtbg-dark grace-border-radius-small" style="padding: 24rpx 0;" v-for="n in 10" :key="n">
+			<view class="mb-12 grace-box-shadow grace-bg-white grace-border-radius-small" style="padding: 24rpx 0;" v-for="n in 10" :key="n">
 				<view class="mb-6 " style="font-size: 12px;">
 					<text class="grace-bg-green" style="padding: 0 24rpx;">投票中</text>
 					
 				</view>
 				<view class="" style="padding: 0 24rpx;">
-					<view class="look-title-sm mt-12">
+					<view class="look-title-sm mt-12 grace-black">
 						是否支持冷钱包投票?
 					</view>
 					<view class="grace-flex grace-flex-vcenter tc mt-12 mb-12">

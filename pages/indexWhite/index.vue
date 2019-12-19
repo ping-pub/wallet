@@ -13,13 +13,13 @@
 		</view>
 
 		<view slot="gBody">
-			<view class="grace-body" style="padding-top: 48rpx;">
-				<view class="grace-box-shadow look-gtbg-dark grace-border-radius-small">
+			<view class="grace-body" style="padding-top: 48rpx;padding-bottom: 12rpx;">
+				<view class="grace-box-shadow look-gtbg-light grace-border-radius-small">
 
 					<view class="grace-space-between" style="align-items: center;padding: 60rpx 24rpx 48rpx 24rpx">
 						<view class="">
-							<view class=""><text class="grace-gray">Assets</text></view>
-							<view class=""><text class="grace-white" style="font-size: 24px;font-weight: bold;">$12,992,134,199</text></view>
+							<view class=""><text class="grace-black9">Assets</text></view>
+							<view class=""><text class="grace-black6" style="font-size: 24px;font-weight: bold;">$12,992,134,199</text></view>
 						</view>
 						<view class="">
 							<image style="width: 140upx;height: 140upx;" src="../../static/wallet/asset1.png" mode=""></image>
@@ -37,14 +37,14 @@
 			<!-- <view class="page-space"></view> -->
 
 			<view class="" v-for="n in 10" :key="n">
-				<view @tap="go('/pages/walletItem/index')" class="grace-flex grace-flex-vcenter look-gtbg-dark grace-border-radius-small" style="padding: 24rpx 32rpx;margin: 0 24rpx 24rpx 24rpx;">
+				<view @tap="go('/pages/walletItem/index')" class="grace-flex grace-flex-vcenter grace-bg-white grace-box-shadow grace-border-radius-small" style="padding: 24rpx 32rpx;margin: 0 24rpx 24rpx 24rpx;">
 					<image class="mr-12" style="width: 60rpx;height: 60rpx;" src="../../static/wallet/cosmoshub.svg"></image>
 					<text class="flex-1 f-16">NAME</text>
 					<view class="tr">
-						<view class="f-18 grace-green">
+						<view class="f-18 grace-black">
 							$12,992,134,199
 						</view>
-						<view class="grace-gray">
+						<view class="grace-black9">
 							cosmos1zu83m37u...ktq2l6lqjtzw
 						</view>
 					</view>
@@ -63,9 +63,6 @@
 	export default {
 		components: {
 			SwtichChain
-		},
-		mounted() {
-			this.goSwitch('/pages/indexWhite/index')
 		},
 		mixins: [SwitchWalletMixin],
 		methods: {

@@ -8,6 +8,33 @@
 				"navigationStyle": "custom",
 				"scrollIndicator": "none"
 			}
+		}, {
+			"path": "pages/delegateWhite/index",
+			"style": {
+				"navigationBarTitleText": "White | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		}, {
+			"path": "pages/indexWhite/index",
+			"style": {
+				"navigationBarTitleText": "White | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		}, {
+			"path": "pages/voteWhite/index",
+			"style": {
+				"navigationBarTitleText": "White | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
 		},
 		{
 			"path": "pages/setting/index",
@@ -191,20 +218,39 @@
 		"selectedColor": "#37434b",
 		"borderStyle": "white",
 		"backgroundColor": "#FFFFFF",
-		"list": [{
-				"pagePath": "pages/index/index",
+		"list": [
+			// {
+			// 	"pagePath": "pages/index/index",
+			// 	"iconPath": "static/tabbars/color_wallet0.png",
+			// 	"selectedIconPath": "static/tabbars/color_wallet1.png",
+			// 	"text": "Portfolio"
+			// },
+			// {
+			// 	"pagePath": "pages/delegate/index",
+			// 	"iconPath": "static/tabbars/color_staking0.png",
+			// 	"selectedIconPath": "static/tabbars/color_staking1.png",
+			// 	"text": "Staking"
+			// },
+			// {
+			// 	"pagePath": "pages/vote/index",
+			// 	"iconPath": "static/tabbars/color_goverance0.png",
+			// 	"selectedIconPath": "static/tabbars/color_goverance1.png",
+			// 	"text": "Goverance"
+			// },
+			{
+				"pagePath": "pages/indexWhite/index",
 				"iconPath": "static/tabbars/color_wallet0.png",
 				"selectedIconPath": "static/tabbars/color_wallet1.png",
 				"text": "Portfolio"
 			},
 			{
-				"pagePath": "pages/delegate/index",
+				"pagePath": "pages/delegateWhite/index",
 				"iconPath": "static/tabbars/color_staking0.png",
 				"selectedIconPath": "static/tabbars/color_staking1.png",
 				"text": "Staking"
 			},
 			{
-				"pagePath": "pages/vote/index",
+				"pagePath": "pages/voteWhite/index",
 				"iconPath": "static/tabbars/color_goverance0.png",
 				"selectedIconPath": "static/tabbars/color_goverance1.png",
 				"text": "Goverance"

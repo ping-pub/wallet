@@ -28,51 +28,51 @@
 				</view>
 			</view>
 
-			<view class="mb-12 grace-box-shadow look-gtbg-dark grace-border-radius-small" style="padding: 24rpx 0;" v-for="n in 10"
+			<view class="mb-12 grace-box-shadow grace-bg-white grace-border-radius-small" style="padding: 24rpx 0;" v-for="n in 10"
 			 :key="n" @tap="go('/pages/voteItem/index')">
 				<view class="mb-6 " style="font-size: 12px;">
 					<text class="grace-bg-green" style="padding: 0 24rpx;">投票中</text>
 
 				</view>
 				<view class="" style="padding: 0 24rpx;">
-					<view class="look-title-sm mt-12 grace-white">
+					<view class="look-title-sm mt-12 grace-black">
 						是否支持冷钱包投票?
 					</view>
 					<view class="grace-flex grace-flex-vcenter tc mt-12 mb-12">
 						<view class="flex-1">
-							<view class="f-16 grace-green">
+							<view class="f-16 grace-black">
 								23%
 							</view>
-							<view class="grace-gray">
+							<view class="grace-black6">
 								Yes
 							</view>
 						</view>
 						<view class="flex-1">
-							<view class="f-16 grace-green">
+							<view class="f-16 grace-black">
 								36%
 							</view>
-							<view class="grace-gray">
+							<view class="grace-black6">
 								No
 							</view>
 						</view>
 						<view class="flex-1">
-							<view class="f-16 grace-green">
+							<view class="f-16 grace-black">
 								22%
 							</view>
-							<view class="grace-gray">
+							<view class="grace-black6">
 								Width
 							</view>
 						</view>
 						<view class="flex-1">
-							<view class="f-16 grace-green">
+							<view class="f-16 grace-black">
 								7.89%
 							</view>
-							<view class="grace-gray">
+							<view class="grace-black6">
 								Rewards
 							</view>
 						</view>
 					</view>
-					<view class="grace-white" style="font-size: 12px;">
+					<view class="grace-black6" style="font-size: 12px;">
 						投票倒计时：20天12小时12分
 					</view>
 				</view>

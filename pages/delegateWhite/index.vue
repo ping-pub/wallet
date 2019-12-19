@@ -43,37 +43,35 @@
 					</view>
 				</view>
 			</view>
-			<view class="grace-body">
-				<view class="grace-flex-center tc look-gtbg-dark grace-border-radius-small grace-box-shadow  mb-12">
-					<text class="flex-1" style="padding: 12rpx 0;font-weight: bold;">Delegations</text>
-					<view class="" style="width: 2rpx;background: #fff;"></view>
-					<text @click="" class="flex-1 grace-gray" style="padding: 12rpx 0;">Validators</text>
-					<view class="" style="width: 2rpx;background: #fff;"></view>
-					<text @click="" class="flex-1 grace-gray" style="padding: 12rpx 0;">Calculation</text>
+			<view class="grace-body" style="padding-top: 24rpx;">
+				<view class="grace-flex-center tc grace-bg-white grace-border-radius-small grace-box-shadow  mb-12">
+					<text class="flex-1" style="padding: 12rpx 0;font-weight: bold;border-bottom: 4rpx solid #37434b;">Delegations</text>
+					<text @click="" class="flex-1 grace-black6" style="padding: 12rpx 0;">Validators</text>
+					<text @click="" class="flex-1 grace-black6" style="padding: 12rpx 0;">Calculation</text>
 				</view>
 			</view>
 
 
-			<view class="grace-flex grace-flex-vcenter mb-12 tc look-gtbg-dark grace-border-radius-small" style="padding: 24rpx 0 24rpx 0;margin: 24rpx;margin-top: 0;">
+			<view class="grace-flex grace-flex-vcenter mb-12 tc grace-bg-white grace-border-radius-small grace-border grace-box-shadow" style="padding: 24rpx 0 24rpx 0;margin: 24rpx;margin-top: 0;">
 				<view class="flex-1">
-					<view class="grace-white f-18">1231232500</view>
-					<view class="grace-gray">已委托总数</view>
+					<view class="grace-black f-18">1231232500</view>
+					<view class="grace-black6">已委托总数</view>
 				</view>
 				<view class="flex-1">
 					<view class="grace-green f-18">+500</view>
-					<view class="grace-gray">待领取奖励</view>
+					<view class="grace-black6">待领取奖励</view>
 				</view>
 			</view>
 
 			<!-- <view class="page-space"></view> -->
 			<view class="mb-12" v-for="n in 30" :key="n" @tap="go('/pages/delegateItem/index')">
-				<view style="padding:24rpx 36rpx;margin: 0 24rpx;" class="grace-border-radius-small grace-box-shadow look-gtbg-dark">
+				<view style="padding:24rpx 36rpx;margin: 0 24rpx;" class="grace-border-radius-small grace-border grace-box-shadow grace-bg-white">
 					<view class="grace-flex grace-flex-vbottom">
 						<text class="flex-1 f-16" style="font-size: 18px;">Huobi Wallet</text>
-						<text class="f-16 grace-white">5998989989898</text>
+						<text class="f-16 grace-black">5998989989898</text>
 					</view>
 					<view class="grace-flex grace-flex-vbottom">
-						<text class="flex-1 grace-gray">Rewards 25%</text>
+						<text class="flex-1 grace-black9">Rewards 25%</text>
 						<text class="f-16 grace-green">+ 0.0012</text>
 					</view>
 				</view>
