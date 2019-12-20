@@ -68,7 +68,7 @@
 	/* #endif */
 
 	.uni-body {
-		/* background: #f4f5f7; */
+		/* background: #f5f6fa; */
 	}
 
 	/* #37434b */
@@ -127,7 +127,7 @@
 
 	.page-space {
 		height: 12rpx;
-		background: #F5F5F5;
+		background: #f5f6fa;
 	}
 	.grace-border-b {
 		border-bottom: 2rpx solid #EEEEEE;
