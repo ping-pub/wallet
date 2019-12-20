@@ -34,10 +34,10 @@
 					<text class="grace-icons icon-add2 mr-6 f-16"></text>
 				</text>
 			</view>
-			<!-- <view class="page-space"></view> -->
 
 			<view class="" v-for="n in 10" :key="n">
-				<view @tap="go('/pages/walletItem/index')" class="grace-flex grace-flex-vcenter grace-bg-white grace-box-shadow grace-border-radius-small" style="padding: 32rpx 32rpx;margin: 0 24rpx 24rpx 24rpx;">
+				<view @tap="go('/pages/walletItem/index')" class="grace-flex grace-flex-vcenter grace-bg-white  grace-border-b grace-border-radius-small"
+				 style="padding: 24rpx 32rpx;">
 					<image class="mr-12" style="width: 60rpx;height: 60rpx;" src="../../static/wallet/cosmoshub.svg"></image>
 					<text class="flex-1 f-16">NAME</text>
 					<view class="tr">
@@ -49,7 +49,6 @@
 						</view>
 					</view>
 				</view>
-				<!-- <view class="page-space"></view> -->
 			</view>
 			<SwtichChain :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 		</view>

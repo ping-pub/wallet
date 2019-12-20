@@ -81,14 +81,13 @@
 
 			<view class="page-space"></view>
 			<view class="" v-for="n in 5" :key="n">
-				<view class="grace-flex grace-flex-vcenter" style="padding: 24rpx;">
+				<view class="grace-flex grace-flex-vcenter grace-border-b" style="padding: 24rpx;">
 					<view class="flex-1"><text class="look-title" style="color: #212452;">IRIS</text></view>
 					<view class="tr">
 						<view><text class="grace-black f-16">$2,134,992,134.32</text></view>
 						<view><text class="grace-black6">12323 iaa</text></view>
 					</view>
 				</view>
-				<view class="page-space"></view>
 			</view>
 
 

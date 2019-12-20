@@ -129,6 +129,9 @@
 		height: 12rpx;
 		background: #F5F5F5;
 	}
+	.grace-border-b {
+		border-bottom: 2rpx solid #EEEEEE;
+	}
 
 	/*  #353a8a,#212452 */
 	/* #273043, #32405F */
