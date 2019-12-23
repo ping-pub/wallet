@@ -1,6 +1,5 @@
-<!-- uni-app 事件 BUG 暂时不能使用  -->
 <template>
-	<text class="grace-totop grace-icons" v-if="show" :style="{color:color}" @tap="totop">&#xe637;</text>
+	<text class="grace-totop grace-icons" v-if="show" @tap="totop" :style="{bottom:bottom, backgroundColor:background,color:color}">&#xe637;</text>
 </template>
 <script>
 export default{
@@ -12,6 +11,14 @@ export default{
 		color : {
 			type : String,
 			default : "#3688FF"
+		},
+		bottom : {
+			type : String,
+			default : "80rpx"
+		},
+		background:{
+			type : String,
+			default : "#FFFFFF"
 		}
 	},
 	data() {
@@ -21,8 +28,7 @@ export default{
 		}
 	},
 	watch:{
-		top : function(topVal, oldVal){
-			topVal = Math.abs(topVal);
+		top : function(topVal){
 			if(this.timer != null){clearTimeout(this.timer);}
 			this.timer = setTimeout(function(){
 				if(topVal > 100){
@@ -35,15 +41,11 @@ export default{
 	},
 	methods:{
 		totop : function(){
-			console.log(1);
-			uni.pageScrollTo({
-			    scrollTop: 0,
-			    duration: 300
-			});
+			this.$emit('totop');
 		}
 	}
 }
 </script>
-<style>
-.grace-totop{width:40px; height:40px; line-height:40px; font-size:40rpx; background-color:#FFFFFF; color:#3688FF; position:fixed; bottom:80px; right:15px; border-radius:5px; text-align:center;}
+<style scoped>
+.grace-totop{width:40px; height:40px; line-height:40px; background-color:#FFFFFF; color:#3688FF; position:fixed; bottom:80px; z-index:9999; right:15px; border-radius:5px; text-align:center;}
 </style>

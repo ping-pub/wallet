@@ -43,7 +43,7 @@ export default {
 		min : {type : Number, default : 0},
 		minDefault : {type : Number, default : 0},
 		max : {type : Number, default : 100},
-			maxDefault : {type : Number, default:100}
+		maxDefault : {type : Number, default:100}
 	},
 	created:function(){
 		this.realWidth = this.upx2px(this.width);
@@ -127,10 +127,9 @@ export default {
 	}
 };
 </script>
-
-<style>
+<style scoped>
 .grace-slider{position:relative; padding:10px 0;}
-.grace-slider-bar{width:100%; position:absolute; top:50%; transform:translate(0, -50%); border-radius:500px;}
-.grace-slider-block{position:absolute; top:50%; transform:translate(0, -50%); left:0; border-radius:50%; box-shadow: 0upx 0upx 6upx #ccc;}
-.grace-slider-active-bar{width:100%; position:absolute; top:50%; transform:translate(0, -50%); border-radius:500px;}
+.grace-slider-bar{width:100%; position:absolute; top:50%; transform:translate(0, -50%);}
+.grace-slider-block{position:absolute; top:50%; transform:translate(0, -50%); left:0; border-radius:50%; box-shadow: 0rpx 0rpx 6rpx #ccc;}
+.grace-slider-active-bar{width:100%; position:absolute; top:50%; transform:translate(0, -50%);}
 </style>

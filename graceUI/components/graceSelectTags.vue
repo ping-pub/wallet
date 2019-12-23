@@ -57,7 +57,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-select-tags{padding:0;}
 .grace-select-tags checkbox-group, .grace-select-tags radio-group{width:100%; display:flex; flex-wrap:wrap;}
 .grace-select-tags label{display:block; width:auto; overflow:hidden; padding:18rpx 20rpx; height:30rpx; line-height:30rpx; margin:8rpx 8px 8px 0; background:#F6F7F8; font-size:24rpx; border-radius:8rpx;}

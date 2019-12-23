@@ -73,7 +73,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .grace-add-list{flex-direction:row; flex-wrap:wrap;}
 .add-btn{flex-direction:column; align-items:center; justify-content:center;}
 .add-btn-text{font-size:26rpx; line-height:36rpx; text-align:center; color:#999999;}

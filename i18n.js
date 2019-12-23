@@ -20,6 +20,7 @@ export default {
 			addressBook: 'Address Book',
 			language: 'Language Change',
 			serverHost: 'Sever Selection',
+			browser: 'Block Chain Explorer'
 		}
 	},
 	zh: {
@@ -37,6 +38,7 @@ export default {
 			addressBook: '地址簿',
 			language: '语言切换',
 			serverHost: '服务地址',
+			browser: '区块浏览器'
 		},
 		settingLanguage: {
 			title: '语言切换'

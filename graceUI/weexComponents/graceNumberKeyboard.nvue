@@ -48,7 +48,7 @@ export default {
 	},
 }
 </script>
-<style>
+<style scoped>
 .grace-mask{background:rgba(255, 255, 255, 0); position:fixed; width:750rpx;left:0; top:0; bottom:0; z-index:1;}
 .grace-keyboard{background-color:#F4F5F6; position:fixed; width:750rpx; left:0; bottom:0; padding:10px 0; flex-direction:row; flex-wrap:nowrap; justify-content: space-between;}
 .keys-left{width:562rpx; margin-left:10rpx; flex-direction:row; flex-wrap:wrap;}

@@ -1,5 +1,5 @@
 <template>
-	<view >
+	<view>
 		<view class="grace-btdialog-shade" v-if="show" @tap.stop="closeDialog" @touchmove.stop.prevent="stopFun">
 			<view :class="['dialog', 'gdIn', isIpx ? 'grace-ipx-bottom' : '']" @tap.stop="stopFun">
 				<view class="title"><slot name="btns"></slot></view>
@@ -38,13 +38,11 @@ export default {
 		closeDialog : function(){
 			this.$emit('closeDialog');
 		},
-		stopFun : function(){
-			
-		}
+		stopFun : function(){}
 	}
 }
 </script>
-<style>
+<style scoped>
 @keyframes gdIn{ from {bottom:-100px; } 100% { bottom: 0px; }}
 .gdIn {animation:gdIn 200ms linear;}
 .grace-btdialog-shade{position:fixed; width:100%; height:100%; left:0; top:0; z-index:9991; background:rgba(0, 0, 0, 0.5);}

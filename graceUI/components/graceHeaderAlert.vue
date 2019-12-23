@@ -40,7 +40,7 @@
 		}
 	}
 </script>
-<style>
+<style scoped>
 @keyframes g-show{from {opacity:0; transform:scale3d(0.1, 0.1, 0.1);} to {opacity:1;}}
 .ganimate-show{animation:g-show 200ms linear;}
 .grace-alert{display:flex; width:580rpx; padding:25rpx; border-radius:10rpx; flex-wrap:nowrap; justify-content:center; align-items:center; background:#FFF; position:fixed; z-index:99999; left:60rpx; top:50px;}

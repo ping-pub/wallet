@@ -1,18 +1,18 @@
 <template>
-	<gracePage :customHeader="false">
+	<gracePage  headerBG="#fff">
+		<view class="grace-bg-white" slot="gHeader">
+			<view class="status_bar"></view>
+		</view>
 		<view slot="gBody">
 			<view class="status_bar"></view>
 			<view class="grace-body" style="margin-top: 32rpx;margin-bottom: 24rpx;">
 				<text class="look-title">Setting</text>
 			</view>
 			<view class="grace-ucenter-funs grace-list">
-				<navigator url="/pages/settingSwitchChain/index" class="grace-body items">
-					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color: #586d8b;"></view>
+				<navigator url="/pages/walletManage/index" class="grace-body items">
+					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color:#586d8b"></view>
 					<view class="body">
-						<view class="title">Switch Chain</view>
-					</view>
-					<view class="grace-black9">
-						Cosmos
+						<view class="title">{{ lang.manageWallet }}</view>
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
@@ -27,28 +27,6 @@
 			<view class="page-space"></view>
 
 			<view class="grace-ucenter-funs grace-list">
-				<navigator url="/pages/walletManage/index" class="grace-body items">
-					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color:#586d8b"></view>
-					<view class="body">
-						<view class="title">{{ lang.manageWallet }}</view>
-					</view>
-					<view class="arrow-right"></view>
-				</navigator>
-				<view @tap="openBrowser('https://look.ping.pub')" class="grace-body items">
-					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color:#586d8b"></view>
-					<view class="body">
-						<view class="title">浏览器</view>
-					</view>
-					<view class="grace-black9">
-						https://look.ping.pub
-					</view>
-					<view class="arrow-right"></view>
-				</view>
-			</view>
-			<view class="page-space"></view>
-
-			<view class="grace-ucenter-funs grace-list">
-
 				<navigator class="grace-body items" url="/pages/settingLanguage/index">
 					<view class="look-app-icon look-app-icon-language" style="font-size: 26px;padding-left: 2rpx;color: #586d8b"></view>
 					<view class="body">
@@ -60,7 +38,7 @@
 					<view class="arrow-right"></view>
 				</navigator>
 				<navigator class="grace-body items" url="/pages/settingCurrency/index">
-					<view class="look-app-icon look-app-icon-language" style="font-size: 26px;padding-left: 2rpx;color: #586d8b"></view>
+					<view class="look-app-icon look-app-icon-money" style="padding-left: 10rpx;color: #586d8b"></view>
 					<view class="body">
 						<view class="title">Currency</view>
 					</view>
@@ -69,7 +47,18 @@
 					</view>
 					<view class="arrow-right"></view>
 				</navigator>
+				<view @tap="openBrowser('https://look.ping.pub')" class="grace-body items">
+					<view class="look-app-icon look-app-icon-browser" style="font-size: 20px;padding-left: 8rpx;color:#586d8b"></view>
+					<view class="body">
+						<view class="title">{{ lang.browser }}</view>
+					</view>
+					<view class="grace-black9">
+						https://look.ping.pub
+					</view>
+					<view class="arrow-right"></view>
+				</view>
 			</view>
+			<view class="page-space"></view>
 		</view>
 	</gracePage>
 </template>
@@ -83,12 +72,12 @@
 		methods: {
 			openBrowser(url) {
 				// #ifdef APP-PLUS
-				plus.runtime.openURL(url) 
+				plus.runtime.openURL(url)
 				// #endif 
 				// #ifdef H5
 				window.open(url, '_self')
 				// #endif
-				
+
 			},
 		}
 	}

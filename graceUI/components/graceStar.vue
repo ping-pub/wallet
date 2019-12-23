@@ -48,10 +48,9 @@ export default {
 	}
 }
 </script>
-<style>
-@font-face {font-family:"gFont"; src:url('https://at.alicdn.com/t/font_1348787_pdws9521tg.ttf') format('truetype');}
+<style scoped>
 .grace-stars{display:flex; flex-wrap:nowrap;}
 .grace-stars-items{display:inline-block; text-align:center;}
-.grace-star-icon{font-family:"gFont" !important; font-size:60rpx; font-style:normal;}
-.grace-star-icon:before{content:"\e600";}
+.grace-star-icon{font-family:"grace-iconfont" !important; font-size:60rpx; font-style:normal;}
+.grace-star-icon:before{content:"\e634";}
 </style>

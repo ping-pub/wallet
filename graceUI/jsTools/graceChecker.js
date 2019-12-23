@@ -23,7 +23,15 @@ module.exports = {
 					if(!reg.test(data[rule[i].name])) {this.error = rule[i].errorMsg; return false;}
 				break;
 				case 'int':
-					var reg = new RegExp('^(-[1-9]|[1-9])[0-9]{' + rule[i].checkRule + '}$');
+					var ruleArr = rule[i].checkRule.split(',');
+					if(rule.length < 2){
+						ruleArr[0] = Number(ruleArr[0]) - 1;
+						ruleArr[1] = '';
+					}else{
+						ruleArr[0] = Number(ruleArr[0]) - 1;
+						ruleArr[1] = Number(ruleArr[1]) - 1;
+					}
+					var reg = new RegExp('^(-[1-9]|[1-9])[0-9]{' + ruleArr[0] + ',' + ruleArr[1] + '}$');
 					if(!reg.test(data[rule[i].name])) {this.error = rule[i].errorMsg; return false;}
 					break;
 				break;
@@ -91,6 +99,13 @@ module.exports = {
 				break;
 				case 'notnull':
 					if(data[rule[i].name] == null || data[rule[i].name].length < 1){this.error = rule[i].errorMsg; return false;}
+				break;
+				case 'samewith': 
+					if(data[rule[i].name] != data[rule[i].checkRule]){this.error = rule[i].errorMsg; return false;}
+				break;
+				case 'numbers':
+					var reg = new RegExp('^[0-9]{' + rule[i].checkRule + '}$');
+					if (!reg.test(data[rule[i].name])) { this.error = rule[i].errorMsg; return false; }
 				break;
 			}
 		}

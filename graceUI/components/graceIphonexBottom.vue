@@ -37,7 +37,7 @@ export default{
 	} 
 }
 </script>
-<style>
+<style scoped>
 .grace-iphonex-bottom{width:100%; height:0rpx; flex:auto;}
 .grace-iphonex-bottom-fixed{position:fixed; z-index:999999; left:0; bottom:0;}
 </style>

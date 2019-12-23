@@ -156,7 +156,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-im{padding:0 10px;}
 .grace-im-system-msg{background:#C1C1C1; width:auto; color:#FFF; font-size:12px; line-height:1.5em; padding:5px 10px; margin:0 auto; display:inline-block; border-radius:3px;}
 .grace-im-msg{margin:15px 0; flex-wrap:nowrap; display:flex;}

@@ -41,7 +41,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-nav-bar{width:100%; display:flex; white-space:nowrap;}
 .nav-item{width:100rpx; display:inline-flex; flex-direction:column;}
 .nav-item-title{font-size:28rpx; line-height:50rpx; width:100%; color:#333333;}

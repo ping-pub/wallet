@@ -51,7 +51,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 @font-face {font-family:"gFont"; src:url('https://at.alicdn.com/t/font_1350962_3csfyqy98za.ttf') format('truetype');}
 .grace-check-btn{font-family:"gFont"; color:#999999;}
 .grace-check-btn:after{content:"\e762";}

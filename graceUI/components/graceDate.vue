@@ -1,50 +1,30 @@
 <template name="graceDate">
-	<view class="grace-date" v-if="show" :style="{top:top, zIndex:zIndex}">
+	<view class="grace-date" v-if="show" :style="{top:top, zIndex:zIndex}" @tap.stop="" @touchmove.stop="">
 		<view class="grace-date-header">
-			<view class="grace-date-header-btn" @tap="prevYear">
-				<text class="grace-icons icon-arrow-left"></text>
-				<text class="grace-icons icon-arrow-left"></text>
-			</view>
-			<view class="grace-date-header-btn" @tap="prevMonth"><text class="grace-icons icon-arrow-left"></text></view>
-			<view class="grace-date-header-date">{{cYear}}年{{cMonth}}月</view>
-			<view class="grace-date-header-btn" @tap="nextMonth"><text class="grace-icons icon-arrow-right"></text></view>
-			<view class="grace-date-header-btn" @tap="nextYear">
-				<text class="grace-icons icon-arrow-right"></text>
-				<text class="grace-icons icon-arrow-right"></text>
-			</view>
+			<text class="grace-date-header-btn grace-icons" @click="prevYear">&#xe600;&#xe600;</text>
+			<text class="grace-date-header-btn grace-icons" @click="prevMonth">&#xe600;</text>
+			<text class="grace-date-header-date grace-icons">{{cYear}} 年 {{cMonth}} 月</text>
+			<text class="grace-date-header-btn grace-icons" @click="nextMonth">&#xe601;</text>
+			<text class="grace-date-header-btn grace-icons" @click="nextYear">&#xe601;&#xe601;</text>
 		</view>
 		<view class="grace-date-week">
-			<view v-for="(item, index) in weeks" :key="index">{{item}}</view>
+			<text class="grace-date-weeks" v-for="(item, index) in weeks" :key="index">{{item}}</text>
 		</view>
 		<view class="grace-date-days">
-			<view :class="['items', currentDay == (cYear+'-'+cMonth+'-'+item.date) ? 'current' : '']" 
-			@tap="chooseDate" :data-date="cYear+'-'+cMonth+'-'+item.date" 
-			:data-day="item.date" 
-			v-for="(item, index) in days" 
-			:key="index" 
-			:style="{'background' : item == '' ? 'none' : ''}">
-				<view class="grace-date-day">{{item.date}}</view>
-				<view class="grace-date-nl">{{item.nl}}</view>
+			<view :class="['grace-date-ditems', currentDayIn == cYear+'-'+cMonthStr+'-'+ item.date ? 'grace-d-current' : '']" 
+			@click="chooseDate(cYear+'-'+cMonthStr+'-'+item.date, item.date)" v-for="(item, index) in days" :key="index">
+				<text class="grace-date-day" :class="[currentDayIn == (cYear+'-'+cMonthStr+'-'+item.date) ? 'grace-d-current-txt' : '']">{{item.date}}</text>
+				<text class="grace-date-nl" :class="[currentDayIn == (cYear+'-'+cMonthStr+'-'+item.date) ? 'grace-d-current-txt' : '']">{{item.nl}}</text>
 			</view>
 		</view>
-		<view v-if="isTime">
-			<view class="grace-date-time">
-				<view class="timer">
-					<picker mode="selector" :range="hours" @change="hourChange">
-						<view>{{hours[currentHourD]}}</view>
-					</picker>
-				</view>
-				<view class="timer-spliter">:</view>
-				<view class="timer">
-					<picker mode="selector" :range="minutes" @change="minuteChange">
-						<view>{{minutes[currenMinuteD]}}</view>
-					</picker>
-				</view>
-			</view>
-			<view class="grace-date-close">
-				<text @tap="close">取消选择</text>
-				<text @tap="submit">完成选择</text>
-			</view>
+		<view class="grace-nowrap grace-flex-center" style="margin-top:25rpx;" v-if="isTime">
+			<picker class="grace-date-time" mode="time" @change="timechange" :value="currentTimeIn">
+				<text>时间 : {{currentTimeIn}}</text>
+			</picker>
+		</view>
+		<view class="grace-date-btns" v-if="isTime">
+			<text class="grace-date-btns-text" @click="close" style="color:#888888;">关闭</text>
+			<text class="grace-date-btns-text" @click="submit">确定</text>
 		</view>
 	</view>
 </template>
@@ -116,171 +96,153 @@ export default {
 			type : Boolean,
 			default : false
 		},
-		currentHour : {
-			type : Number,
-			default : 0
-		},
-		currenMinute : {
-			type : Number,
-			default : 0
+		currentDate : {
+			type : String,
+			default : ""
 		},
 		isTime : {
 			type : Boolean,
 			default :true
 		},
-		zIndex : {
-			type : Number,
-			default : 9999
-		}
-		// #ifndef H5
-		,
 		top : {
 			type : String,
-			default : '0'
-		}
-		// #endif
-		// #ifdef H5
-		,
-		top : {
-			type : String,
+			// #ifdef H5
 			default : '44px'
+			// #endif
+			// #ifndef H5
+			default : '0'
+			// #endif
+		},
+		zIndex : {
+			type : String,
+			default : "999"
 		}
-		// #endif
-		
 	},
 	data(){
 		return {
-			weeks : ['一', '二', '三', '四', '五', '六', '日'],
-			cYear : 2016,
-			cMonth : 6,
-			days : [],
-			currentDay : '2016',
-			hours : [],
-			minutes : [],
-			currentHourD : 0,
-			currenMinuteD : 0
+			weeks         : ['一', '二', '三', '四', '五', '六', '日'],
+			cYear         : 2016,
+			cMonth        : 6,
+			cMonthStr     : "06",
+			cDay          : "01",
+			days          : '',
+			currentDayIn : '',
+			currentTimeIn: ''
 		}
 	},
 	methods: {
-		hourChange : function(e){
-			var index = e.detail.value;
-			this.currentHourD = index;
+		timechange : function(e){
+			this.currentTimeIn = e.detail.value;
 		},
-		minuteChange : function(e){
-			var index = e.detail.value;
-			this.currenMinuteD = index;
-		},
-		getDaysInOneMonth : function (year, month){
-			var d = new Date(year, month, 0);
+		getDaysInOneMonth : function (){
+			var d = new Date(this.cYear, this.cMonth - 1, 0);
 			return d.getDate();
 		},
-		getDay: function (year, month, day){
-			var d = new Date(year, month, day);
+		getDay : function (){
+			var d = new Date(this.cYear, this.cMonth - 1, 0);
 			return d.getDay();
 		},
 		prevYear : function(){
 			this.cYear = this.cYear - 1;
-			this.changeMonth(this.cYear, this.cMonth);
+			this.changeMonth();
 		},
 		prevMonth : function(){
-			var month = this.cMonth - 1;
-			var year = this.cYear;
-			if (month < 1) { month = 12; year -= 1; }
-			this.changeMonth(year, month);
+			this.cMonth =  this.cMonth - 1;
+			if (this.cMonth < 1) { this.cMonth = 12; this.cYear = this.cYear - 1; }
+			this.cMonthStr = this.cMonth < 10 ? '0' + this.cMonth : this.cMonth;
+			this.changeMonth();
 		},
 		nextMonth : function(){
-			var month = this.cMonth + 1;
-			var year = this.cYear;
-			if (month > 12){month = 1; year += 1;}
-			this.changeMonth(year, month);
+			this.cMonth = this.cMonth + 1;
+			if (this.cMonth > 12){this.cMonth = 1; this.cYear = this.cYear + 1;}
+			this.cMonthStr = this.cMonth < 10 ? '0' + this.cMonth : this.cMonth;
+			this.changeMonth();
 		},
 		nextYear : function(){
 			this.cYear = this.cYear + 1;
-			this.changeMonth(this.cYear, this.cMonth);
+			this.changeMonth();
 		},
-		changeMonth:function(y, m){
-			var daysList = [];
-			var days = this.getDaysInOneMonth(y, m);
-			var startWeek = this.getDay(y, m - 1, 0);
-			var forSteps = 0;
+		changeMonth:function(){
+			var daysList  = [];
+			var days      = this.getDaysInOneMonth();
+			var startWeek = this.getDay();
+			var forSteps  = 0;
 			for (var i = (0 - startWeek); i < days; i++){
 				if(i >= 0){
-					daysList[forSteps] = {date : i + 1, nl : ''};
-					daysList[forSteps].nl = GetLunarDay(y, m, i + 1);
+					daysList[forSteps] = {date : i >= 9 ? i + 1 : '0' + (i+1), nl : ''};
+					daysList[forSteps].nl = GetLunarDay(this.cYear, this.cMonth, i + 1);
 				}else{
 					daysList[forSteps] = '';
 				}
 				forSteps++;
 			}
 			this.days    = daysList;
-			this.cYear   = y;
-			this.cMonth = m;
 		},
-		chooseDate: function (e) {
-			var sedDate = e.currentTarget.dataset.date;
-			var sedDay = e.currentTarget.dataset.day;
-			if(sedDay == undefined){return ;}
-			this.currentDay = sedDate;
-			var arr = sedDate.split('-');
-			if(arr[1] < 10){arr[1] = '0'+arr[1];}
-			if (arr[2] < 10) { arr[2] = '0' + arr[2]; }
+		chooseDate: function (sedDate, isday) {
+			if(!isday){return ;}
+			this.currentDayIn = sedDate;
 			if(this.isTime){return ;}
-			this.$emit('changeDate', arr[0]+'-'+arr[1]+'-'+arr[2]);
+			this.$emit('changeDate', sedDate);
 		},
 		submit : function(){
-			var arr = this.currentDay.split('-');
-			if(arr[1] < 10){arr[1] = '0'+arr[1];}
-			if (arr[2] < 10) { arr[2] = '0' + arr[2]; }
-			this.$emit('changeDate', arr[0]+'-'+arr[1]+'-'+arr[2]+' '+this.hours[this.currentHourD]+':'+this.minutes[this.currenMinuteD]);
+			if(this.isTime){
+				this.$emit('changeDate', this.currentDayIn+' '+this.currentTimeIn);
+			}else{
+				this.$emit('changeDate', this.currentDayIn);
+			}
 		},
 		close : function(){
 			this.$emit("closeDate");
+		},
+		//初始化时间
+		initTime : function(){
+			if(this.currentDate == ''){
+				var dateObj        = new Date();
+				this.cYear         = dateObj.getFullYear();
+				this.cMonth        = dateObj.getMonth() + 1;
+				this.cMonthStr     = this.cMonth < 10 ? '0' + this.cMonth : this.cMonth;
+				this.cDay          = dateObj.getDate();
+				this.cDay          = this.cDay < 10 ? '0' + this.cDay : this.cDay;
+				this.currentDayIn  = this.cYear + '-' + this.cMonth + '-' + this.cDay;
+				this.currentTimeIn = '00:00';
+				this.changeMonth();
+			}else{
+				var dates          = this.currentDate.split(' ');
+				if (!dates[1]) { dates[1] = '';}
+				var dayArr         = dates[0].split('-');
+				this.cYear         = Number(dayArr[0]);
+				this.cMonth        = dayArr[1];
+				this.cDay          = dayArr[2];
+				var reg            = new RegExp('^0[0-9]+$');
+				if(reg.test(this.cMonth)){this.cMonth = this.cMonth.substr(1,1);}
+				this.cMonth        = Number(this.cMonth);
+				this.cMonthStr     = this.cMonth < 10 ? '0'+this.cMonth : this.cMonth;
+				this.currentDayIn  = dates[0];
+				this.currentTimeIn = dates[1];
+				this.changeMonth();
+			}
 		}
 	},
-	created:function(){
-		var dateObj      = new Date();
-		var year         = dateObj.getFullYear();
-		var month        = dateObj.getMonth() + 1;
-		var currentDay   = year + '-' + month + '-' + dateObj.getDate();
-		this.cYear       = year;
-		this.cMonth      = month;
-		this.currentDay  = currentDay;
-		this.changeMonth(year, month);
-		//填充时间 hours : [], minute : []
-		for(var i = 0; i <= 23; i++){
-			var hour = i < 10 ? '0'+i : i+'';
-			this.hours.push(hour);
-		}
-		for(var i = 0; i <= 59; i++){
-			var minute = i < 10 ? '0'+i : i+'';
-			this.minutes.push(minute);
-		}
-		this.currentHourD = this.currentHour;
-		this.currenMinuteD = this.currenMinute;
+	created:function(){this.initTime();},
+	watch:{
+		currentDate  : function(){this.initTime();}
 	}
 }
 </script>
-<style>
-.grace-date{position:fixed; z-index:10; vertical-align:top; left:0; top:0; width:730rpx; padding:10rpx; height:100%; background:#FFF;}
-.grace-date-header{display:flex; justify-content:center;}
-.grace-date-header-btn{font-size:38rpx; line-height:88rpx; padding:0 10px;}
-.grace-date-header-date{line-height:88rpx; font-size:32rpx; font-weight:700;}
-.grace-date-week{height:auto; width:702rpx; overflow:hidden; display:flex; flex-wrap:nowrap; margin:0 auto;}
-.grace-date-week view{width:96rpx; height:80rpx; font-size:32rpx; line-height:80rpx; text-align:center; margin:2rpx;}
-.grace-date-days{padding:10rpx 0; width:702rpx; display:flex; flex-wrap:wrap; margin:0 auto;}
-.grace-date-days .items{width:96rpx; text-align:center; height:96rpx; line-height:96rpx; margin:2rpx; background:#F1F2F3; font-size:30rpx;}
-.grace-date-days .current{background:#3688FF;}
-.grace-date-days .current view{color:#FFFFFF;}
-.grace-date-day{height:30rpx; line-height:30rpx; margin-top:30rpx; justify-content:center;}
-.grace-date-nl{height:22rpx; line-height:22rpx; color:#888888; font-size:18rpx; justify-content:center;}
-.grace-date-time-title{margin-top:15px; line-height:2em; text-align:center;}
-.grace-date-time{margin:12px 5%; display:flex; flex-wrap:nowrap;}
-.grace-date-time .timer{width:50%; border-bottom:1px solid #F0F0F0;}
-.grace-date-time .timer picker{width:100%; height:80rpx; line-height:80rpx !important; text-align:center;}
-.grace-date-time .timer picker view{line-height:80rpx;}
-.grace-date-time .timer-spliter{width:30px; flex-shrink:0; text-align:center; line-height:80rpx !important; font-size:20px;}
-.grace-date-btn{width:80%; margin:0 10%; margin-top:20px; text-align:center; line-height:46px;}
-.grace-date-close{text-align:center; color:#999999; margin-top:22px; display:flex; justify-content:center;}
-.grace-date-close text{margin:0 50rpx; width:50%; text-align:center;}
-.grace-date-close text:last-child{color:#3688FF;}
+<style scoped>
+.grace-date{position:fixed; z-index:1; left:0; top:0; bottom:0; width:730rpx; height:100%; padding:0 10rpx; display:flex; flex-direction:column; align-items:center; background:#FFFFFF;}
+.grace-date-header{display:flex; justify-content:center; flex-direction:row; text-align:center; margin-top:20rpx;}
+.grace-date-header-btn{font-size:36rpx; line-height:88rpx; padding:0 10rpx; color:#888888;}
+.grace-date-header-date{line-height:88rpx; font-size:36rpx; margin:0 20rpx;}
+.grace-date-week{text-align:center; width:702rpx; display:flex; flex-wrap:nowrap; flex-direction:row;}
+.grace-date-weeks{display:block; width:100rpx; height:80rpx; text-align:center; font-size:32rpx; line-height:80rpx; color:#666666;}
+.grace-date-days{width:702rpx; display:flex; flex-direction:row; flex-wrap:wrap;}
+.grace-date-ditems{width:96rpx; height:96rpx; margin:2rpx; background-color:#F6F7F8; border-radius:5rpx;}
+.grace-d-current{background-color:#3688FF;}
+.grace-d-current-txt{color:#FFFFFF !important;}
+.grace-date-day{display:block; width:100%; height:46rpx; line-height:46rpx; text-align:center; font-size:32rpx; margin-top:10rpx;}
+.grace-date-nl{display:block; width:100%; height:30rpx; line-height:30rpx; color:#888888; font-size:20rpx; text-align:center;}
+.grace-date-btns{text-align:center; margin-top:10rpx; display:flex; flex-direction:row; align-items:center; justify-content:center;}
+.grace-date-btns-text{display:block; color:#3688FF; line-height:80rpx; font-size:30rpx; margin:0rpx 80rpx; text-align:center; width:200rpx;}
+.grace-date-time{font-size:30rpx; line-height:60rpx; margin-top:15rpx; color:#666666;}
 </style>

@@ -37,7 +37,7 @@ export default {
 	},
 }
 </script>
-<style>
+<style scoped>
 .grace-spread{overflow:hidden; position:relative;}
 .grace-spread > .btn{
 	width:100%; height:38px; 

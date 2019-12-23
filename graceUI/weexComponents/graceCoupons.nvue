@@ -32,7 +32,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-coupons{flex-direction:row; flex-wrap:nowrap; border-top-left-radius:10rpx; border-bottom-left-radius:10rpx; margin-top:20rpx;}
 .grace-coupons-left{width:700rpx; height:150rpx; flex:1; padding-right:10rpx; flex-direction:row; justify-content:space-between; align-items:center; border-radius:8rpx; position:relative;}
 .grace-coupons-number{width:200rpx; border-right-width:1px; border-right-style:dashed; border-right-color:#D2D2D2;}

@@ -51,61 +51,62 @@ export default {
 	},
 	data() {
 		return {
-			d : 0,
-			h : "00",
-			i : "00",
-			s : "00",
-			leftTime: 0,
-			timerInter : null
+			d        : 0,
+			h        : "",
+			i        : "",
+			s        : "",
+			leftTime : 0,
+			outTimer : null
 		}
 	},
-	created:function(e){
-		var reg = /^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})$/;
-		var res = this.timer.match(reg);
-		if (res == null){
-			console.log('时间格式错误'); return false;
-		}else{
+	created:function(){
+		this.runbase();
+	},
+	updated:function(){
+		this.runbase();
+	},
+	methods: {
+		runbase : function(){
+			var reg = /^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})$/;
+			var res = this.timer.match(reg);
+			if (res == null){  return false; }
 			var year = parseInt(res[1]);
-			if (year < 1000) { console.log('时间格式错误'); return false; }
+			if (year < 1000) { return false; }
 			var month = parseInt(res[2]);
 			var day = parseInt(res[3]);
 			var h = parseInt(res[4]);
-			if (h < 0 || h > 24) { console.log('时间格式错误'); return false; }
+			if (h < 0 || h > 24) { return false; }
 			var i = parseInt(res[5]);
-			if (i < 0 || i > 60) { console.log('时间格式错误'); return false; }
+			if (i < 0 || i > 60) { return false; }
 			var s = parseInt(res[6]);
-			if (s < 0 || s > 60) { console.log('时间格式错误'); return false; }
+			if (s < 0 || s > 60) { return false; }
 			var leftTime = new Date(year, month - 1, day, h, i, s);
 			this.leftTime = leftTime;
-			this.countDown(this);
-			this.setInterValFunc(this);
-		}
-	},
-	methods: {
-		setInterValFunc:function(obj){
-			obj.timerInter = setInterval(function(){ obj.countDown(obj);}, 1000);
+			clearTimeout(this.outTimer);
+			this.countDown();
 		},
-		countDown: function (self){
-			var leftTime = self.leftTime - new Date();
+		countDown: function (){
+			var leftTime = this.leftTime - new Date();
 			if (leftTime > 0) {
-				var day   =  parseInt(leftTime / (1000 * 60 * 60 * 24));
-				var hours = parseInt((leftTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var day     =  parseInt(leftTime / (1000 * 60 * 60 * 24));
+				var hours   = parseInt((leftTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 				var minutes = parseInt((leftTime % (1000 * 60 * 60)) / (1000 * 60));
-				var seconds = parseInt((leftTime % (1000 * 60)) / 1000);	  
+				var seconds = parseInt((leftTime % (1000 * 60)) / 1000);
+				if (hours   < 10) { hours = '0' + hours;}
+				if (minutes < 10) { minutes = '0' + minutes; }
+				if (seconds < 10) { seconds = '0' + seconds; }
+				this.h = hours; this.i = minutes; this.s = seconds; this.d = day;
+				this.outTimer = setTimeout(()=>{this.countDown();}, 1000);
 			}else{
-				var hours = 0, minutes = 0, seconds = 0;
-				clearTimeout(self.timerInter);
-				self.$emit('endDo');
+				clearTimeout(this.outTimer);
+				this.h = '00'; this.i = '00'; this.s = '00'; this.d = 0;
+				this.$emit('endDo');
 			}
-			if (hours < 10) { hours = '0' + hours;}
-			if (minutes < 10) { minutes = '0' + minutes; }
-			if (seconds < 10) { seconds = '0' + seconds; }
-			self.h = hours; self.i = minutes; self.s = seconds; self.d = day;
 		}
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-countdown{display:flex; flex-wrap:nowrap; justify-content:center;}
 .grace-countdown-splitor{justify-content:center; padding:0 5rpx;}
 .grace-countdown-numbers{border-radius:8rpx; margin:0 5rpx; text-align:center; border:1px solid #000000; font-size:22rpx;}

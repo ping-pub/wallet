@@ -1,8 +1,8 @@
 /*
 link   : grace.hcoder.net
 author : 刘海君 5213606@qq.com 
-verson : 2.1.1
-last update date : 2019-09-16
+verson : 2.2
+last update date : 2019-12-18
 GraceUI 的版权约束是不能转售或者将 GraceUI 直接发布到公开渠道！侵权必究，请遵守版权约定！
 GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请遵守极其简单的版权规定
 */
@@ -10,7 +10,7 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 	font-family : "grace-iconfont"; 
 	font-weight : normal; 
 	font-style  : normal; 
-	src         : url('https://at.alicdn.com/t/font_823462_m4rz0iqup9.ttf') format('truetype');
+	src         : url('https://at.alicdn.com/t/font_823462_v2drz0fv1zl.ttf') format('truetype');
 }
 .grace-icons{font-family:"grace-iconfont"; font-style:normal;}
 .icon-wifi:before{content:"\e61f";}

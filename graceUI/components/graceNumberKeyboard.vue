@@ -48,7 +48,7 @@ export default {
 	},
 }
 </script>
-<style>
+<style scoped>
 @font-face {font-family:"gFont"; src:url('https://at.alicdn.com/t/font_1348701_jjwmoshd3l.ttf') format('truetype');}
 .graceNumberKeyboardFont-delete:before {font-family: "gFont" !important; content:"\e605";}
 .grace-mask{background:rgba(255, 255, 255, 0); position:fixed; width:100%; height:100%; left:0; top:0; z-index:1;}

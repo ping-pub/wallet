@@ -3737,7 +3737,7 @@ var cityData = {
     { name: '左镇区', code: '713', fullname: '中国,台湾,台南市,左镇区', pinyin: 'zuozhen' }
   ]
 };
-var AZ = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'w', 'x', 'y', 'z'];
+var AZ = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'W', 'X', 'Y', 'Z'];
 module.exports = {
   cityData: cityData,
   AZ: AZ

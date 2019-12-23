@@ -1,35 +1,21 @@
 {
-	"pages": [{
+	"pages": [
+		// index folder
+		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "Assets | Ping Wallet",
+				"navigationBarTitleText": "Portfolio | Ping Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom",
 				"scrollIndicator": "none"
 			}
-		}, {
-			"path": "pages/delegateWhite/index",
+		},
+		// staking folder
+		{
+			"path": "pages/staking/Staking",
 			"style": {
-				"navigationBarTitleText": "White | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		}, {
-			"path": "pages/indexWhite/index",
-			"style": {
-				"navigationBarTitleText": "White | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		}, {
-			"path": "pages/voteWhite/index",
-			"style": {
-				"navigationBarTitleText": "White | Ping Wallet",
+				"navigationBarTitleText": "Staking | Ping Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom",
@@ -37,9 +23,9 @@
 			}
 		},
 		{
-			"path": "pages/setting/index",
+			"path": "pages/staking/StakingDetail",
 			"style": {
-				"navigationBarTitleText": "Setting | Ping Wallet",
+				"navigationBarTitleText": "Staking Detail | Ping Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom",
@@ -47,7 +33,7 @@
 			}
 		},
 		{
-			"path": "pages/delegateValidatorItem/index",
+			"path": "pages/staking/ValidatorDetail",
 			"style": {
 				"navigationBarTitleText": "Validator Detail | Ping Wallet",
 				"bounce": "none",
@@ -56,58 +42,9 @@
 				"scrollIndicator": "none"
 			}
 		},
+		// goverance folder
 		{
-			"path": "pages/explorer/index",
-			"style": {
-				"navigationBarTitleText": "Look Exploer | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		},
-		{
-			"path": "pages/voteItem/index",
-			"style": {
-				"navigationBarTitleText": "Look Exploer | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		},
-		{
-			"path": "pages/delegateItem/index",
-			"style": {
-				"navigationBarTitleText": "Look Exploer | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		},
-		{
-			"path": "pages/settingSwitchChain/index",
-			"style": {
-				"navigationBarTitleText": "Switch Chain | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		},
-		{
-			"path": "pages/delegate/index",
-			"style": {
-				"navigationBarTitleText": "Delegate | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		},
-		{
-			"path": "pages/vote/index",
+			"path": "pages/goverance/Goverance",
 			"style": {
 				"navigationBarTitleText": "Goverance | Ping Wallet",
 				"bounce": "none",
@@ -117,7 +54,28 @@
 			}
 		},
 		{
-			"path": "pages/settingCurrency/index",
+			"path": "pages/goverance/GoveranceDetail",
+			"style": {
+				"navigationBarTitleText": "Goverance Detail | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		// setting folder 
+		{
+			"path": "pages/setting/Setting",
+			"style": {
+				"navigationBarTitleText": "Setting | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/setting/Currency",
 			"style": {
 				"navigationBarTitleText": "Currency | Ping Wallet",
 				"bounce": "none",
@@ -127,47 +85,7 @@
 			}
 		},
 		{
-			"path": "pages/walletQrcode/index",
-			"style": {
-				"navigationBarTitleText": "Receive | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		},
-		{
-			"path": "pages/walletTransfer/index",
-			"style": {
-				"navigationBarTitleText": "Transfer | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		},
-		{
-			"path": "pages/walletManage/index",
-			"style": {
-				"navigationBarTitleText": "Manage Wallet | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		},
-		{
-			"path": "pages/settingAddress/index",
-			"style": {
-				"navigationBarTitleText": "Address Book | Ping Wallet",
-				"bounce": "none",
-				"titleNView": false,
-				"navigationStyle": "custom",
-				"scrollIndicator": "none"
-			}
-		},
-		{
-			"path": "pages/settingLanguage/index",
+			"path": "pages/setting/Language",
 			"style": {
 				"navigationBarTitleText": "Language | Ping Wallet",
 				"bounce": "none",
@@ -177,9 +95,9 @@
 			}
 		},
 		{
-			"path": "pages/settingServer/index",
+			"path": "pages/setting/Server",
 			"style": {
-				"navigationBarTitleText": "Server Host | Ping Wallet",
+				"navigationBarTitleText": "Server | Ping Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom",
@@ -187,7 +105,28 @@
 			}
 		},
 		{
-			"path": "pages/walletItem/index",
+			"path": "pages/setting/Browser",
+			"style": {
+				"navigationBarTitleText": "Explorer | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		// wallet folder
+		{
+			"path": "pages/wallet/WalletCreate",
+			"style": {
+				"navigationBarTitleText": "Wallet Create | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/wallet/WalletDetail",
 			"style": {
 				"navigationBarTitleText": "Wallet Detail | Ping Wallet",
 				"bounce": "none",
@@ -197,9 +136,39 @@
 			}
 		},
 		{
-			"path": "pages/walletAdd/walletAdd",
+			"path": "pages/wallet/WalletManage",
 			"style": {
-				"navigationBarTitleText": "Wallet Add | Ping Wallet",
+				"navigationBarTitleText": "Wallet Manage | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/wallet/WalletRecive",
+			"style": {
+				"navigationBarTitleText": "Wallet Receive | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/wallet/WalletTransfer",
+			"style": {
+				"navigationBarTitleText": "Wallet Transfer | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/goverance/Tmp",
+			"style": {
+				"navigationBarTitleText": "Wallet Transfer | Ping Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom",
@@ -218,45 +187,26 @@
 		"selectedColor": "#37434b",
 		"borderStyle": "white",
 		"backgroundColor": "#FFFFFF",
-		"list": [
-			// {
-			// 	"pagePath": "pages/index/index",
-			// 	"iconPath": "static/tabbars/color_wallet0.png",
-			// 	"selectedIconPath": "static/tabbars/color_wallet1.png",
-			// 	"text": "Portfolio"
-			// },
-			// {
-			// 	"pagePath": "pages/delegate/index",
-			// 	"iconPath": "static/tabbars/color_staking0.png",
-			// 	"selectedIconPath": "static/tabbars/color_staking1.png",
-			// 	"text": "Staking"
-			// },
-			// {
-			// 	"pagePath": "pages/vote/index",
-			// 	"iconPath": "static/tabbars/color_goverance0.png",
-			// 	"selectedIconPath": "static/tabbars/color_goverance1.png",
-			// 	"text": "Goverance"
-			// },
-			{
-				"pagePath": "pages/indexWhite/index",
+		"list": [{
+				"pagePath": "pages/index/index",
 				"iconPath": "static/tabbars/color_wallet0.png",
 				"selectedIconPath": "static/tabbars/color_wallet1.png",
 				"text": "Portfolio"
 			},
 			{
-				"pagePath": "pages/delegateWhite/index",
+				"pagePath": "pages/staking/Staking",
 				"iconPath": "static/tabbars/color_staking0.png",
 				"selectedIconPath": "static/tabbars/color_staking1.png",
 				"text": "Staking"
 			},
 			{
-				"pagePath": "pages/voteWhite/index",
+				"pagePath": "pages/goverance/Goverance",
 				"iconPath": "static/tabbars/color_goverance0.png",
 				"selectedIconPath": "static/tabbars/color_goverance1.png",
 				"text": "Goverance"
 			},
 			{
-				"pagePath": "pages/setting/index",
+				"pagePath": "pages/setting/Setting",
 				"iconPath": "static/tabbars/color_user0.png",
 				"selectedIconPath": "static/tabbars/color_user1.png",
 				"text": "Setting"

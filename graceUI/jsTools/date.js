@@ -11,6 +11,15 @@ GraceUI 的版权约束是不能转售或者将 GraceUI 直接发布到公开渠
 
 module.exports = {
 	
+	// 获取当前时间
+	currentTime : function (returnType, addVal) {
+		var dateObj = new Date();
+		var cTime = dateObj.getTime();
+		if(addVal){cTime += addVal;}
+		if(!returnType){return cTime;}
+		return this.formatDateTime(cTime / 1000, 'str');
+	},
+	
 	// 时间戳转 YY-mm-dd HH:ii:ss
 	formatDateTime : function(timeStamp, returnType){
 		var date = new Date();

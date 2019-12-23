@@ -56,7 +56,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 @font-face {font-family:"gFont"; src:url('https://at.alicdn.com/t/font_1348600_ndhd2fow1h.ttf') format('truetype');}
 @keyframes gdFadeIn{ from { opacity: 0; } 100% { opacity: 1; }}
 .gdFadeIn {animation:gdFadeIn 200ms linear;}

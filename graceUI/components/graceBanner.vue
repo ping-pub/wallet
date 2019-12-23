@@ -30,7 +30,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-banner{display:flex; flex-wrap:nowrap; justify-content:center; background:#FFFFFF; padding:30upx; box-shadow:0px 0px 8px #D5D6D8; margin-top:20px; border-radius:8px;}
 .grace-banner .logo{width:100upx; height:100upx; margin-right:30upx; font-size:0;}
 .grace-banner .logo image{width:100upx; height:100upx;}

@@ -4,7 +4,7 @@
 		:style="{color:iconColor, fontSize:iconFontSize, lineHeight:height, width:iconWidth}">&#xe604;</text>
 		<input type="text" class="gui-search-input" value="" :placeholder="placeholder" v-model="inputVal" 
 		:style="{height:inputHeight, lineHeight:inputHeight, fontSize:inputFontSize}" 
-		@input="inputting" @confirm="confirm" />
+		@input="inputting" @confirm="confirm" confirm-type="search" />
 		<text class="gui-search-icon grace-icons" v-if="inputVal.length > 0" @tap.stop="clearKwd" 
 		:style="{color:iconColor, fontSize:iconFontSize, lineHeight:height, width:iconWidth}">&#xe632;</text>
 	</view>
@@ -48,5 +48,5 @@ export default{
 <style scoped>
 .gui-search{border-radius:66rpx; padding:0 10rpx; flex-direction:row; flex-wrap:nowrap; align-items:center; overflow:hidden;}
 .gui-search-icon{text-align:center;}
-.gui-search-input{width:600rpx; margin:0 10rpx; flex:1; border:none; padding:0;}
+.gui-search-input{width:600rpx; margin:0 10rpx; flex:1; border-width:0; padding:0;}
 </style>

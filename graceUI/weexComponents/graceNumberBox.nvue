@@ -65,7 +65,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .grace-number-box{width:180rpx; height:55rpx; overflow:hidden; flex-direction:row; flex-wrap:nowrap; align-items:center;}
 .doBtn{width:55rpx; line-height:55rpx; height:55rpx;  text-align:center; font-size:36rpx; color:#666666;}
 .grace-number-input{height:50rpx; width:200rpx; flex:1; line-height:30rpx; padding:10rpx 0; color:#555555; font-size:26rpx; background-color:#F1F2F3; text-align:center; border-radius:6rpx;}

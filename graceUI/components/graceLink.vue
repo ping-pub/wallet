@@ -31,6 +31,6 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .link{color:#3688FF; line-height:2em;}
 </style>

@@ -22,11 +22,11 @@
 					</view>
 				</view>
 			</view>
-			
+
 			<view class="grace-flex tc" style="padding: 32rpx 0 24rpx 0;">
-			
+
 				<view class="flex-1 grace-black6" @tap="go('/pages/walletQrcode/index')">
-			
+
 					<view class="mb-6">
 						<text class="look-app-icon look-app-icon-qrcode grace-box-shadow" style="font-size: 20px;padding:16rpx;border-radius: 100%;"></text>
 					</view>
@@ -45,28 +45,31 @@
 					<view class="grace-grids-text">Rename</view>
 				</view>
 			</view>
-			
+
 			<view class="page-space"></view>
 
 			<view class="mb-12" style="padding: 24rpx 32rpx;">
 				<view class="grace-space-between grace-flex-vcenter">
-					<view ><text class="look-title" style="color: #212452;">ATOM</text></view>
+					<view><text class="look-title" style="color: #212452;">ATOM</text></view>
 					<view class="tr">
 						<text class="grace-black f-18">$2,134,992,134.32</text>
 					</view>
 				</view>
-				<view class="tr grace-border-b mb-6" style="padding-bottom: 12rpx;"><text class="grace-black6 f-16">123324 ATOM</text></view>
+				<view class="grace-border-b mb-6 grace-flex grace-space-between" style="padding-bottom: 12rpx;">
+					<text class="grace-black6 f-16">1 ATOM = $5.2</text>
+					<text class="grace-black6 f-16">123324 ATOM</text>
+				</view>
 				<view class="grace-black6 grace-space-between mb-6">
 					<text>Avaliable</text>
-					<text>9,012,390,123,901,234.91</text>
+					<text class="f-16">9,012,390,123,901,234.91</text>
 				</view>
 				<view class="grace-black6 grace-space-between mb-6">
 					<text>Delegated</text>
-					<text>4.90123</text>
+					<text class="f-16">4.90123</text>
 				</view>
 				<view class="grace-black6 grace-space-between mb-6">
 					<text>Unbonding</text>
-					<text>4.90123</text>
+					<text class="f-16">4.90123</text>
 				</view>
 				<view class="grace-black6 grace-space-between mb-6">
 					<text>Reward</text>
@@ -80,16 +83,20 @@
 			</view>
 
 			<view class="page-space"></view>
-			<view class="" v-for="n in 5" :key="n">
-				<view class="grace-flex grace-flex-vcenter grace-border-b" style="padding: 24rpx;">
+			<view class="grace-border-b" v-for="n in 5" :key="n" style="padding: 24rpx;">
+				<view class="grace-flex grace-flex-vcenter ">
 					<view class="flex-1"><text class="look-title" style="color: #212452;">IRIS</text></view>
 					<view class="tr">
 						<view><text class="grace-black f-16">$2,134,992,134.32</text></view>
-						<view><text class="grace-black6">12323 iaa</text></view>
 					</view>
+				</view>
+				<view class="grace-flex grace-space-between">
+					<text class="grace-black6">1 IRIS = $0.5</text>
+					<text class="grace-black6">12323 iaa</text>
 				</view>
 			</view>
 
+			<view class="page-space"></view>
 
 			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 		</view>

@@ -4,7 +4,7 @@
 		:style="{color:iconColor, fontSize:iconFontSize, lineHeight:height, width:iconWidth}"></view>
 		<input type="text" class="gui-search-input" value="" :placeholder="placeholder" v-model="inputVal" 
 		:style="{height:inputHeight, lineHeight:inputHeight, fontSize:inputFontSize}" 
-		@input="inputting" @confirm="confirm" />
+		@input="inputting" @confirm="confirm" confirm-type="search" />
 		<view class="gui-search-icon grace-icons icon-close" v-if="inputVal.length > 0" @tap.stop="clearKwd" 
 		:style="{color:iconColor, fontSize:iconFontSize, lineHeight:height, width:iconWidth}"></view>
 	</view>

@@ -27,7 +27,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-btdialog-shade{position:fixed; width:750rpx; left:0; top:0; bottom:0; background-color:rgba(0, 0, 0, 0.5);}
 .grace-btdialog-shade-dialog{width:750rpx; background-color:#FFFFFF; position:absolute; bottom:0; left:0;}
 .grace-btdialog-shade-title{flex-direction:row; flex-wrap:nowrap; justify-content:space-between;}

@@ -50,7 +50,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-header{width:100%; position:fixed; left:0; top:0; z-index:99; height:44px; padding-top:20px; display:flex; flex-direction:row; flex-wrap:nowrap;}
 .grace-header-main{width:300rpx; flex:auto;}
 </style>

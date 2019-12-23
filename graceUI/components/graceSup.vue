@@ -42,7 +42,7 @@
 		}
 	}
 </script>
-<style>
+<style scoped>
 .grace-sup{padding:0; display:flex; flex-wrap:nowrap; align-items:flex-start;}
 .grace-sup .text{font-size:32upx; line-height:56upx;}
 .grace-sup .sup{font-size:26upx; line-height:26upx; margin-left:10upx; margin-top:6upx;}

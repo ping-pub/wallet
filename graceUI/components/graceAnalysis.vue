@@ -51,7 +51,7 @@ export default{
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-editor-show{padding:0 25rpx; margin-top:20rpx;}
 .grace-editor-show .item{width:100%; line-height:1.8em; letter-spacing:1px;}
 .grace-editor-show .item .txt{line-height:2.2em; font-size:26rpx;  color:#676767;}

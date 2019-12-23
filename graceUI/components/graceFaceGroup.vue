@@ -52,7 +52,7 @@ export default{
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-face-group{position:relative;}
 .grace-face-items{width:100rpx; height:100rpx; position:absolute; overflow:hidden; border-radius:100%;}
 .grace-face-items image{width:100%;}

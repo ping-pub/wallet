@@ -38,7 +38,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-header{width:750rpx; position:fixed; left:0; top:0; height:44px; flex-direction:row; flex-wrap:nowrap;}
 .grace-header-main{width:750rpx; flex:1;}
 </style>

@@ -1,12 +1,7 @@
 <template>
-	<view>
-		<view class="grace-drawer-shade" v-if="show" @tap.stop="closeDrawer" @touchmove.stop="">
-			<view 
-			:class="['nav', direction == 'left' ? 'gdSlideLeft' : 'gdSlideRight']" 
-			:style="{width:width}" 
-			@tap.stop="stopFun">
-				<view class="navMain"><slot name="links"></slot></view>
-			</view>
+	<view class="grace-drawer-shade" v-if="show" @tap.stop="closeDrawer" @touchmove.stop="" :style="{background:background}">
+		<view  :class="['nav', direction == 'left' ? 'gdSlideLeft' : 'gdSlideRight']" :style="{width:width}" @tap.stop="stopFun">
+			<view class="navMain"><slot name="links"></slot></view>
 		</view>
 	</view>
 </template>
@@ -25,6 +20,10 @@ export default {
 		width : {
 			type : String,
 			default : '60%'
+		},
+		background:{
+			type : String,
+			default : 'rgba(0, 0, 0, 0.5)'
 		}
 	},
 	methods:{

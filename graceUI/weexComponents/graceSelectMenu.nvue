@@ -70,7 +70,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-select-menu-wrap{}
 .grace-select-menu-title{flex-direction:row; justify-content:center; flex-wrap:nowrap; align-items:center;}
 .grace-select-menu-title-txt{font-size:28rpx; line-height:92rpx;}

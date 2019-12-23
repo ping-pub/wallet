@@ -8,7 +8,7 @@ export default{
 	props:{
 		height : {
 			type : Number,
-			default : 88
+			default : 80
 		},
 		fontSize : {
 			type : Number,

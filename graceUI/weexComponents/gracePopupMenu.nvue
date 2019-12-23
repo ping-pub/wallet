@@ -1,10 +1,12 @@
-<template>
+<template name="gracePopupMenu">
 	<view>
-		<view class="grace-popup-mask" v-if="show" @click.stop="hideMenu"></view>
-		<view class="grace-popup-menu" 
-		v-if="show" 
-		:style="{top:top+'px', left:left+'px', 'background-color':bgColor, width:menuWidth+'rpx', height:menuHeight+'rpx'}">
-			<slot></slot>
+		<view 
+		class="grace-popup-mask" v-if="show" @tap.stop="hideMenu" @touchmove.stop="" 
+		:style="{backgroundColor:background}">
+			<view class="grace-popup-menu" v-if="show"
+			:style="{top:top+'px', right:right, backgroundColor:bgColor, width:menuWidth, borderRadius:borderRadius}">
+				<slot></slot>
+			</view>
 		</view>
 	</view>
 </template>
@@ -20,21 +22,25 @@
 				type : Number,
 				default : 0
 			},
-			left:{
-				type : Number,
-				default : 0
-			},
 			bgColor:{
 				type : String,
-				default :'#F6F6F6'
+				default :'#FFFFFF'
 			},
 			menuWidth :{
-				type : Number,
-				default : 300
+				type : String,
+				default : '258rpx'
 			},
-			menuHeight :{
-				type : Number,
-				default : 388
+			background : {
+				type : String,
+				default : 'rgba(0,0,0, 0.3)'
+			},
+			right:{
+				type : String,
+				default:'0rpx'
+			},
+			borderRadius:{
+				type : String,
+				default:'0rpx'
 			}
 		},
 		methods: {
@@ -45,6 +51,6 @@
 	}
 </script>
 <style scoped>
-.grace-popup-menu{background-color:#FFFFFF; width:300rpx; height:400rpx; position:fixed; padding:6px; border-radius:5px;}
-.grace-popup-mask{background-color:rgba(255,255,255, 0); width:750rpx; position:fixed; left:0; top:0; right:0; bottom:0;}
+.grace-popup-menu{background-color:#FFFFFF; width:258rpx; padding:10rpx; right:0px; top:0px; position:absolute;}
+.grace-popup-mask{background-color:rgba(0,0,0, 0.3); width:750rpx; position:fixed; left:0; top:0; bottom:0;}
 </style>

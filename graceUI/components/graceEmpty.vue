@@ -17,7 +17,7 @@ export default {
 	},
 }
 </script>
-<style>
+<style scoped>
 .grace-empty{width:100%;}
 .grace-empty-icon{text-align:center;}
 .grace-empty-text{padding:20rpx 0; text-align:center;}

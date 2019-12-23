@@ -1,5 +1,5 @@
 <template>
-	<view class="grace-totop" v-if="show" @tap="totop">
+	<view class="grace-totop" v-if="show" @tap="totop" :style="{bottom:bottom, background:background}">
 		<text class="totopfont icon-top" :style="{color:color}"></text>
 	</view>
 </template>
@@ -13,6 +13,14 @@ export default{
 		color : {
 			type : String,
 			default : "#3688FF"
+		},
+		bottom : {
+			type : String,
+			default : "80rpx"
+		},
+		background:{
+			type : String,
+			default : "#FFFFFF"
 		}
 	},
 	data() {
@@ -43,12 +51,11 @@ export default{
 	}
 }
 </script>
-<style>
-@font-face {font-family:"gFont"; src:url('https://at.alicdn.com/t/font_1348803_h8kl243o7ol.ttf') format('truetype');}
+<style scoped>
 .totopfont {
-  font-family: "gFont" !important;
+  font-family:"grace-iconfont";
   font-style: normal;
 }
-.icon-top:before { content: "\e600"; font-size:22px;}
+.icon-top:before {content:"\e637"; font-size:22px;}
 .grace-totop{width:40px; height:40px; line-height:40px; background:#FFFFFF; color:#3688FF; position:fixed; bottom:80px; z-index:9999; right:15px; border-radius:5px; box-shadow:0px 0px 2px #EEE; text-align:center;}
 </style>

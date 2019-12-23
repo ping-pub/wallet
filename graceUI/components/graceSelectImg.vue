@@ -73,7 +73,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 @font-face {font-family:"gFont"; src:url('https://at.alicdn.com/t/font_1350431_mx2yuzh35rh.ttf') format('truetype');}
 .grace-add-list{display:flex; flex-wrap:wrap;}
 .grace-add-list .add-btn{display:flex; flex-direction:column; align-items:center; justify-content:center;}

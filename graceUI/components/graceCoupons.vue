@@ -29,7 +29,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 .grace-coupons{display:flex; flex-wrap:nowrap; border-top-left-radius:10rpx; border-bottom-left-radius:10rpx;}
 .grace-coupons .left{width:100%; height:150rpx; padding-right:10rpx; display:flex; justify-content:space-between; align-items:center; border-radius:8rpx; position:relative;}
 .grace-coupons .left .number{width:32%; display:flex; flex-wrap:wrap; border-right:1px dashed #D2D2D2;}
