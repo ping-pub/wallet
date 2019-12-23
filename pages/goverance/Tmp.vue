@@ -3,7 +3,7 @@
 		<view slot="gBody">
 			<!-- 上层 -->
 			<view class="help-menu grace-wrap grace-flex-center">
-				<view class="help-text grace-body" style="padding-top: 48rpx;">Goverance</view>
+				<view class="help-text grace-body" style="padding-top: 48rpx;">Setting</view>
 				<view class="help-menu-list grace-body grace-box-shadow">
 					<view class="grace-grids grace-margin-top">
 						<view class="items">
@@ -34,84 +34,61 @@
 				</view>
 			</view>
 			<!-- 下层 -->
-			<view class="help-list grace-body">
-				<view class="grace-title">
+			<view class="help-list">
+		<!-- 		<view class="grace-title">
 					<text class="title">常见问题</text>
 					<navigator class="grace-more">更多<text class="grace-icons icon-arrow-right"></text></navigator>
+				</view> -->
+				
+				<view class="grace-ucenter-funs grace-list">
+					<navigator url="/pages/walletManage/index" class="grace-body items">
+						<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color:#586d8b"></view>
+						<view class="body">
+							<view class="title">{{ lang.manageWallet }}</view>
+						</view>
+						<view class="arrow-right"></view>
+					</navigator>
+					<navigator class="grace-body items" url="/pages/settingServer/index">
+						<view class="look-app-icon look-app-icon-ip " style="font-size: 20px;padding-left:8rpx;color: #586d8b"></view>
+						<view class="body">
+							<view class="title">{{ lang.serverHost }}</view>
+						</view>
+						<view class="arrow-right"></view>
+					</navigator>
 				</view>
-				<view class="grace-list">
-					<navigator class="items">
+				<view class="page-space"></view>
+				
+				<view class="grace-ucenter-funs grace-list">
+					<navigator class="grace-body items" url="/pages/settingLanguage/index">
+						<view class="look-app-icon look-app-icon-language" style="font-size: 26px;padding-left: 2rpx;color: #586d8b"></view>
 						<view class="body">
-							<view class="title">上课时突然看不见怎么办？</view>
+							<view class="title">{{ lang.language }}</view>
+						</view>
+						<view class="grace-black9">
+							English
 						</view>
 						<view class="arrow-right"></view>
 					</navigator>
-					<navigator class="items">
+					<navigator class="grace-body items" url="/pages/settingCurrency/index">
+						<view class="look-app-icon look-app-icon-money" style="padding-left: 10rpx;color: #586d8b"></view>
 						<view class="body">
-							<view class="title">为什么摄像头和麦克风在检测时正常，上课却出问题为什么摄像头和麦克风在检测时正常，上课却出问题</view>
+							<view class="title">Currency</view>
+						</view>
+						<view class="grace-black9">
+							USD
 						</view>
 						<view class="arrow-right"></view>
 					</navigator>
-					<navigator class="items">
+					<view @tap="openBrowser('https://look.ping.pub')" class="grace-body items">
+						<view class="look-app-icon look-app-icon-browser" style="font-size: 20px;padding-left: 8rpx;color:#586d8b"></view>
 						<view class="body">
-							<view class="title">上课时候视频播放很卡怎么办？</view>
+							<view class="title">{{ lang.browser }}</view>
+						</view>
+						<view class="grace-black9">
+							https://look.ping.pub
 						</view>
 						<view class="arrow-right"></view>
-					</navigator>
-					<navigator class="items">
-						<view class="body">
-							<view class="title">能不能分期支付？</view>
-						</view>
-						<view class="arrow-right"></view>
-					</navigator>
-					<navigator class="items">
-						<view class="body">
-							<view class="title">提示银行卡信息错误怎么办？</view>
-						</view>
-						<view class="arrow-right"></view>
-					</navigator>
-					<navigator class="items">
-						<view class="body">
-							<view class="title">充值不到账怎么办？</view>
-						</view>
-						<view class="arrow-right"></view>
-					</navigator>
-					<navigator class="items">
-						<view class="body">
-							<view class="title">上课时突然看不见怎么办？</view>
-						</view>
-						<view class="arrow-right"></view>
-					</navigator>
-					<navigator class="items">
-						<view class="body">
-							<view class="title">为什么摄像头和麦克风在检测时正常，上课却出问题</view>
-						</view>
-						<view class="arrow-right"></view>
-					</navigator>
-					<navigator class="items">
-						<view class="body">
-							<view class="title">上课时候视频播放很卡怎么办？</view>
-						</view>
-						<view class="arrow-right"></view>
-					</navigator>
-					<navigator class="items">
-						<view class="body">
-							<view class="title">能不能分期支付？</view>
-						</view>
-						<view class="arrow-right"></view>
-					</navigator>
-					<navigator class="items">
-						<view class="body">
-							<view class="title">提示银行卡信息错误怎么办？</view>
-						</view>
-						<view class="arrow-right"></view>
-					</navigator>
-					<navigator class="items">
-						<view class="body">
-							<view class="title">充值不到账怎么办？</view>
-						</view>
-						<view class="arrow-right"></view>
-					</navigator>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -120,6 +97,22 @@
 
 <script>
 	export default {
+		computed: {
+			lang() {
+				return this.$t('setting')
+			}
+		},
+		methods: {
+			openBrowser(url) {
+				// #ifdef APP-PLUS
+				plus.runtime.openURL(url)
+				// #endif 
+				// #ifdef H5
+				window.open(url, '_self')
+				// #endif
+		
+			},
+		},
 		data() {
 			return {}
 		},
@@ -174,7 +167,7 @@
 
 	.help-menu {
 		height: 250rpx;
-		background: linear-gradient(top, #96a8b3, #e5ebed);
+		background: linear-gradient(top, #37434b, #212452);
 		border-radius: 0 0 50rpx 50rpx;
 	}
 
