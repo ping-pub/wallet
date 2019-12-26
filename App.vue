@@ -31,7 +31,7 @@
 
 	html,
 	body {
-		font-family: -apple-system, sans-serif;
+		font-family: -apple-system, Helvetica, sans-serif;
 	}
 
 	/*
