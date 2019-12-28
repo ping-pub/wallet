@@ -1,90 +1,98 @@
 <template>
-	<gracePage  headerBG="#fff">
-		<view class="grace-bg-white" slot="gHeader">
+	<gracePage headerBG="#fff">
+		<view class="" slot="gHeader">
 			<view class="status_bar"></view>
-		</view>
-		<view slot="gBody">
-			<view class="status_bar"></view>
-			<view class="grace-body" style="margin-top: 32rpx;margin-bottom: 24rpx;">
-				<text class="look-title">Setting</text>
-			</view>
-			<view class="grace-ucenter-funs grace-list">
-				<navigator url="/pages/walletManage/index" class="grace-body items">
-					<view class="look-app-icon look-app-icon-wallet" style="font-size: 18px;color:#586d8b"></view>
-					<view class="body">
-						<view class="title">{{ lang.manageWallet }}</view>
-					</view>
-					<view class="arrow-right"></view>
-				</navigator>
-				<navigator class="grace-body items" url="/pages/settingServer/index">
-					<view class="look-app-icon look-app-icon-ip " style="font-size: 20px;padding-left:8rpx;color: #586d8b"></view>
-					<view class="body">
-						<view class="title">{{ lang.serverHost }}</view>
-					</view>
-					<view class="arrow-right"></view>
-				</navigator>
-			</view>
-			<view class="page-space"></view>
-
-			<view class="grace-ucenter-funs grace-list">
-				<navigator class="grace-body items" url="/pages/settingLanguage/index">
-					<view class="look-app-icon look-app-icon-language" style="font-size: 26px;padding-left: 2rpx;color: #586d8b"></view>
-					<view class="body">
-						<view class="title">{{ lang.language }}</view>
-					</view>
-					<view class="grace-black9">
-						English
-					</view>
-					<view class="arrow-right"></view>
-				</navigator>
-				<navigator class="grace-body items" url="/pages/settingCurrency/index">
-					<view class="look-app-icon look-app-icon-money" style="padding-left: 10rpx;color: #586d8b"></view>
-					<view class="body">
-						<view class="title">Currency</view>
-					</view>
-					<view class="grace-black9">
-						USD
-					</view>
-					<view class="arrow-right"></view>
-				</navigator>
-				<view @tap="openBrowser('https://look.ping.pub')" class="grace-body items">
-					<view class="look-app-icon look-app-icon-browser" style="font-size: 20px;padding-left: 8rpx;color:#586d8b"></view>
-					<view class="body">
-						<view class="title">{{ lang.browser }}</view>
-					</view>
-					<view class="grace-black9">
-						https://look.ping.pub
-					</view>
-					<view class="arrow-right"></view>
+			<view class="cu-bar bg-white">
+				<view class="action sub-title">
+					<text class="text-xl text-bold text-black">设置</text>
+					<text class="bg-black"></text>
 				</view>
 			</view>
-			<view class="page-space"></view>
 		</view>
+		<view slot="gBody">
+			<view class="cu-list menu">
+				<view class="cu-item">
+					<view class="content">
+						<text class="cuIcon-pay text-grey"></text>
+						<text class="text-black">{{ lang.manageWallet }}</text>
+					</view>
+					<view class="action">
+						<text class=" text-grey text-sm"><text class="cuIcon cuIcon-right"></text></text>
+					</view>
+				</view>
+				<view class="cu-item">
+					<view class="content">
+						<text class="cuIcon-light text-grey"></text>
+						<text class="text-black">{{ lang.serverHost }}</text>
+					</view>
+					<view class="action">
+						<text class=" text-grey text-sm"><text class="cuIcon cuIcon-right"></text></text>
+					</view>
+				</view>
+				<view class="cu-item">
+					<view class="content">
+						<text class="cuIcon-comment text-grey"></text>
+						<text class="text-black">{{ lang.language }}</text>
+					</view>
+					<view class="action">
+						<text class=" text-grey text-sm"><text class="cuIcon cuIcon-right"></text></text>
+					</view>
+				</view>
+				<view class="cu-item">
+					<view class="content">
+						<text class="cuIcon-recharge text-grey"></text>
+						<text class="text-black">Currency</text>
+					</view>
+					<view class="action">
+						<text class=" text-grey text-sm">
+							USD
+							<text class="cuIcon cuIcon-right"></text>
+						</text>
+					</view>
+				</view>
+				<view class="cu-item">
+					<view class="content">
+						<text class="cuIcon-link text-grey"></text>
+						<text class="text-black">{{ lang.browser }}</text>
+					</view>
+					<view class="action">
+						<text class=" text-grey text-sm">
+							https://look.ping.pub
+							<text class="cuIcon cuIcon-right"></text>
+						</text>
+					</view>
+				</view>
+			</view>
+
+			<view class="page-space"></view>
+			<view class="cu-bar"></view>
+		</view>
+
+		<PageTabbar slot="gFooter" page="setting"></PageTabbar>
 	</gracePage>
 </template>
 <script>
-	export default {
-		computed: {
-			lang() {
-				return this.$t('setting')
-			}
-		},
-		methods: {
-			openBrowser(url) {
-				// #ifdef APP-PLUS
-				plus.runtime.openURL(url)
-				// #endif 
-				// #ifdef H5
-				window.open(url, '_self')
-				// #endif
-
-			},
+export default {
+	computed: {
+		lang() {
+			return this.$t('setting');
+		}
+	},
+	methods: {
+		openBrowser(url) {
+			// #ifdef APP-PLUS
+			plus.runtime.openURL(url);
+			// #endif
+			// #ifdef H5
+			window.open(url, '_self');
+			// #endif
 		}
 	}
+};
 </script>
 
 <style scoped>
-	.list-title {
-		padding: 6rpx 12rpx;
-	}
+.list-title {
+	padding: 6rpx 12rpx;
+}
 </style>

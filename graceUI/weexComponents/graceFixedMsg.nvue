@@ -31,7 +31,7 @@ export default {
 	},
 	methods:{
 		tapme : function(){
-			this.$emit('tapEvent');
+			this.$emit('tapme');
 		}
 	}
 }

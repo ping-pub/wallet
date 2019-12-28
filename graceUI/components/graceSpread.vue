@@ -9,7 +9,7 @@ export default {
 	props: {
 		height:{
 			type : String,
-			default : "300px"
+			default : "600rpx"
 		},
 		btnTxt:{
 			type : String,
@@ -22,7 +22,7 @@ export default {
 	},
 	data() {
 		return {
-			reHeight: "300px",
+			reHeight: "600px",
 			isBtn : true
 		}
 	},

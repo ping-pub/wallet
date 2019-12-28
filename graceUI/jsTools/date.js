@@ -23,7 +23,11 @@ module.exports = {
 	// 时间戳转 YY-mm-dd HH:ii:ss
 	formatDateTime : function(timeStamp, returnType){
 		var date = new Date();
-		date.setTime(timeStamp * 1000);
+		if(timeStamp.length < 11 ){
+			date.setTime(timeStamp * 1000);
+		}else{
+			date.setTime(timeStamp );
+		}
 		var y = date.getFullYear();
 		var m = date.getMonth() + 1;
 		m = m < 10 ? ('0' + m) : m;

@@ -1,10 +1,12 @@
-<template name="graceNumberBox">
-	<view class="grace-number-box">
-		<view class="doBtn" @tap="reduce">-</view>
-		<view style="width:100rpx;">
-			<input type="number" :value="inputNumber" :disabled="disabled" @blur="blur"></input>
-		</view>
-		<view class="doBtn" @tap="add">+</view>
+<template>
+	<view class="grace-number-box" :style="{width:width}">
+		<view class="grace-number-box-doBtn" @tap.stop="reduce" 
+		:style="{width:btnSize, height:btnSize, fontSize:btnFontSize, lineHeight:btnSize, color:btnColr}">-</view>
+		<input class="grace-number-box-input" type="number" 
+		:value="inputNumber" :disabled="disabled" @blur="blur" 
+		:style="{background:inputBG, height:inputHeight, lineHeight:inputHeight, fontSize:inputFontSize, color:inputColor, padding:inputPadding, borderRadius:inputBorderRadius}"></input>
+		<view class="grace-number-box-doBtn" @tap.stop="add" 
+		:style="{width:btnSize, height:btnSize, fontSize:btnFontSize, lineHeight:btnSize, color:btnColr}">+</view>
 	</view>
 </template>
 <script>
@@ -25,15 +27,55 @@ export default {
 		},
 		maxNum:{
 			type: Number,
-			default: 20
+			default: 999999
 		},
 		minNum: {
 			type: Number,
-			default: 1
+			default: 0
 		},
 		datas:{
 			type: String,
 			default: ''
+		},
+		btnSize : {
+			type : String,
+			default : '60rpx'
+		},
+		btnFontSize : {
+			type : String,
+			default : '36rpx'
+		},
+		btnColr : {
+			type : String,
+			default : '#666666'
+		},
+		inputHeight : {
+			type : String,
+			default : '30rpx'
+		},
+		inputFontSize : {
+			type : String,
+			default : '26rpx'
+		},
+		inputColor : {
+			type : String,
+			default : '#333333'
+		},
+		inputBG : {
+			type : String,
+			default : '#F6F7F8'
+		},
+		inputPadding : {
+			type : String,
+			default : '10rpx'
+		},
+		inputBorderRadius : {
+			type : String,
+			default : '8rpx'
+		},
+		width:{
+			type : String,
+			default : '200rpx'
 		}
 	},
 	data() {
@@ -48,7 +90,7 @@ export default {
 		inputNumber (val){
 			val = Number(val);
 			if(val > this.maxNum){val = this.maxNum; this.inputNumber = val;}
-			if(val < this.minNum){val = this.minNum; this.inputNumber = val; console.log(11)}
+			if(val < this.minNum){val = this.minNum; this.inputNumber = val;}
 			this.$emit('change', [val, this.index, this.datas]);
 		}
 	},
@@ -68,7 +110,7 @@ export default {
 }
 </script>
 <style scoped>
-.grace-number-box{width:200rpx; height:66rpx; display:flex; overflow:hidden; flex-wrap:nowrap; align-items:center;}
-.grace-number-box .doBtn{width:60rpx; line-height:60rpx; height:66rpx; text-align:center; font-size:36rpx; color:#666666; flex-shrink:0;}
-.grace-number-box input{height:30rpx; line-height:30rpx !important; color:#333; font-size:26rpx; padding:10rpx 0; background:#F1F2F3; text-align:center; border-radius:6rpx !important;}
+.grace-number-box{display:flex; overflow:hidden; flex-wrap:nowrap; align-items:center;}
+.grace-number-box-doBtn{text-align:center; color:#666666; flex-shrink:0;}
+.grace-number-box-input{text-align:center; width:700rpx;}
 </style>

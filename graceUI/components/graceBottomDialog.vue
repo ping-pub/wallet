@@ -1,10 +1,8 @@
 <template>
-	<view>
-		<view class="grace-btdialog-shade" v-if="show" @tap.stop="closeDialog" @touchmove.stop.prevent="stopFun">
-			<view :class="['dialog', 'gdIn', isIpx ? 'grace-ipx-bottom' : '']" @tap.stop="stopFun">
-				<view class="title"><slot name="btns"></slot></view>
-				<view class="content" @tap.stop="stopFun"><slot name="content"></slot></view>
-			</view>
+	<view class="grace-btdialog-shade" v-if="show" @tap.stop="closeDialog" @touchmove.stop="stopFun" :style="{backgroundColor:background}">
+		<view :class="['dialog', 'gdIn', isIpx ? 'grace-ipx-bottom' : '']" @tap.stop="stopFun">
+			<view><slot name="btns"></slot></view>
+			<view @tap.stop="stopFun"><slot name="content"></slot></view>
 		</view>
 	</view>
 </template>
@@ -14,6 +12,10 @@ export default {
 		show : {
 			type : Boolean,
 			default : false
+		},
+		background:{
+			type : String,
+			default : 'rgba(0, 0, 0, 0.5)'
 		}
 	},
 	data() {
@@ -48,6 +50,4 @@ export default {
 .grace-btdialog-shade{position:fixed; width:100%; height:100%; left:0; top:0; z-index:9991; background:rgba(0, 0, 0, 0.5);}
 .grace-btdialog-shade .dialog{width:100%; height:auto; background:#FFFFFF; position:absolute; bottom:0; left:0;}
 .grace-ipx-bottom{padding-bottom:68rpx !important;}
-.grace-btdialog-shade .title{width:100%;}
-.grace-btdialog-shade .content{width:100%;}
 </style>

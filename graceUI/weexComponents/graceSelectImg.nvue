@@ -1,12 +1,12 @@
 <template>
 	<view class="grace-add-list">
 		<view class="grace-add-list-items" v-for="(item, index) in imgLists" :key="index">
-			<image :src="item" mode="aspectFill" class="grace-add-list-items-image" :data-imgurl="item" @tap="showImgs"></image>
-			<text class="grace-add-list-remove grace-icons" @tap="removeImg" :id="'grace-items-img-'+index">X</text>
+			<image :src="item" :data-imgurl="item" @tap="showImgs"></image>
+			<text class="grace-add-list-remove grace-icons" @tap="removeImg" :id="'grace-items-img-'+index" :style="{color:closeBtnColor}">&#xe632;</text>
 		</view>
-		<view class="grace-add-list-items add-btn" @tap="addImg" v-if="imgLists.length < maxFileNumber">
-			<text class="add-btn-add">+</text>
-			<text class="add-btn-text">{{btnName}}</text>
+		<view class="grace-add-list-items grace-add-list-btn" @tap="addImg" v-if="imgLists.length < maxFileNumber">
+			<text class="grace-add-list-btn-icon">+</text>
+			<text class="grace-add-list-btn-text">{{btnName}}</text>
 		</view>
 	</view>
 </template>
@@ -26,6 +26,10 @@ export default {
 			default : function () {
 				return [];
 			}
+		},
+		closeBtnColor : {
+			type : String,
+			default : "#666666"
 		}
 	},
 	data() {
@@ -43,15 +47,14 @@ export default {
 	},
     methods:{
         addImg : function(){
-			var _self = this;
-            var num = this.maxFileNumber - _self.imgLists.length;
+            var num = this.maxFileNumber - this.imgLists.length;
             if(num < 1){return false;}
             uni.showLoading({title:""});
             uni.chooseImage({
                 count: num,
                 sizeType: ['compressed'],
-                success: function(res) {
-                    _self.imgLists = _self.imgLists.concat(res.tempFilePaths);
+                success:(res) => {
+                    this.imgLists = this.imgLists.concat(res.tempFilePaths);
                     uni.hideLoading();
                 },
 				fail:function(){
@@ -69,16 +72,19 @@ export default {
               urls: this.imgLists,
               current : currentImg
             })
-        }
+        },
+		setItems : function(items){
+			this.imgLists = items;
+		}
     }
 }
 </script>
 <style scoped>
-.grace-add-list{flex-direction:row; flex-wrap:wrap;}
-.add-btn{flex-direction:column; align-items:center; justify-content:center;}
-.add-btn-text{font-size:26rpx; line-height:36rpx; text-align:center; color:#999999;}
-.add-btn-add{font-size:100rpx; height:80rpx; line-height:80rpx; margin-bottom:20rpx; color:#999999;}
-.grace-add-list-items{width:220rpx; height:220rpx; overflow:hidden; margin:5px 0; background-color:#F3F4F5; font-size:0; position:relative; border-radius:10rpx; margin-right:13rpx;}
-.grace-add-list-items-image{width:220rpx;}
-.grace-add-list-remove{width:50rpx; height:50rpx; line-height:50rpx; text-align:center; font-size:32rpx; position:absolute; right:0; top:0; background-color:rgba(0,0,0, 0.5); color:#FFFFFF;}
+.grace-add-list{flex-wrap:wrap; flex-direction:row;}
+.grace-add-list-btn{flex-direction:column; align-items:center; justify-content:center;}
+.grace-add-list-btn-text{font-size:26rpx; line-height:36rpx; text-align:center; color:#999999;}
+.grace-add-list-btn-icon{font-size:70rpx; height:80rpx; line-height:80rpx; color:#999999;}
+.grace-add-list-items{width:222rpx; height:222rpx; overflow:hidden; margin-bottom:12rpx; margin-right:11rpx; background-color:#F6F7F8; font-size:0; border-radius:10rpx;}
+.grace-add-list-image{width:222rpx; height:222rpx;}
+.grace-add-list-remove{width:50rpx; height:50rpx; line-height:50rpx; text-align:center; font-size:40rpx; position:absolute; right:0; bottom:0; color:#888888;}
 </style>

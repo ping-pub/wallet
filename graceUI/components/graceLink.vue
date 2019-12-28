@@ -1,15 +1,13 @@
 <template>
-	<view>
-		<!-- #ifdef APP-PLUS -->
-		<view class="link" :data-url="url" @tap="openUrlForApp">{{title}}</view>
-		<!-- #endif -->
-		<!-- #ifdef H5 -->
-		<a :href="url" class="link" target="_blank">{{title}}</a>
-		<!-- #endif -->
-		<!-- #ifdef MP -->
-		<text class="link">{{url}}</text>
-		<!-- #endif -->
-	</view>
+	<!-- #ifdef APP-PLUS -->
+	<text class="link" :data-url="url" @tap="openUrlForApp" :style="{color:color, lineHeight:lineHeight, fontSize:fontSize}">{{title}}</text>
+	<!-- #endif -->
+	<!-- #ifdef H5 -->
+	<a :href="url" class="link" target="_blank" :style="{color:color, lineHeight:lineHeight, fontSize:fontSize}">{{title}}</a>
+	<!-- #endif -->
+	<!-- #ifdef MP -->
+	<text class="link" :style="{color:color, lineHeight:lineHeight, fontSize:fontSize}">{{url}}</text>
+	<!-- #endif -->
 </template>
 <script>
 export default {
@@ -21,6 +19,18 @@ export default {
 		title : {
 			type : String,
 			default : ""
+		},
+		color:{
+			type : String,
+			default : "#3688FF"
+		},
+		fontSize : {
+			type : String,
+			default : "28rpx"
+		},
+		lineHeight : {
+			type : String,
+			default : "50rpx"
 		}
 	},
 	methods:{
@@ -32,5 +42,5 @@ export default {
 }
 </script>
 <style scoped>
-.link{color:#3688FF; line-height:2em;}
+.link{text-decoration:none;}
 </style>

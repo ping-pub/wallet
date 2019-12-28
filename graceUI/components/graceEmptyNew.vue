@@ -2,6 +2,7 @@
 	<view class="grace-empty">
 		<slot name="img"></slot>
 		<slot name="text"></slot>
+		<slot name="other"></slot>
 	</view>
 </template>
 <script>

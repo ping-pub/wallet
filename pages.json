@@ -181,36 +181,5 @@
 		"navigationBarTitleText": "Ping Wallet",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
-	},
-	"tabBar": {
-		"color": "#999999",
-		"selectedColor": "#37434b",
-		"borderStyle": "white",
-		"backgroundColor": "#FFFFFF",
-		"list": [{
-				"pagePath": "pages/index/index",
-				"iconPath": "static/tabbars/color_wallet0.png",
-				"selectedIconPath": "static/tabbars/color_wallet1.png",
-				"text": "Portfolio"
-			},
-			{
-				"pagePath": "pages/staking/Staking",
-				"iconPath": "static/tabbars/color_staking0.png",
-				"selectedIconPath": "static/tabbars/color_staking1.png",
-				"text": "Staking"
-			},
-			{
-				"pagePath": "pages/goverance/Goverance",
-				"iconPath": "static/tabbars/color_goverance0.png",
-				"selectedIconPath": "static/tabbars/color_goverance1.png",
-				"text": "Goverance"
-			},
-			{
-				"pagePath": "pages/setting/Setting",
-				"iconPath": "static/tabbars/color_user0.png",
-				"selectedIconPath": "static/tabbars/color_user1.png",
-				"text": "Setting"
-			}
-		]
 	}
 }

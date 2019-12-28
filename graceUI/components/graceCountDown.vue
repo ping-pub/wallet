@@ -62,14 +62,11 @@ export default {
 	created:function(){
 		this.runbase();
 	},
-	updated:function(){
-		this.runbase();
-	},
 	methods: {
 		runbase : function(){
 			var reg = /^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})$/;
 			var res = this.timer.match(reg);
-			if (res == null){  return false; }
+			if (res == null){this.outTimer = setTimeout(() => { this.runbase(); }, 1000); return false; }
 			var year = parseInt(res[1]);
 			if (year < 1000) { return false; }
 			var month = parseInt(res[2]);

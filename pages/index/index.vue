@@ -1,80 +1,224 @@
 <template>
 	<gracePage headerBG="#fff">
-		<view class="grace-bg-white" slot="gHeader">
+		<view class="" slot="gHeader">
 			<view class="status_bar"></view>
-			<view class="grace-flex-center" style="padding: 32rpx 24rpx 12rpx 24rpx;">
-				<text class="look-title">Ping</text>
-				<text style="flex: 1;text-align: center;font-size: 18px;" class="grace-white"></text>
-				<view @tap="switchWallet" class="grace-flex-vcenter grace-flex" style="padding: 4rpx 0;font-weight: 500;">
-					<text style="margin-right: 12rpx;">CosmosHub-3</text>
-					<text class="look-app-icon look-app-icon-switch"></text>
+			<view class="cu-bar bg-white">
+				<view class="action sub-title">
+					<text class="text-xl text-bold text-black">Ping Wallet</text>
+					<text class="bg-black"></text>
+				</view>
+				<view class="action">
 				</view>
 			</view>
 		</view>
-
 		<view slot="gBody">
-			<view class="grace-body" style="padding-top: 48rpx;padding-bottom: 12rpx;">
-				<view class="grace-box-shadow look-gtbg-light grace-border-radius-small">
+			<scroll-view scroll-x class="bg-white nav" scroll-with-animation>
+				<view class="cu-item text-black cur">
+					Cosmos
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+				<view class="cu-item">
+					Cosmos
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+			</scroll-view>
+			<view
+				class=" solid-bottom  padding grace-border-radius-small"
+				style="margin: 20rpx;background-image: url('../../static/index/bg.png');    background-size: cover;
+    background-color: #fff;
+    text-align: center;padding: 40rpx 0 60rpx;"
+			>
+				<view><image style="width: 120rpx;height: 120rpx;" src="../../static/wallet/asset1.png" mode=""></image></view>
+				<text class="text-white" style="font-size: 20px;">$8212,992,134,199</text>
+			</view>
 
-					<view class="grace-space-between" style="align-items: center;padding: 60rpx 24rpx 48rpx 24rpx">
-						<view class="">
-							<view class=""><text class="grace-black9">Assets</text></view>
-							<view class=""><text style="font-size: 22px;color: #37434b;">$8212,992,134,199</text></view>
+			<view class="bg-white ">
+				<view class="cu-bar ">
+					<view class="action">
+						<text class="cuIcon-titles text-black"></text>
+						<text class="text-xl text-bold">地址</text>
+					</view>
+					<view class="action"></view>
+				</view>
+
+				<view class="cu-list menu-avatar m-space">
+					<view class="cu-item" v-for="(item, index) in 6" :key="index" @tap="go('/pages/wallet/WalletDetail')">
+						<view class="cu-avatar lg bg-white" :style="[{ backgroundImage: 'url(../../static/wallet/cosmoshub.svg)' }]"></view>
+						<view class="content">
+							<view class="text-black">Address1</view>
+							<view class="text-gray text-sm">cosmos1zuu...ktq2tzw</view>
 						</view>
-						<view class="">
-							<image style="width: 140upx;height: 140upx;" src="../../static/wallet/asset1.png" mode=""></image>
+						<view class="action" style="text-align:right;width: 100%;">
+							<view class="cu-tag round bg-grey"><text class="text-lg">$12,992,134,199</text></view>
+							<view class="text-gray"><text class="cuIcon-pay"></text></view>
 						</view>
 					</view>
-
 				</view>
 			</view>
-			<view class="grace-bg-white grace-space-between grace-flex-vbottom" style="padding: 24rpx;">
-				<text class="look-title-sm">Wallets</text>
-				<text class="grace-black6" @click="go('/pages/walletManage/index')">
-					<text class="grace-icons icon-add2 mr-6 f-16"></text>
-				</text>
-			</view>
 
-			<view class="" v-for="n in 10" :key="n">
-				<view @tap="go('/pages/walletItem/index')" class="grace-flex grace-flex-vcenter grace-bg-white  grace-border-b grace-border-radius-small"
-				 style="padding: 24rpx 32rpx;">
-					<image class="mr-12" style="width: 60rpx;height: 60rpx;" src="../../static/wallet/cosmoshub.svg"></image>
-					<text class="flex-1 f-16">NAME</text>
-					<view class="tr">
-						<view class="f-18 grace-black">
-							$12,992,134,199
-						</view>
-						<view class="grace-black9">
-							cosmos1zu83m37u...ktq2l6lqjtzw
-						</view>
-					</view>
-				</view>
-			</view>
+			<view class="page-space"></view>
+			<view class="cu-bar"></view>
 			<SwtichChain :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 		</view>
+		<PageTabbar slot="gFooter" page="index"></PageTabbar>
 	</gracePage>
 </template>
 
 <script>
-	import SwitchWalletMixin from '../../components/SwitchWalletMixin.js'
-	import SwtichChain from '../../components/SwitchChain.vue'
+import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+import SwtichChain from '../../components/SwitchChain.vue';
 
-	export default {
-		components: {
-			SwtichChain
+export default {
+	data() {
+		return {
+			cuIconList: [
+				{
+					cuIcon: 'cardboardfill',
+					color: 'red',
+					badge: 120,
+					name: 'VR'
+				},
+				{
+					cuIcon: 'recordfill',
+					color: 'orange',
+					badge: 1,
+					name: '录像'
+				},
+				{
+					cuIcon: 'picfill',
+					color: 'yellow',
+					badge: 0,
+					name: '图像'
+				},
+				{
+					cuIcon: 'noticefill',
+					color: 'olive',
+					badge: 22,
+					name: '通知'
+				},
+				{
+					cuIcon: 'upstagefill',
+					color: 'cyan',
+					badge: 0,
+					name: '排行榜'
+				},
+				{
+					cuIcon: 'clothesfill',
+					color: 'blue',
+					badge: 0,
+					name: '皮肤'
+				},
+				{
+					cuIcon: 'discoverfill',
+					color: 'purple',
+					badge: 0,
+					name: '发现'
+				},
+				{
+					cuIcon: 'questionfill',
+					color: 'mauve',
+					badge: 0,
+					name: '帮助'
+				},
+				{
+					cuIcon: 'commandfill',
+					color: 'purple',
+					badge: 0,
+					name: '问答'
+				},
+				{
+					cuIcon: 'brandfill',
+					color: 'mauve',
+					badge: 0,
+					name: '版权'
+				}
+			],
+			modalName: null,
+			gridCol: 3,
+			gridBorder: false,
+			menuBorder: false,
+			menuArrow: false,
+			menuCard: false,
+			skin: false,
+			listTouchStart: 0,
+			listTouchDirection: null
+		};
+	},
+	methods: {
+		showModal(e) {
+			this.modalName = e.currentTarget.dataset.target;
 		},
-		mixins: [SwitchWalletMixin],
-		methods: {
-			go(path) {
-				uni.navigateTo({
-					url: path
-				});
-			},
-			goSwitch(path) {
-				uni.switchTab({
-					url: path
-				});
-			},
+		hideModal(e) {
+			this.modalName = null;
+		},
+		Gridchange(e) {
+			this.gridCol = e.detail.value;
+		},
+		Gridswitch(e) {
+			this.gridBorder = e.detail.value;
+		},
+		MenuBorder(e) {
+			this.menuBorder = e.detail.value;
+		},
+		MenuArrow(e) {
+			this.menuArrow = e.detail.value;
+		},
+		MenuCard(e) {
+			this.menuCard = e.detail.value;
+		},
+		SwitchSex(e) {
+			this.skin = e.detail.value;
+		},
+
+		// ListTouch触摸开始
+		ListTouchStart(e) {
+			this.listTouchStart = e.touches[0].pageX;
+		},
+
+		// ListTouch计算方向
+		ListTouchMove(e) {
+			this.listTouchDirection = e.touches[0].pageX - this.listTouchStart > 0 ? 'right' : 'left';
+		},
+
+		// ListTouch计算滚动
+		ListTouchEnd(e) {
+			if (this.listTouchDirection == 'left') {
+				this.modalName = e.currentTarget.dataset.target;
+			} else {
+				this.modalName = null;
+			}
+			this.listTouchDirection = null;
+		},
+		go(path) {
+			uni.navigateTo({
+				url: path
+			});
+		},
+		goSwitch(path) {
+			uni.switchTab({
+				url: path
+			});
 		}
-	};
+	},
+	components: {
+		SwtichChain
+	},
+	mixins: [SwitchWalletMixin]
+};
 </script>

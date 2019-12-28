@@ -1,5 +1,5 @@
 <template>
-	<text class="link" @tap="openUrlForApp(url)" :style="{fontSize:fontSize}">{{title}}</text>
+	<text class="link" @tap="openUrlForApp(url)" :style="{color:color, lineHeight:lineHeight, fontSize:fontSize}">{{title}}</text>
 </template>
 <script>
 export default {
@@ -12,9 +12,17 @@ export default {
 			type : String,
 			default : ""
 		},
-		fontSize :{
+		color:{
+			type : String,
+			default : "#3688FF"
+		},
+		fontSize : {
 			type : String,
 			default : "28rpx"
+		},
+		lineHeight : {
+			type : String,
+			default : "50rpx"
 		}
 	},
 	methods:{

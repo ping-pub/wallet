@@ -1,7 +1,8 @@
 <template>
-	<view>
-		<text class="grace-check-btn grace-icons" :style="{fontSize:size+'rpx', lineHeight:size+'rpx', color : color}" v-if="!status"  @tap="changeStatus">&#xe762;</text>
-		<text class="grace-check-btn grace-icons" :style="{fontSize:size+'rpx', lineHeight:size+'rpx', color : checkedColor}" v-if="status" @tap="changeStatus">&#xe7f8;</text>
+	<view class="grace-nowrap grace-flex-vcenter" @tap.stop="changeStatus">
+		<text v-if="status" class="grace-check-btn grace-icons" :style="{fontSize:size+'rpx', lineHeight:size+'rpx', color : checkedColor}">&#xe7f8;</text>
+		<text v-else class="grace-check-btn grace-icons" :style="{fontSize:size+'rpx', lineHeight:size+'rpx', color : color}">&#xe762;</text>
+		<view class="grace-check-lable"><slot></slot></view>
 	</view>
 </template>
 <script>
@@ -35,14 +36,14 @@ export default {
 			status : false
 		}
 	},
-	created:function(){
-		this.status = this.checked;
-	},
 	watch: {
 		checked : function (val, old) {
 			this.status = val;
 		}
-	},	
+	},
+	created : function(){
+		this.status = this.checked;
+	},
 	methods:{
 		changeStatus : function(){
 			this.status = !this.status;
@@ -52,4 +53,6 @@ export default {
 }
 </script>
 <style scoped>
+.grace-check-btn{color:#999999;}
+.grace-check-lable{color:#555555; margin-left:20rpx; font-size:26rpx; width:700rpx; flex:1;}
 </style>

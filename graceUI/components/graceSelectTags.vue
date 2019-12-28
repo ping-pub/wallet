@@ -1,15 +1,9 @@
 <template>
 	<view class="grace-select-tags">
-		<radio-group v-if="type == 'radio'" @change="graceSelectChange">
-			<label v-for="(item, index) in tagsData" :key="index" :class="[item.checked ? 'grace-checked' : '']" :style="{background : item.checked ? selectedColor + ' !important' : '#F6F7F8'}">
-				<radio :value="item.value" :checked="item.checked"></radio>{{item.name}}
-			</label>
-		</radio-group>
-		<checkbox-group v-if="type == 'checkbox'" @change="graceCheckBoxChange">
-			<label v-for="(item, index) in tagsData" :key="index" :class="[item.checked ? 'grace-checked' : '']" :style="{background : item.checked ? selectedColor + ' !important' : '#F6F7F8'}">
-				<checkbox :value="item.value" :checked="item.checked"></checkbox>{{item.name}}
-			</label>
-		</checkbox-group>
+		<view class="grace-select-tag" 
+		:style="{width : itemWidth, 'background' : item.checked ? selectedColor : '#F6F7F8', fontSize:fontSize}" 
+		@tap.stop="graceSelectChange(index)" v-for="(item, index) in tagsData" :key="index" 
+		:class="[item.checked ? 'grace-checked' : '']">{{item.name}}</view>
 	</view>
 </template>
 <script>
@@ -19,8 +13,10 @@ Array.prototype.indexOf = function (val) {
 };
 export default {
 	props: {
+		itemWidth : {type: String, default:"200rpx"},
 		type : { type: String, default: ""},
 		selectedColor : { type: String, default: "#3688FF"},
+		fontSize : { type: String, default: "26rpx"},
 		items : { type: Array, default : function(){return []}}
 	},
 	created : function(){
@@ -32,35 +28,31 @@ export default {
 		}
 	},
 	methods:{
-		graceSelectChange : function(e){
-			var checkVal = e.detail.value;
-            for (var i = 0; i < this.tagsData.length; i++) {
-                if (checkVal == this.tagsData[i].value) {
-                    this.tagsData[i].checked = true;
-                } else {
-                    this.tagsData[i].checked = false;
-                }
-            }
-			this.$emit("change", checkVal);
-		},
-		graceCheckBoxChange : function(e){
-		    var checkVal = e.detail.value;
-            for (var i = 0; i < this.tagsData.length; i++) {
-                if (checkVal.indexOf(this.tagsData[i].value) != -1) {
-                    this.tagsData[i].checked = true;
-                } else {
-                    this.tagsData[i].checked = false;
-                }
-            }
-			this.$emit("change", checkVal);
+		graceSelectChange : function(index){
+			if(this.type == 'radio'){
+				for (var i = 0; i < this.tagsData.length; i++){this.tagsData[i].checked = false;}
+				this.tagsData[index].checked = true;
+				this.$emit("change", this.tagsData[index].value);
+			}else{
+				if(this.tagsData[index].checked){
+					this.tagsData[index].checked = false;
+				}else{
+					this.tagsData[index].checked = true;
+				}
+				var sedRes = [];
+				for (var i = 0; i < this.tagsData.length; i++){
+					if(this.tagsData[i].checked){
+						sedRes.push(this.tagsData[i].value);
+					}
+				}
+				this.$emit("change", sedRes);
+			}
 		}
 	}
 }
 </script>
 <style scoped>
-.grace-select-tags{padding:0;}
-.grace-select-tags checkbox-group, .grace-select-tags radio-group{width:100%; display:flex; flex-wrap:wrap;}
-.grace-select-tags label{display:block; width:auto; overflow:hidden; padding:18rpx 20rpx; height:30rpx; line-height:30rpx; margin:8rpx 8px 8px 0; background:#F6F7F8; font-size:24rpx; border-radius:8rpx;}
-.grace-select-tags label checkbox, .grace-select-tags label radio{display:none;}
-.grace-checked{ color:#FFFFFF;}
+.grace-select-tags{display:flex; flex-direction:row; flex-wrap:wrap;}
+.grace-select-tag{height:70rpx; line-height:70rpx; text-align:center; margin:10rpx; font-size:24rpx; border-radius:8rpx;}
+.grace-checked{color:#FFFFFF;}
 </style>

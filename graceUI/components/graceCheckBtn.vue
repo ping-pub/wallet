@@ -1,8 +1,10 @@
 <template>
-	<text 
-	:class="['grace-check-btn', status ? 'grace-check-checked' : '']" 
-	:style="{fontSize:size+'rpx', lineHeight:size+'rpx', color : status ? checkedColor : color}" 
-	@tap="changeStatus"></text>
+	<view class="grace-nowrap grace-flex-vcenter" @tap.stop="changeStatus">
+		<view 
+		:class="['grace-check-btn grace-icons', status ? 'grace-check-checked' : '']" 
+		:style="{fontSize:size+'rpx', lineHeight:size+'rpx', color : status ? checkedColor : color}"></view>
+		<view class="grace-check-lable"><slot></slot></view>
+	</view>
 </template>
 <script>
 export default {
@@ -52,8 +54,8 @@ export default {
 }
 </script>
 <style scoped>
-@font-face {font-family:"gFont"; src:url('https://at.alicdn.com/t/font_1350962_3csfyqy98za.ttf') format('truetype');}
-.grace-check-btn{font-family:"gFont"; color:#999999;}
+.grace-check-btn{color:#999999; flex-shrink:0;}
 .grace-check-btn:after{content:"\e762";}
 .grace-check-checked:after{content:"\e7f8";}
+.grace-check-lable{color:#555555; margin-left:20rpx; font-size:26rpx; width:700rpx;}
 </style>

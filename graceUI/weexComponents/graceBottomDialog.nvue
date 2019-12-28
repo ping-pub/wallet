@@ -1,10 +1,8 @@
 <template>
-	<view>
-		<view class="grace-btdialog-shade" v-if="show" @tap.stop="closeDialog" @touchmove.stop="stopFun">
-			<view class="grace-btdialog-shade-dialog" @tap.stop="stopFun">
-				<view class="title"><slot name="btns"></slot></view>
-				<view class="content" @tap.stop="stopFun"><slot name="content"></slot></view>
-			</view>
+	<view class="grace-btdialog-shade" v-if="show" @tap.stop="closeDialog" @touchmove.stop="stopFun" :style="{backgroundColor:background}">
+		<view class="grace-btdialog-shade-dialog" @tap.stop="stopFun">
+			<view class="title"><slot name="btns"></slot></view>
+			<view class="content" @tap.stop="stopFun"><slot name="content"></slot></view>
 		</view>
 	</view>
 </template>
@@ -14,6 +12,10 @@ export default {
 		show : {
 			type : Boolean,
 			default : false
+		},
+		background:{
+			type : String,
+			default : 'rgba(0, 0, 0, 0.5)'
 		}
 	},
 	data() {

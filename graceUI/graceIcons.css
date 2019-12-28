@@ -10,7 +10,7 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 	font-family : "grace-iconfont"; 
 	font-weight : normal; 
 	font-style  : normal; 
-	src         : url('https://at.alicdn.com/t/font_823462_v2drz0fv1zl.ttf') format('truetype');
+	src         : url('https://at.alicdn.com/t/font_823462_1p2i18cul3t.ttf') format('truetype');
 }
 .grace-icons{font-family:"grace-iconfont"; font-style:normal;}
 .icon-wifi:before{content:"\e61f";}
@@ -33,6 +33,7 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .icon-home:before{content:"\e608";} 
 .icon-back:before{content:"\e616";}
 .icon-star:before{content:"\e645";}
+.icon-star2:before{content:"\e634";}
 .icon-zan:before{content:"\e6ea";}
 .icon-share2:before{content:"\e606";}
 .icon-comments:before{content:"\e6b8";}
@@ -87,3 +88,6 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .icon-pwd:before{content:"\e641";}
 .icon-add:before{content:"\e6c7";}
 .icon-add2:before{content:"\e625";}
+.icon-retry:before{content:"\e635";}
+.icon-key:before{content:"\e630";}
+.icon-down:before{content:"\e633";}

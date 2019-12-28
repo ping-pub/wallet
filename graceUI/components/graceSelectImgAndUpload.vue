@@ -1,15 +1,19 @@
 <template>
 	<view class="grace-add-list">
-		<view class="items" v-for="(item, index) in imgLists" :key="index">
-			<image :src="item.url" mode="widthFix" :data-imgurl="item.url" @tap="showImgs"></image>
-			<view class="remove" @tap="removeImg" :id="'grace-items-img-'+index"></view>
-			<view class="show-progress">
-			   <progress :percent="item.progress" stroke-width="2" activeColor="#27BD81" backgroundColor="#F8F8F8" />	
+		<view class="grace-add-list-items" v-for="(item, index) in imgLists" :key="index">
+			<image :src="item.url" :data-imgurl="item.url" @tap="showImgs"></image>
+			<view class="grace-add-list-remove grace-icons icon-close" :style="{color:closeBtnColor}" @tap.stop="removeImg" :id="'grace-items-img-'+index"></view>
+			<view class="upload-progress">
+			   <progress :percent="item.progress" :stroke-width="progressSize" :activeColor="progressColor" :backgroundColor="progressBGColor" />	
+			</view>
+			<view class="grace-add-list-reup" @tap.stop="retry" :data-index="index" v-if="item.error">
+				<text class="grace-add-list-reup-icon grace-icons icon-retry"></text>
+				<text class="grace-add-list-reup-text">失败重试</text>
 			</view>
 		</view>
-		<view class="items add-btn" @tap="addImg" v-if="imgLists.length < maxFileNumber && canadd">
-			<view class="add-btn-add">+</view>
-			<view class="add-btn-text">{{btnName}}</view>
+		<view class="grace-add-list-items grace-add-list-btn" @tap="addImg" v-if="imgLists.length < maxFileNumber">
+			<view class="grace-add-list-btn-icon">+</view>
+			<view class="grace-add-list-btn-text">{{btnName}}</view>
 		</view>
 	</view>
 </template>
@@ -30,96 +34,55 @@ export default {
 				return [];
 			}
 		},
-		uploading : {
-			type  : Boolean,
-			default : false
+		closeBtnColor : {
+			type : String,
+			default : "#666666"
 		},
 		uploadServerUrl : {
-			type  : String,
-			default : ""
+			type : String,
+			default : ''
 		},
-		canadd : {
-			type : Boolean,
-			default : true
+		progressSize :{
+			type:Number,
+			default:1
+		},
+		progressColor :{
+			type:String,
+			default:'#27BD81'
+		},
+		progressBGColor :{
+			type:String,
+			default:'#F8F8F8'
 		}
 	},
 	data() {
 		return {
 			imgLists : [],
-			uploadindex : 0
+			updatting : false
 		}
-	},
-	created:function () {
-		this.imgLists = this.items;
 	},
 	watch:{
 		imgLists : function(newVal, oldVal){
-			this.$emit('change', newVal);
-		},
-		uploading : function(newVal, oldVal){
-			if(newVal && !oldVal){this.upload(this, 0);}
+			if(!this.updatting){this.$emit('change', newVal);}
 		}
 	},
     methods:{
-		upload : function (_self, index) {
-			//
-			if(index > (_self.imgLists.length - 1)){
-				//全部上传完成
-				var uploadedims = [];
-				_self.imgLists.forEach(function(item, k){
-					uploadedims.push(item.url);
-				});
-				this.$emit('uploaded', uploadedims);
-				return ;
-			}
-			var tmpImg = _self.imgLists[index];
-			if(tmpImg.progress != 0){index++; _self.upload(_self, index); return ;}
-			// 检查上传域名
-			if(_self.uploadServerUrl == ''){uni.showToast({title:"请设置上传服务器地址", icon:"none"}); return ;}
-			// 创建上传对象
-			const task = uni.uploadFile({
-				url: _self.uploadServerUrl,
-				filePath: tmpImg.url,
-				name: 'img',
-				success: function(uploadRes){
-					uploadRes = JSON.parse(uploadRes.data);
-					if(uploadRes.status != 'ok'){
-						_self.resetprogress(index);
-						uni.showToast({title:uploadRes.data, icon:"none"});
-						_self.uploadFail();
-					}else{
-						//上传图片成功
-						_self.imgLists[index].url = uploadRes.data;
-						setTimeout(function(){index++; _self.upload(_self, index);}, 1000);
-					}
-				},
-				fail:function(e) {
-					_self.resetprogress(index);
-					uni.showToast({title:"上传图片失败,请重试", icon:"none"});
-					_self.uploadFail();
-				}
-			});
-			task.onProgressUpdate(function(res){
-				_self.imgLists[index].progress = res.progress;
-			});
-		},
         addImg : function(){
-			var _self = this;
-            var num = this.maxFileNumber - _self.imgLists.length;
+            var num = this.maxFileNumber - this.imgLists.length;
             if(num < 1){return false;}
             uni.showLoading({title:""});
             uni.chooseImage({
                 count: num,
                 sizeType: ['compressed'],
-                success: function(res) {
-					res.tempFilePaths.forEach(function(imgs, index) {
-						_self.imgLists.push({
-							url : imgs,
-							progress : 0
-						});
-					});
+                success:(res) => {
+					for(let i = 0; i < res.tempFilePaths.length; i++){
+						this.imgLists.push({url : res.tempFilePaths[i], progress : 0, error : false});
+					}
                     uni.hideLoading();
                 },
+				complete:function(){
+					uni.hideLoading();
+				},
 				fail:function(){
 					uni.hideLoading();
 				}
@@ -130,35 +93,105 @@ export default {
             this.imgLists.splice(index, 1);
         },
         showImgs : function(e){
-			var prvImgs = [];
-			this.imgLists.forEach(function(item, key){
-				prvImgs.push(item.url);
-			});
             var currentImg = e.currentTarget.dataset.imgurl;
+        	var imgs = [];
+        	for(let i = 0; i < this.imgLists.length; i++){
+        		imgs.push(this.imgLists[i].url);
+        	}
             uni.previewImage({
-              urls: prvImgs,
+              urls: imgs,
               current : currentImg
             })
         },
-		uploadFail : function () {
-			this.$emit('uploaderror');
+		upload : function(index){
+			if(this.updatting){return ;}
+			this.updatting = true;
+			if(!index){index = 0;}
+			uni.showLoading({title:"图片上传中" });
+			this.uploadBase(index);
 		},
-		//重置进度
-		resetprogress : function (index) {
-			setTimeout(()=>{this.imgLists[index].progress = 0;}, 1000);
+		retry : function (e) {
+			var index = e.currentTarget.dataset.index;
+			this.upload(index);
+		},
+		uploadBase : function (index) {
+			// 全部上传完成
+			if(index > (this.imgLists.length - 1)){
+				uni.hideLoading();
+				this.updatting = false;
+				this.$emit('uploaded', this.imgLists);
+				return ;
+			}
+			// 验证后端
+			if(this.uploadServerUrl == ''){
+				uni.showToast({title:"请设置上传服务器地址", icon:"none"});
+				return ;
+			}
+			// 检查是否是默认值
+			if(this.imgLists[index].progress >= 1){
+				this.uploadBase(index+1);
+				return ;
+			}
+			this.imgLists[index].error = false;
+			// 创建上传对象
+			const task = uni.uploadFile({
+				url      : this.uploadServerUrl,
+				filePath : this.imgLists[index].url,
+				name     : 'img',
+				success  : (uploadRes) => {
+					uploadRes = JSON.parse(uploadRes.data);
+					if(uploadRes.status != 'ok'){
+						uni.showToast({title:"上传失败 : "+uploadRes.data, icon:"none"});
+						this.error(index);
+					}else{
+						//上传图片成功
+						this.uploadBase(index+1);
+					}
+				},
+				fail    : (e) => {
+					uni.showToast({title:"上传失败，请点击图片重试", icon:"none"});
+					this.error(index);
+					
+				},
+				complete:function () {
+					uni.hideLoading();
+				}
+			});
+			task.onProgressUpdate((res) => {
+				if(res.progress > 0){
+					this.imgLists[index].progress = res.progress;
+					this.imgLists.splice(index, 1, this.imgLists[index]);
+				}
+			});
+		},
+		// 上传错误
+		error : function(index){
+			this.updatting = false;
+			setTimeout(()=>{
+				this.imgLists[index].progress = 0;
+				this.imgLists[index].error    = true;
+				this.$emit('uploaderror');
+			}, 500);
+		},
+		// 设置默认值
+		setItems : function(items){
+			for(let i = 0; i < items.length; i++){
+				this.imgLists.push({url : items[i], progress : 100, error : false});
+			}
 		}
     }
 }
 </script>
 <style scoped>
-@font-face {font-family:"gFont"; src:url('https://at.alicdn.com/t/font_1350431_73a79xoewq7.ttf') format('truetype');}
 .grace-add-list{display:flex; flex-wrap:wrap;}
-.grace-add-list .add-btn{display:flex; flex-direction:column; align-items:center; justify-content:center;}
-.grace-add-list .add-btn-text{font-size:26rpx; line-height:36rpx; text-align:center; color:#999999; width:100%;}
-.grace-add-list .add-btn-add{font-size:100rpx !important; height:80rpx; line-height:80rpx; margin-bottom:20rpx; color:#999999;}
-.grace-add-list > .items{width:220rpx; height:220rpx; overflow:hidden; margin:5px 0; background:#F3F4F5; font-size:0; position:relative; border-radius:10rpx; margin-right:13rpx;}
-.grace-add-list > .items image{width:220rpx;}
-.grace-add-list > .items .remove{font-family:"gFont"; width:50rpx; height:50rpx; line-height:50rpx; text-align:center; font-size:22rpx; border-radius:50rpx; position:absolute; z-index:1; right:5rpx; top:5rpx; background:rgba(0,0,0, 0.5); color:#FFFFFF;}
-.grace-add-list > .items .remove:after{content: "\e6dd";}
-.show-progress{position:absolute; z-index:2; left:0; bottom:10rpx; width:86%; padding:0 7%;}
+.grace-add-list-btn{display:flex; flex-direction:column; align-items:center; justify-content:center;}
+.grace-add-list-btn-text{font-size:26rpx; line-height:36rpx; text-align:center; color:#999999; width:100%;}
+.grace-add-list-btn-icon{font-size:80rpx; height:80rpx; line-height:80rpx; margin-bottom:20rpx; color:#999999;}
+.grace-add-list-items{width:222rpx; height:222rpx; overflow:hidden; margin-bottom:10rpx; margin-right:11rpx; background:#F6F7F8; font-size:0; position:relative; border-radius:10rpx;}
+.grace-add-list-image{width:222rpx;}
+.grace-add-list-remove{width:50rpx; height:50rpx; line-height:50rpx; text-align:center; font-size:40rpx; position:absolute; z-index:5; right:10rpx; top:10rpx; color:#888888;}
+.upload-progress{position:absolute; z-index:2; left:0; bottom:10rpx; width:180rpx; padding:0 21rpx;}
+.grace-add-list-reup{position:absolute; z-index:3; left:0; top:0rpx; width:222rpx; height:222rpx; display:flex; justify-content:center; align-items:center; background-color:rgba(0,0,0,0.3);flex-direction:column;}
+.grace-add-list-reup-icon{text-align:center; width:100%; color:#FFFFFF; display:block; font-size:80rpx; line-height:100rpx;}
+.grace-add-list-reup-text{text-align:center; width:100%; color:#FFFFFF; display:block; font-size:20rpx; line-height:30rpx;}
 </style>

@@ -1,12 +1,10 @@
 <template>
-	<view>
-		<view class="grace-dialog-shade" v-if="show" @tap.stop="closeDialog" @touchmove.stop="stopFun">
-			<view class="dialog gdFadeIn" @tap.stop="stopFun" :style="{width:width}">
-				<view class="title" v-if="isTitle">{{title}}</view>
-				<view class="content" @tap.stop="stopFun"><slot name="content"></slot></view>
-				<view class="close-btn" :style="{color:closeBtnColor}" v-if="isCloseBtn" @tap.stop="closeDialog"></view>
-				<view class="btns" v-if="isBtns"><slot name="btns"></slot></view>
-			</view>
+	<view class="grace-dialog-shade" v-if="show" @tap.stop="closeDialog" @touchmove.stop="stopFun" :style="{backgroundColor:background}">
+		<view class="grace-dialog gdFadeIn" @tap.stop="stopFun" :style="{width:width, borderRadius:borderRadius}">
+			<view class="grace-dialog-title" v-if="isTitle" :style="{fontSize:titleSize, color:titleColor, fontWeight:titleWeight?'bold':''}">{{title}}</view>
+			<view class="grace-dialog-content" @tap.stop="stopFun"><slot name="content"></slot></view>
+			<view class="grace-dialog-close-btn" :style="{color:closeBtnColor}" v-if="isCloseBtn" @tap.stop="closeDialog"></view>
+			<view v-if="isBtns"><slot name="btns"></slot></view>
 		</view>
 	</view>
 </template>
@@ -20,7 +18,7 @@ export default {
 		},
 		width : {
 			type : String,
-			default : '85%'
+			default : '580rpx'
 		},
 		isCloseBtn: {
 			type : Boolean,
@@ -28,7 +26,7 @@ export default {
 		},
 		closeBtnColor : {
 			type : String,
-			default : '#F90000'
+			default : '#FF0036'
 		},
 		isTitle : {
 			type : Boolean,
@@ -38,9 +36,29 @@ export default {
 			type : String,
 			default : ''
 		},
+		titleWeight : {
+			type : Boolean,
+			default : true
+		},
+		titleSize : {
+			type : String,
+			default : '28rpx'
+		},
+		titleColor : {
+			type : String,
+			default : '#333333'
+		},
 		isBtns : {
 			type : Boolean,
 			default : true
+		},
+		background:{
+			type : String,
+			default : 'rgba(0, 0, 0, 0.5)'
+		},
+		borderRadius : {
+			type : String,
+			default : '6rpx'
 		}
 	},
 	data() {
@@ -57,14 +75,12 @@ export default {
 }
 </script>
 <style scoped>
-@font-face {font-family:"gFont"; src:url('https://at.alicdn.com/t/font_1348600_ndhd2fow1h.ttf') format('truetype');}
 @keyframes gdFadeIn{ from { opacity: 0; } 100% { opacity: 1; }}
 .gdFadeIn {animation:gdFadeIn 200ms linear;}
-.grace-dialog-shade{position:fixed; width:100%; height:100%; left:0; top:0; z-index:9991; background:rgba(0, 0, 0, 0.5);}
-.grace-dialog-shade .dialog{width:85%; height:auto; background:#FFFFFF; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); z-index:9992; border-radius:5px;}
-.grace-dialog-shade .title{line-height:100rpx; height:100rpx; font-size:30rpx; text-align:center;}
-.grace-dialog-shade .content{width:100%;}
-.grace-dialog-shade .close-btn{position:absolute; z-index:9993; right:0px; top:0px; font-size:26rpx; width:100rpx; height:100rpx; line-height:100rpx; text-align:center; font-family:"gFont";}
-.grace-dialog-shade .close-btn:before{content:"\e643";}
-.grace-dialog-shade .btns{width:100%;}
+.grace-dialog-shade{position:fixed; width:100%; height:100%; left:0; top:0; bottom:0; z-index:9991; display:flex; justify-content:center; align-items:center;}
+.grace-dialog{width:580rpx; background:#FFFFFF; position:relative;}
+.grace-dialog-title{line-height:100rpx; height:100rpx; font-size:30rpx; text-align:center;}
+.grace-dialog-content{}
+.grace-dialog-close-btn{position:absolute; z-index:9993; right:0px; top:0px; font-size:30rpx; width:80rpx; height:80rpx; line-height:80rpx; text-align:center; font-family:"grace-iconfont";}
+.grace-dialog-close-btn:before{content:"\e632";}
 </style>

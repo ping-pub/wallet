@@ -2,7 +2,7 @@
 link   : grace.hcoder.net
 author : 刘海君 5213606@qq.com 
 verson : 2.2
-last update date : 2019-12-19
+last update date : 2019-12-27
 GraceUI 的版权约束是不能转售或者将 GraceUI 直接发布到公开渠道！侵权必究，请遵守版权约定！
 GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请遵守极其简单的版权规定
 */
@@ -218,18 +218,12 @@ view{font-size:28rpx;}
 .grace-form-item{display:flex; flex-direction:row; flex-wrap:nowrap; align-items:center;}
 .grace-form-label{display:block; width:130rpx; height:100rpx; font-size:28rpx; line-height:100rpx; flex-shrink:0; overflow:hidden; color:#888888;}
 .grace-form-icon{width:60rpx; height:60rpx; line-height:60rpx; font-size:28rpx; flex-shrink:0;}
-.grace-form-body{width:700rpx; margin-left:20rpx;}
+.grace-form-body{width:700rpx; margin-left:20rpx; overflow:hidden;}
 .grace-form-input{width:100%; height:40rpx; outline:none; line-height:40rpx; background:none; border:0; text-align:right; padding:20rpx 0; color:#333333; font-size:26rpx;}
 .grace-form-picker{display:flex; flex-direction:row; flex-wrap:nowrap; justify-content:flex-end; align-items:center;}
 .grace-check-item{margin:10rpx 10rpx 0 0; padding:0 10rpx; font-size:26rpx; display:block;}
 .grace-textarea{width:100%; height:120rpx !important; line-height:38rpx; background:none; border:0; font-size:26rpx; color:#666666;}
 @font-face{font-family:"grace-iconfonts"; src:url('data:application/x-font-woff;charset=utf-8;base64,OLh6+EVGahJS0OU2yaKO26Kiu6Zv+fbC+9P6l/wm8ZwtrOU5zo2XwdDjj7ilb9szx6Pz8hzzU1DUMrbXMHC2NbU15WTlxOxUdK2llbX0DSSdFF0GClXLlRPIOJppGChZi5s6MnpKNvaqMLkwKoD8NsI9B7wqBANQgCNQhGDQgBAwhFKwhHGhBeDCDCOAI2YElRARjiAS2EBlMIQx4iGInC9nJQTHaVXQA5D5BA11D820D6O4gBKhATdCAWWEFskIYcQBnigDbEBX2IBwYQHyQhIThBohj9KScAF0gKAuQMEpALsJAHSEG+/kuiIgA4aBqIoCiQhzQx6qgEABMoBTShNDCC5oAC1AQWUAuIQRYwhzaCM7QFGOgo6EHXQAn6DDbQJNjjczuo4gsok+FuApClC9pt9nPwK3ehR05loNUk');}
-/* 可选标签 */
-.grace-select-tags{padding:10rpx 0;}
-.grace-select-tags checkbox-group, .grace-select-tags radio-group{width:100%; display:flex; flex-wrap:wrap;}
-.grace-select-tags label{display:block; width:auto; overflow:hidden; padding:20rpx; height:30rpx; line-height:30rpx; margin:6px; background:#F6F7F8; font-size:26rpx; border-radius:8rpx;}
-.grace-select-tags label checkbox, .grace-select-tags label radio{display:none;}
-.grace-checked{background:#3688FF !important; color:#FFFFFF;}
 /* 底部导航 */
 .grace-footer{position:fixed; z-index:2; left:0; bottom:0; background:#FFFFFF; width:750rpx; overflow:hidden; box-shadow:1px 1px 6px #888;}
 .grace-footer-button{width:230rpx; border:none !important; font-size:30rpx; border-radius:0; height:100rpx; line-height:100rpx;}
@@ -324,15 +318,8 @@ view{font-size:28rpx;}
 .grace-article-contents .img-item{width:100%; font-size:0; margin:8px 0;}
 .grace-article-contents .img-item image{width:100%;}
 .grace-article-contents .text-item{margin:25rpx; line-height:2.2em; font-size:26rpx; color:#666666;}
-/* 模态对话框 */
-.grace-dialog-btns{display:flex; width:100%; padding:10px 0; flex-wrap:nowrap;}
-.grace-dialog-btns view{width:100%; border-right:1px solid #F5F6F8;}
-.grace-dialog-btns view:last-child{border:0;}
-.grace-dialog-btns button{width:100%; padding:0; text-align:center; background:none; border:none; box-shadow:none; height:25px; font-size:14px; color:#888888; line-height:25px; border-radius:0;}
-.grace-dialog-btns button:after{width:0; height:0; border:0;}
-.grace-dialog-btns .button-hover{background:none; color:#3688FF;}
-.grace-btdialog-btns{display:flex; width:100%; flex-wrap:nowrap; background:#FFFFFF; justify-content:space-between;}
-.grace-btdialog-btns view{display:inline-block; color:#A5A7B2; padding:0 20px; line-height:50px; height:50px; font-size:28rpx;}
+/* 模态对话框 按钮 */
+.grace-dialog-buttons{width:700rpx; line-height:88rpx; height:88rpx; display:block; overflow:hidden; text-align:center; font-size:26rpx; color:#999999;}
 /* 编辑器 */
 .grace-editor{padding:25rpx;}
 .grace-editor .title{padding-bottom:30rpx; border-bottom:1px solid #F1F2F3; font-weight:bold; font-size:40rpx;}
@@ -594,3 +581,18 @@ view{font-size:28rpx;}
 .grace-form radio-group, .grace-form checkbox-group{width:100%; display:flex; flex-wrap:wrap;}
 .grace-label-y label{font-size:28rpx; margin-bottom:10rpx; width:100%; color:#333333;}
 .grace-form-funs{width:60rpx; flex-shrink:0; height:80rpx; text-align:right; line-height:80rpx; font-size:36rpx;}
+/* 模态对话框 旧版本 */
+.grace-dialog-btns{display:flex; width:100%; padding:10px 0; flex-wrap:nowrap;}
+.grace-dialog-btns view{width:100%; border-right:1px solid #F5F6F8;}
+.grace-dialog-btns view:last-child{border:0;}
+.grace-dialog-btns button{width:100%; padding:0; text-align:center; background:none; border:none; box-shadow:none; height:25px; font-size:14px; color:#888888; line-height:25px; border-radius:0;}
+.grace-dialog-btns button:after{width:0; height:0; border:0;}
+.grace-dialog-btns .button-hover{background:none; color:#3688FF;}
+.grace-btdialog-btns{display:flex; width:100%; flex-wrap:nowrap; background:#FFFFFF; justify-content:space-between;}
+.grace-btdialog-btns view{display:inline-block; color:#A5A7B2; padding:0 20px; line-height:50px; height:50px; font-size:28rpx;}
+/* 可选标签 旧版本 */
+.grace-select-tags{padding:10rpx 0;}
+.grace-select-tags checkbox-group, .grace-select-tags radio-group{width:100%; display:flex; flex-wrap:wrap;}
+.grace-select-tags label{display:block; width:auto; overflow:hidden; padding:20rpx; height:30rpx; line-height:30rpx; margin:6px; background:#F6F7F8; font-size:26rpx; border-radius:8rpx;}
+.grace-select-tags label checkbox, .grace-select-tags label radio{display:none;}
+.grace-checked{background:#3688FF !important; color:#FFFFFF;}

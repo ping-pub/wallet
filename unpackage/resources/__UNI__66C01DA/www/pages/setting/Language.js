@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"checkBtns { width: ",[0,50],"; }\n",],undefined,{path:"./pages/setting/Language.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/setting/Language.wxml') } }));

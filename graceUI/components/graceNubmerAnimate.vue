@@ -1,5 +1,5 @@
 <template>
-	<text>{{numAnimate}}</text>
+	<text :style="{fontSize:fontSize, fontWeight:fontWeight, color:color, lineHeight:lineHeight}">{{numAnimate}}</text>
 </template>
 <script>
 export default{
@@ -19,6 +19,22 @@ export default{
 		keepInt : {
 			type : Boolean,
 			default : false
+		},
+		fontSize:{
+			type : String,
+			default : '28rpx'
+		},
+		color:{
+			type : String,
+			default : '#333333'
+		},
+		lineHeight:{
+			type : String,
+			default : '50rpx'
+		},
+		fontWeight:{
+			type : String,
+			default : '400'
 		}
 	},
 	data() {

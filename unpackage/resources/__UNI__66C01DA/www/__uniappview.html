@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+                CSS.supports('top: constant(a)'))
+            document.write(
+                '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+                (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+        </script>
+        <title>View</title>
+        <style>
+            * {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            input[type="search"]::-webkit-search-cancel-button {
+                display: none;
+            }
+        </style>
+        <script>
+            var __wxConfig = {"debug":false,"appname":"Ping Wallet","entryPagePath":"pages/index/index.html","page":{"pages/index/index.html":{"window":{"navigationBarTitleText":"Portfolio | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-tabbar":"/components/PageTabbar","swtich-chain":"/components/SwitchChain"}}},"pages/staking/Staking.html":{"window":{"navigationBarTitleText":"Staking | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","switch-wallet":"/components/SwitchWallet","page-tabbar":"/components/PageTabbar"}}},"pages/staking/StakingDetail.html":{"window":{"navigationBarTitleText":"Staking Detail | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle","switch-wallet":"/components/SwitchWallet"}}},"pages/staking/ValidatorDetail.html":{"window":{"navigationBarTitleText":"Validator Detail | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle","switch-wallet":"/components/SwitchWallet"}}},"pages/goverance/Goverance.html":{"window":{"navigationBarTitleText":"Goverance | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","switch-wallet":"/components/SwitchWallet","page-tabbar":"/components/PageTabbar"}}},"pages/goverance/GoveranceDetail.html":{"window":{"navigationBarTitleText":"Goverance Detail | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle","switch-wallet":"/components/SwitchWallet"}}},"pages/setting/Setting.html":{"window":{"navigationBarTitleText":"Setting | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-tabbar":"/components/PageTabbar"}}},"pages/setting/Currency.html":{"window":{"navigationBarTitleText":"Currency | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle","grace-check-btn":"/graceUI/components/graceCheckBtn"}}},"pages/setting/Language.html":{"window":{"navigationBarTitleText":"Language | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle","grace-check-btn":"/graceUI/components/graceCheckBtn"}}},"pages/setting/Server.html":{"window":{"navigationBarTitleText":"Server | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle","grace-check-btn":"/graceUI/components/graceCheckBtn"}}},"pages/setting/Browser.html":{"window":{"navigationBarTitleText":"Explorer | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{}}},"pages/wallet/WalletCreate.html":{"window":{"navigationBarTitleText":"Wallet Create | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle"}}},"pages/wallet/WalletDetail.html":{"window":{"navigationBarTitleText":"Wallet Detail | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle","switch-wallet":"/components/SwitchWallet"}}},"pages/wallet/WalletManage.html":{"window":{"navigationBarTitleText":"Wallet Manage | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle"}}},"pages/wallet/WalletRecive.html":{"window":{"navigationBarTitleText":"Wallet Receive | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle"}}},"pages/wallet/WalletTransfer.html":{"window":{"navigationBarTitleText":"Wallet Transfer | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage","page-title":"/components/PageTitle"}}},"pages/goverance/Tmp.html":{"window":{"navigationBarTitleText":"Wallet Transfer | Ping Wallet","bounce":"none","titleNView":false,"navigationStyle":"custom","scrollIndicator":"none","usingComponents":{"grace-page":"/graceUI/components/gracePage"}}}},"global":{"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"Ping Wallet","navigationBarBackgroundColor":"#F8F8F8","backgroundColor":"#F8F8F8"}},"tabBar":{"color":"","selectedColor":"","backgroundColor":"","borderStyle":"black","list":[],"position":"bottom"},"networkTimeout":{"request":60000,"connectSocket":60000,"uploadFile":60000,"downloadFile":60000},"platform":"devtools","pages":["pages/index/index","pages/staking/Staking","pages/staking/StakingDetail","pages/staking/ValidatorDetail","pages/goverance/Goverance","pages/goverance/GoveranceDetail","pages/setting/Setting","pages/setting/Currency","pages/setting/Language","pages/setting/Server","pages/setting/Browser","pages/wallet/WalletCreate","pages/wallet/WalletDetail","pages/wallet/WalletManage","pages/wallet/WalletRecive","pages/wallet/WalletTransfer","pages/goverance/Tmp"],"nvueCompiler":"uni-app","renderer":"auto","splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"compilerVersion":"2.4.6","usingComponents":{"grace-page":"/graceUI/components/gracePage","switch-wallet":"/components/SwitchWallet","page-title":"/components/PageTitle","page-tabbar":"/components/PageTabbar"}}
+        </script>
+        <script>
+            var __id__ = '';
+            window.__dispatchGenerateFunc__ = function(page) {
+                __id__ = page;
+                document.title = page;
+                // window.history.pushState('', '', page);
+                var wxss = page.replace('.html', '.wxss')
+                if (
+                    typeof __wxAppCode__ !== 'undefined' &&
+                    __wxAppCode__.hasOwnProperty(wxss)
+                ) {
+                    var setCssToHead = __wxAppCode__[wxss]
+                    typeof setCssToHead === 'function' && setCssToHead()
+                    document.dispatchEvent(new CustomEvent("generateFuncReady", {
+                        detail: {
+                            generateFunc: $gwx(page.replace('.html', '.wxml'))
+                        }
+                    }));
+                } else {
+                    plus.webview.currentWebview().setJsFile('_www/' + page.replace('.html', '.js'));
+                }
+            };
+        </script>
+        <script src="__uniappes6.js"></script>
+        <script src="uniapp://ready"></script>
+    </head>
+
+    <body>
+        <div></div>
+    </body>
+
+</html>

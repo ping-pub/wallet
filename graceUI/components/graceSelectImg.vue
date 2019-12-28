@@ -1,12 +1,12 @@
 <template>
 	<view class="grace-add-list">
-		<view class="items" v-for="(item, index) in imgLists" :key="index">
-			<image :src="item" mode="widthFix" :data-imgurl="item" @tap="showImgs"></image>
-			<view class="remove" @tap="removeImg" :id="'grace-items-img-'+index"></view>
+		<view class="grace-add-list-items" v-for="(item, index) in imgLists" :key="index">
+			<image :src="item" :data-imgurl="item" @tap="showImgs"></image>
+			<view class="grace-add-list-remove grace-icons icon-close" :style="{color:closeBtnColor}" @tap="removeImg" :id="'grace-items-img-'+index"></view>
 		</view>
-		<view class="items add-btn" @tap="addImg" v-if="imgLists.length < maxFileNumber">
-			<view class="add-btn-add">+</view>
-			<view class="add-btn-text">{{btnName}}</view>
+		<view class="grace-add-list-items grace-add-list-btn" @tap="addImg" v-if="imgLists.length < maxFileNumber">
+			<view class="grace-add-list-btn-icon">+</view>
+			<view class="grace-add-list-btn-text">{{btnName}}</view>
 		</view>
 	</view>
 </template>
@@ -26,6 +26,10 @@ export default {
 			default : function () {
 				return [];
 			}
+		},
+		closeBtnColor : {
+			type : String,
+			default : "#666666"
 		}
 	},
 	data() {
@@ -43,15 +47,14 @@ export default {
 	},
     methods:{
         addImg : function(){
-			var _self = this;
-            var num = this.maxFileNumber - _self.imgLists.length;
+            var num = this.maxFileNumber - this.imgLists.length;
             if(num < 1){return false;}
             uni.showLoading({title:""});
             uni.chooseImage({
                 count: num,
                 sizeType: ['compressed'],
-                success: function(res) {
-                    _self.imgLists = _self.imgLists.concat(res.tempFilePaths);
+                success:(res) => {
+                    this.imgLists = this.imgLists.concat(res.tempFilePaths);
                     uni.hideLoading();
                 },
 				fail:function(){
@@ -69,18 +72,19 @@ export default {
               urls: this.imgLists,
               current : currentImg
             })
-        }
+        },
+		setItems : function(items){
+			this.imgLists = items;
+		}
     }
 }
 </script>
 <style scoped>
-@font-face {font-family:"gFont"; src:url('https://at.alicdn.com/t/font_1350431_mx2yuzh35rh.ttf') format('truetype');}
 .grace-add-list{display:flex; flex-wrap:wrap;}
-.grace-add-list .add-btn{display:flex; flex-direction:column; align-items:center; justify-content:center;}
-.grace-add-list .add-btn-text{font-size:26rpx; line-height:36rpx; text-align:center; color:#999999; width:100%;}
-.grace-add-list .add-btn-add{font-size:100rpx !important; height:80rpx; line-height:80rpx; margin-bottom:20rpx; color:#999999;}
-.grace-add-list > .items{width:220rpx; height:220rpx; overflow:hidden; margin:5px 0; background:#F3F4F5; font-size:0; position:relative; border-radius:10rpx; margin-right:13rpx;}
-.grace-add-list > .items image{width:220rpx;}
-.grace-add-list > .items .remove{font-family:"gFont"; width:50rpx; height:50rpx; line-height:50rpx; text-align:center; font-size:40rpx; position:absolute; z-index:1; right:0; bottom:0; background:rgba(0,0,0, 0.5); color:#FFFFFF;}
-.grace-add-list > .items .remove:after{content: "\e600";}
+.grace-add-list-btn{display:flex; flex-direction:column; align-items:center; justify-content:center;}
+.grace-add-list-btn-text{font-size:26rpx; line-height:36rpx; text-align:center; color:#999999; width:100%;}
+.grace-add-list-btn-icon{font-size:80rpx; height:80rpx; line-height:80rpx; margin-bottom:20rpx; color:#999999;}
+.grace-add-list-items{width:222rpx; height:222rpx; overflow:hidden; margin-bottom:10rpx; margin-right:11rpx; background:#F6F7F8; font-size:0; position:relative; border-radius:10rpx;}
+.grace-add-list-image{width:222rpx;}
+.grace-add-list-remove{width:50rpx; height:50rpx; line-height:50rpx; text-align:center; font-size:40rpx; position:absolute; z-index:1; right:0; bottom:0; color:#888888;}
 </style>

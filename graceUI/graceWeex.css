@@ -229,29 +229,26 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .grace-stable-fixed{background-color:#FFFFFF;}
 /* 多功能菜单 - 纵向 */
 .grace-popover-menu{width:100rpx; right:20rpx; bottom:88px; position:fixed;}
-.grace-popover-menu-item{width:100rpx; height:100rpx; line-height:100rpx; text-align:center; font-size:60rpx; color:#FFFFFF; border-radius:50%; margin:20rpx 0; overflow:hidden;}
+.grace-popover-menu-item{width:100rpx; height:100rpx; line-height:100rpx; text-align:center; font-size:60rpx; color:#FFFFFF; border-radius:100rpx; margin:20rpx 0; overflow:hidden;}
 .grace-popover-menu-image{width:100rpx; height:100rpx; border-radius:100rpx;}
 /* 多功能菜单 - 横向 */
 .grace-popover-menu-x{width:750rpx; left:0px; bottom:36rpx; position:fixed; flex-direction:row; flex-wrap:nowrap; justify-content:center; align-items:center;}
-.grace-popover-menu-x-item{width:80rpx; height:80rpx; line-height:80rpx; text-align:center; font-size:70rpx; margin:0 5rpx; border-radius:50%; margin:10rpx; overflow:hidden; background-color:#FFFFFF;}
+.grace-popover-menu-x-item{width:80rpx; height:80rpx; line-height:80rpx; text-align:center; font-size:70rpx; margin:0 5rpx; border-radius:100rpx; margin:10rpx; overflow:hidden; background-color:#FFFFFF;}
 .grace-popover-menu-x-image{width:80rpx; height:80rpx; border-radius:80rpx;}
-.grace-popover-menu-xcenter{width:100rpx; height:100rpx; text-align:center; border-radius:50%; margin:0 10rpx; overflow:hidden;}
+.grace-popover-menu-xcenter{width:100rpx; height:100rpx; text-align:center; border-radius:100rpx; margin:0 10rpx; overflow:hidden;}
 .grace-popover-menu-xcenter-text{font-size:28rpx !important; line-height:100rpx; width:100rpx; text-align:center;}
 .grace-popover-menu-xcenter-image{width:100rpx; height:100rpx; border-radius:80rpx;}
 /* 按钮修饰 */
 .grace-button{font-size:72rpx; height:72rpx; font-size:26rpx; line-height:72rpx; border-width:0;}
 .grace-box-btn{width:70rpx; height:70rpx; line-height:70rpx; padding:0; text-align:center; font-size:50rpx;}
-/* 底部对话框按钮 */
-.grace-dialog-btns{flex-direction:row; flex-wrap:nowrap; justify-content:space-between;}
-.grace-dialog-btn{width:700rpx; flex:1; line-height:90rpx; text-align:center; flex:1; font-size:28rpx; color:#999999;}
-.grace-btdialog-btns{flex-direction:row; flex-wrap:nowrap; justify-content:space-between;}
-.grace-btdialog-btn{padding:0 35rpx; line-height:88rpx; font-size:28rpx; color:#999999;}
+/* 模态对话框 按钮 */
+.grace-dialog-buttons{width:700rpx; line-height:88rpx; height:88rpx; flex:1; overflow:hidden; text-align:center; font-size:26rpx; color:#999999;}
 /* 表单 */
 .grace-form{}
 .grace-form-item{flex-direction:row; flex-wrap:nowrap; align-items:center;}
 .grace-form-label{width:130rpx; height:100rpx; font-size:28rpx; line-height:100rpx; overflow:hidden; color:#888888;}
 .grace-form-icon{width:60rpx; height:60rpx; line-height:60rpx; font-size:28rpx;}
-.grace-form-body{width:700rpx; margin-left:20rpx; flex:1;}
+.grace-form-body{width:700rpx; margin-left:20rpx; flex:1; overflow:hidden;}
 .grace-form-input{height:80rpx; line-height:40rpx; text-align:right; padding:20rpx 0; color:#333333; font-size:26rpx;}
 .grace-form-picker{flex-direction:row; flex-wrap:nowrap; justify-content:flex-end; align-items:center;}
 .grace-check-item{margin:10rpx; padding:0 10rpx; font-size:26rpx; flex-direction:row; align-items:center;}
@@ -365,3 +362,8 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .grace-label-text{font-size:26rpx; color:#777777; margin:0 8rpx;}
 .grace-checkbox-group, .grace-radio-group{}
 .grace-label{flex-direction:row; flex-wrap:nowrap; padding:10rpx; font-size:26rpx; align-items:center;}
+/* 底部对话框按钮 旧版本 */
+.grace-dialog-btns{flex-direction:row; flex-wrap:nowrap; justify-content:space-between;}
+.grace-dialog-btn{width:700rpx; flex:1; line-height:90rpx; text-align:center; flex:1; font-size:28rpx; color:#999999;}
+.grace-btdialog-btns{flex-direction:row; flex-wrap:nowrap; justify-content:space-between;}
+.grace-btdialog-btn{padding:0 35rpx; line-height:88rpx; font-size:28rpx; color:#999999;}
