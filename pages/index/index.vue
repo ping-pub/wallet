@@ -59,8 +59,8 @@
 
 				<view class="cu-list menu-avatar m-space">
 					<view class="cu-item" v-for="(item, index) in 6" :key="index" @tap="go('/pages/wallet/WalletDetail')">
-						<view class="cu-avatar lg bg-white" :style="[{ backgroundImage: 'url(../../static/wallet/cosmoshub.svg)' }]"></view>
-						<view class="content">
+						<image src="../../static/wallet/cosmoshub.svg" mode="" style="width: 96rpx;height: 96rpx;"></image>
+						<view class="content" style="left: 100rpx;">
 							<view class="text-black">Address1</view>
 							<view class="text-gray text-sm">cosmos1zuu...ktq2tzw</view>
 						</view>
@@ -73,10 +73,9 @@
 			</view>
 
 			<view class="page-space"></view>
-			<view class="cu-bar"></view>
 			<SwtichChain :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 		</view>
-		<PageTabbar slot="gFooter" page="index"></PageTabbar>
+		
 	</gracePage>
 </template>
 
