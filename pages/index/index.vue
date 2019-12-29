@@ -55,7 +55,7 @@
 						<text class="text-xl text-bold">地址</text>
 					</view>
 					<view class="action"  @tap="go('/pages/wallet/WalletManage')">
-						<text class="cuIcon-list"></text>
+						<text class="text-sm text-gray cuIcon-right"></text>
 					</view>
 				</view>
 
@@ -68,7 +68,6 @@
 						</view>
 						<view class="action" style="text-align:right;width: 100%;">
 							<view class="cu-tag round bg-grey"><text class="text-lg">$12,992,134,199</text></view>
-							<view class="text-gray"><text class="cuIcon-pay"></text></view>
 						</view>
 					</view>
 				</view>
