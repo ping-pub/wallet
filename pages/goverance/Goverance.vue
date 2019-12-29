@@ -15,7 +15,6 @@
 		<view slot="gBody" >
 			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 			<view class="page-space"></view>
-			<view class="page-space"></view>
 			<view class="cu-card article no-card mb-12" v-for="n in 10" :key="n">
 				<view class="cu-item shadow">
 					<view class="title"><view class="text-cut">是否支持冷钱包投票?</view></view>

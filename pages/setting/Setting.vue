@@ -20,7 +20,7 @@
 						<text class=" text-grey text-sm"><text class="cuIcon cuIcon-right"></text></text>
 					</view>
 				</view>
-				<view class="cu-item">
+				<view class="cu-item" @tap="go('/pages/setting/Server')">
 					<view class="content">
 						<text class="cuIcon-light text-grey"></text>
 						<text class="text-black">{{ lang.serverHost }}</text>
@@ -29,7 +29,7 @@
 						<text class=" text-grey text-sm"><text class="cuIcon cuIcon-right"></text></text>
 					</view>
 				</view>
-				<view class="cu-item">
+				<view class="cu-item" @tap="go('/pages/setting/Language')">
 					<view class="content">
 						<text class="cuIcon-comment text-grey"></text>
 						<text class="text-black">{{ lang.language }}</text>
@@ -38,7 +38,7 @@
 						<text class=" text-grey text-sm"><text class="cuIcon cuIcon-right"></text></text>
 					</view>
 				</view>
-				<view class="cu-item">
+				<view class="cu-item" @tap="go('/pages/setting/Currency')">
 					<view class="content">
 						<text class="cuIcon-recharge text-grey"></text>
 						<text class="text-black">Currency</text>

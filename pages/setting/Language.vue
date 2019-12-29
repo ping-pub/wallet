@@ -1,19 +1,19 @@
 <template>
 	<gracePage headerBG="#fff">
 		<PageTitle slot="gHeader" :title="lang.title">
-			<text style="padding: 12rpx 24rpx;" class="grace-black6 look-app-icon look-app-icon-save"></text>
+			<text class="cuIcon-check"></text>
 		</PageTitle>
-		<view slot="gBody" class="grace-body">
-			<view class="grace-list">
-				<view class="items" v-for="(item, index) in items" :key="index">
-					<view class="checkBtns">
-						<graceCheckBtn checkedColor="#37434b" :checked="item.checked" :parameter="[index]" @change="checkedChange" :size="46"></graceCheckBtn>
-					</view>
-					<view class="body">
-						<view class="title">{{item.text}}</view>
-					</view>
+		<view slot="gBody">
+			<radio-group class="block">
+				<view class="cu-form-group">
+					<view class="title">简体中文</view>
+					<radio :class="radio=='A'?'checked':''" :checked="radio=='A'?true:false" value="A"></radio>
 				</view>
-			</view>
+				<view class="cu-form-group">
+					<view class="title">English</view>
+					<radio :class="radio=='B'?'checked':''" :checked="radio=='B'?true:false" value="A"></radio>
+				</view>
+			</radio-group>
 		</view>
 	</gracePage>
 </template>
@@ -35,6 +35,7 @@
 		},
 		data() {
 			return {
+				radio: 'A',
 				items: [{
 						checked: false,
 						lang: 'en',

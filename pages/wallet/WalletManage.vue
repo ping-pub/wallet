@@ -1,6 +1,6 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" title="Wallet Manage"><text @tap="go('/pages/walletAdd/walletAdd')" class="cuIcon-add"></text></PageTitle>
+		<PageTitle slot="gHeader" title="Wallet Manage"><text @tap="go('/pages/wallet/WalletCreate')" class="cuIcon-add"></text></PageTitle>
 
 		<view slot="gBody">
 			<view class="page-space"></view>

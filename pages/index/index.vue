@@ -54,7 +54,9 @@
 						<text class="cuIcon-titles text-black"></text>
 						<text class="text-xl text-bold">地址</text>
 					</view>
-					<view class="action"></view>
+					<view class="action"  @tap="go('/pages/wallet/WalletManage')">
+						<text class="cuIcon-list"></text>
+					</view>
 				</view>
 
 				<view class="cu-list menu-avatar m-space">
@@ -81,6 +83,7 @@
 
 <script>
 import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+import BaseMixin from '../../components/BaseMixin.js'
 import SwtichChain from '../../components/SwitchChain.vue';
 
 export default {
@@ -218,6 +221,6 @@ export default {
 	components: {
 		SwtichChain
 	},
-	mixins: [SwitchWalletMixin]
+	mixins: [SwitchWalletMixin, BaseMixin]
 };
 </script>
