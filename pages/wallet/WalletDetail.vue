@@ -8,7 +8,7 @@
 			<view class="cu-bar bg-white">
 				<view class="action">
 					<text class="cuIcon-titles text-black"></text>
-					<text class="text-xl text-bold">Address1</text>
+					<text class="text-xl text-bold">基础信息</text>
 				</view>
 				<view class="action">
 					<!-- 					<text>领取奖励</text>

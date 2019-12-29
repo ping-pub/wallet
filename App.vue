@@ -37,7 +37,7 @@ export default {
 }
 .cu-bar {
 	min-height: 88rpx;
-	border-bottom: 2rpx solid #EEEEEE;
+	border-bottom: 2rpx solid #eeeeee;
 }
 html,
 body {
@@ -61,6 +61,10 @@ body {
 */
 .grace-title {
 	color: #a5a7b2;
+}
+.uni-tabbar .uni-tabbar__icon {
+	width: 40rpx;
+	height: 40rpx;
 }
 
 /* 可以利用条件编译编写不同平台的样式 如 : 修改导航组件 */
@@ -137,7 +141,7 @@ navigator {
 
 .page-space {
 	height: 20rpx;
-	background: #F7F7F7;
+	background: #f7f7f7;
 }
 .grace-border-b {
 	border-bottom: 2rpx solid #eeeeee;

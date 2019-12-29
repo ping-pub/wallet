@@ -11,7 +11,7 @@
 		</view>
 		<view slot="gBody">
 			<view class="cu-list menu">
-				<view class="cu-item">
+				<view class="cu-item" @tap="go('/pages/wallet/WalletManage')">
 					<view class="content">
 						<text class="cuIcon-pay text-grey"></text>
 						<text class="text-black">{{ lang.manageWallet }}</text>
@@ -50,7 +50,7 @@
 						</text>
 					</view>
 				</view>
-				<view class="cu-item">
+				<view class="cu-item" @tap="openBrowser('https://look.ping.pub')">
 					<view class="content">
 						<text class="cuIcon-link text-grey"></text>
 						<text class="text-black">{{ lang.browser }}</text>
@@ -68,11 +68,13 @@
 			<view class="cu-bar"></view>
 		</view>
 
-		<PageTabbar slot="gFooter" page="setting"></PageTabbar>
 	</gracePage>
 </template>
 <script>
+import BaseMixin from '../../components/BaseMixin.js'
+
 export default {
+	mixins: [BaseMixin],
 	computed: {
 		lang() {
 			return this.$t('setting');

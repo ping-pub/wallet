@@ -68,7 +68,6 @@
 			<view class="cu-bar"></view>
 		</view>
 	
-	<PageTabbar slot="gFooter" page="goverance"></PageTabbar>
 	</gracePage>
 </template>
 <script>

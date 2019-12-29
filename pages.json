@@ -189,26 +189,26 @@
 		"backgroundColor": "#FFFFFF",
 		"list": [{
 				"pagePath": "pages/index/index",
-				"iconPath": "static/tabbars/color_wallet0.png",
-				"selectedIconPath": "static/tabbars/color_wallet1.png",
+				"iconPath": "static/tabbar/10.png",
+				"selectedIconPath": "static/tabbar/11.png",
 				"text": "资产"
 			},
 			{
 				"pagePath": "pages/staking/Staking",
-				"iconPath": "static/tabbars/color_staking0.png",
-				"selectedIconPath": "static/tabbars/color_staking1.png",
+				"iconPath": "static/tabbar/20.png",
+				"selectedIconPath": "static/tabbar/21.png",
 				"text": "委托"
 			},
 			{
 				"pagePath": "pages/goverance/Goverance",
-				"iconPath": "static/tabbars/color_goverance0.png",
-				"selectedIconPath": "static/tabbars/color_goverance1.png",
+				"iconPath": "static/tabbar/30.png",
+				"selectedIconPath": "static/tabbar/31.png",
 				"text": "投票"
 			},
 			{
 				"pagePath": "pages/setting/Setting",
-				"iconPath": "static/tabbars/color_user0.png",
-				"selectedIconPath": "static/tabbars/color_user1.png",
+				"iconPath": "static/tabbar/40.png",
+				"selectedIconPath": "static/tabbar/41.png",
 				"text": "设置"
 			}
 		]

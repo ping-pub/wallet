@@ -8,7 +8,7 @@
 		</view>
 		<view slot="content">
 			<scroll-view  scroll-y="true" class="grace-scroll-y" style="height: 800rpx;">
-				<view class="grace-body">
+				<view style="padding: 0 20rpx;">
 					<view class="mt-12">
 						<view class="grace-flex grace-flex-vcenter mb-12">
 							<image class="mr-6" style="width: 48rpx;height: 48rpx;" src="../../static/wallet/cosmoshub.svg" mode=""></image>

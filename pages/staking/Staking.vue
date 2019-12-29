@@ -124,9 +124,7 @@
 			<view class="page-space"></view>
 			<view class="cu-bar"></view>
 		</view>
-
-		<PageTabbar slot="gFooter" page="staking"></PageTabbar>
-	</gracePage>
+</gracePage>
 </template>
 
 <script>
