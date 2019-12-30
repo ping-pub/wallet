@@ -1,68 +1,71 @@
 <template>
-	<graceBottomDialog :show="showDialog" @closeDialog="close()">
-		<view slot="btns">
-			<view class="grace-space-between grace-body grace-flex-vbottom grace-border-b">
-				<view class="look-title-sm" style="padding: 12rpx 0 12rpx 0;">Switch</view>
-				<view @tap="close" class="grace-icons icon-close3" style="padding: 12rpx 0 12rpx 12rpx;"></view>
+	<view class="cu-modal" :class="showDialog?'show':''" @tap="close" @touchmove.stop.prevent="">
+		<view class="cu-dialog" @tap.stop="" style="max-height: 80%;">
+			<view class="cu-bar bg-white ">
+				<view class="action">
+					<text class="cu-tag bg-olive round shadow">Address-3</text>
+				</view>
+				<view class="content">切换钱包</view>
+				<view class="action" @tap="close">
+					<text class="cuIcon-close text-gray"></text>
+				</view>
 			</view>
-		</view>
-		<view slot="content">
-			<scroll-view  scroll-y="true" class="grace-scroll-y" style="height: 800rpx;">
-				<view style="padding: 0 20rpx;">
-					<view class="mt-12">
-						<view class="grace-flex grace-flex-vcenter mb-12">
-							<image class="mr-6" style="width: 48rpx;height: 48rpx;" src="../../static/wallet/cosmoshub.svg" mode=""></image>
-							<view class="look-title-sm">
-								Cosmos
-							</view>
-						</view>
-						<view @tap="confirm1" class="grace-comments-replay mb-12" style="border-radius: 0;" :style="{ border: current === 1 ? '2rpx solid #37434b' : '2rpx solid #eee' }">
-							<view class=" grace-flex-vcenter grace-flex ">
-								<view class="flex-1">
-									<view class="">Address{{ 1 }}</view>
-									<view class="grace-ellipsis">cosmos1zu83m37u7...sq4q453ktq2l6lqjtzw</view>
+			<scroll-view scroll-x class="bg-white nav" scroll-with-animation>
+				<view class="cu-item text-black cur">
+					Cosmos
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+				<view class="cu-item">
+					Cosmos
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+				<view class="cu-item">
+					Kava
+				</view>
+			</scroll-view>
+			<scroll-view scroll-y="true" style="height: 600rpx;">
+				<view class="cu-list menu text-left">
+					<view class="cu-item" v-for="(item,index) in 10" :key="index">
+						<label class="flex justify-between align-center flex-sub" style="padding: 20rpx 0;">
+							<view class="flex-sub">
+								<view class="text-lg">
+									Address {{index +1}}
 								</view>
-								<view class="tr" style="width: 80rpx;"><text v-if="1 === current" class="grace-icons icon-right" style="color: #37434b;font-size: 20px;"></text></view>
-							</view>
-						</view>
-					</view>
-				
-					<view class="" v-for="i in 3" :key="i">
-						<view class="grace-flex grace-flex-vcenter mb-12">
-							<image class="mr-6" style="width: 48rpx;height: 48rpx;" src="../../static/wallet/kava.svg" mode=""></image>
-							<view class="look-title-sm">
-								Kava
-							</view>
-						</view>
-						<view v-for="n in 10" :key="n" class="grace-comments-replay mb-12" style="border-radius: 0;border: 2rpx solid #eee">
-							<view class=" grace-flex-vcenter grace-flex ">
-								<view class="flex-1">
-									<view class="">Address</view>
-									<view class="grace-ellipsis">cosmos1zu83m37u7...sq4q453ktq2l6lqjtzw</view>
+								<view class="text-sm text-gray">
+									Address {{index +1}}
 								</view>
-								<view class="tr" style="width: 80rpx;"></view>
 							</view>
-						</view>
+							<view v-if="current === item" class="cuIcon-check" style="font-size: 18px;"></view>
+						</label>
 					</view>
 				</view>
-				
 			</scroll-view>
-			
+			<view>
+				<button class="cu-btn bg-black" style="width: 100%;border-radius: 0;height: 80rpx;">确定</button>
+			</view>
 		</view>
-	</graceBottomDialog>
+	</view>
 </template>
 
 <script>
-	import graceBottomDialog from '../graceUI/components/graceBottomDialog.vue';
-
 	export default {
 		props: {
 			showDialog: {
 				default: false
 			}
-		},
-		components: {
-			graceBottomDialog: graceBottomDialog
 		},
 		data() {
 			return {
@@ -75,6 +78,10 @@
 			},
 			confirm1() {
 				this.close();
+			},
+			changeItem(e) {
+				console.log(e)
+				this.current = e
 			}
 		}
 	};

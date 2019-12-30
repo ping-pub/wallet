@@ -63,8 +63,18 @@ body {
 	color: #a5a7b2;
 }
 .uni-tabbar .uni-tabbar__icon {
-	width: 40rpx;
-	height: 40rpx;
+	/* #ifdef H5 */
+	width: 36rpx;
+	height: 36rpx;
+	/* #endif */
+	/* #ifndef H5 */
+	width: 20rpx;
+	height: 20rpx;
+	/* #endif */
+}
+.uni-radio-input.uni-radio-input-checked {
+	background-color: #333333 !important;
+	border-color: #333333 !important;
 }
 
 /* 可以利用条件编译编写不同平台的样式 如 : 修改导航组件 */

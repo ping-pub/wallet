@@ -1,15 +1,15 @@
 <template>
-	<gracePage headerBG="#fff">
-		<view class="" slot="gHeader">
-			<view class="status_bar"></view>
-			<view class="cu-bar bg-white">
-				<view class="action sub-title">
-					<text class="text-xl text-bold text-black">设置</text>
-					<text class="bg-black"></text>
+	<gracePage :customHeader="false">
+		<view slot="gBody">
+			<view class="" style="background-image: url('../../static/setting/bg.png');background-size: cover;height: 240rpx;">
+				<view class="status_bar"></view>
+				<view class="cu-bar" style="border-bottom: none;">
+					<view class="action sub-title">
+						<text class="text-xl text-bold text-white">设置</text>
+						<text class="bg-white"></text>
+					</view>
 				</view>
 			</view>
-		</view>
-		<view slot="gBody">
 			<view class="cu-list menu">
 				<view class="cu-item" @tap="go('/pages/wallet/WalletManage')">
 					<view class="content">
@@ -63,9 +63,6 @@
 					</view>
 				</view>
 			</view>
-
-			<view class="page-space"></view>
-			<view class="cu-bar"></view>
 		</view>
 
 	</gracePage>

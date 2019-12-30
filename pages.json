@@ -186,6 +186,7 @@
 		"color": "#aaaaaa",
 		"selectedColor": "#333333",
 		"borderStyle": "white",
+		"spacing": "6px",
 		"backgroundColor": "#FFFFFF",
 		"list": [{
 				"pagePath": "pages/index/index",
@@ -207,8 +208,8 @@
 			},
 			{
 				"pagePath": "pages/setting/Setting",
-				"iconPath": "static/tabbar/40.png",
-				"selectedIconPath": "static/tabbar/41.png",
+				"iconPath": "static/tabbar-app/setting0.png",
+				"selectedIconPath": "static/tabbar-app/setting1.png",
 				"text": "设置"
 			}
 		]

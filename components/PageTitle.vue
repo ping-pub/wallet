@@ -1,9 +1,8 @@
 <template>
 	<view class="grace-border-b grace-bg-white">
-		<view class="status_bar"></view>
 		<view class="cu-bar bg-white">
 			<view class="action" @tap="goBack">
-				<text class="cuIcon-back text-gray"></text>
+				<text class="cuIcon-back text-gray" style="font-size: 14px;"></text>
 			</view>
 			<view class="content">
 				{{ title }}

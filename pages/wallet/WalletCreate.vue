@@ -1,30 +1,63 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" title="Add Address">
-			<text style="padding: 12rpx 24rpx;" class="grace-black6">Reset</text>
+		<PageTitle slot="gHeader" title="编辑钱包">
+			<view class="">
+				<text class="cuIcon-roundcheck mr-6"></text>
+				<text>保存</text>
+			</view>
 		</PageTitle>
 
-		<view slot="gBody" class="grace-body">
-			<form @submit="formSubmit" class="grace-form">
-				<view class="grace-items">
-					<view class="grace-label">Name</view>
-					<input type="text" class="input" name="name" placeholder="Please input." />
+		<view slot="gBody">
+			<view class="page-space"></view>
+			<view class="cu-bar bg-white">
+				<view class="action">
+					<text class="cuIcon-titles text-black"></text>
+					<text class="text-xl text-bold">钱包主链</text>
 				</view>
-				<view class="grace-items">
-					<view class="grace-label">Address</view>
-					<input type="text" class="input" name="address" placeholder="Please input." />
-				</view>
-				<view class="grace-items">
-					<view class="grace-label">Chain</view>
-					<view class="other">
-						<picker @change="bindPickerChange" :value="genderIndex" :range="gender" name="gender">
-							<text>{{gender[genderIndex]}}</text>
-						</picker>
+				<view class="action"></view>
+			</view>
+			<view class="bg-white">
+				<view class="cu-list grid col-4 no-border" style="padding: 20rpx 40rpx;">
+					<view class="cu-item walletcreate-chainitem-active" style="padding-top: 20rpx;">
+						<image src="../../static/wallet/cosmoshub.svg" class="shadow" style="width: 56rpx;height: 56rpx;margin: 0 auto;" mode=""></image>
+						<text style="color: #333333;">Cosmos</text>
+					</view>
+					<view class="cu-item walletcreate-chainitem" style="padding-top: 20rpx;">
+						<image src="../../static/wallet/kava.svg" style="width: 56rpx;height: 56rpx;margin: 0 auto;" mode=""></image>
+						<text style="color: #333333;">Kava</text>
+					</view>
+					<view class="cu-item walletcreate-chainitem" style="padding-top: 20rpx;">
+						<image src="../../static/wallet/irishub.svg" style="width: 56rpx;height: 56rpx;margin: 0 auto;" mode=""></image>
+						<text style="color: #333333;">Iris</text>
+					</view>
+					<view class="cu-item walletcreate-chainitem" style="padding-top: 20rpx;">
+						<image src="../../static/wallet/asset3.png" style="width: 56rpx;height: 56rpx;margin: 0 auto;" mode=""></image>
+						<text style="color: #333333;">Cell</text>
 					</view>
 				</view>
-
-				<view style="padding:22rpx 0;">
-					<button class="look-gtbg-dark f-16" formType="submit" type="primary" style="width:100%;">Save</button>
+			</view>
+			
+			<view class="page-space"></view>
+			<view class="cu-bar bg-white">
+				<view class="action">
+					<text class="cuIcon-titles text-black"></text>
+					<text class="text-xl text-bold">钱包资料</text>
+				</view>
+				<view class="action"></view>
+			</view>
+			<form>
+				<view class="cu-form-group">
+					<view class="title">钱包名称</view>
+				</view>
+				<view class="cu-form-group">
+					<input placeholder="请输入" name="input"></input>
+				</view>
+				<view class="cu-form-group">
+					<view class="title">钱包地址</view>
+					<text class="cuIcon-copy"></text>
+				</view>
+				<view class="cu-form-group">
+					<textarea maxlength="-1" placeholder="请输入钱包地址"></textarea>
 				</view>
 			</form>
 		</view>
@@ -35,6 +68,7 @@
 	export default {
 		data() {
 			return {
+				radio: 'B',
 				genderIndex: 0,
 				gender: ['Cosmos', 'Kava', 'Iris', 'Cell'],
 				dateValue: null
@@ -100,4 +134,10 @@
 	}
 </script>
 <style>
+	.walletcreate-chainitem {
+		background: #fff;padding: 20rpx 0;border: 2rpx solid #fff;
+	}
+	.walletcreate-chainitem-active {
+		background: #eee;padding: 20rpx 0;border: 2rpx solid #333333;
+	}
 </style>

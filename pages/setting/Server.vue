@@ -1,24 +1,39 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" title="Server">
-			<text style="padding: 12rpx 24rpx;" class="grace-black6 look-app-icon look-app-icon-save"></text>
+		<PageTitle slot="gHeader" title="主链服务器">
+			<view class="">
+				<text class="cuIcon-roundcheck mr-6"></text>
+				<text>保存</text>
+			</view>
 		</PageTitle>
-		<view slot="gBody" class="grace-body">
-			<form @submit="formSubmit" class="grace-form">
-				<!-- 项目 -->
-				<view class="grace-items">
-					<view class="grace-label">Cosmos</view>
-					<input type="text" class="input" name="name" placeholder="Please Input" />
+		<view slot="gBody">
+			<view class="page-space"></view>
+			<view class="cu-bar bg-white">
+				<view class="action">
+					<text class="cuIcon-titles text-black"></text>
+					<text class="text-xl text-bold">Cosmos</text>
 				</view>
-				<view class="grace-items">
-					<view class="grace-label">Kava</view>
-					<input type="text" class="input" name="name" placeholder="Please Input" />
+				<view class="action"><image style="width: 48rpx;height: 48rpx;" src="../../static/wallet/cosmoshub.svg" mode=""></image></view>
+			</view>
+			
+			<view class="cu-list menu-avatar bg-white">
+				<view class="cu-item">
+					<view class="content" style="left: 40rpx;">
+						<view class="" style="font-size: 14px;">默认地址</view>
+						<view class="text-black text-lg">https://lcd.laync.com</view>
+					</view>
+					<view class="action">
+						<text class="cuIcon-roundcheckfill" style="font-size: 24px;"></text>
+					</view>
 				</view>
-				<view class="grace-items">
-					<view class="grace-label">Iris</view>
-					<input type="text" class="input" name="name" placeholder="Please Input" />
+				<view class="cu-item">
+					<view class="content" style="left: 40rpx;">
+						<view class="" style="font-size: 14px;">自定义地址</view>
+						<view class="text-black text-lg">https://lcd.laync.com</view>
+					</view>
 				</view>
-			</form>
+			</view>
+			<view class="page-space"></view>
 		</view>
 	</gracePage>
 </template>

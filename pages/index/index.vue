@@ -1,7 +1,6 @@
 <template>
 	<gracePage headerBG="#fff">
 		<view class="" slot="gHeader">
-			<view class="status_bar"></view>
 			<view class="cu-bar bg-white">
 				<view class="action sub-title">
 					<text class="text-xl text-bold text-black">Ping Wallet</text>
