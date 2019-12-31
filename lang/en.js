@@ -15,6 +15,7 @@ export default {
 		title: 'Goverance'
 	},
 	setting: {
+		title: 'Setting',
 		manageWallet: 'Manage Wallet',
 		addressBook: 'Address Book',
 		language: 'Language Change',

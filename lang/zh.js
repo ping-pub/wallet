@@ -9,6 +9,7 @@ export default {
 		title: '提案'
 	},
 	setting: {
+		title: '设置',
 		manageWallet: '钱包管理',
 		addressBook: '地址簿',
 		language: '语言切换',
