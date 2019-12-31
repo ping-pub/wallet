@@ -4,7 +4,13 @@ const chainList = {
 		"logo": "../../static/wallet/cosmoshub.svg",
 		"version": "0.32.8",
 		"lcd": "https://lcd.nylira.net",
-		"wallets": []
+		"wallets": [
+			{
+				chain: 'Cosmos',
+				name: 'DEMO',
+				address: 'cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw'
+			}
+		]
 	},
 	Kava: {
 		"name": "Kava",
@@ -18,7 +24,13 @@ const chainList = {
 		"logo": "../../static/wallet/irishub.svg",
 		"version": "0.32.8",
 		"lcd": "https://rpc.irisnet.org",
-		"wallets": []
+		"wallets": [
+			{
+				chain: 'Iris',
+				name: '多币地址',
+				address: 'iaa1v6c3sa76s3grss3xu64tvn9nd556jlcw6azc85'
+			}
+		]
 	},
 	"Sentinel Network": {
 		"name": "Sentinel Network",
