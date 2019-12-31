@@ -54,6 +54,11 @@ export default {
 	created : function () {
 		this.currentIndex = this.selectIndex;
 	},
+	watch:{
+		selectIndex : function () {
+			this.currentIndex = this.selectIndex;
+		}
+	},
 	methods:{
 		showMenu:function () {
 			this.$emit('showMenu');

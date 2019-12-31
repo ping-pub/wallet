@@ -5,7 +5,7 @@
 				<view class="status_bar"></view>
 				<view class="cu-bar" style="border-bottom: none;">
 					<view class="action sub-title">
-						<text class="text-xl text-bold text-white">设置</text>
+						<text class="text-xl text-bold text-white">{{ lang.title }}</text>
 						<text class="bg-white"></text>
 					</view>
 				</view>
@@ -13,7 +13,7 @@
 			<view class="cu-list menu">
 				<view class="cu-item" @tap="go('/pages/wallet/WalletManage')">
 					<view class="content">
-						<text class="cuIcon-pay text-grey"></text>
+						<text class="cuIcon-pay text-grey" style="font-size: 20px;"></text>
 						<text class="text-black">{{ lang.manageWallet }}</text>
 					</view>
 					<view class="action">
@@ -22,16 +22,17 @@
 				</view>
 				<view class="cu-item" @tap="go('/pages/setting/Server')">
 					<view class="content">
-						<text class="cuIcon-light text-grey"></text>
+						<text class="cuIcon-light text-grey" style="font-size: 20px;"></text>
 						<text class="text-black">{{ lang.serverHost }}</text>
 					</view>
 					<view class="action">
 						<text class=" text-grey text-sm"><text class="cuIcon cuIcon-right"></text></text>
 					</view>
 				</view>
+				<view class="page-space"></view>
 				<view class="cu-item" @tap="go('/pages/setting/Language')">
 					<view class="content">
-						<text class="cuIcon-comment text-grey"></text>
+						<text class="cuIcon-comment text-grey" style="font-size: 20px;"></text>
 						<text class="text-black">{{ lang.language }}</text>
 					</view>
 					<view class="action">
@@ -40,19 +41,20 @@
 				</view>
 				<view class="cu-item" @tap="go('/pages/setting/Currency')">
 					<view class="content">
-						<text class="cuIcon-recharge text-grey"></text>
-						<text class="text-black">Currency</text>
+						<text class="cuIcon-recharge text-grey" style="font-size: 20px;"></text>
+						<text class="text-black">{{ lang.currency }}</text>
 					</view>
 					<view class="action">
 						<text class=" text-grey text-sm">
-							USD
+							{{ currency }}
 							<text class="cuIcon cuIcon-right"></text>
 						</text>
 					</view>
 				</view>
+				<view class="page-space"></view>
 				<view class="cu-item" @tap="openBrowser('https://look.ping.pub')">
 					<view class="content">
-						<text class="cuIcon-link text-grey"></text>
+						<text class="cuIcon-link text-grey" style="font-size: 20px;"></text>
 						<text class="text-black">{{ lang.browser }}</text>
 					</view>
 					<view class="action">
@@ -75,6 +77,9 @@ export default {
 	computed: {
 		lang() {
 			return this.$t('setting');
+		},
+		currency() {
+			return this.$store.state.currency.currency
 		}
 	},
 	methods: {

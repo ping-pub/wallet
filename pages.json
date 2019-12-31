@@ -105,6 +105,16 @@
 			}
 		},
 		{
+			"path": "pages/setting/ServerCreate",
+			"style": {
+				"navigationBarTitleText": "Server Create | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
 			"path": "pages/setting/Browser",
 			"style": {
 				"navigationBarTitleText": "Explorer | Ping Wallet",

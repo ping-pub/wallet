@@ -1,14 +1,36 @@
+
 export default {
+	computed: {
+		chains() {
+			return this.$store.getters.chainGet
+		}
+	},
+	data() {
+		return {
+			toast: false,
+			msg: ''
+		}
+	},
 	methods: {
+		toastShow(msg) {
+			this.toast = true
+			this.msg = msg
+			setTimeout(function() {
+				this.toast = false
+			}.bind(this), 2500);
+		},
 		go(path) {
 			uni.navigateTo({
-				url:path
+				url: path
 			})
 		},
 		goSwitch(url) {
 			uni.switchTab({
 				url
 			})
+		},
+		goBack() {
+			uni.navigateBack({})
 		}
 	}
 }

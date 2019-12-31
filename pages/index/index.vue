@@ -12,29 +12,8 @@
 		</view>
 		<view slot="gBody">
 			<scroll-view scroll-x class="bg-white nav" scroll-with-animation>
-				<view class="cu-item text-black cur">
-					Cosmos
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
-				<view class="cu-item">
-					Cosmos
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
-				<view class="cu-item">
-					Kava
+				<view @tap="changeTab(item)" v-for="(item, key) of chains" :key="key" class="cu-item" :class="{ 'text-black cur': currentChain === item.name }">
+					{{ item.name }}
 				</view>
 			</scroll-view>
 			<view
@@ -59,16 +38,17 @@
 				</view>
 
 				<view class="cu-list menu-avatar m-space">
-					<view class="cu-item" v-for="(item, index) in 6" :key="index" @tap="go('/pages/wallet/WalletDetail')">
-						<image src="../../static/wallet/cosmoshub.svg" mode="" style="width: 96rpx;height: 96rpx;"></image>
+					<view class="cu-item" v-for="(item, index) in chains[currentChain].wallets" :key="index" @tap="go('/pages/wallet/WalletDetail')">
+						<image :src="chains[currentChain].logo" mode="" style="width: 96rpx;height: 96rpx;"></image>
 						<view class="content" style="left: 100rpx;">
-							<view class="text-black">Address1</view>
-							<view class="text-gray text-sm">cosmos1zuu...ktq2tzw</view>
+							<view class="text-black">{{ item.name }}</view>
+							<view class="text-gray text-sm">{{ item.address.substr(0, 10) + '...' + item.address.substr(-10, 10) }}</view>
 						</view>
 						<view class="action" style="text-align:right;width: 100%;">
 							<view class="cu-tag round bg-grey"><text class="text-lg">$12,992,134,199</text></view>
 						</view>
 					</view>
+					<PageEmpty v-if="chains[currentChain].wallets.length === 0" @tap="go('/pages/wallet/WalletCreate')"></PageEmpty>
 				</view>
 			</view>
 
@@ -87,68 +67,7 @@ import SwtichChain from '../../components/SwitchChain.vue';
 export default {
 	data() {
 		return {
-			cuIconList: [
-				{
-					cuIcon: 'cardboardfill',
-					color: 'red',
-					badge: 120,
-					name: 'VR'
-				},
-				{
-					cuIcon: 'recordfill',
-					color: 'orange',
-					badge: 1,
-					name: '录像'
-				},
-				{
-					cuIcon: 'picfill',
-					color: 'yellow',
-					badge: 0,
-					name: '图像'
-				},
-				{
-					cuIcon: 'noticefill',
-					color: 'olive',
-					badge: 22,
-					name: '通知'
-				},
-				{
-					cuIcon: 'upstagefill',
-					color: 'cyan',
-					badge: 0,
-					name: '排行榜'
-				},
-				{
-					cuIcon: 'clothesfill',
-					color: 'blue',
-					badge: 0,
-					name: '皮肤'
-				},
-				{
-					cuIcon: 'discoverfill',
-					color: 'purple',
-					badge: 0,
-					name: '发现'
-				},
-				{
-					cuIcon: 'questionfill',
-					color: 'mauve',
-					badge: 0,
-					name: '帮助'
-				},
-				{
-					cuIcon: 'commandfill',
-					color: 'purple',
-					badge: 0,
-					name: '问答'
-				},
-				{
-					cuIcon: 'brandfill',
-					color: 'mauve',
-					badge: 0,
-					name: '版权'
-				}
-			],
+			currentChain: 'Cosmos',
 			modalName: null,
 			gridCol: 3,
 			gridBorder: false,
@@ -161,6 +80,9 @@ export default {
 		};
 	},
 	methods: {
+		changeTab(chain) {
+			this.currentChain = chain.name
+		},
 		showModal(e) {
 			this.modalName = e.currentTarget.dataset.target;
 		},

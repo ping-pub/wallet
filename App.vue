@@ -39,6 +39,9 @@ export default {
 	min-height: 88rpx;
 	border-bottom: 2rpx solid #eeeeee;
 }
+.big-tap {
+	padding:  20rpx 0 20rpx 40rpx;
+}
 html,
 body {
 	font-family: -apple-system, Helvetica, sans-serif;

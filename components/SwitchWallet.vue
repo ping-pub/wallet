@@ -11,44 +11,21 @@
 				</view>
 			</view>
 			<scroll-view scroll-x class="bg-white nav" scroll-with-animation>
-				<view class="cu-item text-black cur">
-					Cosmos
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
-				<view class="cu-item">
-					Cosmos
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
-				<view class="cu-item">
-					Kava
-				</view>
+				<view @tap="changeTap(item)"  v-for="(item, key) of chains" :key="key"  class="cu-item" :class="{'text-black cur': currentChain === item.name }">{{ item.name }}</view>
 			</scroll-view>
 			<scroll-view scroll-y="true" style="height: 600rpx;">
 				<view class="cu-list menu text-left">
-					<view class="cu-item" v-for="(item,index) in 10" :key="index">
+					<view class="cu-item" v-for="(item,index) in chains[currentChain].wallets" :key="index">
 						<label class="flex justify-between align-center flex-sub" style="padding: 20rpx 0;">
 							<view class="flex-sub">
 								<view class="text-lg">
-									Address {{index +1}}
+									{{ item.name}}
 								</view>
 								<view class="text-sm text-gray">
-									Address {{index +1}}
+									{{ item.address }}
 								</view>
 							</view>
-							<view v-if="current === item" class="cuIcon-check" style="font-size: 18px;"></view>
+							<view class="cuIcon-check" style="font-size: 18px;"></view>
 						</label>
 					</view>
 				</view>
@@ -61,7 +38,10 @@
 </template>
 
 <script>
+	import BaseMixin from './BaseMixin.js'
+	
 	export default {
+		mixins: [BaseMixin],
 		props: {
 			showDialog: {
 				default: false
@@ -69,10 +49,14 @@
 		},
 		data() {
 			return {
+				currentChain: 'Cosmos',
 				current: 1
 			};
 		},
 		methods: {
+			changeTap(chain) {
+				this.currentChain = chain.name
+			},
 			close() {
 				this.$emit('close')
 			},

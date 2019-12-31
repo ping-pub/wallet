@@ -1,32 +1,45 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" :title="lang.title">
-			<text class="cuIcon-check"></text>
+		<PageTitle slot="gHeader" :title="lang.title" :toast="toast" :msg="msg">
+			<text class="cuIcon-check" @tap="saveLang()"></text>
 		</PageTitle>
 		<view slot="gBody">
-			<radio-group class="block">
-				<view class="cu-form-group">
-					<view class="title">简体中文</view>
-					<radio :class="radio=='A'?'checked':''" :checked="radio=='A'?true:false" value="A"></radio>
+			<view class="cu-list menu text-left">
+				<view class="cu-item" @tap="changeCurrent('zh-CN')">
+					<label class="flex justify-between align-center flex-sub" style="padding: 20rpx 0;">
+						<view class="flex-sub">
+							<view class="text-lg">
+								简体中文
+							</view>
+						</view>
+						<view v-if="current === 'zh-CN'" class="cuIcon-roundcheckfill" style="font-size: 20px;"></view>
+					</label>
 				</view>
-				<view class="cu-form-group">
-					<view class="title">English</view>
-					<radio :class="radio=='B'?'checked':''" :checked="radio=='B'?true:false" value="A"></radio>
+				<view class="cu-item" @tap="changeCurrent('en-US')">
+					<label class="flex justify-between align-center flex-sub" style="padding: 20rpx 0;">
+						<view class="flex-sub">
+							<view class="text-lg">
+								English
+							</view>
+						</view>
+						<view v-if="current === 'en-US'" class="cuIcon-roundcheckfill" style="font-size: 20px;"></view>
+					</label>
 				</view>
-			</radio-group>
+			</view>
 		</view>
 	</gracePage>
 </template>
 <script>
-	import graceCheckBtn from '../../graceUI/components/graceCheckBtn.vue';
+	import BaseMixin from '../../components/BaseMixin.js'
+	
 	export default {
+		mixins: [
+			BaseMixin
+		],
 		created() {
 			const lang = this._i18n.locale
-			for (const item of this.items) {
-				if (item.lang === lang) {
-					item.checked = true
-				}
-			}
+			console.log(lang)
+			this.current = lang
 		},
 		computed: {
 			lang() {
@@ -35,36 +48,26 @@
 		},
 		data() {
 			return {
-				radio: 'A',
-				items: [{
-						checked: false,
-						lang: 'en',
-						text: "English"
-					},
-					{
-						checked: false,
-						lang: 'zh',
-						text: "简体中文"
-					}
-				]
+				current: ''
 			}
 		},
 		methods: {
-			checkedChange: function(e) {
-				for (const item of this.items) {
-					item.checked = false
-				}
-				this.items[e[1]].checked = e[0];
-				this._i18n.locale = this.items[e[1]].lang
-				console.log(this._i18n.locale)
-			},
 			goBack() {
 				uni.navigateBack()
+			},
+			changeCurrent(lang) {
+				this.current = lang
+			},
+			saveLang() {
+				try {
+					this._i18n.locale = this.current
+					uni.setStorageSync('language', this.current)
+					this.toastShow('设置成功')
+				} catch(e) {
+					
+				}
 			}
 		},
-		components: {
-			graceCheckBtn
-		}
 	}
 </script>
 <style>

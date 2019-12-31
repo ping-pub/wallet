@@ -2,7 +2,7 @@
 link   : grace.hcoder.net
 author : 刘海君 5213606@qq.com 
 verson : 2.2
-last update date : 2019-12-18
+last update date : 2019-12-30
 GraceUI 的版权约束是不能转售或者将 GraceUI 直接发布到公开渠道！侵权必究，请遵守版权约定！
 GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请遵守极其简单的版权规定
 */
@@ -255,43 +255,6 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .grace-check-item-text{color:#888888; font-size:26rpx;}
 .grace-textarea{height:120rpx; line-height:38rpx; font-size:26rpx; color:#333333;}
 @font-face{font-family:"grace-formfonts"; src:url('data:application/x-font-woff;charset=utf-8;base64,OLh6+EVGahJS0OU2yaKO26Kiu6Zv+fbC+9P6l/wm8ZwtrOU5zo2XwdDjj7ilb9szx6Pz8hzzU1DUMrbXMHC2NbU15WTlxOxUdK2llbX0DSSdFF0GClXLlRPIOJppGChZi5s6MnpKNvaqMLkwKoD8NsI9B7wqBANQgCNQhGDQgBAwhFKwhHGhBeDCDCOAI2YElRARjiAS2EBlMIQx4iGInC9nJQTHaVXQA5D5BA11D820D6O4gBKhATdCAWWEFskIYcQBnigDbEBX2IBwYQHyQhIThBohj9KScAF0gKAuQMEpALsJAHSEG+/kuiIgA4aBqIoCiQhzQx6qgEABMoBTShNDCC5oAC1AQWUAuIQRYwhzaCM7QFGOgo6EHXQAn6DDbQJNjjczuo4gsok+FuApClC9pt9nPwK3ehR05loNUk');}
-/* 编辑器 */
-.grace-editor{padding:25rpx;}
-.grace-editor-title{padding-bottom:20rpx; font-weight:bold; font-size:40rpx; line-height:50rpx; color:#555555;}
-.grace-editor-title-textarea{font-size:40rpx; height:50rpx; font-weight:bold; line-height:50rpx; color:#555555;}
-.grace-editor-contents{padding:10px 0;}
-.grace-editor-empty{color:#999999; text-align:center; font-size:28rpx;}
-.grace-editor-add-item{margin-top:5px;}
-.grace-editor-add-item-text{text-align:center; font-size:28rpx; color:#333333;}
-.grace-editor-menus{flex-direction:row; flex-wrap:nowrap; height:50px; background-color:#F8F8F8; border-radius:5px;}
-.grace-editor-menu{width:700rpx; flex:1; height:50px; line-height:50px; text-align:center; font-size:40rpx;}
-.grace-editor-content{padding:5px 0;}
-.grace-editor-input-txt{font-size:28rpx; line-height:36rpx; padding:5px 0;}
-.grace-editor-img{margin:8rpx 0; width:700rpx;}
-.grace-editor-quote{margin:8rpx 0; border-radius:3px; color:#333333; font-size:28rpx; background-color:#F8F8F8; line-height:50rpx; padding:10px;}
-.grace-editor-strong{font-size:30rpx; color:#333333; line-height:36rpx; padding:5px 0; font-weight:bold;}
-.grace-editor-spline{padding:10px 0; text-align:center; color:#8788A3; font-size:20rpx; opacity:0.6;}
-.grace-editor-center{width:300rpx; text-align:center; font-size:28rpx; color:#333333; line-height:60rpx; padding:5px 18px; font-weight:bold;}
-.grace-editor-link{line-height:32rpx; padding:5px 0; font-size:28rpx; color:#007AFF;}
-.grace-editor-btn{text-align:center; line-height:100rpx; width:750rpx; font-size:28rpx; color:#3688FF;}
-.grace-common-line{height:20rpx; background-color:#F4F5F6; margin:10rpx 0;}
-/* 购物车 */
-.grace-shoppingcard{background-color:#FFFFFF; border-radius:5px; padding:10rpx 25rpx; margin-bottom:20rpx;}
-.grace-shop-name{line-height:50rpx; font-size:30rpx;}
-.grace-shoppingcard-goods{margin:10rpx 0; flex-direction:row; flex-wrap:nowrap;}
-.grace-shoppingcard-goods-image{width:138rpx; height:138rpx; margin-right:20rpx;}
-.grace-shoppingcard-goods-body{width:700rpx; flex:1;}
-.grace-shoppingcard-goods-title{line-height:36rpx; font-size:28rpx;}
-.grace-shoppingcard-price{color:#FF0036; font-size:36rpx; line-height:50rpx;}
-.grace-shoppingcard-number{padding:2px 0;}
-.grace-shoppingcard-remove{color:#CCCCCC; font-size:24rpx; line-height:36rpx; text-align:right; margin-top:16rpx;}
-/* 滚动推荐 */
-.grace-scroll-cards{background-color:#F6F7F8; padding:25rpx 0;}
-.grace-scroll-cards-items{width:200rpx; overflow:hidden; margin:0 10rpx; flex-wrap:wrap; flex-direction:column; justify-content:center; align-items:center;}
-.grace-scroll-cards-face{width:150rpx; height:150rpx; border-radius:100rpx;}
-.grace-scroll-cards-txt{text-align:center; color:#333333; font-size:26rpx; margin-top:20rpx; line-height:36rpx;}
-.grace-scroll-cards-smallTxt{text-align:center; font-size:22rpx; margin-top:3px; line-height:36rpx; color:#898989;}
-.grace-scroll-cards-btn{width:120rpx; line-height:50rpx; margin-top:6rpx; border-radius:10rpx; text-align:center; background-color:#FF0036; color:#FFFFFF; font-size:24rpx;}
 /* 轮播组件 */
 .grace-swiper{height:200rpx; overflow:hidden;}
 .grace-swiper-item{position:relative; overflow:hidden;}
@@ -367,3 +330,40 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .grace-dialog-btn{width:700rpx; flex:1; line-height:90rpx; text-align:center; flex:1; font-size:28rpx; color:#999999;}
 .grace-btdialog-btns{flex-direction:row; flex-wrap:nowrap; justify-content:space-between;}
 .grace-btdialog-btn{padding:0 35rpx; line-height:88rpx; font-size:28rpx; color:#999999;}
+/* 编辑器 旧版本 */
+.grace-editor{padding:25rpx;}
+.grace-editor-title{padding-bottom:20rpx; font-weight:bold; font-size:40rpx; line-height:50rpx; color:#555555;}
+.grace-editor-title-textarea{font-size:40rpx; height:50rpx; font-weight:bold; line-height:50rpx; color:#555555;}
+.grace-editor-contents{padding:10px 0;}
+.grace-editor-empty{color:#999999; text-align:center; font-size:28rpx;}
+.grace-editor-add-item{margin-top:5px;}
+.grace-editor-add-item-text{text-align:center; font-size:28rpx; color:#333333;}
+.grace-editor-menus{flex-direction:row; flex-wrap:nowrap; height:50px; background-color:#F8F8F8; border-radius:5px;}
+.grace-editor-menu{width:700rpx; flex:1; height:50px; line-height:50px; text-align:center; font-size:40rpx;}
+.grace-editor-content{padding:5px 0;}
+.grace-editor-input-txt{font-size:28rpx; line-height:36rpx; padding:5px 0;}
+.grace-editor-img{margin:8rpx 0; width:700rpx;}
+.grace-editor-quote{margin:8rpx 0; border-radius:3px; color:#333333; font-size:28rpx; background-color:#F8F8F8; line-height:50rpx; padding:10px;}
+.grace-editor-strong{font-size:30rpx; color:#333333; line-height:36rpx; padding:5px 0; font-weight:bold;}
+.grace-editor-spline{padding:10px 0; text-align:center; color:#8788A3; font-size:20rpx; opacity:0.6;}
+.grace-editor-center{width:300rpx; text-align:center; font-size:28rpx; color:#333333; line-height:60rpx; padding:5px 18px; font-weight:bold;}
+.grace-editor-link{line-height:32rpx; padding:5px 0; font-size:28rpx; color:#007AFF;}
+.grace-editor-btn{text-align:center; line-height:100rpx; width:750rpx; font-size:28rpx; color:#3688FF;}
+.grace-common-line{height:20rpx; background-color:#F4F5F6; margin:10rpx 0;}
+/* 购物车 旧版本 */
+.grace-shoppingcard{background-color:#FFFFFF; border-radius:5px; padding:10rpx 25rpx; margin-bottom:20rpx;}
+.grace-shop-name{line-height:50rpx; font-size:30rpx;}
+.grace-shoppingcard-goods{margin:10rpx 0; flex-direction:row; flex-wrap:nowrap;}
+.grace-shoppingcard-goods-image{width:138rpx; height:138rpx; margin-right:20rpx;}
+.grace-shoppingcard-goods-body{width:700rpx; flex:1;}
+.grace-shoppingcard-goods-title{line-height:36rpx; font-size:28rpx;}
+.grace-shoppingcard-price{color:#FF0036; font-size:36rpx; line-height:50rpx;}
+.grace-shoppingcard-number{padding:2px 0;}
+.grace-shoppingcard-remove{color:#CCCCCC; font-size:24rpx; line-height:36rpx; text-align:right; margin-top:16rpx;}
+/* 滚动推荐 旧版本 */
+.grace-scroll-cards{background-color:#F6F7F8; padding:25rpx 0;}
+.grace-scroll-cards-items{width:200rpx; overflow:hidden; margin:0 10rpx; flex-wrap:wrap; flex-direction:column; justify-content:center; align-items:center;}
+.grace-scroll-cards-face{width:150rpx; height:150rpx; border-radius:100rpx;}
+.grace-scroll-cards-txt{text-align:center; color:#333333; font-size:26rpx; margin-top:20rpx; line-height:36rpx;}
+.grace-scroll-cards-smallTxt{text-align:center; font-size:22rpx; margin-top:3px; line-height:36rpx; color:#898989;}
+.grace-scroll-cards-btn{width:120rpx; line-height:50rpx; margin-top:6rpx; border-radius:10rpx; text-align:center; background-color:#FF0036; color:#FFFFFF; font-size:24rpx;}
