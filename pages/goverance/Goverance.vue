@@ -14,12 +14,12 @@
 		<view slot="gBody" >
 			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
 			<view class="page-space"></view>
-			<view class="cu-card article no-card mb-12" v-for="n in 10" :key="n">
+			<view class="cu-card article no-card mb-12" v-for="item in list" :key="item.id">
 				<view class="cu-item shadow">
-					<view class="title"><view class="text-cut">是否支持冷钱包投票?</view></view>
+					<view class="title"><view class="text-cut">{{ item.title }}</view></view>
 					<view class="content">
 						<view class="desc">
-							<view class="text-gray"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！</view>
+							<view class="text-gray">{{ item.description }}</view>
 							<view class="grace-flex grace-flex-vcenter tc mt-12 mb-12">
 								<view class="flex-1">
 									<view class="f-16 grace-black">
@@ -84,6 +84,7 @@
 		},
 		data() {
 			return {
+				list: [],
 				items: [{
 						checked: false,
 						lang: 'en',
@@ -103,6 +104,13 @@
 			},
 			async initList() {
 				const res = await this.$api.test({})
+				const result = res.data.result
+				for (const item of result) {
+					console.log(item)
+					item.title = item.content && item.content.value && item.content.value.title
+					item.description = item.content && item.content.value && item.content.value.description && (item.content.value.description.substr(0, 100) + '...')
+				}
+				this.list = result
 			}
 		},
 	};

@@ -72,19 +72,12 @@ export default {
 			options.complete = (response) => {
 				let statusCode = response.statusCode
 				response.config = _config
-				if (process.env.NODE_ENV === 'development') {
-					if (statusCode === 200) {
-						console.log("【" + _config.requestId + "】 结果：" + JSON.stringify(response.data))
-					}
-				}
 				if (this.interceptor.response) {
 					let newResponse = this.interceptor.response(response)
 					if (newResponse) {
 						response = newResponse
 					}
 				}
-				// 统一的响应日志记录
-				_reslog(response)
 				if (statusCode === 200) { //成功
 					resolve(response);
 				} else {
@@ -97,16 +90,6 @@ export default {
 
 			if (this.interceptor.request) {
 				this.interceptor.request(_config)
-			}
-			
-			// 统一的请求日志记录
-			_reqlog(_config)
-
-			if (process.env.NODE_ENV === 'development') {
-				console.log("【" + _config.requestId + "】 地址：" + _config.url)
-				if (_config.data) {
-					console.log("【" + _config.requestId + "】 参数：" + JSON.stringify(_config.data))
-				}
 			}
 
 			uni.request(_config);
