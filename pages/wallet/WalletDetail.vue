@@ -39,7 +39,7 @@
 					<text class="cuIcon-titles text-black"></text>
 					<text class="text-xl text-bold">ATOM</text>
 				</view>
-				<view class="action">
+				<view class="action" @tap="go('/pages/wallet/WalletTx')">
 					<text class="text-gray" style="font-size: 12px;">交易</text>
 					<text class="cuIcon-right text-gray" style="font-size: 14px;"></text>
 				</view>

@@ -11,6 +11,16 @@
 				"scrollIndicator": "none"
 			}
 		},
+		{
+			"path": "pages/gujia",
+			"style": {
+				"navigationBarTitleText": "Portfolio | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
 		// staking folder
 		{
 			"path": "pages/staking/Staking",
@@ -139,6 +149,16 @@
 			"path": "pages/wallet/WalletDetail",
 			"style": {
 				"navigationBarTitleText": "Wallet Detail | Ping Wallet",
+				"bounce": "none",
+				"titleNView": false,
+				"navigationStyle": "custom",
+				"scrollIndicator": "none"
+			}
+		},
+		{
+			"path": "pages/wallet/WalletTx",
+			"style": {
+				"navigationBarTitleText": "Tx | Ping Wallet",
 				"bounce": "none",
 				"titleNView": false,
 				"navigationStyle": "custom",

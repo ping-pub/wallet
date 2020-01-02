@@ -41,6 +41,11 @@
 - 语言类型
 - 币种切换
 
+# 接口文档
+
+- [cosmos](https://cosmos.network/rpc)
+- [IRIS](https://rpc.irisnet.org/swagger-ui/#/)
+
 # 数据对接顺序
 
 - 设置 - 语言切换 / 货币切换
@@ -55,3 +60,24 @@
 - 委托详情
 - 投票详情
 - 其他
+
+# 接口逻辑
+
+- 获取钱包 货币
+
+```
+// cosmos
+https://lcd.nylira.net/auth/accounts/cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw [完整]
+https://lcd.nylira.net/bank/balances/cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw [简约]
+
+// iris
+https://rpc.irisnet.org/bank/accounts/iaa1v6c3sa76s3grss3xu64tvn9nd556jlcw6azc85
+```
+
+- 治理
+
+```
+// cosmos
+// iris
+/gov/proposals
+```

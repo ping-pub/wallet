@@ -79,6 +79,9 @@
 				return this.$t('vote');
 			}
 		},
+		onLoad() {
+			this.initList()
+		},
 		data() {
 			return {
 				items: [{
@@ -97,6 +100,9 @@
 		methods: {
 			goBack() {
 				uni.navigateBack();
+			},
+			async initList() {
+				const res = await this.$api.test({})
 			}
 		},
 	};

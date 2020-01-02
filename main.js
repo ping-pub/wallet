@@ -8,7 +8,10 @@ import PageTitle from './components/PageTitle.vue'
 import PageToast from './components/PageToast.vue'
 import PageEmpty from './components/PageEmpty.vue'
 import store from './store'
+import api from '@/components/vmeitime-http/index.js'
 
+// 全局挂载后使用
+Vue.prototype.$api = api
 Vue.prototype.$store = store
 Vue.use(VueI18n)
 

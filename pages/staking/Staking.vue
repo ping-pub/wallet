@@ -57,7 +57,7 @@
 					</view>
 					<view class="action"><text>Cosmoshub-3</text></view>
 				</view>
-				<view v-for="n in 5" :key="n" @tap="go('/pages/delegateItem/index')">
+				<view v-for="n in 5" :key="n" @tap="go('/pages/staking/ValidatorDetail')">
 					<view style="padding:24rpx 36rpx;" class="grace-border-radius-small grace-border-b grace-bg-white">
 						<view class="grace-flex grace-flex-vbottom">
 							<text class="flex-1 text-lg text-black">Huobi Wallet</text>
@@ -103,7 +103,7 @@
 				</view>
 
 
-				<view v-for="n in 5" :key="n" @tap="go('/pages/delegateItem/index')">
+				<view v-for="n in 5" :key="n" @tap="go('/pages/staking/ValidatorDetail')">
 					<view style="padding:24rpx 36rpx;" class="grace-border-radius-small grace-border-b grace-bg-white">
 						<view class="grace-flex grace-flex-vbottom">
 							<text class="flex-1 text-lg text-black">Huobi Wallet</text>

@@ -22,7 +22,7 @@
 				<view>
 					<image style="width: 120rpx;height: 120rpx;" src="../../static/wallet/asset1.png" mode=""></image>
 				</view>
-				<text class="text-white" style="font-size: 20px;">$8212,992,134,199</text>
+				<text class="text-white" style="font-size: 20px;">$0.00</text>
 			</view>
 
 			<view class="bg-white ">
