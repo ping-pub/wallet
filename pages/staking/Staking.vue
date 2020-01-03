@@ -26,124 +26,12 @@
 			<view class="page-space"></view>
 
 			<!-- Delegations -->
-			<view class="" v-if="tab === 'Delegations'">
-
-				<view class="cu-bar bg-white">
-					<view class="action">
-						<text class="cuIcon-titles text-black"></text>
-						<text class="text-xl text-bold">总收益</text>
-					</view>
-					<view class="action">
-						<text>领取奖励</text>
-						<text class="cuIcon-right"></text>
-					</view>
-				</view>
-				<view class="grace-flex grace-flex-vcenter tc grace-bg-white grace-border-radius-small " style="padding: 24rpx 0 24rpx 0;margin-top: 0;">
-					<view class="flex-1">
-						<view class="text-lg text-black">1231232500</view>
-						<view class="text-sm text-gray">已委托总数</view>
-					</view>
-					<view class="flex-1">
-						<view class="text-green text-lg">+500</view>
-						<view class="text-sm text-gray">待领取奖励</view>
-					</view>
-				</view>
-
-				<view class="page-space"></view>
-				<view class="cu-bar bg-white">
-					<view class="action">
-						<text class="cuIcon-titles text-black"></text>
-						<text class="text-xl text-bold">委托人</text>
-					</view>
-					<view class="action"><text>Cosmoshub-3</text></view>
-				</view>
-				<view v-for="n in 5" :key="n" @tap="go('/pages/staking/ValidatorDetail')">
-					<view style="padding:24rpx 36rpx;" class="grace-border-radius-small grace-border-b grace-bg-white">
-						<view class="grace-flex grace-flex-vbottom">
-							<text class="flex-1 text-lg text-black">Huobi Wallet</text>
-							<text class="text-lg text-black">5998989989898</text>
-						</view>
-						<view class="grace-flex grace-flex-vbottom">
-							<text class="flex-1 text-sm text-gray">Rewards 25%</text>
-							<text class="text-green">+ 0.0012</text>
-						</view>
-					</view>
-				</view>
-			</view>
+			<Staking_Delegations v-show="tab === 'Delegations'"></Staking_Delegations>
 			<!-- Validators -->
-			<view class="" v-if="tab === 'Validators'">
-				<view class="cu-bar bg-white">
-					<view class="action">
-						<text class="cuIcon-titles text-black"></text>
-						<text class="text-xl text-bold">推荐节点</text>
-					</view>
-					<view class="action"><text>Cosmoshub-3</text></view>
-				</view>
-
-
-				<view>
-					<view style="padding:24rpx 36rpx;" class="grace-border-radius-small grace-border-b grace-bg-white">
-						<view class="grace-flex grace-flex-vbottom">
-							<text class="flex-1 text-lg text-black">Huobi Wallet</text>
-							<text class="text-lg text-black">5998989989898</text>
-						</view>
-						<view class="grace-flex grace-flex-vbottom">
-							<text class="flex-1 text-sm text-gray">Rewards 25%</text>
-							<text class="text-green">+ 0.0012</text>
-						</view>
-					</view>
-				</view>
-				<view class="page-space"></view>
-				<view class="cu-bar bg-white">
-					<view class="action">
-						<text class="cuIcon-titles text-black"></text>
-						<text class="text-xl text-bold">验证节点</text>
-					</view>
-					<view class="action"><text>Cosmoshub-3</text></view>
-				</view>
-
-
-				<view v-for="n in 5" :key="n" @tap="go('/pages/staking/ValidatorDetail')">
-					<view style="padding:24rpx 36rpx;" class="grace-border-radius-small grace-border-b grace-bg-white">
-						<view class="grace-flex grace-flex-vbottom">
-							<text class="flex-1 text-lg text-black">Huobi Wallet</text>
-							<text class="text-lg text-black">5998989989898</text>
-						</view>
-						<view class="grace-flex grace-flex-vbottom">
-							<text class="flex-1 text-sm text-gray">Rewards 25%</text>
-							<text class="text-green">+ 0.0012</text>
-						</view>
-					</view>
-				</view>
-			</view>
+			<Staking_Validators v-show="tab === 'Validators'"></Staking_Validators>
 
 			<!-- Calculator -->
-			<view class="" v-if="tab === 'Calculator'">
-				<view class="bg-white">
-					<view class="cu-bar bg-white">
-						<view class="action">
-							<text class="cuIcon-titles text-black"></text>
-							<text class="text-xl text-bold">链信息</text>
-						</view>
-						<view class="action"><text>Cosmoshub-3</text></view>
-					</view>
-
-					<view class="grace-flex tc" style="padding: 20rpx;">
-						<view class="flex-1">
-							<view class="text-black text-lg">1233241</view>
-							<view class="text-gray text-sm">Tokens</view>
-						</view>
-						<view class="flex-1">
-							<view class="text-black text-lg">125</view>
-							<view class="text-gray text-sm">Validators</view>
-						</view>
-						<view class="flex-1">
-							<view class="text-black text-lg">7.89%</view>
-							<view class="text-gray text-sm">Rewards</view>
-						</view>
-					</view>
-				</view>
-			</view>
+			<Staking_Calculator v-show="tab === 'Calculator'"></Staking_Calculator>
 
 			<view class="page-space"></view>
 		</view>
@@ -153,8 +41,16 @@
 <script>
 	import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
 	import BaseMixin from '../../components/BaseMixin.js';
+	import Staking_Delegations from './Staking_Delegations.vue'
+	import Staking_Validators from './Staking_Validators.vue'
+	import Staking_Calculator from './Staking_Calculator.vue'
 
 	export default {
+		components: {
+			Staking_Delegations,
+			Staking_Calculator,
+			Staking_Validators
+		},
 		mixins: [BaseMixin, SwitchWalletMixin],
 		data() {
 			return {

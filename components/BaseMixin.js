@@ -3,6 +3,9 @@ export default {
 	computed: {
 		chains() {
 			return this.$store.getters.chainGet
+		},
+		chain() {
+			return this.$store.state.current
 		}
 	},
 	data() {

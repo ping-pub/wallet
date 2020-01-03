@@ -65,12 +65,7 @@
 				<view class="page-space"></view>
 			</view>
 
-			<view class="loading-modal cu-load load-modal" v-if="loading">
-				<view class="text-lg text-gray" style="margin-top: 40rpx;">
-					Ping Wallet
-				</view>
-				<view class="text-gray" style="font-size: 12px;">加载中...</view>
-			</view>
+			<PageLoading :loading="loading"></PageLoading>
 		</view>
 
 	</gracePage>
@@ -92,46 +87,13 @@
 		data() {
 			return {
 				loading: false,
-				list: [],
-				items: [{
-						checked: false,
-						lang: 'en',
-						text: 'USD'
-					},
-					{
-						checked: false,
-						lang: 'zh',
-						text: 'CNY'
-					}
-				]
+				list: []
 			};
 		},
 		methods: {
-			goBack() {
-				uni.navigateBack();
-			},
 			async initList() {
 				this.loading = true
-				const res = await this.$api.test({})
-				const result = res.data.result
-				for (const item of result) {
-					console.log(item)
-					item.title = item.content && item.content.value && item.content.value.title
-					item.description = item.content && item.content.value && item.content.value.description && (item.content.value.description
-						.substr(0, 80) + '...')
-					const {
-						yes,
-						no,
-						abstain,
-						no_with_veto
-					} = item.final_tally_result
-					const total = Number(yes) + Number(no) + Number(abstain) + Number(no_with_veto)
-					item.yes = ((Number(yes) / total) * 100).toFixed(2) + '%'
-					item.no = ((Number(no) / total) * 100).toFixed(2) + '%'
-					item.abstain = ((Number(abstain) / total) * 100).toFixed(2) + '%'
-					item.no_with_veto = ((Number(no_with_veto) / total) * 100).toFixed(2) + '%'
-				}
-
+				const result = await this.$api().proposalList().catch(e => { this.loading = false })
 				this.loading = false
 				this.list = result
 			}
@@ -139,13 +101,3 @@
 	};
 </script>
 
-<style>
-.loading-modal.cu-load.load-modal::after {
-	border-left: 3px solid #333;
-}
-.loading-modal.cu-load.load-modal {
-	height: 200rpx;
-	width: 200rpx;
-	border-radius: 100%;
-}
-</style>

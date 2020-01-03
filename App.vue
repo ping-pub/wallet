@@ -15,6 +15,18 @@ export default {
 	onHide: function() {}
 };
 </script>
+
+<style>
+.loading-modal.cu-load.load-modal::after {
+	border-left: 3px solid #333;
+}
+.loading-modal.cu-load.load-modal {
+	height: 200rpx;
+	width: 200rpx;
+	border-radius: 100%;
+}
+</style>
+
 <style>
 @import './colorui/main.css';
 @import './colorui/icon.css';

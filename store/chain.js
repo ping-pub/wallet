@@ -2,7 +2,7 @@ const chainList = {
 	Cosmos: {
 		"name": "Cosmos",
 		"logo": "../../static/wallet/cosmoshub.svg",
-		"version": "0.32.8",
+		"version": "0.32.7",
 		"lcd": "https://lcd.nylira.net",
 		"wallets": [
 			{

@@ -7,8 +7,10 @@ import SwitchWallet from './components/SwitchWallet.vue'
 import PageTitle from './components/PageTitle.vue'
 import PageToast from './components/PageToast.vue'
 import PageEmpty from './components/PageEmpty.vue'
+import PageLoading from './components/PageLoading.vue'
+
 import store from './store'
-import api from '@/components/vmeitime-http/index.js'
+import api from '@/components/api/index.js'
 
 // 全局挂载后使用
 Vue.prototype.$api = api
@@ -20,6 +22,7 @@ Vue.component('SwitchWallet', SwitchWallet)
 Vue.component('PageTitle', PageTitle)
 Vue.component('PageToast', PageToast)
 Vue.component('PageEmpty', PageEmpty)
+Vue.component('PageLoading', PageLoading)
 
 Vue.config.productuinTip = false
 

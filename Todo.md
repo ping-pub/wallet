@@ -74,6 +74,16 @@ https://lcd.nylira.net/bank/balances/cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjt
 https://rpc.irisnet.org/bank/accounts/iaa1v6c3sa76s3grss3xu64tvn9nd556jlcw6azc85
 ```
 
+- 委托
+
+```
+// 获取验证人列表
+
+// 获取钱包的委托信息
+
+```
+
+
 - 治理
 
 ```

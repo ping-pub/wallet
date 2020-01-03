@@ -12,13 +12,16 @@
 			</view>
 		</view>
 		<PageToast :show="toast" :msg="msg"></PageToast>
+		<PageLoading :loading="loading"></PageLoading>
 	</view>
 </template>
 
 <script>
-
 	export default {
 		props: {
+			loading: {
+				default: false
+			},
 			toast: {
 				default: false
 			},
