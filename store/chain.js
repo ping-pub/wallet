@@ -47,9 +47,9 @@ export default {
 	},
 	mutations: {
 		chainInit(state) {
-			const chainList = uni.getStorageSync('chainList')
-			if (chainList) {
-				state.chainList = chainList
+			const chainLocal = uni.getStorageSync('chainList')
+			if (chainLocal) {
+				state.chainList = chainLocal
 			}
 		}, 
 		chainAdd(state, chain) {

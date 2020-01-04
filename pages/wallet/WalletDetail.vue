@@ -1,7 +1,7 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" title="Address1">
-			<text @tap="go('/pages/wallet/WalletCreate')" class="cuIcon-edit"></text>
+		<PageTitle slot="gHeader" :title="wallet.name" :loading="loading">
+			<text @tap="go('/pages/wallet/WalletCreate?' + 'address=' + wallet.address + '&name=' + wallet.name + '&chain=' + wallet.chain)" class="cuIcon-edit"></text>
 		</PageTitle>
 		<view slot="gBody">
 			<view class="bg-white" style="padding-top: 40rpx;padding-bottom: 20rpx;">
@@ -10,9 +10,8 @@
 						<text class="text-black" style="font-size: 20px;">$2,134,992,134.32</text>
 					</view>
 					<view class="tc">
-						<text class="text-gray mr-6">cosmos1...453ktq2l6lqjtzw</text> <text class="cuIcon-qrcode text-gray"></text>
+						<text class="text-gray mr-6">{{ wallet.address }}</text> <text class="cuIcon-qrcode text-gray"></text>
 					</view>
-
 				</view>
 			</view>
 
@@ -118,80 +117,34 @@
 
 <script>
 	import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+	import BaseMixin from '../../components/BaseMixin.js'
 
 	export default {
-		mixins: [SwitchWalletMixin],
+		mixins: [SwitchWalletMixin, BaseMixin],
 		data() {
 			return {
-				cuIconList: [{
-					cuIcon: 'cardboardfill',
-					color: 'red',
-					badge: 120,
-					name: '可用'
-				}, {
-					cuIcon: 'recordfill',
-					color: 'orange',
-					badge: 1,
-					name: '录像'
-				}, {
-					cuIcon: 'picfill',
-					color: 'yellow',
-					badge: 0,
-					name: '图像'
-				}, {
-					cuIcon: 'noticefill',
-					color: 'olive',
-					badge: 22,
-					name: '通知'
-				}, {
-					cuIcon: 'upstagefill',
-					color: 'cyan',
-					badge: 0,
-					name: '排行榜'
-				}, {
-					cuIcon: 'clothesfill',
-					color: 'blue',
-					badge: 0,
-					name: '皮肤'
-				}, {
-					cuIcon: 'discoverfill',
-					color: 'purple',
-					badge: 0,
-					name: '发现'
-				}, {
-					cuIcon: 'questionfill',
-					color: 'mauve',
-					badge: 0,
-					name: '帮助'
-				}, {
-					cuIcon: 'commandfill',
-					color: 'purple',
-					badge: 0,
-					name: '问答'
-				}, {
-					cuIcon: 'brandfill',
-					color: 'mauve',
-					badge: 0,
-					name: '版权'
-				}]
+				wallet: {},
+				coins: []
 			}
+		},
+		onLoad(options) {
+			const { address, name, chain } = options
+			this.wallet = {
+				address,
+				name,
+				chain
+			}
+			this.initData()
 		},
 		methods: {
 			scan() {
 				uni.scanCode();
 			},
-			goSwitch(path) {
-				uni.switchTab({
-					url: path
-				});
-			},
-			go(path) {
-				uni.navigateTo({
-					url: path
-				});
-			},
-			goBack() {
-				uni.navigateBack();
+			async initData() {
+				this.loading = true
+				const res = await this.$api().bankAccount(this.wallet.address).catch(() => { this.loading = false })
+				this.coins = res
+				this.loading = false
 			}
 		}
 	};

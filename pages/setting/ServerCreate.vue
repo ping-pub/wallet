@@ -1,29 +1,10 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" title="添加主链">
+		<PageTitle slot="gHeader" title="添加主链" :toast="toast" :msg="msg" :loading="loading">
 			<text class="cuIcon-roundcheck"></text>
 		</PageTitle>
 
 		<view slot="gBody">
-			<view class="page-space"></view>
-			<view class="cu-bar bg-white">
-				<view class="action">
-					<text class="cuIcon-titles text-black"></text>
-					<text class="text-xl text-bold">内核版本</text>
-				</view>
-				<view class="action"></view>
-			</view>
-			<view class="bg-white">
-				<view class="grid col-3 padding-sm">
-					<view class="padding-xs">
-						<button class="cu-btn orange lg block bg-black" style="border-radius: 4rpx;">0.23.8<view class="cu-tag badge bg-gradual-blue">推荐</view></button>
-					</view>
-					<view class="padding-xs" v-for="n in 5" :key="n">
-						<button class="cu-btn orange lg block line-grey" style="border-radius: 4rpx;"> 0.23.0 </button>
-					</view>
-				</view>
-			</view>
-			
 			<view class="page-space"></view>
 			<view class="cu-bar bg-white">
 				<view class="action">
@@ -40,82 +21,71 @@
 					<input placeholder="请输入" name="input"></input>
 				</view>
 				<view class="cu-form-group">
-					<view class="title">lcd 服务器地址</view>
-					<text class="cuIcon-copy"></text>
+					<view class="title">图标地址</view>
 				</view>
 				<view class="cu-form-group">
 					<input placeholder="请输入" name="input"></input>
 				</view>
+				<view class="cu-form-group">
+					<view class="title">lcd 服务器地址</view>
+				</view>
+				<view class="cu-form-group">
+					<input placeholder="请输入" name="input" v-model="form.lcd"></input>
+				</view>
 			</form>
+			<view class="page-space"></view>
+			<view class="cu-bar bg-white">
+				<view class="action">
+					<text class="cuIcon-titles text-black"></text>
+					<text class="text-xl text-bold">支持版本</text>
+				</view>
+				<view class="action" @tap="fetchNodeInfo">
+					<text class="cuIcon-refresh" style="font-size: 14px;"></text>
+					<text class="text-sm" style="margin-left: 4rpx;">获取版本</text>
+				</view>
+			</view>
+			<view class="bg-white">
+				<view class="grid col-3 padding-sm">
+					<view class="padding-xs">
+						<button class="cu-btn lg block" :class="{ 'line-grey': '0.32.7' !== form.version, 'bg-black': '0.32.7' === form.version }"  style="border-radius: 4rpx;">0.32.7<view class="cu-tag badge bg-gradual-blue">推荐</view></button>
+					</view>
+					<view class="padding-xs">
+						<button  class="cu-btn lg block" :class="{ 'line-grey': '0.32.1' !== form.version, 'bg-black': '0.32.1' === form.version }" style="border-radius: 4rpx;"> 0.32.1 </button>
+					</view>
+				</view>
+			</view>
 		</view>
 	</gracePage>
 </template>
 <script>
-	var graceChecker = require("../../graceUI/jsTools/graceChecker.js");
+	import BaseMixin from '../../components/BaseMixin.js'
+	
 	export default {
+		mixins: [
+			BaseMixin
+		],
 		data() {
 			return {
-				radio: 'B',
-				genderIndex: 0,
-				gender: ['Cosmos', 'Kava', 'Iris', 'Cell'],
-				dateValue: null
+				form: {
+					name: '',
+					version: '0.32.7',
+					logo: '',
+					lcd: ''
+				}
 			}
 		},
 		methods: {
-			bindPickerChange: function(e) {
-				console.log(e);
-				this.genderIndex = e.detail.value;
-			},
-			bindDateChange: function(e) {
-				this.dateValue = e.detail.value;
-			},
-			formSubmit: function(e) {
-				//定义表单规则
-				var rule = [{
-						name: "nickname",
-						checkType: "string",
-						checkRule: "1,3",
-						errorMsg: "姓名应为1-3个字符"
-					},
-					{
-						name: "gender",
-						checkType: "in",
-						checkRule: "1,2",
-						errorMsg: "请选择性别"
-					},
-					{
-						name: "bd",
-						checkType: "notsame",
-						checkRule: "请选择",
-						errorMsg: "请选择生日"
-					},
-					{
-						name: "aihao",
-						checkType: "notnull",
-						checkRule: "",
-						errorMsg: "请选择爱好"
-					},
-					{
-						name: "email",
-						checkType: "email",
-						checkRule: "",
-						errorMsg: "请填写您的邮箱"
-					}
-				];
-				//进行表单检查
-				var formData = e.detail.value;
-				var checkRes = graceChecker.check(formData, rule);
-				if (checkRes) {
-					uni.showToast({
-						title: "验证通过!",
-						icon: "none"
-					});
-				} else {
-					uni.showToast({
-						title: graceChecker.error,
-						icon: "none"
-					});
+			async fetchNodeInfo() {
+				if (!this.form.lcd) {
+					this.toastShow('请输入 lcd 服务器地址')
+					return
 				}
+				this.loading = true
+				const res = await this.$api().nodeInfo(this.form.lcd).catch(() => { this.loading = false})
+				this.loading = false
+				// https://rpc.irisnet.org
+				// https://kava-relay.01node.com
+				this.form.version = res
 			}
 		}
 	}

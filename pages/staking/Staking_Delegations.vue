@@ -42,9 +42,10 @@
 				</view>
 			</view>
 		</view>
-		<view class="bg-white" v-if="list.length === 0">
-			<PageEmpty></PageEmpty>
+		<view @tap="init()" class="bg-white" v-if="list.length === 0">
+			<PageEmpty ></PageEmpty>
 		</view>
+		<PageLoading :loading="loading"></PageLoading>
 	</view>
 </template>
 
@@ -78,10 +79,12 @@
 				this.rewardTotal = '0.00'
 			},
 			async initList() {
+				this.loading = true
 				const wallet = this.currentWallet.address
 				const res = await this.$api().delegationList(wallet).catch(() => {
 					this.loading = false
 				})
+				this.loading = false
 				this.list = res && res.list || []
 				this.listTotal = res && res.total || '0.00'
 			},

@@ -33,7 +33,7 @@
 				</view>
 
 				<view class="cu-list menu-avatar m-space">
-					<view class="cu-item" v-for="(item, index) in chains[tabChain].wallets" :key="index" @tap="go('/pages/wallet/WalletDetail')">
+					<view class="cu-item" v-for="(item, index) in chains[tabChain].wallets" :key="index" @tap="go('/pages/wallet/WalletDetail?address=' + item.address + '&name=' + item.name + '&chain=' + item.chain)">
 						<image :src="chains[tabChain].logo" mode="" style="width: 96rpx;height: 96rpx;"></image>
 						<view class="content" style="left: 100rpx;">
 							<view class="text-black">{{ item.name }}</view>

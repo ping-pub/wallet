@@ -3,7 +3,7 @@ import http from '../interface'
 // 钱包的已委托验证人列表
 const request = async (delegatorAddr) => {
 	let [ validators, delegations ] = await Promise.all([
-        http.get(`/staking/delegators/${delegatorAddr}/validators`), // operator_address
+		http.get(`/staking/delegators/${delegatorAddr}/validators`), // operator_address
 		http.get(`/staking/delegators/${delegatorAddr}/delegations`) // validator_address
 	])
 	validators = validators.data.result

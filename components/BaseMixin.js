@@ -16,6 +16,7 @@ export default {
 	},
 	data() {
 		return {
+			loading: false,
 			toast: false,
 			msg: ''
 		}
