@@ -7,7 +7,7 @@
 					<text class="bg-black"></text>
 				</view>
 				<view class="action" @tap="switchWallet">
-					Address1 <text class="cuIcon-filter text-gray"></text>
+					{{ currentWallet.name }} <text class="cuIcon-filter text-gray"></text>
 				</view>
 			</view>
 		</view>
@@ -91,6 +91,9 @@
 			};
 		},
 		methods: {
+			init() {
+				this.initList()
+			},
 			async initList() {
 				this.loading = true
 				const result = await this.$api().proposalList().catch(e => { this.loading = false })

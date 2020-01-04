@@ -7,17 +7,25 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
-		current: {
-			chain: 'Cosmos',
+		currentChain: {
+			name: 'Cosmos',
 			"logo": "../../static/wallet/cosmoshub.svg",
 			"version": "0.32.7",
-			"lcd": "https://lcd.nylira.net",
+			"lcd": "https://lcd.nylira.net"
+		},
+		currentWallet: {
 			chain: 'Cosmos',
 			name: 'DEMO',
-			address: 'cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw'
+			address: 'cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050'
+		}
+		
+	},
+	mutations: {
+		walletChange(state, { chain, wallet }) {
+			state.currentChain = chain
+			state.currentWallet = wallet
 		}
 	},
-	mutations: {},
 	actions: {},
 	modules: {
 		currency,

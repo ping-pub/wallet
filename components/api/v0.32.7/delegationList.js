@@ -23,11 +23,7 @@ const request = async (delegatorAddr) => {
 			shareTotal += Number(item.shares)
 		}
 		const validatorAddr = item.operator_address
-		const rewardRes = await http.get(`/distribution/delegators/${delegatorAddr}/rewards/${validatorAddr}`)
-		const reward = reward.data.result[0].amount
-		item.reward = parseFloat(Number(reward) / 1000000)
 	}
-	console.log(validators)
 	return {
 		total: shareTotal,
 		list: validators

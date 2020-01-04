@@ -8,7 +8,7 @@ const chainList = {
 			{
 				chain: 'Cosmos',
 				name: 'DEMO',
-				address: 'cosmos1zu83m37u7k8zzzshgj6sq4q453ktq2l6lqjtzw'
+				address: 'cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050'
 			}
 		]
 	},
@@ -22,7 +22,7 @@ const chainList = {
 	Iris: {
 		"name": "Iris",
 		"logo": "../../static/wallet/irishub.svg",
-		"version": "0.32.8",
+		"version": "0.32.1",
 		"lcd": "https://rpc.irisnet.org",
 		"wallets": [
 			{

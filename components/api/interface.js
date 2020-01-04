@@ -24,7 +24,7 @@ export default {
 		response: null
 	},
 	request(options) {
-		const baseUrl = store.state.current.lcd
+		const baseUrl = store.state.currentChain.lcd
 		if (!options) {
 			options = {}
 		}

@@ -7,6 +7,9 @@ export default {
 	methods: {
 		closeSwitchWallet() {
 			this.showSwitchWallet = false;
+			if (this.init) {
+				this.init()
+			}
 		},
 		switchWallet() {
 			this.showSwitchWallet = true

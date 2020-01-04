@@ -3,7 +3,7 @@
 		<view class="cu-dialog" @tap.stop="" style="max-height: 80%;">
 			<view class="cu-bar bg-white ">
 				<view class="action">
-					<text class="cu-tag bg-olive round shadow">Address-3</text>
+					<text class="cu-tag bg-olive round shadow">{{ currentWallet.name }}</text>
 				</view>
 				<view class="content">切换钱包</view>
 				<view class="action" @tap="close">
@@ -11,28 +11,25 @@
 				</view>
 			</view>
 			<scroll-view scroll-x class="bg-white nav" scroll-with-animation>
-				<view @tap="changeTap(item)"  v-for="(item, key) of chains" :key="key"  class="cu-item" :class="{'text-black cur': currentChain === item.name }">{{ item.name }}</view>
+				<view @tap="changeTap(item)"  v-for="(item, key) of chains" :key="key"  class="cu-item" :class="{'text-black cur': tabChain === item.name }">{{ item.name }}</view>
 			</scroll-view>
 			<scroll-view scroll-y="true" style="height: 600rpx;">
 				<view class="cu-list menu text-left">
-					<view class="cu-item" v-for="(item,index) in chains[currentChain].wallets" :key="index">
+					<view class="cu-item" @tap="changeWallet(chains[tabChain], el)" v-for="(el,index) in chains[tabChain].wallets" :key="index">
 						<label class="flex justify-between align-center flex-sub" style="padding: 20rpx 0;">
 							<view class="flex-sub">
 								<view class="text-lg">
-									{{ item.name}}
+									{{ el.name}}
 								</view>
 								<view class="text-sm text-gray">
-									{{ item.address }}
+									{{ el.address }}
 								</view>
 							</view>
-							<view class="cuIcon-check" style="font-size: 18px;"></view>
+							<view v-if="el.address === currentWallet.address" class="cuIcon-check" style="font-size: 18px;"></view>
 						</label>
 					</view>
 				</view>
 			</scroll-view>
-			<view>
-				<button class="cu-btn bg-black" style="width: 100%;border-radius: 0;height: 80rpx;">确定</button>
-			</view>
 		</view>
 	</view>
 </template>
@@ -49,13 +46,13 @@
 		},
 		data() {
 			return {
-				currentChain: 'Cosmos',
+				tabChain: 'Cosmos',
 				current: 1
 			};
 		},
 		methods: {
 			changeTap(chain) {
-				this.currentChain = chain.name
+				this.tabChain = chain.name
 			},
 			close() {
 				this.$emit('close')
@@ -66,6 +63,10 @@
 			changeItem(e) {
 				console.log(e)
 				this.current = e
+			},
+			changeWallet(chain, wallet) {
+				this.$store.commit('walletChange', { chain, wallet})
+				this.close()
 			}
 		}
 	};

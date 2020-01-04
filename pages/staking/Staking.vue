@@ -7,7 +7,7 @@
 					<text class="bg-black"></text>
 				</view>
 				<view class="action" @tap="switchWallet">
-					Address1
+					{{ currentWallet.name }}
 					<text class="cuIcon-filter text-gray"></text>
 				</view>
 			</view>
@@ -26,12 +26,12 @@
 			<view class="page-space"></view>
 
 			<!-- Delegations -->
-			<Staking_Delegations v-show="tab === 'Delegations'"></Staking_Delegations>
+			<Staking_Delegations id="delegations" ref="delegations" v-show="tab === 'Delegations'"></Staking_Delegations>
 			<!-- Validators -->
-			<Staking_Validators v-show="tab === 'Validators'"></Staking_Validators>
+			<Staking_Validators id="validators" ref="validators" v-show="tab === 'Validators'"></Staking_Validators>
 
 			<!-- Calculator -->
-			<Staking_Calculator v-show="tab === 'Calculator'"></Staking_Calculator>
+			<Staking_Calculator id="calculator" ref="calculator" v-show="tab === 'Calculator'"></Staking_Calculator>
 
 			<view class="page-space"></view>
 		</view>
@@ -39,68 +39,33 @@
 </template>
 
 <script>
-	import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
-	import BaseMixin from '../../components/BaseMixin.js';
-	import Staking_Delegations from './Staking_Delegations.vue'
-	import Staking_Validators from './Staking_Validators.vue'
-	import Staking_Calculator from './Staking_Calculator.vue'
+import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+import BaseMixin from '../../components/BaseMixin.js';
+import Staking_Delegations from './Staking_Delegations.vue';
+import Staking_Validators from './Staking_Validators.vue';
+import Staking_Calculator from './Staking_Calculator.vue';
 
-	export default {
-		components: {
-			Staking_Delegations,
-			Staking_Calculator,
-			Staking_Validators
+export default {
+	components: {
+		Staking_Delegations,
+		Staking_Calculator,
+		Staking_Validators
+	},
+	mixins: [BaseMixin, SwitchWalletMixin],
+	data() {
+		return {
+			tab: 'Delegations'
+		};
+	},
+	methods: {
+		init() {
+			this.$refs.delegations.init()
+			this.$refs.validators.init()
+			this.$refs.calculator.init()
 		},
-		mixins: [BaseMixin, SwitchWalletMixin],
-		data() {
-			return {
-				tab: 'Delegations',
-				cardCur: 0,
-				swiperList: [{
-					id: 0,
-					type: 'image',
-					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-				}, {
-					id: 1,
-					type: 'image',
-					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big37006.jpg',
-				}, {
-					id: 2,
-					type: 'image',
-					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-				}, {
-					id: 3,
-					type: 'image',
-					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-				}, {
-					id: 4,
-					type: 'image',
-					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
-				}, {
-					id: 5,
-					type: 'image',
-					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big21016.jpg'
-				}, {
-					id: 6,
-					type: 'image',
-					url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
-				}],
-				dotStyle: false,
-				towerStart: 0,
-				direction: ''
-			};
-		},
-		methods: {
-			DotStyle(e) {
-				this.dotStyle = e.detail.value
-			},
-			// cardSwiper
-			cardSwiper(e) {
-				this.cardCur = e.detail.current
-			},
-			changeTab(tab) {
-				this.tab = tab;
-			}
+		changeTab(tab) {
+			this.tab = tab;
 		}
-	};
+	}
+};
 </script>

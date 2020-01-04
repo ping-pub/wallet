@@ -1,1 +1,0 @@
-// /distribution/delegators/{delegatorAddr}/rewards

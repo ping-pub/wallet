@@ -26,7 +26,7 @@
 				<text class="cuIcon-titles text-black"></text>
 				<text class="text-xl text-bold">验证节点</text>
 			</view>
-			<view class="action"  @tap="initList()"><text class="mr-6">{{ chain.chain }}</text> <text class="cuIcon-refresh"></text> </view>
+			<view class="action"  @tap="initList()"><text class="mr-6">{{ currentChain.name }}</text> <text class="cuIcon-refresh"></text> </view>
 		</view>
 
 
@@ -65,11 +65,14 @@
 			this.initList()
 		},
 		methods: {
+			init() {
+				this.initList()
+			},
 			async initList() {
 				this.loading = true
 				const res = await this.$api().validatorList().catch(e => { this.loading = false })
 				this.loading = false
-				this.list = res
+				this.list = res || []
 			}
 		}
 	}

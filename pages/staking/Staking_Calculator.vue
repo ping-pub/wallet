@@ -6,7 +6,7 @@
 					<text class="cuIcon-titles text-black"></text>
 					<text class="text-xl text-bold">链信息</text>
 				</view>
-				<view class="action"><text>Cosmoshub-3</text></view>
+				<view class="action"><text>{{ currentChain.name }}</text></view>
 			</view>
 
 			<view class="grace-flex tc" style="padding: 20rpx;">
@@ -26,3 +26,15 @@
 		</view>
 	</view>
 </template>
+
+<script>
+	import BaseMixin from '../../components/BaseMixin.js';
+
+	export default {
+		mixins: [BaseMixin],
+	methods: {
+		init() {
+		}
+	}
+};
+</script>

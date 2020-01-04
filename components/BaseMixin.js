@@ -4,8 +4,14 @@ export default {
 		chains() {
 			return this.$store.getters.chainGet
 		},
-		chain() {
-			return this.$store.state.current
+		currentChain() {
+			return this.$store.state.currentChain
+		},
+		currentWallet() {
+			return this.$store.state.currentWallet
+		},
+		currentCurrency() {
+			return this.$store.state.currency.currency
 		}
 	},
 	data() {
