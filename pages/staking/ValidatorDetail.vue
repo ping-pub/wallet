@@ -3,29 +3,40 @@
 		<PageTitle slot="gHeader" title="验证人">
 		</PageTitle>
 		<view slot="gBody">
-			
+			<view class="cu-list menu bg-white">
+				<view class="cu-item" v-for="(item, key) of validator" :key="key">
+					<view class="content">
+						<text class="text-black">{{ key }}</text>
+					</view>
+					<view class="action">
+						<text class="text-black">{{ item }}</text>
+					</view>
+				</view>
+			</view>
 		</view>
 	</gracePage>
 </template>
 
 <script>
-import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+import BaseMixin from '../../components/BaseMixin.js'
 
 export default {
-	mixins: [SwitchWalletMixin],
+	mixins: [BaseMixin],
 	data() {
 		return {
-			tab: 'Delegations'
+			validator: {}
 		}
 	},
+	onLoad(options) {
+		const { validator } = options
+		this.initData(validator)
+	},
 	methods: {
-		go(path) {
-			uni.navigateTo({
-				url: path
-			});
-		},
-		goBack() {
-			uni.navigateBack();
+		async initData(validtorAddress) {
+			this.loading = true
+			const res = await this.$api().validatorItem(validtorAddress).catch(() => { this.loading = false })
+			this.loading = false
+			this.validator = res
 		}
 	}
 };

@@ -30,7 +30,7 @@
 		</view>
 
 
-		<view v-for="item in list" :key="item.address" @tap="go('/pages/staking/ValidatorDetail')">
+		<view v-for="item in list" :key="item.operator_address" @tap="go('/pages/staking/ValidatorDetail?validator=' + item.operator_address)">
 			<view style="padding:24rpx 36rpx;" class="grace-border-radius-small grace-border-b grace-bg-white">
 				<view class="grace-flex grace-flex-vbottom">
 					<text class="flex-1 text-lg text-black">{{ item.moniker }}</text>

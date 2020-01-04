@@ -1,113 +1,70 @@
 <template>
-	<gracePage  headerBG="#fff">
-		<PageTitle slot="gHeader" title="Proposal Detail">
-		</PageTitle>
-		<view slot="gBody" class="grace-body">
-			<view class="status_bar"></view>
-			<view class="grace-flex-center" style="padding: 24rpx 0;padding-top: 32rpx;">
-				<text class="look-title">Kava</text>
-				<text style="flex: 1;text-align: center;font-size: 18px;"></text>
-				<view @tap="switchWallet" class="grace-flex-vcenter grace-flex" style="padding: 4rpx 0;font-weight: 500;">
-					<text style="margin-right: 12rpx;">Address1</text>
-					<text class="look-app-icon look-app-icon-switch"></text>
+	<gracePage headerBG="#fff">
+		<PageTitle slot="gHeader" title="详情" :loading="loading"></PageTitle>
+		<view slot="gBody">
+			<view class="cu-bar bg-white">
+				<view class="action">
+					<text class="text-lg text-bold">{{ proposal.title }}</text>
 				</view>
 			</view>
-			<SwitchWallet :showDialog="showSwitchWallet" @close="closeSwitchWallet" />
-			
-			<view class="grace-flex grace-flex-vcenter mb-12">
-				<view class="mr-12"><image style="width: 80rpx;height: 80rpx;" src="/static/vote/vote_pic.png" mode=""></image></view>
-				<view class="flex-1">
-					<view  class="grace-space-between grace-flex-vbottom">
-						<text class="look-title-sm">Proposals</text>
-					</view>
-					<view>
-					  <text class="grace-black9">CosmosHub-3 · 0.32.7</text>
-					</view>
-				</view>
+			<view class="bg-white" style="padding: 20rpx;">
+				<view class=" grace-card-text text-black" >{{ proposal.description }}</view>
 			</view>
-			
-			<view class="mb-12 grace-box-shadow grace-bg-white grace-border-radius-small" style="padding: 24rpx 0;" v-for="n in 10" :key="n">
-				<view class="mb-6 " style="font-size: 12px;">
-					<text class="grace-bg-green" style="padding: 0 24rpx;">投票中</text>
-					
-				</view>
-				<view class="" style="padding: 0 24rpx;">
-					<view class="look-title-sm mt-12 grace-black">
-						是否支持冷钱包投票?
+			<view class="page-space"></view>
+			<view class="bg-white" style="padding: 20rpx;">
+				<view class="grace-flex grace-flex-vcenter tc">
+					<view class="flex-1">
+						<view class="f-16 grace-black">{{ proposal.yes }}</view>
+						<view class="grace-black6">Yes</view>
 					</view>
-					<view class="grace-flex grace-flex-vcenter tc mt-12 mb-12">
-						<view class="flex-1">
-							<view class="f-16 grace-white">
-								23%
-							</view>
-							<view class="grace-black9">
-								Yes
-							</view>
-						</view>
-						<view class="flex-1">
-							<view class="f-16 grace-white">
-								36%
-							</view>
-							<view class="grace-black9">
-								No
-							</view>
-						</view>
-						<view class="flex-1">
-							<view class="f-16 grace-white">
-								22%
-							</view>
-							<view class="grace-black9">
-								Width
-							</view>
-						</view>
-						<view class="flex-1">
-							<view class="f-16 grace-white">
-								7.89%
-							</view>
-							<view class="grace-black9">
-								Rewards
-							</view>
-						</view>
+					<view class="flex-1">
+						<view class="f-16 grace-black">{{ proposal.no }}</view>
+						<view class="grace-black6">No</view>
 					</view>
-					<view class="grace-gray" style="font-size: 12px;">
-						投票倒计时：20天12小时12分
+					<view class="flex-1">
+						<view class="f-16 grace-black">{{ proposal.abstain }}</view>
+						<view class="grace-black6">Abstain</view>
+					</view>
+					<view class="flex-1">
+						<view class="f-16 grace-black">{{ proposal.no_with_veto }}</view>
+						<view class="grace-black6">No Veto</view>
 					</view>
 				</view>
 			</view>
-
 		</view>
 	</gracePage>
 </template>
 <script>
-import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+import BaseMixin from '../../components/BaseMixin.js';
 
 export default {
-	mixins: [SwitchWalletMixin],
+	mixins: [BaseMixin],
 	computed: {
 		lang() {
 			return this.$t('vote');
 		}
 	},
+	onLoad(options) {
+		const { id } = options;
+		this.initData(id);
+	},
 	data() {
 		return {
-			items: [
-				{
-					checked: false,
-					lang: 'en',
-					text: 'USD'
-				},
-				{
-					checked: false,
-					lang: 'zh',
-					text: 'CNY'
-				}
-			]
+			loading: false,
+			proposal: {}
 		};
 	},
 	methods: {
-		goBack() {
-			uni.navigateBack();
+		async initData(id) {
+			this.loading = true;
+			const result = await this.$api()
+				.proposalItem(id)
+				.catch(e => {
+					this.loading = false;
+				});
+			this.loading = false;
+			this.proposal = result;
 		}
-	},
+	}
 };
 </script>

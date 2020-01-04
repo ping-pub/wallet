@@ -1,6 +1,6 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" title="Wallet Manage"><text @tap="go('/pages/wallet/WalletCreate')" class="cuIcon-add big-tap"></text></PageTitle>
+		<PageTitle slot="gHeader" title="Wallet Manage"><text @tap="go('/pages/wallet/WalletCreate?create=1')" class="cuIcon-add big-tap"></text></PageTitle>
 
 		<view slot="gBody">
 			<view class="page-space"></view>
@@ -17,7 +17,7 @@
 				</view>
 
 				<view class="cu-list menu-avatar bg-white">
-					<view class="cu-item" v-for="(el, index) of item.wallets" :key="index">
+					<view class="cu-item" v-for="(el, index) of item.wallets" :key="index" @tap="go('/pages/wallet/WalletCreate?address='+ el.address + '&chain=' + el.chain)">
 						<view class="content" style="left: 40rpx;">
 							<view class="text-black">{{ el.name }}</view>
 							<view class="text-gray">{{ el.address }}</view>
@@ -26,7 +26,7 @@
 							<text class="cuIcon-edit"></text>
 						</view>
 					</view>
-					<PageEmpty v-if="item.wallets.length === 0"></PageEmpty>
+					<PageEmpty v-if="Object.keys(item.wallets).length === 0"></PageEmpty>
 				</view>
 				
 				<view class="page-space"></view>

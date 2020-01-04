@@ -9,8 +9,8 @@ const versions = {
 	'0.32.1': v0321
 }
 
-const api = () => {
-	const version = store.state.currentChain.version
+const api = (ver) => {
+	const version = ver || store.state.currentChain.version
 	return versions[version]
 }
 

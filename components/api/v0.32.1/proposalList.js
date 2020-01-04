@@ -9,9 +9,11 @@ const proposalList = async () => {
 		const {
 			title,
 			description,
-			tally_result
+			tally_result,
+			proposal_id
 		} = item.value && item.value.BasicProposal || {}
 		item.title = title
+		item.id = proposal_id
 		item.description = description && (description.substr(0, 80) + '...')
 		// 投票结果比例
 		const {

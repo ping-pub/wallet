@@ -1,6 +1,6 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" title="编辑钱包" :toast="toast" :msg="msg">
+		<PageTitle slot="gHeader" :title="(create ? '添加' : '编辑') + '钱包'" :toast="toast" :msg="msg">
 			<view class="">
 				<text @tap="save" class="cuIcon-roundcheck big-tap"></text>
 			</view>
@@ -17,7 +17,7 @@
 			</view>
 			<view class="bg-white">
 				<view class="cu-list grid col-2 no-border" style="padding: 20rpx 40rpx;">
-					<view v-for="(item, key) of chains" @tap="changeChain(item.name)" class="cu-item walletcreate-chainitem" style="padding-top: 20rpx;padding-bottom: 10rpx;margin-bottom: 20rpx;"
+					<view v-for="(item, key) of chains" :key="key" @tap="changeChain(item.name)" class="cu-item walletcreate-chainitem" style="padding-top: 20rpx;padding-bottom: 10rpx;margin-bottom: 20rpx;"
 					 :class="{ 'walletcreate-chainitem-active': form.chain ===  item.name }">
 						<image :src="item.logo" class="shadow" style="width: 56rpx;height: 56rpx;margin: 0 auto;" mode=""></image>
 						<text style="color: #333333;">{{ item.name }}</text>
@@ -58,6 +58,7 @@
 		mixins: [BaseMixin],
 		data() {
 			return {
+				create: null,
 				form: {
 					chain: 'Cosmos',
 					name: '',
@@ -65,12 +66,20 @@
 				}
 			}
 		},
+		onLoad(options) {
+			const { address, chain, create } = options
+			this.create = create || null
+			if (!create) {
+				this.form.address = address
+				this.form.chain = chain
+				this.form.name = this.chains[chain].wallets[address].name
+			}
+		},
 		methods: {
 			changeChain(type) {
 				this.form.chain = type
 			},
 			save() {
-				console.log(this.form)
 				try {
 					this.$store.commit('walletAdd', this.form)
 					this.toastShow('保存成功')
