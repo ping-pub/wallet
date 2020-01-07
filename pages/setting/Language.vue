@@ -62,9 +62,9 @@
 				try {
 					this._i18n.locale = this.current
 					uni.setStorageSync('language', this.current)
-					this.toastShow('设置成功')
+					this.goSwitch('/pages/setting/Setting')
 				} catch(e) {
-					
+					console.log(e)
 				}
 			}
 		},

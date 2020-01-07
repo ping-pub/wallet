@@ -2,33 +2,31 @@
 	<view class="">
 
 		<view class="cu-bar bg-white">
-			<view class="action">
-				<text class="cuIcon-titles text-black"></text>
-				<text class="text-xl text-bold">总收益</text>
+			<view class="action ping-card-title" style="margin-left: 0;">
+				<text class="text-lg text-bold">{{ lang.titleReward }}</text>
 			</view>
 			<view class="action">
-				<text>领取奖励</text>
+				<text>{{ lang.btnClaim}}</text>
 				<text class="cuIcon-right"></text>
 			</view>
 		</view>
 		<view class="grace-flex grace-flex-vcenter tc grace-bg-white grace-border-radius-small " style="padding: 24rpx 0 24rpx 0;margin-top: 0;">
 			<view class="flex-1">
 				<view class="text-lg text-black">{{ listTotal }}</view>
-				<view class="text-sm text-gray">已委托总数</view>
+				<view class="text-sm text-gray">{{ lang.rewardNum}}</view>
 			</view>
 			<view class="flex-1">
 				<view class="text-green text-lg">{{rewardTotal ? '+ ' + rewardTotal : '--'}}</view>
-				<view class="text-sm text-gray">待领取奖励</view>
+				<view class="text-sm text-gray">{{ lang.rewardWait}}</view>
 			</view>
 		</view>
 
 		<view class="page-space"></view>
-		<view class="cu-bar bg-white">
-			<view class="action">
-				<text class="cuIcon-titles text-black"></text>
-				<text class="text-xl text-bold">委托人</text>
+		<view class="cu-bar bg-white" >
+			<view class="action ping-card-title" style="margin-left: 0;">
+				<text class="text-lg text-bold">{{ lang.validators }}</text>
 			</view>
-			<view class="action"><text>{{ currentChain.name }}</text></view>
+			<view class="action" @tap="init()"><text class="mr-12">{{ currentChain.name }}</text><text class="cuIcon-refresh"></text></view>
 		</view>
 		<view v-for="item in list" :key="item.address" @tap="go('/pages/staking/ValidatorDetail?validator=' + item.operator_address)">
 			<view style="padding:24rpx 36rpx;" class="grace-border-radius-small grace-border-b grace-bg-white">
@@ -54,6 +52,11 @@
 
 	export default {
 		mixins: [BaseMixin],
+		computed: {
+			lang() {
+				return this.$t('pagesStaking_Delegations');
+			},
+		},
 		data() {
 			return {
 				loading: false,

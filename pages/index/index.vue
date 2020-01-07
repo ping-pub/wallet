@@ -11,15 +11,14 @@
 		</view>
 		<view slot="gBody">
 			<scroll-view scroll-x class="bg-white nav" scroll-with-animation>
-				<view @tap="changeTab(item)" v-for="(item, key) of chains" :key="key" class="cu-item" :class="{ 'text-black cur': tabChain === item.name }">{{ item.name }}</view>
+				<view @tap="changeTab(item)" v-for="(item, key) of chains" :key="key" v-if="Object.keys(item.wallets).length > 0" class="cu-item" :class="{ 'text-black cur': tabChain === item.name }">{{ item.name }}</view>
 			</scroll-view>
-			<view
-				class=" solid-bottom  padding grace-border-radius-small"
-				style="margin: 20rpx;background-image: url('../../static/index/bg.png');    background-size: cover;
+			<view class=" solid-bottom  padding grace-border-radius-small" style="margin: 20rpx;background-image: url('../../static/index/bg.png');    background-size: cover;
     background-color: #fff;
-    text-align: center;padding: 40rpx 0 60rpx;"
-			>
-				<view><image style="width: 120rpx;height: 120rpx;" src="../../static/wallet/asset1.png" mode=""></image></view>
+    text-align: center;padding: 40rpx 0 60rpx;">
+				<view>
+					<image style="width: 120rpx;height: 120rpx;" src="../../static/wallet/asset1.png" mode=""></image>
+				</view>
 				<text class="text-white" style="font-size: 20px;">{{ currentCurrency }} {{ moneyTotal }}</text>
 			</view>
 
@@ -27,7 +26,7 @@
 				<view class="cu-bar ">
 					<view class="action">
 						<text class="cuIcon-titles text-black"></text>
-						<text class="text-xl text-bold">地址</text>
+						<text class="text-lg text-bold">{{ lang.titleAddress }}</text>
 					</view>
 					<view class="action" @tap="go('/pages/wallet/WalletManage')"><text class="text-sm text-gray cuIcon-right"></text></view>
 				</view>
@@ -55,21 +54,26 @@
 </template>
 
 <script>
-import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
-import BaseMixin from '../../components/BaseMixin.js';
+	import SwitchWalletMixin from '../../components/SwitchWalletMixin.js';
+	import BaseMixin from '../../components/BaseMixin.js';
 
-export default {
-	data() {
-		return {
-			tabChain: 'Cosmos',
-			moneyTotal: '0.00'
-		};
-	},
-	methods: {
-		changeTab(chain) {
-			this.tabChain = chain.name;
-		}
-	},
-	mixins: [SwitchWalletMixin, BaseMixin]
-};
+	export default {
+		data() {
+			return {
+				tabChain: 'Cosmos',
+				moneyTotal: '0.00'
+			};
+		},
+		computed: {
+			lang() {
+				return this.$t('pagesIndex');
+			},
+		},
+		methods: {
+			changeTab(chain) {
+				this.tabChain = chain.name;
+			}
+		},
+		mixins: [SwitchWalletMixin, BaseMixin]
+	};
 </script>

@@ -3,10 +3,12 @@
 		<view class="bg-white">
 			<view class="cu-bar bg-white">
 				<view class="action">
-					<text class="cuIcon-titles text-black"></text>
-					<text class="text-xl text-bold">链信息</text>
+					<image style="width: 48rpx;height: 48rpx;margin-right: 20rpx;" :src="currentChain.logo" mode=""></image>
+					<text class="text-lg text-bold">{{ currentChain.name }}</text>
 				</view>
-				<view class="action"><text>{{ currentChain.name }}</text></view>
+				<view class="action">
+					<text class="cu-tag">{{ currentChain.unit || '' }}</text>
+				</view>
 			</view>
 
 			<view class="grace-flex tc" style="padding: 20rpx;">

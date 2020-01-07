@@ -4,6 +4,7 @@ const chainList = {
 		"logo": "../../static/wallet/cosmoshub.svg",
 		"version": "0.32.7",
 		"lcd": "https://lcd.nylira.net",
+		"unit": "ATOM",
 		"wallets": {
 			'cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050': {
 				chain: 'Cosmos',
@@ -17,6 +18,7 @@ const chainList = {
 		"logo": "../../static/wallet/kava.svg",
 		"version": "0.32.8",
 		"lcd": "https://kava-relay.01node.com",
+		"unit": "KAVA",
 		"wallets": {}
 	},
 	Iris: {
@@ -24,6 +26,7 @@ const chainList = {
 		"logo": "../../static/wallet/irishub.svg",
 		"version": "0.32.1",
 		"lcd": "https://rpc.irisnet.org",
+		"unit": "IRIS",
 		"wallets": {
 			'iaa1v6c3sa76s3grss3xu64tvn9nd556jlcw6azc85': {
 				chain: 'Iris',
@@ -36,6 +39,7 @@ const chainList = {
 		"name": "Sentinel Network",
 		"logo": "../../static/wallet/default.png",
 		"version": "0.32.8",
+		"unit": "",
 		"lcd": "https://lcd.turing.sentinel.co",
 		"wallets": []
 	}

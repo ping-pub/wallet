@@ -1,18 +1,18 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" title="Wallet Manage"><text @tap="go('/pages/wallet/WalletCreate?create=1')" class="cuIcon-add big-tap"></text></PageTitle>
+		<PageTitle slot="gHeader" :title="lang.title"><text @tap="go('/pages/wallet/WalletCreate?create=1')" class="cuIcon-add big-tap"></text></PageTitle>
 
 		<view slot="gBody">
 			<view class="page-space"></view>
 
-			<view class="" v-for="(item, key) of chains" :key="key">
+			<view class="" v-for="(item, key) of chains" :key="key" v-if="Object.keys(item.wallets).length > 0">
 				<view class="cu-bar bg-white">
 					<view class="action">
-						<text class="cuIcon-titles text-black"></text>
-						<text class="text-xl text-bold">{{ item.name }}</text>
+						<image style="width: 48rpx;height: 48rpx;margin-right: 20rpx;" :src="item.logo" mode=""></image>
+						<text class="text-lg text-bold">{{ item.name }}</text>
 					</view>
 					<view class="action">
-						<image style="width: 48rpx;height: 48rpx;" :src="item.logo" mode=""></image>
+						<text class="cu-tag">{{ item.unit || '' }}</text>
 					</view>
 				</view>
 
@@ -39,6 +39,11 @@
 	import BaseMixin from '../../components/BaseMixin.js';
 	export default {
 		mixins: [BaseMixin],
+		computed: {
+			lang() {
+				return this.$t('pagesWalletManage');
+			},
+		},
 		methods: {
 			goBack() {
 				uni.navigateBack();

@@ -3,7 +3,7 @@
 		<view class="cu-bar bg-white">
 			<view class="action">
 				<text class="cuIcon-titles text-black"></text>
-				<text class="text-xl text-bold">推荐节点</text>
+				<text class="text-lg text-bold">推荐节点</text>
 			</view>
 			<view class="action"><text class="cuIcon-hotfill text-red"></text></view>
 		</view>
@@ -24,7 +24,7 @@
 		<view class="cu-bar bg-white">
 			<view class="action">
 				<text class="cuIcon-titles text-black"></text>
-				<text class="text-xl text-bold">验证节点</text>
+				<text class="text-lg text-bold">验证节点</text>
 			</view>
 			<view class="action"  @tap="initList()"><text class="mr-6">{{ currentChain.name }}</text> <text class="cuIcon-refresh"></text> </view>
 		</view>
