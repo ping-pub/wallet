@@ -2,8 +2,9 @@
 	<view class="">
 
 		<view class="cu-bar bg-white">
-			<view class="action ping-card-title" style="margin-left: 0;">
-				<text class="text-lg text-bold">{{ lang.titleReward }}</text>
+			<view class="action">
+				<text class="cuIcon-titles text-black"></text>
+				<text class="text-lg text-bold">{{ lang.titleReward}}</text>
 			</view>
 			<view class="action">
 				<text>{{ lang.btnClaim}}</text>
@@ -23,8 +24,10 @@
 
 		<view class="page-space"></view>
 		<view class="cu-bar bg-white" >
-			<view class="action ping-card-title" style="margin-left: 0;">
-				<text class="text-lg text-bold">{{ lang.validators }}</text>
+			<view class="action">
+				<text class="cuIcon-titles text-black"></text>
+				<text class="text-lg text-bold mr-12">{{ lang.validators }}</text>
+				<view class="cu-tag bg-gray round">{{ list.length }}</view>
 			</view>
 			<view class="action" @tap="init()"><text class="mr-12">{{ currentChain.name }}</text><text class="cuIcon-refresh"></text></view>
 		</view>

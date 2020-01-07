@@ -3,7 +3,7 @@
 		<view class="" slot="gHeader">
 			<view class="cu-bar bg-white">
 				<view class="action sub-title">
-					<text class="text-xl text-bold text-black">治理</text>
+					<text class="text-xl text-bold text-black">{{ lang.title }}</text>
 					<text class="bg-black"></text>
 				</view>
 				<view class="action" @tap="switchWallet">
@@ -78,7 +78,7 @@
 		mixins: [BaseMixin, SwitchWalletMixin],
 		computed: {
 			lang() {
-				return this.$t('vote');
+				return this.$t('pagesGoverance');
 			}
 		},
 		onLoad() {

@@ -1,12 +1,12 @@
 <template>
-	<view class="cu-modal" :class="showDialog?'show':''" @tap="close" @touchmove.stop.prevent="">
+	<view class="cu-modal" :class="showDialog?'show':''" @tap="close()" @touchmove.stop.prevent="">
 		<view class="cu-dialog" @tap.stop="" style="max-height: 80%;">
 			<view class="cu-bar bg-white ">
 				<view class="action">
 					<text class="cu-tag bg-olive round shadow">{{ currentWallet.name }}</text>
 				</view>
 				<view class="content">{{ lang.title }}</view>
-				<view class="action" @tap="close">
+				<view class="action" @tap="close()">
 					<text class="cuIcon-close text-gray"></text>
 				</view>
 			</view>
@@ -53,13 +53,13 @@
 		},
 		data() {
 			return {
-				tabChain: 'Cosmos',
-				current: 1
+				tabChain: 'Cosmos'
 			};
 		},
 		watch: {
 			showDialog(val, old) {
 				if (val) {
+					this.tabWallet = this.currentWallet
 					this.tabChain = this.currentChain.name
 				}
 			}
@@ -68,22 +68,16 @@
 			changeTap(chain) {
 				this.tabChain = chain.name
 			},
-			close() {
-				this.$emit('close')
-			},
-			confirm1() {
-				this.close();
-			},
-			changeItem(e) {
-				console.log(e)
-				this.current = e
+			close(isChange) {
+				this.$emit('close', { isChange })
 			},
 			changeWallet(chain, wallet) {
+				const isChange = this.currentWallet.address !== wallet.address
 				this.$store.commit('walletChange', {
 					chain,
 					wallet
 				})
-				this.close()
+				this.close(isChange)
 			}
 		}
 	};

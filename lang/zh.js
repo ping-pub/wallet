@@ -46,6 +46,16 @@ export default {
 		btnClaim: '领取全部奖励',
 		validators: '委托人'
 	},
+	pagesStaking_Validators: {
+		titleRecommend: '推荐节点',
+		titleValidators: '验证节点'
+	},
+	pagesGoverance: {
+		title: '治理'
+	},
+	pagesGoveranceDetail: {
+		title: '详情'
+	},
 	pagesWalletCreate: {
 		titleCreate: '添加钱包',
 		titleEdit: '编辑钱包',

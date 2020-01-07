@@ -1,6 +1,6 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" title="详情" :loading="loading"></PageTitle>
+		<PageTitle slot="gHeader" :title="lang.title" :loading="loading"></PageTitle>
 		<view slot="gBody">
 			<view class="cu-bar bg-white">
 				<view class="action">
@@ -41,7 +41,7 @@ export default {
 	mixins: [BaseMixin],
 	computed: {
 		lang() {
-			return this.$t('vote');
+			return this.$t('pagesGoveranceDetail');
 		}
 	},
 	onLoad(options) {

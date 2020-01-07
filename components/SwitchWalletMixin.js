@@ -5,9 +5,9 @@ export default {
 		};
 	},
 	methods: {
-		closeSwitchWallet() {
+		closeSwitchWallet({ isChange }) {
 			this.showSwitchWallet = false;
-			if (this.init) {
+			if (isChange && this.init) {
 				this.init()
 			}
 		},

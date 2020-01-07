@@ -46,6 +46,16 @@ export default {
 		btnClaim: 'Claim Reward All',
 		validators: 'Validators'
 	},
+	pagesStaking_Validators: {
+		titleRecommend: 'Recommend',
+		titleValidators: 'Validators'
+	},
+	pagesGoverance: {
+		title: 'Goverance'
+	},
+	pagesGoveranceDetail: {
+		title: 'Detail'
+	},
 	pagesWalletCreate: {
 		titleCreate: 'Wallet Create',
 		titleEdit: 'Wallet Edit',
