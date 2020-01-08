@@ -1,4 +1,4 @@
-FROM keymetrics/pm2:12-slim
+FROM index.docker.io/keymetrics/pm2:12-slim
 RUN mkdir -p /app
 ADD  ./server  /app
 WORKDIR /app
