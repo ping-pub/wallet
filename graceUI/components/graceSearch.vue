@@ -31,6 +31,11 @@ export default{
 	created: function (){
 		this.inputVal = this.kwd;
 	},
+	watch:{
+		kwd : function(val){
+			this.inputVal = val;
+		}
+	},
 	methods:{
 		clearKwd : function () {
 			this.inputVal = '';

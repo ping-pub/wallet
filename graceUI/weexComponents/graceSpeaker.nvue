@@ -49,7 +49,6 @@ export default {
 	},
 	methods:{
 		navto : function (e) {
-			console.log(e);
 			var url = e.currentTarget.dataset.url;
 			var type = e.currentTarget.dataset.opentype;
 			switch (type){
@@ -60,11 +59,6 @@ export default {
 					break;
 				case 'navigate':
 					uni.navigateTo({
-						url:url
-					});
-					break;
-				case 'redirect':
-					uni.redirectTo({
 						url:url
 					});
 					break;

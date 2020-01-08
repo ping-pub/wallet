@@ -11,7 +11,8 @@
 		</view>
 		<view slot="gBody">
 			<scroll-view scroll-x class="bg-white nav" scroll-with-animation>
-				<view @tap="changeTab(item)" v-for="(item, key) of chains" :key="key" v-if="Object.keys(item.wallets).length > 0" class="cu-item" :class="{ 'text-black cur': tabChain === item.name }">{{ item.name }}</view>
+				<view @tap="changeTab(item)" v-for="(item, key) of chains" :key="key" v-if="Object.keys(item.wallets).length > 0"
+				 class="cu-item" :class="{ 'text-black cur': tabChain === item.name }">{{ item.name }}</view>
 			</scroll-view>
 			<view class=" solid-bottom  padding grace-border-radius-small" style="margin: 20rpx;background-image: url('../../static/index/bg.png');    background-size: cover;
     background-color: #fff;
@@ -32,15 +33,15 @@
 				</view>
 
 				<view class="cu-list menu-avatar m-space">
-					<view class="cu-item" v-for="(item, index) in chains[tabChain].wallets" :key="index" @tap="go('/pages/wallet/WalletDetail?address=' + item.address + '&name=' + item.name + '&chain=' + item.chain)">
+					<view class="cu-item" v-for="(address, index) in chains[tabChain].wallets" :key="index" @tap="go('/pages/wallet/WalletDetail?address=' + address)">
 						<image :src="chains[tabChain].logo" mode="" style="width: 96rpx;height: 96rpx;"></image>
 						<view class="content" style="left: 100rpx;">
-							<view class="text-black">{{ item.name }}</view>
-							<view class="text-gray text-sm">{{ item.address.substr(0, 10) + '...' + item.address.substr(-10, 10) }}</view>
+							<view class="text-black">{{ wallets[address].name }}</view>
+							<view class="text-gray text-sm">{{ wallets[address].address && (wallets[address].address.substr(0, 12) + '...' + wallets[address].address.substr(-12, 12)) }}</view>
 						</view>
 						<view class="action" style="text-align:right;width: 100%;">
 							<view class="cu-tag round bg-grey">
-								<text class="text-lg">{{ currentCurrency }} {{ item.money || '0' }}</text>
+								<text class="text-lg">{{ currentCurrency }} {{ wallets[address].money || '0' }}</text>
 							</view>
 						</view>
 					</view>

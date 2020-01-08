@@ -1,5 +1,5 @@
 <template>
-	<view class="grace-nowrap grace-flex-vcenter" @tap.stop="changeStatus">
+	<view class="grace-nowrap grace-flex-vcenter" :style="{width:width}" @tap.stop="changeStatus">
 		<view 
 		:class="['grace-check-btn grace-icons', status ? 'grace-check-checked' : '']" 
 		:style="{fontSize:size+'rpx', lineHeight:size+'rpx', color : status ? checkedColor : color}"></view>
@@ -9,6 +9,10 @@
 <script>
 export default {
 	props: {
+		width:{
+			type:String,
+			default:'100%'
+		},
 		size : {
 			type : Number,
 			default : 38

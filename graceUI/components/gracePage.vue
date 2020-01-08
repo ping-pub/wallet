@@ -60,14 +60,12 @@ export default{
 	created:function(){
 		try {
 		    var res = uni.getSystemInfoSync();
-			var iPhoneXBottom = 0;
 			res.model = res.model.replace(' ', '');
-			if(res.model.indexOf('iPhoneX') != -1){
+			res.model = res.model.toLowerCase();
+			if(res.model.indexOf('iphonex') != -1 || res.model.indexOf('iphone11') != -1){
 				this.iphoneXButtomHeight = uni.upx2px(50);
 			}
-		} catch (e){
-		    return null;
-		}
+		} catch (e){return null;}
 		if(!this.customHeader){return ;}
 		// #ifndef MP-ALIPAY
 			this.statusBarHeight = res.statusBarHeight;

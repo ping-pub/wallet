@@ -7,8 +7,6 @@
 		</PageTitle>
 
 		<view slot="gBody">
-
-			<!-- 			<view class="page-space"></view> -->
 			<form>
 				<view class="cu-form-group form-title">
 					<view class="title  text-black">{{ lang.walletName }}</view>
@@ -20,14 +18,16 @@
 				<view class="cu-form-group form-title">
 					<view class="title  text-black">{{ lang.walletAddress }}</view>
 					<!-- #ifdef APP-PLUS -->
-					<text>
+					<text v-if="create">
 						<text class="cuIcon-scan mr-6"></text>
 						<text> {{ lang.scan }}</text>
 					</text>
 					<!-- #endif -->
+					<text v-if="!create" class="cuIcon-lock text-grey"></text>
 				</view>
 				<view class="cu-form-group form-content">
-					<input v-model="form.address" :placeholder="lang.walletAddressInput" name="input"></input>
+					<input v-if="create" v-model="form.address" :placeholder="lang.walletAddressInput" name="input"></input>
+					<text v-if="!create" class="text-grey">{{ form.address }}</text>
 				</view>
 
 				<view class="page-space"></view>
@@ -46,7 +46,7 @@
 					</view>
 				</view>
 				<view class="page-space"></view>
-				<view v-if="!create" class="" style="margin: 0 30rpx;;">
+				<view v-if="!create" class="" style="margin: 0 30rpx;" @tap="remove()">
 					<button class="cu-btn line-red lg" style="width: 100%"><text class="cuIcon-delete"></text>{{ lang.remove }}</button>
 				</view>
 			</form>
@@ -76,14 +76,11 @@
 		onLoad(options) {
 			const {
 				address,
-				chain,
 				create
 			} = options
 			this.create = create || null
 			if (!create) {
-				this.form.address = address
-				this.form.chain = chain
-				this.form.name = this.chains[chain].wallets[address].name
+				this.form = this.wallets[address]
 			}
 		},
 		methods: {
@@ -100,13 +97,26 @@
 					this.toastShow(this.lang.saveTip)
 					return
 				}
+				// 新增判断地址重复问题
+				if (this.create && this.wallets[address]) {
+					this.toastShow(this.lang.addressAdded)
+					return
+				}
 				try {
-					this.$store.commit('walletAdd', this.form)
+					if (this.create) {
+						this.$store.commit('walletCreate', this.form)
+					}
+					if (!this.create) {
+						this.$store.commit('walletEdit', this.form)
+					}
 					this.toastShow(this.lang.saveOk)
 					this.goBack()
 				} catch (e) {
 					console.log(e)
 				}
+			},
+			remove() {
+				this.$store.commit('walletDelete', this.form)
 			}
 		}
 	}

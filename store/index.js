@@ -7,27 +7,35 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
-		currentChain: {
-			name: 'Cosmos',
-			"logo": "../../static/wallet/cosmoshub.svg",
-			"version": "0.32.7",
-			"lcd": "https://lcd.nylira.net",
-			"unit": "ATOM",
-		},
-		currentWallet: {
-			chain: 'Cosmos',
-			name: 'DEMO',
-			address: 'cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050'
-		}
-
+		currentChain: {},
+		currentWallet: {}
 	},
 	mutations: {
+		currentInit(state) {
+			const currentChain = uni.getStorageSync('currentChain')
+			const currentWallet = uni.getStorageSync('currentWallet')
+			if (currentChain) {
+				state.currentChain = currentChain
+			}
+			if (currentWallet) {
+				state.currentWallet = currentWallet
+			} else {
+				const walletList = state.chain.walletList
+				const keys = Object.keys(walletList)
+				if (keys[0]) {
+					state.currentWallet = walletList[keys[0]]
+					state.currentChain = state.chain.chainList[state.currentWallet.chain]
+				}
+			}
+		},
 		walletChange(state, {
 			chain,
 			wallet
 		}) {
 			state.currentChain = chain
 			state.currentWallet = wallet
+			uni.setStorageSync('currentChain', chain)
+			uni.setStorageSync('currentWallet', wallet)
 		}
 	},
 	actions: {},

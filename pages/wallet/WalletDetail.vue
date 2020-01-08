@@ -1,6 +1,6 @@
 <template>
 	<gracePage headerBG="#fff">
-		<PageTitle slot="gHeader" :title="wallet.name" :loading="loading">
+		<PageTitle slot="gHeader" :title="wallet.name" :loading="loading" :toast="toast" :msg="msg">
 			<text @tap="go('/pages/wallet/WalletCreate?' + 'address=' + wallet.address + '&chain=' + wallet.chain)" class="cuIcon-edit"></text>
 		</PageTitle>
 		<view slot="gBody">
@@ -10,24 +10,25 @@
 						<text class="text-black" style="font-size: 20px;">$0.00</text>
 					</view>
 					<view class="tc" @tap="go('/pages/wallet/WalletRecive?address=' + wallet.address + '&chain=' + wallet.chain)">
-						<text class="text-gray mr-6">{{ wallet.address }}</text> <text class="cuIcon-qrcode text-gray"></text>
+						<text class="text-grey mr-6">{{ wallet.address && (wallet.address.substr(0, 12) + '...' + wallet.address.substr(-12, 12)) }}</text>
+						<text style="font-size: 16px;" class="cuIcon-qrcode text-grey"></text>
 					</view>
 				</view>
 			</view>
 
-			<view class="bg-white" style="padding: 20rpx;">
-				<view class="walletdetail cu-list grid col-3 no-border bg-gradual-blue grace-border-radius-small" style="padding: 0;">
-					<view class="cu-item" @tap="goSwitch('/pages/goverance/Goverance')">
-						<text class="cuIcon-hot" style="color: #fff;font-size: 18px;"></text>
-						<text style="color: #fff;font-size: 12px;">投票</text>
+			<view class="bg-white" style="padding: 20rpx 30rpx;">
+				<view class="walletdetail cu-list grid col-3 no-border " style="padding: 0;">
+					<view class="cu-item" @tap="goSwitch('/pages/staking/Staking')" style="padding: 0;">
+						<text class="cuIcon-safe" style="font-size: 18px;margin-top: 0;"></text>
+						<text style="font-size: 12px;margin-top: 0;">{{ lang.stake }}</text>
 					</view>
-					<view class="cu-item" @tap="goSwitch('/pages/staking/Staking')">
-						<text class="cuIcon-safe" style="color: #fff;font-size: 18px;"></text>
-						<text style="color: #fff;font-size: 12px;">委托</text>
+					<view class="cu-item" @tap="goSwitch('/pages/goverance/Goverance')" style="padding: 0;">
+						<text class="cuIcon-hot" style="font-size: 18px;margin-top: 0;"></text>
+						<text style="font-size: 12px;margin-top: 0;">{{ lang.vote }}</text>
 					</view>
-					<view class="cu-item">
-						<text class="cuIcon-down" style="color: #fff;font-size: 18px;"></text>
-						<text style="color: #fff;font-size: 12px;">赎回</text>
+					<view class="cu-item" @tap="go('/pages/wallet/WalletTransfer')" style="padding: 0;">
+						<text class="cuIcon-exit" style="font-size: 18px;margin-top: 0;"></text>
+						<text style="font-size: 12px;margin-top: 0;">{{ lang.transfer }}</text>
 					</view>
 				</view>
 			</view>
@@ -38,35 +39,35 @@
 					<text class="cuIcon-titles text-black"></text>
 					<text class="text-xl text-bold">ATOM</text>
 				</view>
-				<view class="action" @tap="go('/pages/wallet/WalletTx')">
-					<text class="text-gray" style="font-size: 12px;">交易</text>
+				<view class="action" @tap="go('/pages/wallet/WalletTx?address=' + wallet.address + '&chain=' + wallet.chain)">
+					<text class="text-gray" style="font-size: 12px;">{{ lang.tx }}</text>
 					<text class="cuIcon-right text-gray" style="font-size: 14px;"></text>
 				</view>
 			</view>
 			<view class="cu-list grid col-2">
 				<view class="cu-item">
-					<text style="color: #333333;font-size: 16px;">90,123,901,234.91</text>
-					<text>可用</text>
+					<text style="color: #333333;font-size: 16px;">0</text>
+					<text>{{ lang.available }}</text>
 				</view>
 				<view class="cu-item">
 					<text style="color: #333333;font-size: 16px;">90,123,901,234.91</text>
-					<text>委托</text>
+					<text>{{ lang.delegated }}</text>
 				</view>
 				<view class="cu-item">
 					<text style="color: #39b54a;font-size: 16px;">+90,123,901,234.91</text>
-					<text>收益</text>
+					<text>{{ lang.reward }}</text>
 				</view>
 				<view class="cu-item">
 					<text style="color: #333333;font-size: 16px;">90,123,901,234.91</text>
-					<text>赎回中</text>
+					<text>{{ lang.unbonding }}</text>
 				</view>
 				<view class="cu-item">
 					<text style="color: #333333;font-size: 16px;">$4.5</text>
-					<text>市价</text>
+					<text>{{ lang.price }}</text>
 				</view>
 				<view class="cu-item">
 					<text style="color: #333333;font-size: 16px;">$90,123,901,234.91</text>
-					<text>总值</text>
+					<text>{{ lang.value }}</text>
 				</view>
 			</view>
 
@@ -102,6 +103,11 @@
 
 	export default {
 		mixins: [BaseMixin],
+		computed: {
+			lang() {
+				return this.$t('pagesWalletDetail');
+			},
+		},
 		data() {
 			return {
 				wallet: {},
@@ -109,11 +115,11 @@
 			}
 		},
 		onLoad(options) {
-			const { address, chain } = options
-			this.wallet = {
+			const {
 				address,
 				chain
-			}
+			} = options
+			this.wallet = this.chains[chain].wallets[address]
 			this.initData()
 		},
 		methods: {
@@ -124,7 +130,10 @@
 				this.loading = true
 				const lcd = this.chains[this.wallet.chain].lcd
 				const version = this.chains[this.wallet.chain].version
-				const res = await this.$api(version).bankAccount(this.wallet.address, lcd).catch(() => { this.loading = false })
+				const res = await this.$api(version).bankAccount(this.wallet.address, lcd).catch(() => {
+					this.toastShow('Network Error.')
+					this.loading = false
+				})
 				this.coins = res
 				this.loading = false
 			}

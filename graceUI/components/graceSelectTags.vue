@@ -1,7 +1,7 @@
 <template>
 	<view class="grace-select-tags">
 		<view class="grace-select-tag" 
-		:style="{width : itemWidth, 'background' : item.checked ? selectedColor : '#F6F7F8', fontSize:fontSize}" 
+		:style="{width : itemWidth, 'background' : item.checked ? selectedColor+' !important' : '#F6F7F8', fontSize:fontSize}" 
 		@tap.stop="graceSelectChange(index)" v-for="(item, index) in tagsData" :key="index" 
 		:class="[item.checked ? 'grace-checked' : '']">{{item.name}}</view>
 	</view>

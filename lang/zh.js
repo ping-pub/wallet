@@ -62,6 +62,7 @@ export default {
 		save: '保存',
 		saveTip: '请填写完整',
 		saveOk: '保存成功!',
+		addressAdded: '地址已存在,请不要重复添加!',
 		mainChain: '钱包主链',
 		baseInfo: '基本信息',
 		walletName: '名称',
@@ -70,6 +71,25 @@ export default {
 		walletAddressInput: '请输入',
 		scan: '扫一扫',
 		remove: '删除'
+	},
+	pagesWalletDetail: {
+		stake: '委托',
+		vote: '投票',
+		transfer: '转账',
+		tx: '交易',
+		available: '可用',
+		delegated: '委托',
+		reward: '收益',
+		unbonding: '赎回中',
+		price: '时价',
+		value: '市值'
+	},
+	pagesWalletTx: {
+		title: '交易记录',
+		all: '全部',
+		out: '转出',
+		'in': '转入',
+		fail: '失败'
 	},
 	pagesWalletManage: {
 		title: '钱包管理',

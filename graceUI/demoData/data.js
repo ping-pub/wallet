@@ -40,6 +40,12 @@ var products = [
 		"title": "进口化妆品特价",
 		"price": "￥22.99",
 		"tip": "热卖"
+	},
+	{
+		"img": "https://img.alicdn.com/tps/i4/TB1bhT6kr2pK1RjSZFswu1NlXXa.png",
+		"title": "进口儿童座椅",
+		"price": "￥698.99",
+		"tip": "进口"
 	}
 ];
 

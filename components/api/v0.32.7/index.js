@@ -4,6 +4,7 @@ import validatorItem from './validatorItem.js'
 import validatorList from './validatorList.js'
 import delegationList from './delegationList.js'
 import delegationRewardTotal from './delegationRewardTotal.js'
+import delegationTx from './delegationTx.js'
 import nodeInfo from './nodeInfo.js'
 import bankAccount from './bankAccount.js'
 
@@ -15,5 +16,6 @@ export default {
 	validatorItem,
 	validatorList,
 	delegationRewardTotal,
+	delegationTx,
 	nodeInfo
 }

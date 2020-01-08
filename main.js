@@ -35,6 +35,7 @@ if (!locale) {
 }
 // 从本地存储初始化链信息
 store.commit('chainInit')
+store.commit('currentInit')
 
 const i18n = new VueI18n({
 	locale,

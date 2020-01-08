@@ -1,6 +1,6 @@
 <template name="graceIMMsg">
 	<view>
-		<view class="grace-im-footer">
+		<view class="grace-im-footer" :style="{paddingBottom:paddingB}">
 			<view class="grace-im-menus graceIMFonts icon-voice" 
 				v-if="voiceBtnShow" 
 				@tap="showRec"></view>
@@ -43,6 +43,7 @@ export default {
 	},
 	data() {
 		return {
+			paddingB        : '0',
 			uploading       : false,
 			recShow         : false,
 			recTxt          : "请点击绿色按钮开始录音",
@@ -76,6 +77,16 @@ export default {
 			_self.recTxt   = "请点击绿色按钮开始录音",
 			clearInterval(_self.recTimer);
 		});
+		// #endif
+		// #ifdef MP
+		try {
+		    var res = uni.getSystemInfoSync();
+			res.model = res.model.replace(' ', '');
+			res.model = res.model.toLowerCase();
+			if(res.model.indexOf('iphonex') != -1 || res.model.indexOf('iphone11') != -1){
+				this.paddingB = uni.upx2px(50)+'px';
+			}
+		} catch (e){return null;}
 		// #endif
 	},
 	methods:{
@@ -243,7 +254,7 @@ export default {
 
 .grace-im-footer{display:flex; background:#FFFFFF; width:100%; position:fixed; left:0; bottom:0; height:50px; flex-wrap:nowrap; overflow:hidden; box-shadow:1px 1px 6px #888;}
 .grace-im-footer .grace-items{width:auto; line-height:50px; flex-shrink:0;}
-.grace-im-menus{width:44px; height:50px; flex-shrink:0; line-height:50px; text-align:center; font-size:32px;}
+.grace-im-menus{width:44px; height:50px; flex-shrink:0; line-height:50px; text-align:center; font-size:28px;}
 .grace-im-input{width:100%; margin:5px; padding:0 8px; background:#F4F5F6; border-radius:5px; height:40px; flex-wrap:nowrap; margin-left:10px;}
 .grace-im-input input{width:100%; background:#F4F5F6; height:20px; margin:8px 0; line-height:20px; border-radius:5px;}
 

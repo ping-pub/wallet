@@ -2,7 +2,7 @@
 link   : grace.hcoder.net
 author : 刘海君 5213606@qq.com 
 verson : 2.2
-last update date : 2019-12-30
+last update date : 2020-01-02
 GraceUI 的版权约束是不能转售或者将 GraceUI 直接发布到公开渠道！侵权必究，请遵守版权约定！
 GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请遵守极其简单的版权规定
 */
@@ -141,7 +141,7 @@ GraceUI 软著号 2019SR0533188 版权机器人启动中，侵权会追责，请
 .grace-news-img{width:220rpx; height:220rpx; border-radius:5rpx;}
 .grace-news-img-l{margin-right:20rpx;}
 .grace-news-img-r{margin-left:20rpx;}
-.grace-news-body{width:750rpx; flex:1; flex-direction:column; align-self:flex-start;}
+.grace-news-body{width:750rpx; flex:1; flex-direction:column;}
 .grace-news-title{line-height:40rpx; font-size:26rpx;}
 .grace-news-desc{line-height:36rpx; color:#A5A7B2; font-size:22rpx; margin-top:8rpx;}
 .grace-news-info{flex-direction:row; justify-content:space-between; margin-top:10rpx;}

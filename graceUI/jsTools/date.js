@@ -22,8 +22,9 @@ module.exports = {
 	
 	// 时间戳转 YY-mm-dd HH:ii:ss
 	formatDateTime : function(timeStamp, returnType){
+		timeStamp = parseInt(timeStamp);
 		var date = new Date();
-		if(timeStamp.length < 11 ){
+		if(timeStamp < 90000000000 ){
 			date.setTime(timeStamp * 1000);
 		}else{
 			date.setTime(timeStamp );

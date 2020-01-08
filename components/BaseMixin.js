@@ -1,8 +1,10 @@
-
 export default {
 	computed: {
 		chains() {
-			return this.$store.getters.chainGet
+			return this.$store.getters.chainListGet
+		},
+		wallets() {
+			return this.$store.getters.walletListGet
 		},
 		currentChain() {
 			return this.$store.state.currentChain

@@ -5,7 +5,7 @@
 		<view slot="gBody">
 			<view class="page-space"></view>
 
-			<view class="" v-for="(item, key) of chains" :key="key" v-if="Object.keys(item.wallets).length > 0">
+			<view class="" v-for="(item, key) of chains" :key="key" v-if="item.wallets.length > 0">
 				<view class="cu-bar bg-white">
 					<view class="action">
 						<image style="width: 48rpx;height: 48rpx;margin-right: 20rpx;" :src="item.logo" mode=""></image>
@@ -17,21 +17,21 @@
 				</view>
 
 				<view class="cu-list menu-avatar bg-white">
-					<view class="cu-item" v-for="(el, index) of item.wallets" :key="index" @tap="go('/pages/wallet/WalletCreate?address='+ el.address + '&chain=' + el.chain)">
+					<view class="cu-item" v-for="(address, index) of item.wallets" :key="index" @tap="go('/pages/wallet/WalletCreate?address='+ address)">
 						<view class="content" style="left: 40rpx;">
-							<view class="text-black">{{ el.name }}</view>
-							<view class="text-gray">{{ el.address }}</view>
+							<view class="text-black">{{ wallets[address].name }}</view>
+							<view class="text-gray">{{ address }}</view>
 						</view>
 						<view class="action">
 							<text class="cuIcon-edit"></text>
 						</view>
 					</view>
-					<PageEmpty v-if="Object.keys(item.wallets).length === 0"></PageEmpty>
+					
 				</view>
 				
 				<view class="page-space"></view>
 			</view>
-
+			<PageEmpty v-if="Object.keys(wallets).length === 0"></PageEmpty>
 		</view>
 	</gracePage>
 </template>

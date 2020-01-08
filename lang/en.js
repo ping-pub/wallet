@@ -60,7 +60,8 @@ export default {
 		titleCreate: 'Wallet Create',
 		titleEdit: 'Wallet Edit',
 		save: 'Save',
-		saveTip: 'Please complete the form',
+		saveTip: 'Please complete the form.',
+		addressAdded: 'This address has been added.',
 		saveOk: 'Save Success!',
 		mainChain: 'Main Chain',
 		baseInfo: 'Base Info',
@@ -70,6 +71,25 @@ export default {
 		walletAddressInput: 'Please input',
 		scan: 'Scan',
 		remove: 'Delete'
+	},
+	pagesWalletDetail: {
+		stake: 'Stake',
+		vote: 'Vote',
+		transfer: 'Transfer',
+		tx: 'transcation',
+		available: 'Available',
+		delegated: 'Delegated',
+		reward: 'Reward',
+		unbonding: 'Unbonding',
+		price: 'Current Price',
+		value: 'Market Value'
+	},
+	pagesWalletTx: {
+		title: 'Transcations',
+		all: 'All',
+		out: 'Out',
+		'in': 'In',
+		fail: 'fail'
 	},
 	pagesWalletManage: {
 		title: 'Wallet Manage',

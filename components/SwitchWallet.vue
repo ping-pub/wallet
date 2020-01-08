@@ -11,23 +11,23 @@
 				</view>
 			</view>
 			<scroll-view scroll-x class="bg-white nav" scroll-with-animation>
-				<view @tap="changeTap(item)" v-for="(item, key) of chains" :key="key" v-if="Object.keys(item.wallets).length > 0"
+				<view @tap="changeTap(item)" v-for="(item, key) of chains" :key="key" v-if="item.wallets.length > 0"
 				 class="cu-item" :class="{'text-black cur': tabChain === item.name }">{{ item.name }}</view>
 			</scroll-view>
 			<scroll-view scroll-y="true" style="height: 600rpx;">
 				<view class="cu-list menu text-left">
-					<view class="cu-item" @tap="changeWallet(chains[tabChain], el)" v-for="(el,index) in chains[tabChain].wallets"
+					<view class="cu-item" v-for="(address,index) in chains[tabChain].wallets" @tap="changeWallet(chains[tabChain], wallets[address])" 
 					 :key="index">
 						<label class="flex justify-between align-center flex-sub" style="padding: 20rpx 0;">
 							<view class="flex-sub">
 								<view class="text-lg">
-									{{ el.name}}
+									{{ wallets[address].name}}
 								</view>
 								<view class="text-sm text-gray">
-									{{ el.address }}
+									{{ address }}
 								</view>
 							</view>
-							<view v-if="el.address === currentWallet.address" class="cuIcon-check" style="font-size: 18px;"></view>
+							<view v-if="address === currentWallet.address" class="cuIcon-check" style="font-size: 18px;"></view>
 						</label>
 					</view>
 				</view>
