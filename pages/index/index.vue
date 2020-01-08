@@ -37,7 +37,7 @@
 						<image :src="chains[tabChain].logo" mode="" style="width: 96rpx;height: 96rpx;"></image>
 						<view class="content" style="left: 100rpx;">
 							<view class="text-black">{{ wallets[address].name }}</view>
-							<view class="text-gray text-sm">{{ wallets[address].address && (wallets[address].address.substr(0, 12) + '...' + wallets[address].address.substr(-12, 12)) }}</view>
+							<view class="text-grey text-sm">{{ wallets[address].address || addressShort }}</view>
 						</view>
 						<view class="action" style="text-align:right;width: 100%;">
 							<view class="cu-tag round bg-grey">
@@ -64,6 +64,11 @@
 				tabChain: 'Cosmos',
 				moneyTotal: '0.00'
 			};
+		},
+		filters: {
+			addressShort(address) {
+				return (address.substr(0, 12) + '...' + address.substr(-12, 12))
+			}
 		},
 		computed: {
 			lang() {

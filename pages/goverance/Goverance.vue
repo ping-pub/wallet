@@ -16,13 +16,13 @@
 			<view class="page-space"></view>
 			<view class="cu-card article no-card" v-for="item in list" :key="item.id" @tap="go('/pages/goverance/GoveranceDetail?id=' + item.id)">
 				<view class="cu-item shadow">
-					<view class="title">
-						<view class="text-cut">{{ item.title }}</view>
+					<view class="padding text-bold" style="padding-bottom: 20rpx;">
+						<view class="text-lg">{{ item.title }}</view>
 					</view>
 					<view class="content">
 						<view class="desc">
-							<view class="text-gray">{{ item.description }}</view>
-							<view class="grace-flex grace-flex-vcenter tc mt-12 mb-12">
+							<view class="text-grey">{{ item.description }}</view>
+							<view class="grace-flex grace-flex-vcenter tc" style="margin-top: 30rpx;">
 								<view class="flex-1">
 									<view class="f-16 grace-black">
 										{{ item.yes }}
@@ -56,8 +56,9 @@
 									</view>
 								</view>
 							</view>
-							<view>
-								
+							<view class="mt-12">
+								<text class="cu-tag bg-green">{{ item.proposal_status }}</text>
+								<text>{{ item.time }}</text>
 							</view>
 						</view>
 					</view>
