@@ -1,5 +1,4 @@
-FROM node:13.0.1-alpine
-RUN npm i -g pm2
+FROM keymetrics/pm2:12-slim
 RUN mkdir -p /app
 ADD  ./server  /app
 WORKDIR /app
