@@ -36,9 +36,6 @@
 	import BaseMixin from '../../components/BaseMixin.js'
 	export default {
 		mixins: [BaseMixin],
-		created() {
-			console.log(this.chains)
-		},
 		data() {
 			return {
 			}

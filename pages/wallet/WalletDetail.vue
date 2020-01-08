@@ -1,7 +1,7 @@
 <template>
 	<gracePage headerBG="#fff">
 		<PageTitle slot="gHeader" :title="wallet.name" :loading="loading" :toast="toast" :msg="msg">
-			<text @tap="go('/pages/wallet/WalletCreate?' + 'address=' + wallet.address + '&chain=' + wallet.chain)" class="cuIcon-edit"></text>
+			<text @tap="go('/pages/wallet/WalletCreate?' + 'address=' + wallet.address)" class="cuIcon-edit"></text>
 		</PageTitle>
 		<view slot="gBody">
 			<view class="bg-white" style="padding-top: 40rpx;padding-bottom: 20rpx;">
@@ -9,7 +9,7 @@
 					<view class="tc" style="margin-bottom: 10rpx;">
 						<text class="text-black" style="font-size: 20px;">$0.00</text>
 					</view>
-					<view class="tc" @tap="go('/pages/wallet/WalletRecive?address=' + wallet.address + '&chain=' + wallet.chain)">
+					<view class="tc" @tap="go('/pages/wallet/WalletRecive?address=' + wallet.address)">
 						<text class="text-grey mr-6">{{ wallet.address && (wallet.address.substr(0, 12) + '...' + wallet.address.substr(-12, 12)) }}</text>
 						<text style="font-size: 16px;" class="cuIcon-qrcode text-grey"></text>
 					</view>
@@ -39,7 +39,7 @@
 					<text class="cuIcon-titles text-black"></text>
 					<text class="text-xl text-bold">ATOM</text>
 				</view>
-				<view class="action" @tap="go('/pages/wallet/WalletTx?address=' + wallet.address + '&chain=' + wallet.chain)">
+				<view class="action" @tap="go('/pages/wallet/WalletTx?address=' + wallet.address)">
 					<text class="text-gray" style="font-size: 12px;">{{ lang.tx }}</text>
 					<text class="cuIcon-right text-gray" style="font-size: 14px;"></text>
 				</view>
@@ -110,16 +110,23 @@
 		},
 		data() {
 			return {
-				wallet: {},
+				wallet: {
+					name: '',
+					address: ''
+				},
 				coins: []
 			}
 		},
 		onLoad(options) {
 			const {
-				address,
-				chain
+				address
 			} = options
-			this.wallet = this.chains[chain].wallets[address]
+			const wallet = this.wallets[address]
+			if (!wallet) {
+				this.goHome()
+				return
+			}
+			this.wallet = wallet
 			this.initData()
 		},
 		methods: {

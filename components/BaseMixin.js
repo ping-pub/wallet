@@ -43,6 +43,9 @@ export default {
 		},
 		goBack() {
 			uni.navigateBack({})
+		},
+		goHome() {
+			this.goSwitch('/pages/index/index')
 		}
 	}
 }

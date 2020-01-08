@@ -44,10 +44,9 @@
 		},
 		onLoad(options) {
 			const {
-				address,
-				chain
+				address
 			} = options
-			this.wallet = this.chains[chain].wallets[address]
+			this.wallet = this.wallets[address]
 			this.initData()
 		},
 		methods: {

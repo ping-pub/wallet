@@ -27,7 +27,7 @@ const chainList = {
 	Kava: {
 		"name": "Kava",
 		"logo": "../../static/wallet/kava.svg",
-		"version": "0.32.8",
+		"version": "0.32.7",
 		"lcd": "https://kava-relay.01node.com",
 		"unit": "KAVA",
 		"wallets": []
