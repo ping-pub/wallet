@@ -111,9 +111,11 @@ export default {
 				state.chainList[old.chain].wallets = oldWallets.filter((item) => {
 					return item !== form.address
 				})
+				console.log(state.chainList[old.chain])
 				// 2. 添加到新的链上
 				const newWallets = state.chainList[form.chain].wallets
-				state.chainList[form.chain].wallets = newWallets.push(form.address)
+				newWallets.push(form.address)
+				state.chainList[form.chain].wallets = newWallets
 			}
 			// 改变地址对应数据
 			state.walletList[form.address] = form

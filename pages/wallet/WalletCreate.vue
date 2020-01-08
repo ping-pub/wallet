@@ -80,7 +80,7 @@
 			} = options
 			this.create = create || null
 			if (!create) {
-				this.form = this.wallets[address]
+				this.form = JSON.parse(JSON.stringify(this.wallets[address]))
 			}
 		},
 		methods: {
@@ -117,6 +117,7 @@
 			},
 			remove() {
 				this.$store.commit('walletDelete', this.form)
+				this.goBack()
 			}
 		}
 	}
