@@ -1,4 +1,5 @@
 var express = require('express');
+var nunjucks = require('nunjucks')
 var path = require('path');
 var app = express();
 var router = express.Router();
@@ -15,14 +16,16 @@ app.use('/api*', proxy({
 		return req.headers.server;
 	}
 }))
-app.set('views', path.join(__dirname, 'h5'));
 
-router.get('/', function(req, res, next) {
-	res.set({
-		'Cache-Control': 'no-cache'
-	});
-	res.sendFile(__dirname + '/h5/index.html')
+nunjucks.configure('h5', {
+  autoescape: true,
+  express: app
 });
+
+router.get('/', function (req, res, next) {
+  res.render('index.html');
+});
+
 
 app.use('/', router);
 
