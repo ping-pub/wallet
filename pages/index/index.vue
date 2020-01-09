@@ -29,7 +29,7 @@
 						<text class="cuIcon-titles text-black"></text>
 						<text class="text-lg text-bold">{{ lang.titleAddress }}</text>
 					</view>
-					<view class="action" @tap="go('/pages/wallet/WalletManage')"><text class="text-sm text-gray cuIcon-right"></text></view>
+					<view class="action" @tap="go('/pages/wallet/WalletManage')"><text class="text-sm text-gray cuIcon-add"></text></view>
 				</view>
 
 				<view class="cu-list menu-avatar m-space">
@@ -37,19 +37,18 @@
 						<image :src="chains[tabChain].logo" mode="" style="width: 96rpx;height: 96rpx;"></image>
 						<view class="content" style="left: 100rpx;">
 							<view class="text-black">{{ wallets[address].name }}</view>
-							<view class="text-grey text-sm">{{ wallets[address].address || addressShort }}</view>
+							<view class="text-grey text-sm">{{ wallets[address].address && (wallets[address].address.substr(0, 12) + '...' + wallets[address].address.substr(-12, 12)) }}</view>
 						</view>
 						<view class="action" style="text-align:right;width: 100%;">
 							<view class="cu-tag round bg-grey">
-								<text class="text-lg">{{ currentCurrency }} {{ wallets[address].money || '0' }}</text>
+								<text class="text-lg">{{ currentCurrency }} {{ (coins && coins[address] )|| '0' }}</text>
 							</view>
 						</view>
 					</view>
 					<PageEmpty v-if="chains[tabChain].wallets.length === 0" @tap="go('/pages/wallet/WalletCreate')"></PageEmpty>
 				</view>
+				<PageLoading :loading="loading"></PageLoading>
 			</view>
-
-			<view class="page-space"></view>
 		</view>
 	</gracePage>
 </template>
@@ -62,6 +61,8 @@
 		data() {
 			return {
 				tabChain: 'Cosmos',
+				price: {},
+				coins: {},
 				moneyTotal: '0.00'
 			};
 		},
@@ -75,9 +76,36 @@
 				return this.$t('pagesIndex');
 			},
 		},
+		onLoad() {
+			this.initCoinPrice()
+		},
 		methods: {
 			changeTab(chain) {
 				this.tabChain = chain.name;
+				this.initCoinPrice()
+			},
+			async initCoinPrice() {
+				this.loading = true
+				const coin = this.tabChain === 'Iris' ? 'irisnet' : 'cosmos'
+				const res = await this.$api('common').coinPrice(coin).catch(() => {this.loading = false})
+				console.log(res)
+				this.price = res
+				await this.initData()
+			},
+			async initData() {
+				const wallets = this.chains[this.tabChain].wallets
+				const version = this.chains[this.tabChain].version
+				const lcd = this.chains[this.tabChain].lcd
+				const obj = {}
+				const price = this.currentCurrency === '$' ? this.price.price : this.price.priceCNY
+				this.moneyTotal = 0
+				for (const item of wallets) {
+				    const coins = await this.$api(version).bankAccount(item, lcd).catch(() => {this.loading = false})
+					obj[item] = (coins * price).toFixed(2)
+					this.moneyTotal += Number(obj[item])
+				}
+				this.coins = obj
+				this.loading = false
 			}
 		},
 		mixins: [SwitchWalletMixin, BaseMixin]

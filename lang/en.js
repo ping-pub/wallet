@@ -1,7 +1,7 @@
 export default {
 	tabbar: {
 		0: 'Portfolio',
-		1: 'Stake',
+		1: 'Staking',
 		2: 'Goverance',
 		3: 'Setting'
 	},
@@ -34,7 +34,7 @@ export default {
 	},
 	// 按照开发文件路径命名配置
 	pagesStaking: {
-		title: 'Stake',
+		title: 'Staking',
 		tabDelegations: 'Delegations',
 		tabValidators: 'Validators',
 		tabCalculator: 'Calculator'
