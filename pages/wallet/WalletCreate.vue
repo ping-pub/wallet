@@ -18,7 +18,7 @@
 				<view class="cu-form-group form-title">
 					<view class="title  text-black">{{ lang.walletAddress }}</view>
 					<!-- #ifdef APP-PLUS -->
-					<text v-if="create">
+					<text v-if="create" @tap="scanQrcode">
 						<text class="cuIcon-scan mr-6"></text>
 						<text> {{ lang.scan }}</text>
 					</text>
@@ -86,6 +86,13 @@
 		methods: {
 			changeChain(type) {
 				this.form.chain = type
+			},
+			scanQrcode() {
+				uni.scanCode({
+					complete: (res) => {
+						this.form.address = res.result
+					}
+				})
 			},
 			save() {
 				const {
