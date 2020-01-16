@@ -37,12 +37,11 @@
 						<image :src="chains[tabChain].logo" mode="" style="width: 96rpx;height: 96rpx;"></image>
 						<view class="content" style="left: 100rpx;">
 							<view class="text-black">{{ wallets[address].name }}</view>
-							<view class="text-grey text-sm">{{ wallets[address].address && (wallets[address].address.substr(0, 12) + '...' + wallets[address].address.substr(-12, 12)) }}</view>
+							<view class="text-grey text-sm">{{ wallets[address].short || wallets[address].address }}</view>
 						</view>
 						<view class="action" style="text-align:right;width: 100%;">
-							<view class="cu-tag round bg-grey">
-								<text class="text-lg">{{ currentCurrency }} {{ (coins && coins[address] )|| '0' }}</text>
-							</view>
+							<view class="text-lg">{{ currentCurrency }}{{ (coins && coins[address] )|| '--' }}</view>
+							<view class="text-gray">{{ currentCurrency }}{{price.price ? (currentCurrency === '$' ? price.price : price.priceCNY) : '--' }}</view>
 						</view>
 					</view>
 					<PageEmpty v-if="chains[tabChain].wallets.length === 0" @tap="go('/pages/wallet/WalletCreate')"></PageEmpty>
@@ -63,12 +62,19 @@
 				tabChain: 'Cosmos',
 				price: {},
 				coins: {},
-				moneyTotal: '0.00'
+				moneyTotal: '--'
 			};
 		},
-		filters: {
-			addressShort(address) {
-				return (address.substr(0, 12) + '...' + address.substr(-12, 12))
+		watch: {
+			currentCurrency(val, old) {
+				if (val) {
+					this.initCoinPrice()
+				}
+			},
+			wallets(val, old) {
+				if (val) {
+					this.initCoinPrice()
+				}
 			}
 		},
 		computed: {
@@ -86,8 +92,8 @@
 			},
 			async initCoinPrice() {
 				this.loading = true
-				const coin = this.tabChain === 'Iris' ? 'irisnet' : 'cosmos'
-				const res = await this.$api('common').coinPrice(coin).catch(() => {this.loading = false})
+				const coin = this.tabChain === 'Iris' ? 'iris' : this.tabChain === 'Cosmos' ? 'atom' : this.tabChain === 'Kava' ? 'kava' : 'atom'
+				const res = await this.$api('common').coinPrice(coin)
 				console.log(res)
 				this.price = res
 				await this.initData()
@@ -101,8 +107,8 @@
 				this.moneyTotal = 0
 				for (const item of wallets) {
 				    const coins = await this.$api(version).bankAccount(item, lcd).catch(() => {this.loading = false})
-					obj[item] = (coins * price).toFixed(2)
-					this.moneyTotal += Number(obj[item])
+					obj[item] = (coins.total * price).toFixed(2)
+					this.moneyTotal = (Number(this.moneyTotal) + Number(obj[item])).toFixed(2)
 				}
 				this.coins = obj
 				this.loading = false

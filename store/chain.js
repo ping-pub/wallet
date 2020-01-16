@@ -49,6 +49,17 @@ const chainWalletStorage = (state) => {
 	uni.setStorageSync('walletList', state.walletList)
 }
 
+const walletInit = (state) => {
+	const wallets = state.walletList
+	for (const key in wallets) {
+		if (wallets[key].address) {
+			const address = wallets[key].address
+			wallets[key].short = address.substr(0, 12) + '...' + address.substr(-12, 12)
+		}
+	}
+	state.walletList = wallets
+}
+
 export default {
 	state: {
 		chainList,
@@ -65,6 +76,7 @@ export default {
 			if (walletLocal) {
 				state.walletList = walletLocal
 			}
+			walletInit(state)
 		},
 		// 添加新链
 		chainCreate(state, chain) {
@@ -99,6 +111,7 @@ export default {
 				state.chainList[form.chain].wallets = wallets
 			}
 			chainWalletStorage(state)
+			walletInit(state)
 		},
 		walletEdit(state, form) {
 			// 编辑重点是 对于改变链的判断
@@ -120,6 +133,7 @@ export default {
 			// 改变地址对应数据
 			state.walletList[form.address] = form
 			chainWalletStorage(state)
+			walletInit(state)
 		},
 		walletDelete(state, form) {
 			// 从链关联中剔除

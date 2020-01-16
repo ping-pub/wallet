@@ -9,6 +9,7 @@ const request = async (validatorAddr) => {
 	item.details = details
 	item.identity = identity
 	item.website = website
+	item.short = item.operator_address.substr(0, 12) + '...' + item.operator_address.substr(-12, 12)
 	return item
 }
 

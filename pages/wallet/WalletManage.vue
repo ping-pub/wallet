@@ -20,7 +20,7 @@
 					<view class="cu-item" v-for="(address, index) of item.wallets" :key="index" @tap="go('/pages/wallet/WalletCreate?address='+ address)">
 						<view class="content" style="left: 40rpx;">
 							<view class="text-black">{{ wallets[address].name }}</view>
-							<view class="text-gray">{{ address }}</view>
+							<view class="text-gray">{{ wallets[address].short }}</view>
 						</view>
 						<view class="action">
 							<text class="cuIcon-edit"></text>

@@ -7,7 +7,7 @@
 			<view class="bg-white" style="padding-top: 40rpx;padding-bottom: 20rpx;">
 				<view style="background-image: url(../../static/wallet/bg2.png);background-size: cover;padding: 40rpx 0 0;">
 					<view class="tc" style="margin-bottom: 10rpx;">
-						<text class="text-black" style="font-size: 20px;">$0.00</text>
+						<text class="text-black" style="font-size: 20px;">{{currentCurrency}}{{coins.total}}</text>
 					</view>
 					<view class="tc" @tap="go('/pages/wallet/WalletRecive?address=' + wallet.address)">
 						<text class="text-grey mr-6">{{ wallet.address && (wallet.address.substr(0, 12) + '...' + wallet.address.substr(-12, 12)) }}</text>
@@ -46,11 +46,11 @@
 			</view>
 			<view class="cu-list grid col-2">
 				<view class="cu-item">
-					<text style="color: #333333;font-size: 16px;">0</text>
+					<text style="color: #333333;font-size: 16px;">{{ coins.available }}</text>
 					<text>{{ lang.available }}</text>
 				</view>
 				<view class="cu-item">
-					<text style="color: #333333;font-size: 16px;">90,123,901,234.91</text>
+					<text style="color: #333333;font-size: 16px;">{{ coins.delegated }}</text>
 					<text>{{ lang.delegated }}</text>
 				</view>
 				<view class="cu-item">
@@ -73,7 +73,7 @@
 
 			<view class="page-space"></view>
 
-			<view class="" v-for="(item, index) of coins" :key="index">
+			<view class="" v-for="(item, index) of list" :key="index">
 				<view class="cu-bar bg-white">
 					<view class="action">
 						<text class="cuIcon-titles text-black"></text>
@@ -114,7 +114,8 @@
 					name: '',
 					address: ''
 				},
-				coins: []
+				list: [],
+				coins: {}
 			}
 		},
 		onLoad(options) {
