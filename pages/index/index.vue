@@ -92,9 +92,8 @@
 			},
 			async initCoinPrice() {
 				this.loading = true
-				const coin = this.tabChain === 'Iris' ? 'iris' : this.tabChain === 'Cosmos' ? 'atom' : this.tabChain === 'Kava' ? 'kava' : 'atom'
+				const coin = this.chains[this.tabChain].unit
 				const res = await this.$api('common').coinPrice(coin)
-				console.log(res)
 				this.price = res
 				await this.initData()
 			},
@@ -106,7 +105,9 @@
 				const price = this.currentCurrency === '$' ? this.price.price : this.price.priceCNY
 				this.moneyTotal = 0
 				for (const item of wallets) {
-				    const coins = await this.$api(version).bankAccount(item, lcd).catch(() => {this.loading = false})
+					const coins = await this.$api(version).bankAccount(item, lcd).catch(() => {
+						this.loading = false
+					})
 					obj[item] = (coins.total * price).toFixed(2)
 					this.moneyTotal = (Number(this.moneyTotal) + Number(obj[item])).toFixed(2)
 				}
