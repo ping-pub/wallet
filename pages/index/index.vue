@@ -10,6 +10,7 @@
 			</view>
 		</view>
 		<view slot="gBody">
+			<button type="primary" class="cu-btn bg-black" @tap="runBluetooth()">调试蓝牙</button>
 			<scroll-view scroll-x class="bg-white nav" scroll-with-animation>
 				<view @tap="changeTab(item)" v-for="(item, key) of chains" :key="key" v-if="Object.keys(item.wallets).length > 0"
 				 class="cu-item" :class="{ 'text-black cur': tabChain === item.name }">{{ item.name }}</view>
@@ -86,6 +87,41 @@
 			this.initCoinPrice()
 		},
 		methods: {
+			 runBluetooth() {
+				 // ArrayBuffer转16进度字符串示例
+				 function ab2hex(buffer) {
+				   const hexArr = Array.prototype.map.call(
+				     new Uint8Array(buffer),
+				     function (bit) {
+				       return ('00' + bit.toString(16)).slice(-2)
+				     }
+				   )
+				   return hexArr.join('')
+				 }
+				 uni.openBluetoothAdapter({
+				   success(res) {
+				     console.log(res)
+					 uni.startBluetoothDevicesDiscovery({
+					   success(result) {
+					     console.log(result)
+						 uni.onBluetoothDeviceFound(function (devices) {
+						   console.log('new device list has founded')
+						   console.log(devices)
+						   // console.log(ab2hex(devices[0].advertisData))
+						   const deviceId = devices.devices[0].deviceId
+						   uni.createBLEConnection({
+						     // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
+						     deviceId,
+						     success(ok) {
+						       console.log(ok)
+						     }
+						   })
+						 })
+					   }
+					 })
+				   }
+				 })
+			 },
 			changeTab(chain) {
 				this.tabChain = chain.name;
 				this.initCoinPrice()
