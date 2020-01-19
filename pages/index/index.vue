@@ -10,7 +10,9 @@
 			</view>
 		</view>
 		<view slot="gBody">
+			<!-- #ifdef APP-PLUS -->
 			<button type="primary" class="cu-btn bg-black" @tap="runBluetooth()">调试蓝牙</button>
+			<!-- #endif -->
 			<scroll-view scroll-x class="bg-white nav" scroll-with-animation>
 				<view @tap="changeTab(item)" v-for="(item, key) of chains" :key="key" v-if="Object.keys(item.wallets).length > 0"
 				 class="cu-item" :class="{ 'text-black cur': tabChain === item.name }">{{ item.name }}</view>

@@ -19,7 +19,7 @@
 				<view class="flex text-center">
 					<view class="cu-item flex-sub" :class="{ 'text-black cur': tab === 'Delegations' }" @tap="changeTab('Delegations')">{{ lang.tabDelegations }}</view>
 					<view class="cu-item flex-sub" :class="{ 'text-black cur': tab === 'Validators' }" @tap="changeTab('Validators')">{{ lang.tabValidators }}</view>
-					<view class="cu-item flex-sub" :class="{ 'text-black cur': tab === 'Calculator' }" @tap="changeTab('Calculator')">{{ lang.tabCalculator }}</view>
+					<!-- <view class="cu-item flex-sub" :class="{ 'text-black cur': tab === 'Calculator' }" @tap="changeTab('Calculator')">{{ lang.tabCalculator }}</view> -->
 				</view>
 			</scroll-view>
 

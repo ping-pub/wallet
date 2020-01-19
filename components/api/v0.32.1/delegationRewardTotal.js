@@ -2,8 +2,10 @@
 import http from '../interface'
 
 // 总收益
-const request = async (delegatorAddr) => {
-	const res = await http.get(`/distribution/${delegatorAddr}/rewards`)
+const request = async (delegatorAddr, lcd) => {
+	const res = await http.get(`/distribution/${delegatorAddr}/rewards`, {}, {
+		baseUrl: lcd
+	})
 	const result = res.data
 	const delegations = result.delegations || []
 	const total = result.total || []

@@ -10,6 +10,7 @@ const request = async (validatorAddr) => {
 	item.identity = identity
 	item.website = website
 	item.short = item.operator_address.substr(0, 12) + '...' + item.operator_address.substr(-12, 12)
+	item.tokens = Number(item.tokens).toFixed(2)
 	return item
 }
 

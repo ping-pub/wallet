@@ -2,24 +2,28 @@
 	<gracePage headerBG="#fff">
 		<PageTitle slot="gHeader" :title="lang.title" :loading="loading" :toast="toast" :msg="msg"></PageTitle>
 		<view slot="gBody">
-			<scroll-view scroll-x class="bg-white nav">
+			<!-- 			<scroll-view scroll-x class="bg-white nav">
 				<view class="flex text-center">
-					<view class="cu-item flex-sub" :class="{ 'text-black cur': tab === 'all' }" @tap="changeTab('all')">{{ lang.all }}</view>
-					<view class="cu-item flex-sub" :class="{ 'text-black cur': tab === 'out' }" @tap="changeTab('out')">{{ lang.out }}</view>
 					<view class="cu-item flex-sub" :class="{ 'text-black cur': tab === 'in' }" @tap="changeTab('in')">{{ lang.in }}</view>
+					<view class="cu-item flex-sub" :class="{ 'text-black cur': tab === 'out' }" @tap="changeTab('out')">{{ lang.out }}</view>
 					<view class="cu-item flex-sub" :class="{ 'text-black cur': tab === 'fail' }" @tap="changeTab('fail')">{{ lang.fail }}</view>
 				</view>
 			</scroll-view>
+			<view class="page-space"></view> -->
 
-			<view class="page-space"></view>
-			<view class="cu-bar bg-white">
-				<view class="action">
-					<text class="">1 Kava = $0.5</text>
-				</view>
-				<view class="action">
-					<view class="">12323 iaa</view>
+			<view class="" v-for="item of list.txs" :key="item.txhash">
+				<view class="cu-bar bg-white">
+					<view class="action">
+						{{ item.txhashShort }}
+					</view>
+					<view class="action">
+					</view>
 				</view>
 			</view>
+			<view class="" v-if="list.txs.length === 0" @tap="initData()">
+				<PageEmpty  style="margin-top: 100rpx;"></PageEmpty>
+			</view>
+			
 		</view>
 	</gracePage>
 </template>
@@ -32,9 +36,16 @@
 		mixins: [SwitchWalletMixin, BaseMixin],
 		data() {
 			return {
-				tab: 'all',
+				tab: 'in',
 				wallet: {},
-				list: []
+				list: {
+					total_count: 0,
+					count: 0,
+					page_number: 1,
+					page_total: 1,
+					limit: 30,
+					txs: []
+				}
 			}
 		},
 		computed: {
@@ -57,11 +68,13 @@
 				this.loading = true
 				const lcd = this.chains[this.wallet.chain].lcd
 				const version = this.chains[this.wallet.chain].version
-				const res = await this.$api(version).delegationTx(this.wallet.address, lcd).catch(() => {
+				const res = await this.$api(version).tx(this.wallet.address, lcd).catch(() => {
 					this.toastShow('Network Error.')
 					this.loading = false
 				})
-				this.list = res
+				if (res) {
+					this.list = res
+				}
 				this.loading = false
 			}
 		}

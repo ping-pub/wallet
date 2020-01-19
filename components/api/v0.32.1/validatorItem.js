@@ -9,6 +9,7 @@ const request = async (validatorAddr) => {
 	item.details = details
 	item.identity = identity
 	item.website = website
+	item.tokens = Number(item.tokens).toFixed(2)
 	return item
 }
 
