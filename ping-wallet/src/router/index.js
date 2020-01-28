@@ -1,33 +1,32 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import TabBar from '../components/base-tabbar'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    component: TabBar,
+    component: () => import(/* webpackChunkName: "home" */ '../components/base-tabbar'),
     children: [
       {
         path: '',
         name: 'WalletPortfolio',
-        component: () => import(/* webpackChunkName: "home" */ '../views/WalletPortfolio.vue')
+        component: () => import(/* webpackChunkName: "home" */ '../components/wallet-portfolio')
       },
       {
         path: 'staking',
         name: 'Staking',
-        component: () => import(/* webpackChunkName: "home" */ '../views/Staking.vue')
+        component: () => import(/* webpackChunkName: "home" */ '../components/staking')
       },
       {
-        path: 'governances',
+        path: 'governance-list',
         name: 'Governances',
-        component: () => import(/* webpackChunkName: "home" */ '../views/Governances.vue')
+        component: () => import(/* webpackChunkName: "home" */ '../components/governance-list')
       },
       {
         path: 'setting',
         name: 'Setting',
-        component: () => import(/* webpackChunkName: "home" */  '../views/Setting.vue')
+        component: () => import(/* webpackChunkName: "home" */  '../components/setting')
       },
     ]
   },
