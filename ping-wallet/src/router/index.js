@@ -32,14 +32,8 @@ const routes = [
     ]
   },
   {
-    path: '/wallets',
-    name: 'Wallets',
-    component: () => import('../views/Wallets.vue')
-  },
-  {
-    path: '/walletform',
-    name: 'WalletForm',
-    component: () => import('../views/WalletForm.vue')
+    path: '/:component',
+    component: () => import('../views/BasePage.vue')
   }
 ]
 

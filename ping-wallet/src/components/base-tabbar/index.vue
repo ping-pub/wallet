@@ -13,7 +13,7 @@
         <div
           v-if="$route.name === 'WalletPortfolio'"
           slot="right"
-          @click="() => { this.$router.push('/wallets') }"
+          @click="() => { this.$router.push('/wallet-list') }"
         >
           <van-icon name="add-o" color="#333" size="20" />
         </div>
@@ -23,7 +23,9 @@
     <!-- 钱包切换 -->
     <wallet-switch ref="wallet-switch"></wallet-switch>
 
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
 
     <!-- tabbar -->
     <div style="height: 50px;"></div>
