@@ -1,0 +1,141 @@
+<template>
+	<view class="web-view">
+		<web-view class="web-view" src="http://www.jalon888.com/webview.html" ref="webview" @pagestart="onPageStart" @onPostMessage="handlePostMessage"
+		 @pagefinish="onPageFinish" @error="onError" @receivedtitle="onReceivedTitle"></web-view>
+		 <view class="sendMessage">
+		 	<button type="primary" @click="sendMessageToWebview">点我给webview传参</button>
+		 </view>
+	</view>
+</template>
+
+<script>
+	var currentWebview;
+	export default {
+		data() {
+			return {
+				params: {},
+				url: 'http://www.jalon888.com/webview.html',
+				webviewStyles: {
+					progress: '#FFFFFF'
+				},
+				pagestart: '',
+				pagefinish: '',
+				error: '',
+				canGoBack: false,
+				canGoForward: false,
+				PageStart:false, // 记录网页请求的加载状态，true 加载成功 false 加载失败
+			};
+		},
+		onLoad() {
+			var pages = getCurrentPages();
+			var page = pages[pages.length - 1];
+			currentWebview = page.$getAppWebview();
+			console.log(currentWebview);
+		},
+		methods: {
+			sendMessageToWebview(){
+				if(!this.PageStart) {
+					uni.showModal({
+						title:"暴躁的提示",
+						content:"只有网页加载成功了才可以传参过去，不然无效哦。。"
+					})
+					return false;
+				}
+				/**
+				 * 下面的 jsfunction 代码你要自己在你的网页里面写一个方法 大致如下
+				 *  下面就是你基本的html知识了，我就不想说什么了，自己学。
+					window.jsfunction = function(data){
+						console.log('data', data);
+					}
+				 */
+				uni.showModal({
+					title: '你想干啥？',
+					content: '点下面的按钮说你想传参的类型是啥',
+					cancelText: '传字符串',
+					confirmText: '传参对象',
+					success: res => {
+						if(res.confirm){
+							this.$refs.webview.evalJs("jsfunction({'aaa':'bbb','ccc':'dddd'})");
+						}else{
+							// jsfunction 其实就是你自己在你的webview 里面写个方法。
+							this.$refs.webview.evalJs("jsfunction('我就是个参数啊')");
+						}
+					},
+					
+				});
+
+				
+			},
+			handlePostMessage: function(data) {
+				// 获取网页的参数
+				console.log("得到参数",data.detail);
+				//var plus = new WeexPlus(weex);
+				uni.showModal({
+					title:"我在UNI-APP里面接收到网页传参",
+					content: JSON.stringify(data.detail)
+				})
+			},
+			goBack: function() {
+				// 返回
+				var webview = weex.requireModule('webview');
+				webview.goBack(this.$refs.webview);
+			},
+			goForward: function() {
+				//前进
+				var webview = weex.requireModule('webview');
+				webview.goForward(this.$refs.webview);
+			},
+
+			onPageStart: function(e) {
+				console.log(e);
+				// 监听页面加载成功
+				this.PageStart = true;
+				// 其实页面也可以使用这个方法传参
+				//this.$refs.webview.evalJs("setLoginToken('我就是个参数啊')");
+
+			},
+			onPageFinish: function(e) {
+				this.pagefinish = e.url;
+				this.canGoBack = e.canGoBack;
+				this.canGoForward = e.canGoForward;
+				var tn = currentWebview.getStyle().titleNView;
+				tn.titleText = e.detail.title || '第三方网站';
+				currentWebview.setStyle({
+					titleNView: tn
+				});
+
+			},
+			onError: function(e) {
+				// 监听页面加载错误
+				this.error = url;
+			},
+			onReceivedTitle: function(e) {
+				if (e.title) {
+					var tn = currentWebview.getStyle().titleNView;
+					tn.titleText = e.detail.title || '第三方网站';
+					currentWebview.setStyle({
+						titleNView: tn
+					});
+				}
+			},
+			reloadWebviewUrl() {
+				// 刷新网页
+				var webview = weex.requireModule('webview');
+				webview.reload(this.$refs.webview);
+			}
+		}
+	};
+</script>
+
+<style>
+	.web-view {
+		flex: 1;
+		flex-direction: column;
+		background-color: #f5f5f5;
+	}
+	.sendMessage{
+		width: 750rpx;
+		position: fixed;
+		bottom: 0rpx;
+	}
+</style>

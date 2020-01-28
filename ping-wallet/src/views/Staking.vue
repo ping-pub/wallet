@@ -1,15 +1,5 @@
 <template>
   <div>
-    <van-sticky>
-      <van-nav-bar :title="$route.name">
-        <div slot="left">
-          <van-icon name="exchange" color="#333" size="20" style="margin-right: 5px;" />
-          <span>Name</span>
-        </div>
-        <div slot="right">提取收益</div>
-      </van-nav-bar>
-    </van-sticky>
-
     <van-tabs>
       <van-tab title="已委托">
         <van-cell-group title="总收益">
@@ -76,7 +66,7 @@
             />
           </van-cell>
         </van-cell-group>
-        
+
         <van-cell-group title="收益计算">
           <van-cell title="Name" label="cosmos23123...ajskdjas" center>
             <!-- 使用 right-icon 插槽来自定义右侧图标 -->
@@ -89,7 +79,7 @@
             />
           </van-cell>
         </van-cell-group>
-        </van-tab>
+      </van-tab>
     </van-tabs>
   </div>
 </template>

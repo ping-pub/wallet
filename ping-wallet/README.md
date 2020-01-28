@@ -15,5 +15,12 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# api
+
+## 问题点
+
+- 多版本兼容
+- 主域切换
+- 组件所需数据需要组装请求
+  - 首先罗列基础请求
+  - 再组装基础请求做业务请求

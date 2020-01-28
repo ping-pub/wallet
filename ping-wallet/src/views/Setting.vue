@@ -1,8 +1,5 @@
 <template>
   <div>
-    <van-sticky>
-    <van-nav-bar :title="$route.name" />
-    </van-sticky>
     <van-cell-group title="钱包">
       <van-cell icon="location-o" title="钱包管理" is-link />
       <van-cell icon="location-o" title="主链服务器" is-link />

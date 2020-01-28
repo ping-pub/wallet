@@ -1,14 +1,16 @@
 <template>
-	<view class="">
-		<view class="status_bar">
-		</view>
-		<web-view src="http://192.168.43.2:8080/#/"></web-view>
-	</view>
+	<web-view src="http://192.168.43.2:8080/#/" @message="handleMessage"></web-view>
 </template>
-
-<style>
-  .status_bar {
-      height: var(--status-bar-height);
-      width: 100%;
-  }
-</style>
+<script>
+	export default {
+		methods: {
+			handleMessage(evt) {
+				console.log('接收到的消息：' + JSON.stringify(evt.detail.data));
+				const app = uni.getSystemInfoSync()
+				console.log(app.statusBarHeight)
+				var currentWebview = this.$mp.page.$getAppWebview()
+				console.log(currentWebview)
+			}
+		}
+	}
+</script>

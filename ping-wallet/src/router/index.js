@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import TabBar from '../components/TabBar'
-import Home from '../views/Home.vue'
-import Staking from '../views/Staking.vue'
-import Goverance from '../views/Goverance.vue'
-import Setting from '../views/Setting.vue'
+import TabBar from '../components/base-tabbar'
 
 Vue.use(VueRouter)
 
@@ -15,25 +11,35 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'Ping Wallet',
-        component: Home
+        name: 'WalletPortfolio',
+        component: () => import(/* webpackChunkName: "home" */ '../views/WalletPortfolio.vue')
       },
       {
         path: 'staking',
-        name: '委托',
-        component: Staking
+        name: 'Staking',
+        component: () => import(/* webpackChunkName: "home" */ '../views/Staking.vue')
       },
       {
-        path: 'goverance',
-        name: '治理',
-        component: Goverance
+        path: 'governances',
+        name: 'Governances',
+        component: () => import(/* webpackChunkName: "home" */ '../views/Governances.vue')
       },
       {
         path: 'setting',
-        name: '设置',
-        component: Setting
-      }
+        name: 'Setting',
+        component: () => import(/* webpackChunkName: "home" */  '../views/Setting.vue')
+      },
     ]
+  },
+  {
+    path: '/wallets',
+    name: 'Wallets',
+    component: () => import('../views/Wallets.vue')
+  },
+  {
+    path: '/walletform',
+    name: 'WalletForm',
+    component: () => import('../views/WalletForm.vue')
   }
 ]
 
