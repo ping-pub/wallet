@@ -1,20 +1,20 @@
 <template>
   <div>
     <van-cell-group class="mb-10">
-      <van-field label="名称" placeholder="请输入" />
-      <van-field label="lcd" placeholder="请输入" rows="1" autosize type="textarea">
+      <van-field label="名称" placeholder="请输入" v-model="form.name"/>
+      <van-field label="lcd" placeholder="请输入" rows="1" autosize type="textarea" v-model="form.lcd">
         <van-icon name="orders-o" size="20" slot="button"></van-icon>
       </van-field>
     </van-cell-group>
     <van-cell title="内核版本">
       <div slot="label">
-        <van-radio-group v-model="radio">
+        <van-radio-group v-model="form.version">
           <van-cell-group>
-            <van-cell title="0.32.7" clickable @click="radio = '1'">
-              <van-radio slot="right-icon" name="1" checked-color="#333" />
+            <van-cell title="0.32.7" clickable @click="form.version = '0.32.7'">
+              <van-radio slot="right-icon" name="0.32.7" checked-color="#333" />
             </van-cell>
-            <van-cell title="0.32.1" clickable @click="radio = '2'">
-              <van-radio slot="right-icon" name="2" checked-color="#333" />
+            <van-cell title="0.32.1" clickable @click="form.version = '0.32.1'">
+              <van-radio slot="right-icon" name="0.32.1" checked-color="#333" />
             </van-cell>
           </van-cell-group>
         </van-radio-group>
@@ -27,14 +27,24 @@
 </template>
 
 <script>
+
+import baseMixin from '../../store/baseMixin'
+
 export default {
+  mixins: [baseMixin],
+  created() {
+    const { create, chain } = this.$route.query
+    if (chain && this.chainList[chain]) {
+      this.form = JSON.parse(JSON.stringify(this.chainList[chain]))
+    }
+  },
   data() {
     return {
-      radio: "1",
       form: {
         name: "",
         address: "",
-        chain: "Cosmos"
+        chain: "Cosmos",
+        version: '',
       },
       chains: [
         {

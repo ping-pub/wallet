@@ -11,11 +11,21 @@
       </van-row>
     </div>
     <van-cell
-      v-for="n in 10"
-      :key="n"
-      title="Name"
-      label="cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050"
+      v-for="(item, key) in walletList"
+      :key="key"
+      :title="item.name"
+      :label="item.address"
+      :to="`/wallet-form?address=${item.address}`"
+      center
       is-link
     />
   </van-cell-group>
 </template>
+
+<script>
+import baseMixin from "../../store/baseMixin";
+
+export default {
+  mixins: [baseMixin]
+};
+</script>

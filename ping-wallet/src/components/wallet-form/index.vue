@@ -1,8 +1,15 @@
 <template>
   <div>
     <van-cell-group class="mb-10">
-      <van-field label="名称" placeholder="请输入" />
-      <van-field label="地址" placeholder="请输入" rows="1" autosize type="textarea">
+      <van-field label="名称" placeholder="请输入" v-model="form.name" />
+      <van-field
+        label="地址"
+        placeholder="请输入"
+        rows="1"
+        autosize
+        type="textarea"
+        v-model="form.address"
+      >
         <van-icon name="scan" size="20" slot="button"></van-icon>
       </van-field>
     </van-cell-group>
@@ -29,7 +36,16 @@
 </template>
 
 <script>
+import baseMixin from "../../store/baseMixin";
+
 export default {
+  mixins: [baseMixin],
+  created() {
+    const { address, create } = this.$route.query;
+    if (address && this.walletList[address]) {
+      this.form = JSON.parse(JSON.stringify(this.walletList[address]));
+    }
+  },
   data() {
     return {
       form: {
