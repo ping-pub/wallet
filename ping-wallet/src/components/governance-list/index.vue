@@ -9,18 +9,52 @@
       style="margin-bottom: 5px;"
       @click="goItem"
     >
-      <div>内容</div>
-      <div slot="footer" style="text-align: right;">
-        <van-button size="small" type="primary">投票</van-button>
+      <div>
+        <van-grid slot="label" :border="false">
+        <van-grid-item
+          v-for="(item, index) of chains"
+          :key="index"
+          :text="item.text"
+          style="background: #333;"
+        >
+          <div slot="icon">
+            {{ item.rate }}
+          </div>
+        </van-grid-item>
+      </van-grid>
       </div>
+      <van-row  type="flex" align="center" slot="footer">
+        <span style="font-size: 12px;color: #999;">剩余时间：</span>
+        <van-count-down style="font-size: 12px;color: #999;" :time="time" format="DD 天 HH 时 mm 分 ss 秒" />
+      </van-row>
     </van-panel>
   </div>
 </template>
 
 <script>
 export default {
-  mounted() {
-    console.log(this, this.$router)
+  data() {
+    return {
+      time: 30 * 60 * 60 * 1000,
+      chains: [
+        {
+          text: 'Yes',
+          rate: '93%'
+        },
+        {
+          text: 'Yes',
+          rate: '93%'
+        },
+        {
+          text: 'Yes',
+          rate: '93%'
+        },
+        {
+          text: 'Yes',
+          rate: '93%'
+        },
+      ]
+    }
   },
   methods: {
     goItem() {

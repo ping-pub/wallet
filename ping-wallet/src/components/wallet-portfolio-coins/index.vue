@@ -1,6 +1,6 @@
 <template>
   <van-cell-group title="币种">
-    <van-cell to="/wallet-item?address=xxx" right-arrow center title="ATOM" is-link label="$7" v-for="n in 2" :key="n">
+    <van-cell  right-arrow center title="ATOM"  label="$7" v-for="n in 2" :key="n">
       <div slot="icon">
         <img
           src="/static/chains/cosmoshub.svg"
