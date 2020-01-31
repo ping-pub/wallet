@@ -4,6 +4,9 @@ var path = require('path');
 var app = express();
 var router = express.Router();
 var proxy = require('http-proxy-middleware');
+var compression = require('compression')
+
+app.use(compression())
 
 // 根据请求转发
 app.use('/api*', proxy({
