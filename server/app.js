@@ -10,7 +10,7 @@ app.use(compression())
 
 // 根据请求转发
 app.use('/api*', proxy({
-	target: 'https://stargate.cosmos.network',
+	target: 'https://lcd.nylira.net',
 	changeOrigin: true,
 	pathRewrite: {
 		['^/api']: ''
