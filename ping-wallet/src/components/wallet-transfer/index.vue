@@ -1,10 +1,6 @@
 <template>
   <div>
-    <van-cell
-      title="当前地址"
-      label="cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050"
-      value="DEMO"
-    ></van-cell>
+    <van-cell title="当前地址" :label="wallet.address" :value="wallet.name"></van-cell>
     <van-cell-group title="填写信息">
       <van-field placeholder="请输入" label="ATOM数量" type="number" />
       <van-field placeholder="请输入" label="收款地址" rows="1" autosize type="textarea">
@@ -18,3 +14,23 @@
     </div>
   </div>
 </template>
+
+<script>
+import baseMixin from "../../store/baseMixin";
+
+export default {
+  mixins: [baseMixin],
+  data() {
+    return {
+      wallet: {
+        name: "",
+        address: ""
+      }
+    };
+  },
+  created() {
+    const { address } = this.$route.query;
+    this.wallet = this.walletList[address];
+  },
+};
+</script>

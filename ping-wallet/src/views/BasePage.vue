@@ -1,15 +1,6 @@
 <template>
   <div>
     <base-topnav :title="titleObj[component] || title">
-      <!-- 钱包管理 -->
-      <van-icon
-        v-if="component === 'wallet-list'"
-        name="add-o"
-        size="20"
-        color="#333"
-        slot="right"
-        @click="() => { this.$router.push('/wallet-form') }"
-      />
     </base-topnav>
 
     <!-- 页面动态组件 -->

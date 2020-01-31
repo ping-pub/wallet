@@ -6,7 +6,7 @@
         <!-- 左侧 除了 setting 都有 -->
         <div v-if="$route.name !== 'Setting'" slot="left" @click="showSwitch">
           <van-icon name="exchange" color="#333" size="20" style="margin-right: 5px;" />
-          <span>Name</span>
+          <span>{{ currentWallet.name }}</span>
         </div>
 
         <!-- 右侧 每个都不一样-->
@@ -40,7 +40,10 @@
 
 
 <script>
+import baseMixin from "../../store/baseMixin";
+
 export default {
+  mixins: [baseMixin],
   data() {
     return {
       titles: {

@@ -14,7 +14,7 @@ const walletList = {
 const chainList = {
   Cosmos: {
     "name": "Cosmos",
-    "logo": "/static/wallet/cosmoshub.svg",
+    "logo": "/static/chains/cosmoshub.svg",
     "version": "0.32.7",
     "lcd": "https://lcd.nylira.net",
     "unit": "ATOM",
@@ -24,7 +24,7 @@ const chainList = {
   },
   Kava: {
     "name": "Kava",
-    "logo": "/static/wallet/kava.svg",
+    "logo": "/static/chains/kava.svg",
     "version": "0.32.7",
     "lcd": "https://kava-relay.01node.com",
     "unit": "KAVA",
@@ -32,7 +32,7 @@ const chainList = {
   },
   Iris: {
     "name": "Iris",
-    "logo": "/static/wallet/irishub.svg",
+    "logo": "/static/chains/irishub.svg",
     "version": "0.32.1",
     "lcd": "https://rpc.irisnet.org",
     "unit": "IRIS",
@@ -44,11 +44,23 @@ const chainList = {
 
 export default {
   state: {
+    currentWallet: {},
+    currentChain: {},
     walletList,
     chainList,
   },
   mutations: {
-    walletListSave() {}
+    initWallet(state) {
+      state.currentWallet = walletList['cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050']
+      state.currentChain = chainList['Cosmos']
+    },
+    walletListSave() {},
+    currentWalletSwitch(state, item) {
+      state.currentWallet = item
+    },
+    currentChainSwitch(state, item) {
+      state.currentChain = item
+    },
   },
   actions: {
   },
