@@ -1,6 +1,6 @@
 <template>
   <van-cell-group title="币种">
-    <div style="padding: 20px 0;" v-if="coins.length === 0">
+    <div style="padding: 10px 0;" v-if="coins.length === 0">
       <van-skeleton :row="2" avatar />
     </div>
     <van-cell
