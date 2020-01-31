@@ -16,7 +16,7 @@ app.use('/api*', proxy({
 		['^/api']: ''
 	},
 	router: function(req) {
-		return req.headers.server;
+		return req.headers.server || 'https://lcd.nylira.net';
 	}
 }))
 
