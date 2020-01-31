@@ -42,17 +42,17 @@ export default {
     next();
   },
   components: {
-    "wallet-list": () => import("../components/wallet-list"),
-    "wallet-form": () => import("../components/wallet-form"),
-    "wallet-item": () => import("../components/wallet-item"),
-    "wallet-receive": () => import("../components/wallet-receive"),
-    "wallet-transfer": () => import("../components/wallet-transfer"),
-    "wallet-tx": () => import("../components/wallet-tx"),
-    "governance-item": () => import("../components/governance-item"),
-    "setting-currency": () => import("../components/setting-currency"),
-    "setting-chains": () => import("../components/setting-chains"),
-    "setting-chains-form": () => import("../components/setting-chains-form"),
-    "setting-lanaguage": () => import("../components/setting-lanaguage")
+    "wallet-list": () => import(/* webpackChunkName: "page" */ "../components/wallet-list"),
+    "wallet-form": () => import(/* webpackChunkName: "page" */ "../components/wallet-form"),
+    "wallet-item": () => import(/* webpackChunkName: "page" */ "../components/wallet-item"),
+    "wallet-receive": () => import(/* webpackChunkName: "page" */ "../components/wallet-receive"),
+    "wallet-transfer": () => import(/* webpackChunkName: "page" */ "../components/wallet-transfer"),
+    "wallet-tx": () => import(/* webpackChunkName: "page" */ "../components/wallet-tx"),
+    "governance-item": () => import(/* webpackChunkName: "page" */ "../components/governance-item"),
+    "setting-currency": () => import(/* webpackChunkName: "page" */ "../components/setting-currency"),
+    "setting-chains": () => import(/* webpackChunkName: "page" */ "../components/setting-chains"),
+    "setting-chains-form": () => import(/* webpackChunkName: "page" */ "../components/setting-chains-form"),
+    "setting-lanaguage": () => import(/* webpackChunkName: "page" */ "../components/setting-lanaguage")
   }
 };
 </script>
