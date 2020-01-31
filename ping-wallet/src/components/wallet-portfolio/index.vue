@@ -3,13 +3,27 @@
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh" style="overflow:visible;">
       <wallet-portfolio-card />
       <wallet-portfolio-btns />
-      <wallet-portfolio-coins />
+      <wallet-portfolio-coins :coins="coins"/>
     </van-pull-refresh>
   </div>
 </template>
 
 <script>
+import baseMixin from '../../store/baseMixin'
+import mixinData from './mixinData'
+
 export default {
+  mixins: [baseMixin, mixinData],
+  created() {
+    this.init()
+  },
+  // watch: {
+  //   currentWallet(val, old) {
+  //     if (val) {
+  //       this.init()
+  //     }
+  //   }
+  // },
   components: {
     "wallet-portfolio-btns": () =>
       import(/* webpackChunkName: "home" */ "../wallet-portfolio-btns"),
@@ -20,6 +34,7 @@ export default {
   },
   data() {
     return {
+      coins: [],
       count: 0,
       isLoading: false
     };

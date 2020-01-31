@@ -1,17 +1,48 @@
 <template>
   <van-cell-group title="币种">
-    <van-cell  right-arrow center title="ATOM"  label="$7" v-for="n in 2" :key="n">
+    <div style="padding: 20px 0;" v-if="coins.length === 0">
+      <van-skeleton :row="2" avatar />
+    </div>
+    <van-cell
+      right-arrow
+      center
+      :title="item.denom"
+      :label="item.price || '--'"
+      v-for="(item, index) in coins"
+      :key="index"
+    >
       <div slot="icon">
-        <img
-          src="/static/chains/cosmoshub.svg"
-          style="width: 40px;height: 40px;margin-right:10px;"
-          alt
+        <van-image
+          :src="item.logo || '/static/chains/cosmoshub.svg'"
+          width="40"
+          height="40"
+          style="margin-right: 10px;"
         />
       </div>
       <div>
-        <div>$1239123123</div>
-        <div>123123</div>
+        <div>{{ item.value || '--' }}</div>
+        <div>{{ item.amount }}</div>
       </div>
     </van-cell>
   </van-cell-group>
 </template>
+
+<script>
+export default {
+  props: {
+    coins: {
+      default() {
+        return [
+          // {
+          //   logo: "",
+          //   denom: "",
+          //   price: "",
+          //   value: "",
+          //   amount: ""
+          // }
+        ];
+      }
+    }
+  }
+};
+</script>

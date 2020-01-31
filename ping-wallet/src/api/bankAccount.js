@@ -15,5 +15,9 @@ const request = async (address, lcd) => {
 	const coinNum = coins[0].amount / numLong
 	return coinNum
 }
+// 分为2个步骤  1. 传参进来 判断版本 选择实现  2. 获取结果格式化后返回 统一处理
+
+// 所谓继承就是 直接调用子方法可以获取父类的内容
+function fetchConfig() {}
 
 export default request

@@ -4,6 +4,17 @@ module.exports = {
   },
   outputDir: '../server/h5',
   devServer: {
+    proxy: {
+      '/api': {
+        target: 'https://lcd.nylira.net',
+        changeOrigin: true,
+        pathRewrite: { ['^/api']: '' },
+        router: function (req) {
+          console.log(req.headers.server)
+          return req.headers.server;
+        }
+      },
+    }
   },
   pluginOptions: {
     externals: {
