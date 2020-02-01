@@ -44,7 +44,8 @@ import mixinData from "./mixinData";
 
 export default {
   mixins: [mixinData],
-  created() {
+  activated() {
+    this.item = {}
     const { id } = this.$route.query
     this.item.id = id
     this.init();

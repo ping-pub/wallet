@@ -1,5 +1,5 @@
 <template>
-	<web-view src="http://192.168.43.2:8080/#/" @message="handleMessage"></web-view>
+	<web-view src="http://192.168.0.105:8080/#/" @message="handleMessage"></web-view>
 </template>
 <script>
 	export default {

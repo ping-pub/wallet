@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-tabs color="#333">
+    <van-tabs color="#333" sticky>
       <van-tab title="已委托">
         <van-cell-group title="总收益">
           <van-cell title="委托总数" center>
