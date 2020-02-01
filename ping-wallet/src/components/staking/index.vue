@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-tabs>
+    <van-tabs color="#333">
       <van-tab title="已委托">
         <van-cell-group title="总收益">
           <van-cell title="委托总数" center>
@@ -30,7 +30,13 @@
           <van-cell title="Ping.pub" value="2%" center is-link></van-cell>
         </van-cell-group>
         <van-cell-group title="全部">
+          <div v-if="list.length === 0">
+            <div style="padding: 10px 0;" class="van-hairline--bottom" v-for="n in 10" :key="n">
+              <van-skeleton :row="1" avatar />
+            </div>
+          </div>
           <van-cell
+            class="staking-cell"
             v-for="(item, index) of list"
             :key="item.operator_address"
             :title="item.moniker"
@@ -74,3 +80,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.staking-cell .van-cell__value {
+  flex: none;
+}
+</style>
