@@ -27,22 +27,18 @@
       </van-tab>
       <van-tab title="验证人">
         <van-cell-group title="推荐">
-          <van-cell title="Ping.pub" value="2%" center is-link></van-cell>
+          <van-cell title="Genesis Lab" value="Rate 7%" center is-link></van-cell>
         </van-cell-group>
         <van-cell-group title="全部">
           <van-cell
-            v-for="(item, index) of list"
+            v-for="item of list"
             :key="item.operator_address"
             :title="item.moniker"
             :value="item.rate"
             :to="`staking-item?validator=${item.operator_address}`"
             center
             is-link
-          >
-            <div slot="icon">
-              <van-tag plain type="primary" style="margin-right: 10px;">{{ index + 1}}</van-tag>
-            </div>
-          </van-cell>
+          ></van-cell>
         </van-cell-group>
       </van-tab>
       <van-tab title="计算器">

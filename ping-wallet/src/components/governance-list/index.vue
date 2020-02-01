@@ -11,7 +11,7 @@
       v-for="(item, index) in list"
       :key="index"
       style="margin-bottom: 10px;"
-      @click="goItem"
+      @click="goItem(item)"
     >
       <div>
         <van-grid slot="label" :border="false">
@@ -57,8 +57,8 @@ export default {
     };
   },
   methods: {
-    goItem() {
-      this.$router.push("/governance-item");
+    goItem(item) {
+      this.$router.push("/governance-item?id=" + item.id);
     }
   }
 };

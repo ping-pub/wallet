@@ -1,19 +1,33 @@
 <template>
   <div>
-    <van-panel title="标题111" desc="描述信息" status="状态" style="margin-bottom: 5px;">
+    <div v-if="!item.title">
+      <div class="skeleton-item">
+        <van-skeleton :row="4" />
+      </div>
+    </div>
+    <van-panel
+      v-if="item.title"
+      :title="item.title"
+      :desc="item.description"
+    >
       <div>
         <van-grid slot="label" :border="false">
           <van-grid-item
-            v-for="(item, index) of chains"
-            :key="index"
-            :text="item.text"
+            v-for="(el, key) of item.rate"
+            :key="key"
+            :text="key"
             style="background: #333;"
           >
-            <div slot="icon">{{ item.rate }}</div>
+            <div slot="icon">{{ el }}</div>
           </van-grid-item>
         </van-grid>
       </div>
       <van-row type="flex" align="center" slot="footer">
+        <van-tag
+          mark
+          :type="item.proposal_status === 'Rejected' ? 'danger' : item.proposal_status === 'Passed' ? 'success' : ''"
+        >{{item.proposal_status}}</van-tag>
+        <span class="flex-1"></span>
         <span style="font-size: 12px;color: #999;">剩余时间：</span>
         <van-count-down
           style="font-size: 12px;color: #999;"
@@ -22,47 +36,32 @@
         />
       </van-row>
     </van-panel>
-    <van-submit-bar
-      safe-area-inset-bottom
-      text-align="left"
-      :price="3050"
-      button-type="primary"
-      label="费用："
-      button-text="投票"
-    />
   </div>
 </template>
 
-
 <script>
+import mixinData from "./mixinData";
+
 export default {
+  mixins: [mixinData],
+  created() {
+    const { id } = this.$route.query
+    this.item.id = id
+    this.init();
+  },
   data() {
     return {
-      time: 30 * 60 * 60 * 1000,
-      chains: [
-        {
-          text: 'Yes',
-          rate: '93%'
-        },
-        {
-          text: 'Yes',
-          rate: '93%'
-        },
-        {
-          text: 'Yes',
-          rate: '93%'
-        },
-        {
-          text: 'Yes',
-          rate: '93%'
-        },
-      ]
-    }
-  },
-  methods: {
-    goItem() {
-      this.$router.push("/governance-item");
-    }
+      item: {},
+      time: 30 * 60 * 60 * 1000
+    };
   }
 };
 </script>
+
+<style scoped>
+.skeleton-item {
+  padding: 20px 0;
+  background: #fff;
+  margin-bottom: 10px;
+}
+</style>
