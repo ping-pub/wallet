@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.a258b5e52bdebc4f07d705969b5d1e08.js"
+  "/precache-manifest.4767f2b5c51b3df9115abd3f3a47765b.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "ping-wallet"});
