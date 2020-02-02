@@ -14,16 +14,13 @@ import mixinData from './mixinData'
 
 export default {
   mixins: [baseMixin, mixinData],
-  created() {
-    this.init()
+  watch: {
+    currentWallet(val, old) {
+      if (val) {
+        this.init()
+      }
+    }
   },
-  // watch: {
-  //   currentWallet(val, old) {
-  //     if (val) {
-  //       this.init()
-  //     }
-  //   }
-  // },
   components: {
     "wallet-portfolio-btns": () =>
       import(/* webpackChunkName: "home" */ "../wallet-portfolio-btns"),

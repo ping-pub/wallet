@@ -19,7 +19,7 @@
     </van-cell-group>
 
     <div class="m-20">
-      <van-button color="#333" block @click="go('/wallet-form')">添加</van-button>
+      <van-button color="#333" block @click="go('/wallet-form?create=1')">添加</van-button>
     </div>
   </div>
 </template>

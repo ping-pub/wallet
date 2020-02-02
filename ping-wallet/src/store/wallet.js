@@ -1,3 +1,10 @@
+import localforage from 'localforage'
+
+const localSave = async (state) => {
+  await localforage.setItem('walletList', state.walletList)
+  await localforage.setItem('chainList', state.chainList)
+}
+
 const walletList = {
   'cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050': {
     chain: 'Cosmos',
@@ -50,11 +57,38 @@ export default {
     chainList,
   },
   mutations: {
-    initWallet(state) {
-      state.currentWallet = walletList['cosmos1jxv0u20scum4trha72c7ltfgfqef6nscj25050']
-      state.currentChain = chainList['Cosmos']
+    async initWallet(state) {
+      state.walletList = await localforage.getItem('walletList') || walletList
+      state.chainList = await localforage.getItem('chainList') || chainList
+      const walletObj = state.walletList
+      const key = Object.keys(walletObj)[0]
+      const chain = walletObj[key].chain
+      state.currentWallet = walletObj[key]
+      state.currentChain = state.chainList[chain]
     },
-    walletListSave() {},
+    walletListSave(state, item) {
+      state.walletList[item.address] = item
+      // chianList - wallets 维护
+      const wallets = state.chainList[item.chain].wallets
+      const isExit = wallets.find((one) => {
+        return item.address === one
+      })
+      // 不存在则添加
+      if (!isExit) {
+        wallets.push(item.address)
+      }
+      state.chainList[item.chain].wallets = wallets
+      // 更新本地存储 walletList chainList
+      localSave(state)
+    },
+    walletListDel(state, item) {
+      delete state.walletList[item.address]
+      const wallets = state.chainList[item.chain].wallets
+      state.chainList[item.chain].wallets = wallets.filter((one) => {
+        return one !== item.address
+      })
+      localSave(state)
+    },
     currentWalletSwitch(state, item) {
       state.currentWallet = item
     },

@@ -28,6 +28,7 @@ document.addEventListener('UniAppJSBridgeReady', function () {
   });
 });
 
+store.commit('initSetting')
 store.commit('initWallet')
 
 new Vue({
