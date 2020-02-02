@@ -6,6 +6,12 @@ export default {
     currentWallet() {
       return this.$store.state.wallet.currentWallet
     },
+    currentCurrency() {
+      return this.$store.state.setting.currentCurrency
+    },
+    currentLanaguage() {
+      return this.$store.state.setting.currentLanaguage
+    },
     chainList() {
       return this.$store.state.wallet.chainList
     },
