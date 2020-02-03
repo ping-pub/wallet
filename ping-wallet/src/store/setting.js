@@ -11,7 +11,11 @@ export default {
   },
   mutations: {
     async initSetting(state) {
-      state = await localforage.getItem('setting') || state
+      const setting = await localforage.getItem('setting')
+      if (setting) {
+        state.currentCurrency = setting.currentCurrency
+        state.currentLanaguage = setting.currentLanaguage
+      }
     },
     currentCurrencySwitch(state, item) {
       state.currentCurrency = item
