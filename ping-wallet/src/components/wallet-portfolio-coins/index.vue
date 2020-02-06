@@ -13,7 +13,7 @@
     >
       <div slot="icon">
         <van-image
-          :src="item.logo || '/static/chains/cosmoshub.svg'"
+          :src="logo"
           width="40"
           height="40"
           style="margin-right: 10px;"
@@ -30,6 +30,9 @@
 <script>
 export default {
   props: {
+    logo: {
+      default: '/static/chains/cosmoshub.svg'
+    },
     coins: {
       default() {
         return [

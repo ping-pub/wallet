@@ -1,9 +1,9 @@
 <template>
   <div>
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh" style="overflow:visible;">
-      <wallet-portfolio-card :total="priceTotal" :loading="loading"/>
+      <wallet-portfolio-card :total="priceTotal" :loading="loading" :logo="currentChain.logo"/>
       <wallet-portfolio-btns />
-      <wallet-portfolio-coins :coins="coins"/>
+      <wallet-portfolio-coins :coins="coins" :logo="currentChain.logo"/>
     </van-pull-refresh>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       coins: [],
-      priceTotal: 0,
+      priceTotal: '--',
       loading: false,
       count: 0,
       isLoading: false

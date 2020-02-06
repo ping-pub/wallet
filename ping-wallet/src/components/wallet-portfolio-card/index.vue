@@ -3,7 +3,7 @@
     <van-cell center style="padding: 20px;background: #333;color: #fff;">
       <div>
         <van-image
-          :src="'/static/chains/cosmoshub.svg'"
+          :src="logo"
           width="40"
           height="40"
         />
@@ -25,6 +25,9 @@ import baseMixin from "../../store/baseMixin";
 export default {
   mixins: [baseMixin],
   props: {
+    logo: {
+      default: '/static/chains/cosmoshub.svg'
+    },
     loading: {
       default: false
     },
