@@ -9,8 +9,8 @@
         />
       </div>
       <div slot="title">
-        <!-- <van-skeleton :row="1" style="padding:0;" /> -->
-        <div style="font-size: 20px;">$1239231.123</div>
+        <van-skeleton v-if="loading" :row="1" style="padding:0;" />
+        <div v-else style="font-size: 20px;">{{ total }}</div>
       </div>
       <div slot="label">
         <div style="color: #999;">{{ currentWallet.address | shortAddress }}</div>
@@ -23,6 +23,14 @@
 import baseMixin from "../../store/baseMixin";
 
 export default {
-  mixins: [baseMixin]
+  mixins: [baseMixin],
+  props: {
+    loading: {
+      default: false
+    },
+    total: {
+      default: '--'
+    }
+  }
 };
 </script>

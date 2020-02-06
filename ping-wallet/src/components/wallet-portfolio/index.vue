@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh" style="overflow:visible;">
-      <wallet-portfolio-card />
+      <wallet-portfolio-card :total="priceTotal" :loading="loading"/>
       <wallet-portfolio-btns />
       <wallet-portfolio-coins :coins="coins"/>
     </van-pull-refresh>
@@ -17,6 +17,7 @@ export default {
   watch: {
     currentWallet(val, old) {
       if (val) {
+        this.coins = []
         this.init()
       }
     }
@@ -32,6 +33,8 @@ export default {
   data() {
     return {
       coins: [],
+      priceTotal: 0,
+      loading: false,
       count: 0,
       isLoading: false
     };

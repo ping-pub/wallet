@@ -6,8 +6,8 @@
     <van-cell
       right-arrow
       center
-      :title="item.denom"
-      :label="item.price || '--'"
+      :title="item.unit"
+      :label="item.amountNum || '--'"
       v-for="(item, index) in coins"
       :key="index"
     >
@@ -20,8 +20,8 @@
         />
       </div>
       <div>
-        <div>{{ item.value || '--' }}</div>
-        <div>{{ item.amount }}</div>
+        <div style="font-size: 16px;color: #333;">{{ item.amountPrice || '--' }}</div>
+        <div style="font-size: 12px;">{{ item.price }}</div>
       </div>
     </van-cell>
   </van-cell-group>

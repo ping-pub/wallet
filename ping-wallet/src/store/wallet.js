@@ -91,6 +91,7 @@ export default {
     },
     currentWalletSwitch(state, item) {
       state.currentWallet = item
+      state.currentChain = state.chainList[item.chain]
     },
     currentChainSwitch(state, item) {
       state.currentChain = item

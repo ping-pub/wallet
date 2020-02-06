@@ -3,6 +3,7 @@ import App from './App.vue'
 // import './registerServiceWorker'
 import router from './router'
 import store from './store'
+import api from './api'
 import Vant, { Toast } from 'vant';
 import 'vant/lib/index.css';
 import './components'
@@ -11,6 +12,7 @@ Vue.use(Vant);
 
 Vue.config.productionTip = false
 Vue.prototype.$Toast = Toast
+Vue.prototype.$api = api
 
 // 可以由 uniapp 植入，彻底分离开 app 和 h5 代码
 document.addEventListener('UniAppJSBridgeReady', function () {

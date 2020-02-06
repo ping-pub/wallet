@@ -1,11 +1,13 @@
-import axios from 'axios'
-
 export default {
   methods: {
     async init() {
+      this.loading = true
       const address = this.currentWallet.address
-      const res = await axios.get(`/api/auth/accounts/${address}`)
-      this.coins = res.data.result.value.coins
+      const api = this.$api().authAccounts
+      const res = await api(address)
+      this.coins = res.coins
+      this.priceTotal = res.priceTotal
+      this.loading = false
     }
   }
 }

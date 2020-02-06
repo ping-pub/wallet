@@ -1,18 +1,25 @@
-// https://api.schail.com/v1/pc/ticker/introduce?tickerId=cosmos
-import http from '../interface'
+// https://min-api.cryptocompare.com/documentation
+// https://min-api.cryptocompare.com/data/price?fsym=ATOM&tsyms=USD,CNY&api_key=3993b9faad427d8df68c267d3e8664cd8923e6c590a4888023a14bd581ff1859
+import http from '../axios'
 
 // 币价
-const request = async (chain) => {
-	let [coin] = await Promise.all([
-		http.get(`/pc/ticker/introduce?tickerId=${chain}`, {}, {
-			baseUrl: 'https://api.schail.com/v1'
-		})
-	])
-	const { price, CNY_RATE } = coin.data.data
-	return {
-		price: price.toFixed(2),
-		priceCNY: (price * CNY_RATE).toFixed(2)
-	}
+const request = async (unit) => {
+  const coin = await http.get(`/data/price`, {
+    params: {
+      fsym: unit || 'ATOM',
+      tsyms: 'USD,CNY',
+      api_key: '3993b9faad427d8df68c267d3e8664cd8923e6c590a4888023a14bd581ff1859'
+    },
+    headers: {
+      server: 'https://min-api.cryptocompare.com',
+      serverCustom: true
+    }
+  })
+  const { USD, CNY } = coin.data
+  return {
+    USD,
+    CNY,
+  }
 }
 
 export default request
