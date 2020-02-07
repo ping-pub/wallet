@@ -23,6 +23,7 @@ Locale.add(messages);
 
 // zh-CN  en-US
 Locale.use('zh-CN', enUS);
+console.log(Locale)
 
 Vue.config.productionTip = false
 Vue.prototype.$Toast = Toast
