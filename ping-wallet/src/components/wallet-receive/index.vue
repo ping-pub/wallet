@@ -36,7 +36,7 @@ export default {
       }
     };
   },
-  created() {
+  activated() {
     const { address } = this.$route.query;
     this.wallet = this.walletList[address];
     if (this.wallet) {

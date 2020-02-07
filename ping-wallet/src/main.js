@@ -20,14 +20,8 @@ Locale.use('zh-CN', enUS);
 // 准备翻译的语言环境信息
 const messages = {
   en: {
-    message: {
-      hello: 'hello world'
-    }
   },
   cn: {
-    message: {
-      hello: '你好'
-    }
   }
 }
 
