@@ -2,11 +2,7 @@
   <van-cell-group>
     <van-cell center style="padding: 20px;background: #333;color: #fff;">
       <div>
-        <van-image
-          :src="logo"
-          width="40"
-          height="40"
-        />
+        <van-image :src="logo" width="40" height="40" />
       </div>
       <div slot="title">
         <van-skeleton v-if="loading" :row="1" style="padding:0;" />
@@ -26,13 +22,13 @@ export default {
   mixins: [baseMixin],
   props: {
     logo: {
-      default: '/static/chains/cosmoshub.svg'
+      default: "/static/chains/cosmoshub.svg"
     },
     loading: {
       default: false
     },
     total: {
-      default: '--'
+      default: "--"
     }
   }
 };

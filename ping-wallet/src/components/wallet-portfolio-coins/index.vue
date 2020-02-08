@@ -1,5 +1,5 @@
 <template>
-  <van-cell-group title="币种">
+  <van-cell-group :title="$t('message.coins')">
     <div style="padding: 10px 0;" v-if="coins.length === 0">
       <van-skeleton :row="2" avatar />
     </div>
@@ -12,12 +12,7 @@
       :key="index"
     >
       <div slot="icon">
-        <van-image
-          :src="logo"
-          width="40"
-          height="40"
-          style="margin-right: 10px;"
-        />
+        <van-image :src="logo" width="40" height="40" style="margin-right: 10px;" />
       </div>
       <div>
         <div style="font-size: 16px;color: #333;">{{ item.amountPrice || '--' }}</div>
@@ -31,19 +26,26 @@
 export default {
   props: {
     logo: {
-      default: '/static/chains/cosmoshub.svg'
+      default: "/static/chains/cosmoshub.svg"
     },
     coins: {
       default() {
-        return [
-          // {
-          //   logo: "",
-          //   denom: "",
-          //   price: "",
-          //   value: "",
-          //   amount: ""
-          // }
-        ];
+        return [];
+      }
+    }
+  },
+  i18n: {
+    // `i18n` 选项，为组件设置语言环境信息
+    messages: {
+      en: {
+        message: {
+          coins: "Coins",
+        }
+      },
+      cn: {
+        message: {
+          coins: "币种",
+        }
       }
     }
   }
