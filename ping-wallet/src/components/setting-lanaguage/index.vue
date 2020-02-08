@@ -29,6 +29,7 @@ export default {
   methods: {
     save() {
       this.$store.commit("currentLanaguageSwitch", this.radio);
+      this.$i18n.locale = this.radio
       this.$Toast("保存成功");
       this.$router.back();
     }

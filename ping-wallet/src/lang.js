@@ -20,4 +20,10 @@ const i18n = new VueI18n({
   messages, // 设置地区信息
 })
 
+localforage.getItem('setting').then((setting) => {
+  if (setting.currentLanaguage) {
+    i18n.locale = setting.currentLanaguage
+  }
+})
+
 export default i18n
