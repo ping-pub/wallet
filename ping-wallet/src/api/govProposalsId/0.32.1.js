@@ -9,7 +9,6 @@ const request = async () => {
     const {
       title,
       tally_result,
-      proposal_status,
       description
     } = item.value && item.value.BasicProposal || {}
     item.title = title
@@ -32,7 +31,6 @@ const request = async () => {
       abstain: item.abstain,
       no_with_veto: item.no_with_veto
     }
-    item.proposal_status = proposal_status
   }
   return result
 }

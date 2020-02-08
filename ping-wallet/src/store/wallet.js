@@ -60,11 +60,19 @@ export default {
     async initWallet(state) {
       state.walletList = await localforage.getItem('walletList') || walletList
       state.chainList = await localforage.getItem('chainList') || chainList
+      // 获取第一个钱包
       const walletObj = state.walletList
       const key = Object.keys(walletObj)[0]
-      const chain = walletObj[key].chain
-      state.currentWallet = walletObj[key]
-      state.currentChain = state.chainList[chain]
+      let currentWallet = walletObj[key]
+      // 获取session 存储
+      let current = window.sessionStorage.getItem('current')
+      if (current) {
+        current = JSON.parse(current)
+        currentWallet = current.currentWallet
+      }
+      const chain = currentWallet.chain
+      state.currentWallet = currentWallet
+      state.currentChain = state.chainList[chain] || current.currentChain
     },
     walletListSave(state, item) {
       state.walletList[item.address] = item
@@ -82,6 +90,8 @@ export default {
       localSave(state)
     },
     walletListDel(state, item) {
+      // 禁止删除当前选中的钱包
+      if (item.address === state.currentWallet.address) return
       delete state.walletList[item.address]
       const wallets = state.chainList[item.chain].wallets
       state.chainList[item.chain].wallets = wallets.filter((one) => {
@@ -92,6 +102,11 @@ export default {
     currentWalletSwitch(state, item) {
       state.currentWallet = item
       state.currentChain = state.chainList[item.chain]
+      // 存储 session
+      window.sessionStorage.setItem('current', JSON.stringify({
+        currentWallet: state.currentWallet,
+        currentChain: state.currentChain
+      }))
     },
     currentChainSwitch(state, item) {
       state.currentChain = item

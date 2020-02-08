@@ -1,17 +1,14 @@
 import axios from '../axios'
 
-// 钱包账户情况
 const request = async () => {
   const res = await axios.get(`/gov/proposals`)
-  const result = res.data
+  const result = res.data.result
   for (const item of result) {
     // 标题 描述
     const {
       title,
-      tally_result,
-      proposal_status,
       description
-    } = item.value && item.value.BasicProposal || {}
+    } = item.content && item.content.value || {}
     item.title = title
     item.description = description && (description.substr(0, 80) + '...')
     // 投票结果比例
@@ -20,7 +17,7 @@ const request = async () => {
       no,
       abstain,
       no_with_veto
-    } = tally_result
+    } = item.final_tally_result
     const total = Number(yes) + Number(no) + Number(abstain) + Number(no_with_veto)
     item.yes = ((Number(yes) / total) * 100).toFixed(2) + '%'
     item.no = ((Number(no) / total) * 100).toFixed(2) + '%'
@@ -32,7 +29,6 @@ const request = async () => {
       abstain: item.abstain,
       no_with_veto: item.no_with_veto
     }
-    item.proposal_status = proposal_status
   }
   return result
 }
