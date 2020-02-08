@@ -1,12 +1,20 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-08 14:56:46
+ * @LastEditTime : 2020-02-08 19:38:06
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /ping-wallet/ping-wallet/src/components/setting-chains-form/index.vue
+ -->
 <template>
   <div>
     <van-cell-group class="mb-10">
-      <van-field label="名称" placeholder="请输入" v-model="form.name"/>
-      <van-field label="lcd" placeholder="请输入" rows="1" autosize type="textarea" v-model="form.lcd">
+      <van-field :label="$t('message.Name')" :placeholder="$t('message.PleaseInput')" v-model="form.name"/>
+      <van-field label="lcd" :placeholder="$t('message.PleaseInput')" rows="1" autosize type="textarea" v-model="form.lcd">
         <van-icon name="orders-o" size="20" slot="button"></van-icon>
       </van-field>
     </van-cell-group>
-    <van-cell title="内核版本">
+    <van-cell :title="$t('message.KernelVersion')">
       <div slot="label">
         <van-radio-group v-model="form.version">
           <van-cell-group>
@@ -21,7 +29,7 @@
       </div>
     </van-cell>
     <div class="m-20">
-      <van-button color="#333" block>保存</van-button>
+      <van-button style="user-select: none;" color="#333" block>{{ $t('message.Save') }}</van-button>
     </div>
   </div>
 </template>
@@ -29,9 +37,9 @@
 <script>
 
 import baseMixin from '../../store/baseMixin'
-
+import mixinLang from "./mixinLang";
 export default {
-  mixins: [baseMixin],
+  mixins: [baseMixin, mixinLang],
   created() {
     const { create, chain } = this.$route.query
     if (chain && this.chainList[chain]) {

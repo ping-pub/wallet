@@ -1,8 +1,15 @@
+<!--
+ * @Author: dingyiming
+ * @Date: 2020-02-08 14:56:46
+ * @LastEditTime : 2020-02-08 15:35:32
+ * @Description: wallet-receive
+ * @FilePath: /ping-wallet/ping-wallet/src/components/wallet-receive/index.vue
+ -->
 <template>
   <div>
-    <van-cell title="名称" :label="wallet.name" />
-    <van-cell title="地址" :label="wallet.address"></van-cell>
-    <van-cell title="二维码">
+    <van-cell :title="$t('message.Name')" :label="wallet.name" />
+    <van-cell :title="$t('message.Address')" :label="wallet.address"></van-cell>
+    <van-cell :title="$t('message.QAcode')">
       <div slot="label" style="text-align:center;padding: 10px;">
         <img :src="qrcodeImg" alt />
       </div>
@@ -10,11 +17,12 @@
     <div class="m-20">
       <van-button
         color="#333"
+        style="user-select: none;"
         class="copyBtn"
         block
         data-clipboard-target="#walletAddress"
         @click="copyAddr"
-      >复制</van-button>
+      >{{ $t('message.Copy') }}</van-button>
     </div>
     <div style="opacity: 0;" id="walletAddress">{{ wallet.address }}</div>
   </div>
@@ -24,9 +32,10 @@
 import QRCode from "qrcode";
 import ClipboardJS from "clipboard";
 import baseMixin from "../../store/baseMixin";
+import mixinLang from "./mixinLang";
 
 export default {
-  mixins: [baseMixin],
+  mixins: [baseMixin, mixinLang],
   data() {
     return {
       qrcodeImg: null,

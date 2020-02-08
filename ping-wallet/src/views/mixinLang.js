@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-02-08 14:56:46
+ * @LastEditTime: 2020-02-08 19:39:39
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /ping-wallet/ping-wallet/src/views/mixinLang.js
+ */
 export default {
   computed: {
     titleStr() {
@@ -19,7 +27,7 @@ export default {
           "wallet-tx": "Transcations",
           "governance-item": "Detail",
           "setting-chains": "Chains Server",
-          "setting-chains-form": "添加主链服务器",
+          "setting-chains-form": "New Chains Server",
           "setting-currency": "Currency",
           "setting-lanaguage": "Lanaguage"
         }
