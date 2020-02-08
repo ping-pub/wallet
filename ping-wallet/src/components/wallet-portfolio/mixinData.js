@@ -20,7 +20,8 @@ export default {
     async init() {
       this.loading = true
       const address = this.currentWallet.address
-      const res = await this.$api('authAccounts')(address)
+      const unit = this.currentChain.unit
+      const res = await this.$api('authAccounts')(address, unit)
       if (!res) return
       this.coins = res.coins
       this.priceTotal = res.priceTotal

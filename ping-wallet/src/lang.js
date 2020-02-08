@@ -21,7 +21,7 @@ const i18n = new VueI18n({
 })
 
 localforage.getItem('setting').then((setting) => {
-  if (setting.currentLanaguage) {
+  if (setting && setting.currentLanaguage) {
     i18n.locale = setting.currentLanaguage
   }
 })
