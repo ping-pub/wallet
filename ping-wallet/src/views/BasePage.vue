@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-topnav :title="(component && $t('message.' + component)) || title"></base-topnav>
+    <base-topnav :title="titleStr"></base-topnav>
 
     <!-- 页面动态组件 -->
     <keep-alive>
@@ -11,6 +11,14 @@
 
 <script>
 export default {
+  computed: {
+    titleStr() {
+      if (this.component) {
+        return this.$t("message." + this.component);
+      }
+      return this.title;
+    }
+  },
   data() {
     return {
       title: "",
@@ -88,6 +96,6 @@ export default {
         }
       }
     }
-  },
+  }
 };
 </script>

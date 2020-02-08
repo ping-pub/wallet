@@ -11,7 +11,7 @@
       </van-cell-group>
     </van-radio-group>
     <div class="m-20">
-      <van-button color="#333" block @click="save">保存并返回</van-button>
+      <van-button color="#333" block @click="save">{{ $t('message.save') }}</van-button>
     </div>
   </div>
 </template>
@@ -28,10 +28,26 @@ export default {
   },
   methods: {
     save() {
+      this.$lang.locale = this.radio;
       this.$store.commit("currentLanaguageSwitch", this.radio);
-      this.$i18n.locale = this.radio
-      this.$Toast("保存成功");
+      this.$NotifyOk(this.$t('message.saveOk'));
       this.$router.back();
+    }
+  },
+  i18n: {
+    messages: {
+      en: {
+        message: {
+          save: "Save",
+          saveOk: 'Success'
+        }
+      },
+      cn: {
+        message: {
+          save: "保存并返回",
+          saveOk: '保存成功'
+        }
+      }
     }
   }
 };

@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import api from './api'
-import Vant, { Toast, Locale } from 'vant';
+import Vant, { Toast, Notify, Locale } from 'vant';
 import enUS from 'vant/lib/locale/lang/en-US';
 
 import 'vant/lib/index.css';
@@ -18,6 +18,9 @@ Locale.use('zh-CN', enUS);
 
 Vue.config.productionTip = false
 Vue.prototype.$Toast = Toast
+Vue.prototype.$NotifyOk = (message) => {
+  Notify({ type: 'primary', message });
+}
 Vue.prototype.$api = api
 
 store.commit('initSetting')

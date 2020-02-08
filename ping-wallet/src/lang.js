@@ -26,4 +26,6 @@ localforage.getItem('setting').then((setting) => {
   }
 })
 
+Vue.prototype.$lang = i18n
+
 export default i18n
