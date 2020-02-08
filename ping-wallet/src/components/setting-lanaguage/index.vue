@@ -29,6 +29,7 @@ export default {
   methods: {
     save() {
       this.$lang.locale = this.radio;
+      this.$i18n.locale = this.radio;
       this.$store.commit("currentLanaguageSwitch", this.radio);
       this.$NotifyOk(this.$t('message.saveOk'));
       this.$router.back();
