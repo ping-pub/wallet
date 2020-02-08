@@ -1,22 +1,30 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-08 14:56:46
+ * @LastEditTime : 2020-02-08 18:53:01
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /ping-wallet/ping-wallet/src/components/staking/index.vue
+ -->
 <template>
   <div>
     <van-tabs color="#333" sticky>
-      <van-tab title="已委托">
-        <van-cell-group title="总收益">
-          <van-cell title="委托总数" center>
+      <van-tab :title="$t('message.Commissioned')">
+        <van-cell-group :title="$t('message.TotalRevenue')">
+          <van-cell :title="$t('message.TotalDelegation')" center>
             <div>
               <div>+238293</div>
               <div>+$231231.23</div>
             </div>
           </van-cell>
-          <van-cell title="收益总数" center>
+          <van-cell :title="$t('message.TotalIncome')" center>
             <div>
               <div>+238293</div>
               <div>+$231231.23</div>
             </div>
           </van-cell>
         </van-cell-group>
-        <van-cell-group title="委托人">
+        <van-cell-group :title="$t('message.Client')">
           <van-cell title="Genesis Lab" label="Rate 7%" center is-link>
             <div>
               <div>200</div>
@@ -25,11 +33,11 @@
           </van-cell>
         </van-cell-group>
       </van-tab>
-      <van-tab title="验证人">
-        <van-cell-group title="推荐">
+      <van-tab :title="$t('message.Verifier')">
+        <van-cell-group :title="$t('message.Recommend')">
           <van-cell title="Ping.pub" value="2%" center is-link></van-cell>
         </van-cell-group>
-        <van-cell-group title="全部">
+        <van-cell-group :title="$t('message.Whole')">
           <div v-if="list.length === 0">
             <div style="padding: 10px 0;" class="van-hairline--bottom" v-for="n in 10" :key="n">
               <van-skeleton :row="1" avatar />
@@ -51,13 +59,12 @@
           </van-cell>
         </van-cell-group>
       </van-tab>
-      <van-tab title="计算器">
-        <van-cell-group title="验证人">
+      <van-tab :title="$t('message.Calculator')">
+        <van-cell-group :title="$t('message.Verifier')">
           <van-cell title="Genesis Lab" value="Rate 7%" center is-link></van-cell>
         </van-cell-group>
-
-        <van-cell-group title="收益计算">
-          <van-field label="委托数量" placeholder="请输入" />
+        <van-cell-group :title="$t('message.IncomeCalculation')">
+          <van-field :label="$t('message.AuthorizedQuantity')" :placeholder="$t('message.PleaseInput')" />
         </van-cell-group>
       </van-tab>
     </van-tabs>
@@ -67,9 +74,10 @@
 
 <script>
 import mixinData from "./mixinData";
+import mixinLang from "./mixinLang";
 
 export default {
-  mixins: [mixinData],
+  mixins: [mixinData, mixinLang],
   created() {
     this.init();
   },
