@@ -1,9 +1,8 @@
 /*
- * @Author: your name
+ * @Author: dingyiming
  * @Date: 2020-02-08 15:12:49
- * @LastEditTime: 2020-02-08 15:25:05
- * @LastEditors: your name
- * @Description: In User Settings Edit
+ * @LastEditTime : 2020-02-08 15:35:09
+ * @Description: 组件设置语言环境信息
  * @FilePath: /ping-wallet/ping-wallet/src/components/wallet-receive/mixinLang.js
  */
 export default {
@@ -22,9 +21,8 @@ export default {
         message: {
           Name: "名称",
           Address: "地址",
-          QA: "二维码",
+          QAcode: "二维码",
           Copy: "复制",
-
         }
       }
     }

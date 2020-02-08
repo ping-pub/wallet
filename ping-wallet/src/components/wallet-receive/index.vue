@@ -1,9 +1,8 @@
 <!--
- * @Author: your name
+ * @Author: dingyiming
  * @Date: 2020-02-08 14:56:46
- * @LastEditTime : 2020-02-08 15:29:40
- * @LastEditors  : Please set LastEditors
- * @Description: In User Settings Edit
+ * @LastEditTime : 2020-02-08 15:35:32
+ * @Description: wallet-receive
  * @FilePath: /ping-wallet/ping-wallet/src/components/wallet-receive/index.vue
  -->
 <template>
