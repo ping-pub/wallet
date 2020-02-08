@@ -20,6 +20,12 @@ export default {
         this.coins = []
         this.init()
       }
+    },
+    currentCurrency(val, old) {
+      if (val) {
+        this.coins = []
+        this.init()
+      }
     }
   },
   components: {

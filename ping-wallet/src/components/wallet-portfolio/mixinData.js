@@ -4,9 +4,11 @@ export default {
       this.loading = true
       const address = this.currentWallet.address
       const api = this.$api().authAccounts
-      const res = await api(address)
-      this.coins = res.coins
-      this.priceTotal = res.priceTotal
+      if (api) {
+        const res = await api(address)
+        this.coins = res.coins
+        this.priceTotal = res.priceTotal
+      }
       this.loading = false
     }
   }
