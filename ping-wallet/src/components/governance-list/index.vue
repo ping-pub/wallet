@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="list.length === 0">
+    <div v-if="list && list.length === 0">
       <div v-for="n in 5" :key="n" class="skeleton-item">
         <van-skeleton :row="4" />
       </div>

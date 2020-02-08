@@ -12,8 +12,7 @@ export default {
   },
   methods: {
     async init() {
-      if (!this.$api().govProposals) return
-      const result = await this.$api().govProposals()
+      const result = await this.$api('govProposals')()
       this.list = result
     }
   }

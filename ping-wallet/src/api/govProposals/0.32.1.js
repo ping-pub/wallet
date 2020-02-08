@@ -10,7 +10,8 @@ const request = async () => {
       title,
       tally_result,
       proposal_status,
-      description
+      description,
+      proposal_id
     } = item.value && item.value.BasicProposal || {}
     item.title = title
     item.description = description && (description.substr(0, 80) + '...')
@@ -33,6 +34,7 @@ const request = async () => {
       no_with_veto: item.no_with_veto
     }
     item.proposal_status = proposal_status
+    item.id = proposal_id
   }
   return result
 }

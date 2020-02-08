@@ -20,12 +20,10 @@ export default {
     async init() {
       this.loading = true
       const address = this.currentWallet.address
-      const api = this.$api().authAccounts
-      if (api) {
-        const res = await api(address)
-        this.coins = res.coins
-        this.priceTotal = res.priceTotal
-      }
+      const res = await this.$api('authAccounts')(address)
+      if (!res) return
+      this.coins = res.coins
+      this.priceTotal = res.priceTotal
       this.loading = false
     }
   }
