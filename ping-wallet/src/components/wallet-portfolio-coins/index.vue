@@ -3,14 +3,8 @@
     <div style="padding: 10px 0;" v-if="coins.length === 0">
       <van-skeleton :row="2" avatar />
     </div>
-    <van-cell
-      right-arrow
-      center
-      :title="item.unit"
-      :label="item.amountNum || '--'"
-      v-for="(item, index) in coins"
-      :key="index"
-    >
+    <van-cell right-arrow center :title="item.unit" v-for="(item, index) in coins" :key="index">
+      <div slot="label">{{ (item.amountNum ) || '--' }}</div>
       <div slot="icon">
         <van-image :src="logo" width="40" height="40" style="margin-right: 10px;" />
       </div>
@@ -39,12 +33,12 @@ export default {
     messages: {
       en: {
         message: {
-          coins: "Coins",
+          coins: "Coins"
         }
       },
       cn: {
         message: {
-          coins: "币种",
+          coins: "币种"
         }
       }
     }

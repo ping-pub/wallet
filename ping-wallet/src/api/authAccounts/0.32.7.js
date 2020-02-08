@@ -13,7 +13,7 @@ const request = async (address, unit) => {
   delegations = delegations.data.result
   let delegateTotal = 0
   for (const item of delegations) {
-    delegateTotal += Number(item.balance)
+    delegateTotal += Number(item.shares)
   }
   const numLong = 1000000
   delegateTotal = delegateTotal / numLong
@@ -23,11 +23,12 @@ const request = async (address, unit) => {
   for (const coin of coins) {
     coin.unit = coin.denom.substr(1).toUpperCase()
     let amount = coin.amount / numLong
+    coin.available = parseFloat(amount.toFixed(2))
     // 主币要加上委托出去的资产
     if (coin.unit === unit) {
       amount += delegateTotal
     }
-    coin.amountNum = amount.toFixed(2)
+    coin.amountNum = parseFloat(amount.toFixed(2))
     const price = await coinPrice(coin.unit)
     coin.priceUSD = price.USD
     coin.priceCNY = price.CNY

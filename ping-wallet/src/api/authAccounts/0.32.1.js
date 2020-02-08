@@ -13,21 +13,22 @@ const request = async (address) => {
   delegations = delegations.data
   let delegateTotal = 0
   for (const item of delegations) {
-    delegateTotal += Number(item.balance)
+    delegateTotal += Number(item.shares)
   }
   const numLong = 1000000000000000000
-  delegateTotal = delegateTotal / numLong
   const coins = accounts.data.value.coins
   let priceTotal = 0
   const currentCurrency = store.state.setting.currentCurrency
   for (const coin of coins) {
     let amount = coin.amount / numLong
     coin.unit = coin.denom.toUpperCase()
+    coin.delegateTotal = parseFloat(delegateTotal.toFixed(2))
+    coin.available = parseFloat(amount.toFixed(2))
     if (coin.unit === 'IRIS-ATTO') {
       amount += delegateTotal
       coin.unit = 'IRIS'
     }
-    coin.amountNum = amount.toFixed(2)
+    coin.amountNum = parseFloat(amount.toFixed(2))
     if (coin.unit === 'IRIS') {
       const price = await coinPrice(coin.unit)
       coin.priceUSD = price.USD
