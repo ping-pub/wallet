@@ -1,4 +1,21 @@
 export default {
+  created() {
+    this.init();
+  },
+  watch: {
+    currentWallet(val, old) {
+      if (val) {
+        this.coins = [];
+        this.init();
+      }
+    },
+    currentCurrency(val, old) {
+      if (val) {
+        this.coins = [];
+        this.init();
+      }
+    }
+  },
   methods: {
     async init() {
       this.loading = true

@@ -43,13 +43,11 @@
 </template>
 
 <script>
+import baseMixin from "../../store/baseMixin";
 import mixinData from "./mixinData";
 
 export default {
-  mixins: [mixinData],
-  created() {
-    this.init();
-  },
+  mixins: [baseMixin, mixinData],
   data() {
     return {
       list: [],

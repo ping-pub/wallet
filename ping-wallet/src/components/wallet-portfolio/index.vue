@@ -1,33 +1,19 @@
 <template>
   <div>
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh" style="overflow:visible;">
-      <wallet-portfolio-card :total="priceTotal" :loading="loading" :logo="currentChain.logo"/>
+      <wallet-portfolio-card :total="priceTotal" :loading="loading" :logo="currentChain.logo" />
       <wallet-portfolio-btns />
-      <wallet-portfolio-coins :coins="coins" :logo="currentChain.logo"/>
+      <wallet-portfolio-coins :coins="coins" :logo="currentChain.logo" />
     </van-pull-refresh>
   </div>
 </template>
 
 <script>
-import baseMixin from '../../store/baseMixin'
-import mixinData from './mixinData'
+import baseMixin from "../../store/baseMixin";
+import mixinData from "./mixinData";
 
 export default {
   mixins: [baseMixin, mixinData],
-  watch: {
-    currentWallet(val, old) {
-      if (val) {
-        this.coins = []
-        this.init()
-      }
-    },
-    currentCurrency(val, old) {
-      if (val) {
-        this.coins = []
-        this.init()
-      }
-    }
-  },
   components: {
     "wallet-portfolio-btns": () =>
       import(/* webpackChunkName: "home" */ "../wallet-portfolio-btns"),
@@ -38,8 +24,9 @@ export default {
   },
   data() {
     return {
+      first: false,
       coins: [],
-      priceTotal: '--',
+      priceTotal: "--",
       loading: false,
       count: 0,
       isLoading: false
