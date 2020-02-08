@@ -11,12 +11,12 @@ export default {
     messages: {
       en: {
         message: {
-          Commissioned: "Commissioned",
+          Commissioned: "Staking",
           TotalRevenue: "Total revenue",
           TotalDelegation: "Total delegation",
           TotalIncome: "Total income",
           Client: "Client",
-          Verifier: "Verifier",
+          Verifier: "Validators",
           Recommend: "Recommend",
           Whole: "Whole",
           Calculator: "Calculator",
