@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-08 22:32:46
+ * @LastEditTime : 2020-02-08 22:54:44
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /ping-wallet/ping-wallet/src/components/governance-list/index.vue
+ -->
 <template>
   <div>
     <div v-if="list && list.length === 0">
@@ -31,12 +39,7 @@
           :type="item.proposal_status === 'Rejected' ? 'danger' : item.proposal_status === 'Passed' ? 'success' : ''"
         >{{item.proposal_status}}</van-tag>
         <span class="flex-1"></span>
-        <span style="font-size: 12px;color: #999;">剩余时间：</span>
-        <van-count-down
-          style="font-size: 12px;color: #999;"
-          :time="time"
-          format="DD 天 HH 时 mm 分 ss 秒"
-        />
+        <span style="font-size: 12px;color: #999;">{{ $t('message.Deadline') }} {{ toDate(item.voting_end_time) }}</span>
       </van-row>
     </van-panel>
   </div>
@@ -45,18 +48,21 @@
 <script>
 import baseMixin from "../../store/baseMixin";
 import mixinData from "./mixinData";
+import mixinLang from "./mixinLang";
 
 export default {
-  mixins: [baseMixin, mixinData],
+  mixins: [baseMixin, mixinData, mixinLang],
   data() {
     return {
-      list: [],
-      time: 30 * 60 * 60 * 1000
+      list: []
     };
   },
   methods: {
     goItem(item) {
       this.$router.push("/governance-item?id=" + item.id);
+    },
+    toDate(time) {
+      return new Date(time).toISOString().replace(/T/g, " ").replace(/\.[\d]{3}Z/, "")
     }
   }
 };
