@@ -40,6 +40,8 @@ export default {
       import(/* webpackChunkName: "page" */ "../components/wallet-form"),
     "wallet-item": () =>
       import(/* webpackChunkName: "page" */ "../components/wallet-item"),
+    "staking-item": () =>
+      import(/* webpackChunkName: "page" */ "../components/staking-item"),
     "wallet-receive": () =>
       import(/* webpackChunkName: "page" */ "../components/wallet-receive"),
     "wallet-transfer": () =>
