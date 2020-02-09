@@ -4,6 +4,7 @@ import delegationList from './delegationList'
 import stakingValidators from './stakingValidators'
 import govProposals from './govProposals'
 import govProposalsId from './govProposalsId'
+import txs from './txs'
 
 export default (funcName) => {
   const { version } = store.state.wallet.currentChain
@@ -23,6 +24,9 @@ export default (funcName) => {
       break
     case 'stakingValidators':
       func = stakingValidators
+      break
+    case 'txs':
+      func = txs
       break
   }
   if (func && version) {

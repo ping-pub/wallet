@@ -1,11 +1,18 @@
-import axios from 'axios'
-
 export default {
+  activated() {
+    this.list = []
+    const { address } = this.$route.query
+    this.init(address);
+  },
+  data() {
+    return {
+      list: []
+    }
+  },
   methods: {
     async init(address) {
-      const res = await axios.get(`/api/staking/delegators/${address}/txs`)
-      const result = res.data.result
-      this.list = result
+      const res = await this.$api('txs')(address)
+      this.list = res
     }
   }
 }
