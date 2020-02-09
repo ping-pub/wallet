@@ -12,10 +12,11 @@ export default {
       en: {
         message: {
           Commissioned: "Staking",
-          TotalRevenue: "Total revenue",
-          TotalDelegation: "Total delegation",
-          TotalIncome: "Total income",
-          Client: "Client",
+          reward: "Rewards",
+          delegated: "Delegated",
+          available: 'Available',
+          unbonding: 'Unbonding',
+          Client: "Delegations",
           Verifier: "Validators",
           Recommend: "Recommend",
           Whole: "Whole",
@@ -28,9 +29,10 @@ export default {
       cn: {
         message: {
           Commissioned: "已委托",
-          TotalRevenue: "总收益",
-          TotalDelegation: "委托总数",
-          TotalIncome: "收益总数",
+          reward: "总收益",
+          delegated: "已委托",
+          available: '可用',
+          unbonding: '未解锁',
           Client: "委托人",
           Verifier: "验证人",
           Recommend: "推荐",

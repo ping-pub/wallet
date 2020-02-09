@@ -1,11 +1,12 @@
 import store from '../store'
 import authAccounts from './authAccounts'
+import delegationList from './delegationList'
+import stakingValidators from './stakingValidators'
 import govProposals from './govProposals'
 import govProposalsId from './govProposalsId'
 
 export default (funcName) => {
   const { version } = store.state.wallet.currentChain
-  console.log(version)
   let func = null
   switch (funcName) {
     case 'authAccounts':
@@ -16,6 +17,12 @@ export default (funcName) => {
       break
     case 'govProposalsId':
       func = govProposalsId
+      break
+    case 'delegationList':
+      func = delegationList
+      break
+    case 'stakingValidators':
+      func = stakingValidators
       break
   }
   if (func && version) {

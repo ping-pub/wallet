@@ -1,19 +1,42 @@
-import axios from 'axios'
-
 export default {
+  created() {
+    this.init();
+  },
+  watch: {
+    currentWallet(val, old) {
+      if (val) {
+        this.validatorList = [];
+        this.init();
+      }
+    },
+  },
+  data() {
+    return {
+      validatorList: [],
+      delegationData: {
+        list: [],
+        delegateNum: '--',
+        delegatePrice: '--',
+        rewardNum: '--',
+        rewardTotal: '--'
+      }
+    }
+  },
   methods: {
     async init() {
-      const res = await axios.get(`/api/staking/validators`)
-      const result = res.data.result
-
-      for (const item of result) {
-        item.moniker = item.description.moniker
-        item.rate = parseFloat(Number((Number((item.commission.commission_rates.rate)) * 100).toFixed(2))) + '%'
-      }
-      result.sort((current, next) => {
-        return Number(next.tokens) - Number(current.tokens)
-      })
-      this.list = result
+      this.initStaking()
+      this.initValidators()
+    },
+    async initStaking() {
+      const address = this.currentWallet.address
+      const unit = this.currentChain.unit
+      const res = await this.$api('delegationList')(address, unit)
+      if (!res) return
+      this.delegationData = res
+    },
+    async initValidators() {
+      const res = await this.$api('stakingValidators')()
+      this.validatorList = res
     }
   }
 }
