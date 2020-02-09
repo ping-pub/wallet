@@ -42,6 +42,8 @@ export default {
       import(/* webpackChunkName: "page" */ "../components/wallet-item"),
     "staking-item": () =>
       import(/* webpackChunkName: "page" */ "../components/staking-item"),
+    "staking-validators": () =>
+      import(/* webpackChunkName: "page" */ "../components/staking-validators"),
     "wallet-receive": () =>
       import(/* webpackChunkName: "page" */ "../components/wallet-receive"),
     "wallet-transfer": () =>

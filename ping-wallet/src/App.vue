@@ -21,6 +21,9 @@ p {
 .m-20 {
   margin: 20px;
 }
+.m-15 {
+  margin: 15px;
+}
 .mb-10 {
   margin-bottom: 10px;
 }

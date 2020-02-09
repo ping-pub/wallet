@@ -32,7 +32,7 @@ export default {
           reward: "总收益",
           delegated: "已委托",
           available: '可用',
-          unbonding: '赎回中',
+          unbonding: '未解锁',
           Client: "委托人",
           Verifier: "验证人",
           Recommend: "推荐",
