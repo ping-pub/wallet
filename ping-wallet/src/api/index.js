@@ -1,6 +1,7 @@
 import store from '../store'
 import authAccounts from './authAccounts'
 import delegationList from './delegationList'
+import stakingValidator from './stakingValidator'
 import stakingValidators from './stakingValidators'
 import govProposals from './govProposals'
 import govProposalsId from './govProposalsId'
@@ -24,6 +25,9 @@ export default (funcName) => {
       break
     case 'stakingValidators':
       func = stakingValidators
+      break
+    case 'stakingValidator':
+      func = stakingValidator
       break
     case 'txs':
       func = txs
