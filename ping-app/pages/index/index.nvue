@@ -1,10 +1,10 @@
 <template>
 	<view class="web-view">
-		<web-view class="web-view" src="http://www.jalon888.com/webview.html" ref="webview" @pagestart="onPageStart" @onPostMessage="handlePostMessage"
-		 @pagefinish="onPageFinish" @error="onError" @receivedtitle="onReceivedTitle"></web-view>
-		 <view class="sendMessage">
-		 	<button type="primary" @click="sendMessageToWebview">点我给webview传参</button>
-		 </view>
+		<web-view class="web-view" src="http://www.jalon888.com/webview.html" ref="webview" @pagestart="onPageStart"
+		 @onPostMessage="handlePostMessage" @pagefinish="onPageFinish" @error="onError" @receivedtitle="onReceivedTitle"></web-view>
+		<view class="sendMessage">
+			<button type="primary" @click="sendMessageToWebview">点我给webview传参</button>
+		</view>
 	</view>
 </template>
 
@@ -23,7 +23,7 @@
 				error: '',
 				canGoBack: false,
 				canGoForward: false,
-				PageStart:false, // 记录网页请求的加载状态，true 加载成功 false 加载失败
+				PageStart: false, // 记录网页请求的加载状态，true 加载成功 false 加载失败
 			};
 		},
 		onLoad() {
@@ -33,11 +33,11 @@
 			console.log(currentWebview);
 		},
 		methods: {
-			sendMessageToWebview(){
-				if(!this.PageStart) {
+			sendMessageToWebview() {
+				if (!this.PageStart) {
 					uni.showModal({
-						title:"暴躁的提示",
-						content:"只有网页加载成功了才可以传参过去，不然无效哦。。"
+						title: "暴躁的提示",
+						content: "只有网页加载成功了才可以传参过去，不然无效哦。。"
 					})
 					return false;
 				}
@@ -54,25 +54,49 @@
 					cancelText: '传字符串',
 					confirmText: '传参对象',
 					success: res => {
-						if(res.confirm){
+						if (res.confirm) {
 							this.$refs.webview.evalJs("jsfunction({'aaa':'bbb','ccc':'dddd'})");
-						}else{
+						} else {
 							// jsfunction 其实就是你自己在你的webview 里面写个方法。
 							this.$refs.webview.evalJs("jsfunction('我就是个参数啊')");
 						}
 					},
-					
+
 				});
 
-				
+
 			},
 			handlePostMessage: function(data) {
 				// 获取网页的参数
-				console.log("得到参数",data.detail);
+				// console.log("得到参数", data.detail);
 				//var plus = new WeexPlus(weex);
-				uni.showModal({
-					title:"我在UNI-APP里面接收到网页传参",
-					content: JSON.stringify(data.detail)
+				uni.openBluetoothAdapter({
+					success(res) {
+						uni.startBluetoothDevicesDiscovery({
+							services: ["13D63400-2C97-0004-0000-4C6564676572"],
+							success(result) {
+								uni.onBluetoothDeviceFound(function(deviceRes) {
+									if (deviceRes.devices[0].advertisServiceUUIDs[0] === '13D63400-2C97-0004-0000-4C6564676572') {
+										const deviceOne = deviceRes.devices[0]
+										console.log('Ledger', deviceRes.devices[0])
+										uni.createBLEConnection({
+											// 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
+											deviceId: deviceOne.deviceId,
+											success(end) {
+												console.log('最后', end)
+											},
+											fail(err) {
+												console.log(err)
+											},
+											complete(comp) {
+												console.log(comp)
+											}
+										})
+									}
+								})
+							}
+						})
+					}
 				})
 			},
 			goBack: function() {
@@ -99,7 +123,6 @@
 				this.canGoBack = e.canGoBack;
 				this.canGoForward = e.canGoForward;
 				var tn = currentWebview.getStyle().titleNView;
-				tn.titleText = e.detail.title || '第三方网站';
 				currentWebview.setStyle({
 					titleNView: tn
 				});
@@ -133,7 +156,8 @@
 		flex-direction: column;
 		background-color: #f5f5f5;
 	}
-	.sendMessage{
+
+	.sendMessage {
 		width: 750rpx;
 		position: fixed;
 		bottom: 0rpx;
