@@ -8,34 +8,32 @@ import {
 } from 'react-native';
 
 import { WebView } from 'react-native-webview';
-import BluetoothTransport from "@ledgerhq/react-native-hw-transport-ble";
+import TransportBLE from "@ledgerhq/react-native-hw-transport-ble";
 
 class App extends Component {
   startScan = async () => {
     Alert.alert('111');
-    const sub = BluetoothTransport.listen({
+    TransportBLE.listen({
       complete: () => {
-        // this.setState({ refreshing: false });
-        Alert.alert('111');
+        this.setState({ refreshing: false });
       },
       next: e => {
-        Alert.alert(e);
         if (e.type === "add") {
-          // clearTimeout(this.timeout);
           const device = e.descriptor;
-          console.log(device)
-          // this.setState(({ devices }) => ({
-          //   // FIXME seems like we have dup. ideally we'll remove them on the listen side!
-          //   devices: devices.some(i => i.id === device.id)
-          //     ? devices
-          //     : devices.concat(device),
-          // }));
+          Alert.alert(device);
         }
       },
       error: error => {
-        Alert.alert(error);
-      },
+        this.setState({ error, refreshing: false });
+      }
     });
+    // const subscription = TransportBLE.observeState({
+    //   next: () => {
+
+    //   },
+    //   complete: () => { },
+    //   error: () => { }
+    // });
   };
   render() {
     return (
