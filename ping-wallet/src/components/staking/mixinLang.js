@@ -1,7 +1,7 @@
 /*
  * @Author: dingyiming
  * @Date: 2020-02-08 15:12:49
- * @LastEditTime : 2020-02-08 18:46:11
+ * @LastEditTime : 2020-02-12 21:26:01
  * @Description: 组件设置语言环境信息
  * @FilePath: /ping-wallet/ping-wallet/src/components/wallet-receive/mixinLang.js
  */
@@ -24,6 +24,9 @@ export default {
           IncomeCalculation: "Income calculation",
           AuthorizedQuantity: "Authorized quantity",
           PleaseInput: "Please input",
+          btnClaim: 'Claim',
+          btnCalculator: 'Calculator',
+          btnValidators: 'Validators'
         }
       },
       cn: {
@@ -41,6 +44,9 @@ export default {
           IncomeCalculation: "收益计算",
           AuthorizedQuantity: "委托数量",
           PleaseInput: "请输入",
+          btnClaim: '提取收益',
+          btnCalculator: '收益计算',
+          btnValidators: '验证节点'
         }
       }
     }

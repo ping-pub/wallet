@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-08 14:56:46
- * @LastEditTime : 2020-02-08 18:53:01
+ * @LastEditTime : 2020-02-12 21:27:02
  * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /ping-wallet/ping-wallet/src/components/staking/index.vue
@@ -54,11 +54,11 @@
 
     <div class="m-15">
       <van-row type="flex">
-        <van-button color="#333" block disabled>提取收益</van-button>
+        <van-button color="#333" block disabled>{{ $t('message.btnClaim') }}</van-button>
         <div style="width: 30px;"></div>
-        <van-button color="#333" block to="/staking-calculator" disabled>计算收益</van-button>
+        <van-button color="#333" block to="/staking-calculator" disabled>{{ $t('message.btnCalculator') }}</van-button>
         <div style="width: 30px;"></div>
-        <van-button color="#333" block to="/staking-validators">验证节点</van-button>
+        <van-button color="#333" block to="/staking-validators">{{ $t('message.btnValidators') }}</van-button>
       </van-row>
     </div>
   </div>
