@@ -90,6 +90,13 @@
 											},
 											complete(comp) {
 												console.log(comp)
+												uni.getBLEDeviceServices({
+												  // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
+												  deviceId:deviceOne.deviceId,
+												  success(services) {
+												    console.log('device services:', services)
+												  }
+												})
 											}
 										})
 									}
