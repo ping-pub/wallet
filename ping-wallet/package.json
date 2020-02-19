@@ -7,10 +7,14 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@ledgerhq/hw-app-eth": "^5.8.0",
+    "@ledgerhq/hw-transport-web-ble": "^5.9.0",
+    "@ledgerhq/hw-transport-webusb": "^5.9.0",
     "axios": "^0.19.2",
     "clipboard": "^2.0.4",
     "core-js": "^3.4.4",
     "dayjs": "^1.8.20",
+    "eip55": "^1.0.3",
     "localforage": "^1.7.3",
     "qrcode": "^1.4.4",
     "register-service-worker": "^1.6.2",
