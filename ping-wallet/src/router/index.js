@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-02-08 14:56:46
- * @LastEditTime: 2020-02-22 01:36:52
- * @LastEditors: your name
+ * @LastEditTime: 2020-02-23 00:26:29
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /ping-wallet/ping-wallet/src/router/index.js
  */

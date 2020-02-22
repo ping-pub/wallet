@@ -1,15 +1,13 @@
 <!--
  * @Author: dingyiming
  * @Date: 2020-02-22 01:34:48
- * @LastEditTime: 2020-02-22 01:39:57
+ * @LastEditTime: 2020-02-23 00:38:14
  * @FilePath: /ping-wallet/ping-wallet/src/components/common/ledger-cosmos/index.vue
  -->
 <template>
   <div class="cosmosLedger">
     <input id="webusb" v-model="transportChoice" type="radio" value="WebUSB" />
     <label for="webusb">WebUSB</label>
-    <input id="u2f" v-model="transportChoice" type="radio" value="U2F" />
-    <label for="u2f">U2F</label>
     <br />
     <!--
         Commands
@@ -107,7 +105,9 @@ export default {
       const app = new CosmosApp(transport);
       // now it is possible to access all commands in the app
       this.log("Please click in the device");
-      const path = [44, 118, 5, 0, 3];
+      // const path = [44, 118, 5, 0, 3];
+      // [bip44 , , 钱包, , 序列]
+      const path = [44, 118, 0, 0, 0];
       const response = await app.getAddressAndPubKey(path, "cosmos");
       if (response.return_code !== 0x9000) {
         this.log(`Error [${response.return_code}] ${response.error_message}`);

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-08 14:56:46
- * @LastEditTime: 2020-02-19 19:13:40
+ * @LastEditTime: 2020-02-23 01:07:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /ping-wallet/ping-wallet/src/components/wallet-form/index.vue
@@ -69,8 +69,7 @@
               style="margin-bottom: 10px;"
               @click="scanBle"
               block
-            >Connect with Bluetooth</van-button>
-            <van-button block>Connect with USB</van-button>
+            >Connect with USB</van-button>
           </div>
         </div>
       </div>
@@ -81,12 +80,7 @@
 <script>
 import baseMixin from "../../store/baseMixin";
 import mixinLang from "./mixinLang";
-import TransportWebBLE from "@ledgerhq/hw-transport-web-ble";
-import AppEth from "@ledgerhq/hw-app-eth";
-import eip55 from "eip55";
-
-const delay = ms => new Promise(success => setTimeout(success, ms));
-
+import ledgerJs from '../common/ledger-js'
 
 export default {
   mixins: [baseMixin, mixinLang],
@@ -134,37 +128,12 @@ export default {
       this.onSelectDevice();
     },
     async onSelectDevice() {
-      const transport = await TransportWebBLE.create();
-      window.ledgerTransport = transport;
-      transport.on("disconnect", () => {
-        this.transport = null;
-      });
-      this.transport = transport;
-      console.log(transport);
-      while (!this.address) {
-        await this.fetchAddress(false);
-        await delay(500);
-      }
-      this.fetchAddress(true);
+      console.log(111)
+      const address = await ledgerJs.getAddress()
+      console.log(address)
+      this.form.address = address.bech32_address
+      this.show = false
     },
-
-    async fetchAddress(verify) {
-      const transport = this.transport;
-      try {
-        const eth = new AppEth(transport);
-        const path = "44'/60'/0'/0/0"; // HD derivation path
-        const r = await eth.getAddress(path, verify);
-        const address = eip55.encode(r.address);
-        this.address = address;
-        console.log(address)
-        this.form.address = address
-        this.show = false
-      } catch (error) {
-        // in this case, user is likely not on Ethereum app
-        console.warn("Failed: " + error.message);
-        return null;
-      }
-    }
   }
 };
 </script>
