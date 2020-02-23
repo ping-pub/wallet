@@ -64,6 +64,9 @@
         <div class="wallet-form-block">
           <div class="DeviceSelectionScreen">
             <p>Power up your Ledger Nano X and enter your pin before continuing...</p>
+            <p>chrome://flags/#enable-experimental-web-platform-features</p>
+            <p>Experimental Web Platform features
+Enables experimental Web Platform features that are in development. – Mac, Windows, Linux, Chrome OS, Android</p>
             <van-button
               color="#333"
               style="margin-bottom: 10px;"
